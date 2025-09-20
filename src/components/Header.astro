@@ -19,11 +19,49 @@ const { title } = Astro.props;
                 <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Proyectos</a></li>
                 <li><a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">Contacto</a></li>
             </ul>
-            <button class="md:hidden p-2">
+            <button id="mobile-menu-button" class="md:hidden p-2">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
+            <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col transition-transform duration-500 transform translate-x-full md:hidden bg-gradient-to-br from-blue-400 via-white to-purple-400 backdrop-blur-xl shadow-2xl opacity-0 pointer-events-none" style="display: none; background: silver; min-height: 90vh;">
+                <button id="close-mobile-menu" class="absolute top-6 right-6 p-2">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <ul class="flex flex-1 flex-col justify-evenly items-center w-full text-center text-2xl font-bold">
+                    <li class="w-full my-2"><a href="#about" class="block py-4 w-full mx-4 rounded-xl text-gray-600 hover:text-blue-600 transition-colors duration-200 bg-white/60 shadow-md">Sobre Mí</a></li>
+                    <li class="w-full my-2"><a href="#experience" class="block py-4 w-full mx-4 rounded-xl text-gray-600 hover:text-blue-600 transition-colors duration-200 bg-white/60 shadow-md">Experiencia</a></li>
+                    <li class="w-full my-2"><a href="#skills" class="block py-4 w-full mx-4 rounded-xl text-gray-600 hover:text-blue-600 transition-colors duration-200 bg-white/60 shadow-md">Habilidades</a></li>
+                    <li class="w-full my-2"><a href="#projects" class="block py-4 w-full mx-4 rounded-xl text-gray-600 hover:text-blue-600 transition-colors duration-200 bg-white/60 shadow-md">Proyectos</a></li>
+                    <li class="w-full my-2"><a href="#contact" class="block py-4 w-full mx-4 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition-colors duration-200 shadow-md">Contacto</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
+<script is:inline>
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.getElementById('close-mobile-menu');
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.style.display = 'flex';
+        setTimeout(() => {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenu.classList.add('opacity-100');
+        }, 10);
+    });
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('opacity-100');
+        mobileMenu.classList.add('opacity-0');
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+        setTimeout(() => {
+            mobileMenu.classList.add('pointer-events-none');
+            mobileMenu.style.display = 'none';
+        }, 500);
+    });
+</script>
 </header>
