@@ -1,0 +1,11 @@
+---
+// src/components/SectionRow.astro
+const { id, title } = Astro.props;
+---
+<!-- SectionRow -->
+<section id={id} class="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h3 class="text-4xl font-bold mb-6">{title}</h3>
+        <slot />
+    </div>
+</section>

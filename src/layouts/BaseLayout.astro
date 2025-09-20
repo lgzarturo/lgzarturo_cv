@@ -1,0 +1,83 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arturo López Gómez - Líder Técnico | Java & Spring Boot</title>
+    <meta name="description" content="Líder Técnico con 15+ años en Java, Spring Boot, microservicios y Next.js. Especialista en arquitectura web, automatización y formación de equipos. Disponible para nuevos retos.">
+    <meta name="keywords" content="Líder Técnico, Java, Spring Boot, Microservicios, Next.js, Arquitectura de Software, DevOps, CI/CD, AWS, Docker, Kubernetes, Python, TailwindCSS, Hugo, Astro, Mandrill, Mailchimp, Git, ATS, Reclutamiento, Turismo, Hotelería">
+    <meta name="author" content="Arturo López Gómez">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Arturo López Gómez - Líder Técnico | Java & Spring Boot">
+    <meta property="og:description" content="Perfil profesional de Arturo López Gómez, experto en Java, Spring Boot y proyectos web. Listo para colaborar.">
+    <meta property="og:image" content="https://lgzarturo.com/og-image.jpg">
+    <meta property="og:url" content="https://lgzarturo.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Arturo López Gómez - Líder Técnico">
+    <meta name="twitter:description" content="Experto en Java, Spring Boot y arquitectura de microservicios. Disponible para oportunidades.">
+    <meta name="twitter:image" content="https://lgzarturo.com/twitter-image.jpg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Arturo López Gómez",
+        "jobTitle": "Líder Técnico",
+        "description": "Líder Técnico con experiencia en Java, Spring Boot, microservicios y Next.js. Especialista en arquitectura web y formación de equipos.",
+        "url": "https://lgzarturo.com",
+        "sameAs": ["https://www.linkedin.com/in/lgzarturo"],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Cancún",
+            "addressRegion": "Quintana Roo",
+            "addressCountry": "México"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+52-998-222-9740",
+            "email": "lgzarturo@gmail.com"
+        },
+        "knowsAbout": ["Java", "Spring Boot", "Microservicios", "Next.js", "React", "TypeScript", "Python", "Docker", "AWS", "CI/CD", "DevOps", "Arquitectura de Software"]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com" is:inline></script>
+    <script is:inline>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <slot />
+    <script src="/script.js" is:inline></script>
+</body>
+</html>

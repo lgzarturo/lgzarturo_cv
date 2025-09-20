@@ -1,0 +1,16 @@
+---
+// src/components/SectionColumn.astro
+const { id, title, accent } = Astro.props;
+---
+<!-- SectionColumn -->
+<section id={id} class={`py-20 ${accent}`}>
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="animate-slide-up">
+                <h3 class="text-4xl font-bold text-gray-900 mb-6">{title}</h3>
+                <slot />
+            </div>
+            <slot name="content" />
+        </div>
+    </div>
+</section>
