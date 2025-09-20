@@ -8,7 +8,7 @@ import SectionTitle from '../components/SectionTitle.astro';
 import Footer from '../components/Footer.astro';
 ---
 <BaseLayout title="Arturo López Gómez - Líder Técnico">
-    <Header title="Arturo López Gómez" />
+    <Header title="Arturo López" />
     <main class="pt-20">
         <!-- Hero Section -->
         <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
@@ -55,12 +55,12 @@ import Footer from '../components/Footer.astro';
                 En mi tiempo libre, usualmente podrás encontrarme mentoreando desarrolladores, 
                 explorando nuevas tecnologías como Next.js y Python, o construyendo side projects.
             </p>
-            <div class="flex flex-wrap gap-3">
-                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Java</span>
-                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium">Spring Boot</span>
-                <span class="px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Microservicios</span>
-                <span class="px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">Next.js</span>
-                <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium">DevOps</span>
+            <div class="flex flex-wrap gap-3" aria-label="Tecnologías usadas">
+                <span class="px-4 py-2 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java</span>
+                <span class="px-4 py-2 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Boot</span>
+                <span class="px-4 py-2 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Microservicios</span>
+                <span class="px-4 py-2 bg-nextjs-100 text-nextjs-800 rounded-full text-sm font-medium">Next.js</span>
+                <span class="px-4 py-2 bg-devops-100 text-devops-800 rounded-full text-sm font-medium">DevOps</span>
             </div>
             <div class="relative" slot="content">
                 <div class="w-full h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center">
@@ -87,10 +87,10 @@ import Footer from '../components/Footer.astro';
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-2">Programa de Lealtad</h4>
                     <p class="text-gray-600 mb-4">Migración completa a arquitectura de microservicios con Spring Boot, logrando +25% en suscriptores y mejoras en ventas.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Java</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Spring Boot</span>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">Microservicios</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Java</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring Boot</span>
+                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">Microservicios</span>
                     </div>
                 </div>
 
@@ -103,10 +103,10 @@ import Footer from '../components/Footer.astro';
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-2">ATS StarTalent.mx</h4>
                     <p class="text-gray-600 mb-4">Rediseño completo del sistema de reclutamiento con Grails y Spring, crecimiento del +60% en clientes corporativos.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-xs font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Spring</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Next.js</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-xs font-medium">Grails</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring</span>
+                        <span class="px-3 py-1 bg-nextjs-100 text-nextjs-800 rounded-full text-xs font-medium">Next.js</span>
                     </div>
                 </div>
 
@@ -118,11 +118,11 @@ import Footer from '../components/Footer.astro';
                         </svg>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-2">Motor de Tarifas</h4>
-                    <p class="text-gray-600 mb-4">Sistema de carga masiva por layout que redujo tiempos operativos en 40% y eliminó errores manuales.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium">Java</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Spring Boot</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-xs font-medium">PostgreSQL</span>
+                    <p class="text-gray-600 mb-4">Sistema de carga masiva por layout que redujo tiempos operativos en un 40% y eliminó errores manuales, permitiendo una mayor eficiencia.</p>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Java</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring Boot</span>
+                        <span class="px-3 py-1 bg-postgresql-100 text-postgresql-800 rounded-full text-xs font-medium">PostgreSQL</span>
                     </div>
                 </div>
             </div>
@@ -190,11 +190,11 @@ import Footer from '../components/Footer.astro';
                         a arquitecturas modernas con microservicios. Dirigí equipos multidisciplinarios y mentoré 
                         desarrolladores en buenas prácticas y tecnologías emergentes.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Java</span>
-                        <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Spring Boot</span>
-                        <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Microservicios</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">AWS</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Boot</span>
+                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Microservicios</span>
+                        <span class="px-3 py-1 bg-aws-100 text-aws-800 rounded-full text-sm font-medium">AWS</span>
                     </div>
                 </div>
 
@@ -211,11 +211,11 @@ import Footer from '../components/Footer.astro';
                         de PyME a referente en soluciones de reclutamiento para hotelería. Implementé prácticas 
                         DevOps y arquitecturas escalables.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">MySQL</span>
-                        <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-medium">VPS</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">JavaScript</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
+                        <span class="px-3 py-1 bg-mysql-100 text-mysql-800 rounded-full text-sm font-medium">MySQL</span>
+                        <span class="px-3 py-1 bg-vps-100 text-vps-800 rounded-full text-sm font-medium">VPS</span>
+                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
                     </div>
                 </div>
 
@@ -230,10 +230,10 @@ import Footer from '../components/Footer.astro';
                     <p class="text-gray-600 mb-4 leading-relaxed">
                         Dirigí la estrategia digital logrando +40% de tráfico orgánico. Desarrollé (Java/Grails) internamente sistemas administrativos y un timbrado de nómina, optimizando procesos fiscales y administrativos.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Spring Framework</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">JavaScript</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Framework</span>
+                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
                     </div>
                 </div>
 
@@ -248,10 +248,10 @@ import Footer from '../components/Footer.astro';
                     <p class="text-gray-600 mb-4 leading-relaxed">
                         Implementé el sistema Travelbook de reservaciones online con Java, consolidando la venta directa y reduciendo la dependencia de OTAs. Administré servidores y entornos de producción, asegurando disponibilidad superior al 99.9%.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Play Framework</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">JavaScript</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
+                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Play Framework</span>
+                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
                     </div>
                 </div>
 
@@ -266,11 +266,11 @@ import Footer from '../components/Footer.astro';
                     <p class="text-gray-600 mb-4 leading-relaxed">
                         Este periodo fortaleció mi adaptabilidad a múltiples stacks y la capacidad de enseñar a clientes y equipos a aprovechar nuevas herramientas digitales.
                     </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">Servidores y Redes</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">PHP</span>
-                        <span class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full text-sm font-medium">JavaScript</span>
-                        <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Visual Basic 6.0</span>
+                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-servers-100 text-servers-800 rounded-full text-sm font-medium">Servidores y Redes</span>
+                        <span class="px-3 py-1 bg-php-100 text-php-800 rounded-full text-sm font-medium">PHP</span>
+                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
+                        <span class="px-3 py-1 bg-vb-100 text-vb-800 rounded-full text-sm font-medium">Visual Basic 6.0</span>
                     </div>
                 </div>
 
@@ -308,7 +308,7 @@ import Footer from '../components/Footer.astro';
                 </a>
             </div>
             <div class="mt-8 text-sm opacity-75">
-                <p>Cancún, Quintana Roo, México (UTC-6)</p>
+                <p>Cancún, Quintana Roo, México (UTC-5)</p>
                 <p>Disponible para proyectos remotos y presenciales</p>
             </div>
         </SectionRow>
