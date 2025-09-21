@@ -1,0 +1,197 @@
+@import "tailwindcss";
+@plugin '@tailwindcss/typography';
+
+:root {
+	--color-java-100: #F7E1B3;
+	--color-java-800: #B07219;
+	--color-spring-100: #D3F9D8;
+	--color-spring-800: #6DB33F;
+	--color-micro-100: #D0E6FF;
+	--color-micro-800: #1565C0;
+	--color-nextjs-100: #EAEAEA;
+	--color-nextjs-800: #000000;
+	--color-devops-100: #E0E7FF;
+	--color-devops-800: #4338CA;
+	--color-grails-100: #F3E8FF;
+	--color-grails-800: #6E4C13;
+	--color-aws-100: #FFF7E1;
+	--color-aws-800: #FF9900;
+	--color-mysql-100: #E0F7FA;
+	--color-mysql-800: #00758F;
+	--color-vps-100: #F5F5F5;
+	--color-vps-800: #616161;
+	--color-js-100: #FFF9C4;
+	--color-js-800: #F7DF1E;
+	--color-postgresql-100: #E3F2FD;
+	--color-postgresql-800: #336791;
+	--color-php-100: #EDE9FE;
+	--color-php-800: #777BB4;
+	--color-vb-100: #F3E8FF;
+	--color-vb-800: #68217A;
+	--color-servers-100: #E0E7FF;
+	--color-servers-800: #1E293B;
+}
+
+.bg-java-100 { background-color: var(--color-java-100) !important; }
+.bg-java-800 { background-color: var(--color-java-800) !important; }
+.text-java-100 { color: var(--color-java-100) !important; }
+.text-java-800 { color: var(--color-java-800) !important; }
+.bg-spring-100 { background-color: var(--color-spring-100) !important; }
+.bg-spring-800 { background-color: var(--color-spring-800) !important; }
+.text-spring-100 { color: var(--color-spring-100) !important; }
+.text-spring-800 { color: var(--color-spring-800) !important; }
+.bg-micro-100 { background-color: var(--color-micro-100) !important; }
+.bg-micro-800 { background-color: var(--color-micro-800) !important; }
+.text-micro-100 { color: var(--color-micro-100) !important; }
+.text-micro-800 { color: var(--color-micro-800) !important; }
+.bg-nextjs-100 { background-color: var(--color-nextjs-100) !important; }
+.bg-nextjs-800 { background-color: var(--color-nextjs-800) !important; }
+.text-nextjs-100 { color: var(--color-nextjs-100) !important; }
+.text-nextjs-800 { color: var(--color-nextjs-800) !important; }
+.bg-devops-100 { background-color: var(--color-devops-100) !important; }
+.bg-devops-800 { background-color: var(--color-devops-800) !important; }
+.text-devops-100 { color: var(--color-devops-100) !important; }
+.text-devops-800 { color: var(--color-devops-800) !important; }
+.bg-grails-100 { background-color: var(--color-grails-100) !important; }
+.bg-grails-800 { background-color: var(--color-grails-800) !important; }
+.text-grails-100 { color: var(--color-grails-100) !important; }
+.text-grails-800 { color: var(--color-grails-800) !important; }
+.bg-aws-100 { background-color: var(--color-aws-100) !important; }
+.bg-aws-800 { background-color: var(--color-aws-800) !important; }
+.text-aws-100 { color: var(--color-aws-100) !important; }
+.text-aws-800 { color: var(--color-aws-800) !important; }
+.bg-mysql-100 { background-color: var(--color-mysql-100) !important; }
+.bg-mysql-800 { background-color: var(--color-mysql-800) !important; }
+.text-mysql-100 { color: var(--color-mysql-100) !important; }
+.text-mysql-800 { color: var(--color-mysql-800) !important; }
+.bg-vps-100 { background-color: var(--color-vps-100) !important; }
+.bg-vps-800 { background-color: var(--color-vps-800) !important; }
+.text-vps-100 { color: var(--color-vps-100) !important; }
+.text-vps-800 { color: var(--color-vps-800) !important; }
+.bg-js-100 { background-color: var(--color-js-100) !important; }
+.bg-js-800 { background-color: var(--color-js-800) !important; }
+.text-js-100 { color: var(--color-js-100) !important; }
+.text-js-800 { color: var(--color-js-800) !important; }
+.bg-postgresql-100 { background-color: var(--color-postgresql-100) !important; }
+.bg-postgresql-800 { background-color: var(--color-postgresql-800) !important; }
+.text-postgresql-100 { color: var(--color-postgresql-100) !important; }
+.text-postgresql-800 { color: var(--color-postgresql-800) !important; }
+.bg-php-100 { background-color: var(--color-php-100) !important; }
+.bg-php-800 { background-color: var(--color-php-800) !important; }
+.text-php-100 { color: var(--color-php-100) !important; }
+.text-php-800 { color: var(--color-php-800) !important; }
+.bg-vb-100 { background-color: var(--color-vb-100) !important; }
+.bg-vb-800 { background-color: var(--color-vb-800) !important; }
+.text-vb-100 { color: var(--color-vb-100) !important; }
+.text-vb-800 { color: var(--color-vb-800) !important; }
+.bg-servers-100 { background-color: var(--color-servers-100) !important; }
+.bg-servers-800 { background-color: var(--color-servers-800) !important; }
+.text-servers-100 { color: var(--color-servers-100) !important; }
+.text-servers-800 { color: var(--color-servers-800) !important; }
+
+.dark .bg-java-100 { background-color: var(--color-java-800) !important; }
+.dark .text-java-800 { color: var(--color-java-100) !important; }
+.dark .bg-spring-100 { background-color: var(--color-spring-800) !important; }
+.dark .text-spring-800 { color: var(--color-spring-100) !important; }
+.dark .bg-micro-100 { background-color: var(--color-micro-800) !important; }
+.dark .text-micro-800 { color: var(--color-micro-100) !important; }
+.dark .bg-nextjs-100 { background-color: var(--color-nextjs-800) !important; }
+.dark .text-nextjs-800 { color: var(--color-nextjs-100) !important; }
+.dark .bg-devops-100 { background-color: var(--color-devops-800) !important; }
+.dark .text-devops-800 { color: var(--color-devops-100) !important; }
+.dark .bg-grails-100 { background-color: var(--color-grails-800) !important; }
+.dark .text-grails-800 { color: var(--color-grails-100) !important; }
+.dark .bg-aws-100 { background-color: var(--color-aws-800) !important; }
+.dark .text-aws-800 { color: var(--color-aws-100) !important; }
+.dark .bg-mysql-100 { background-color: var(--color-mysql-800) !important; }
+.dark .text-mysql-800 { color: var(--color-mysql-100) !important; }
+.dark .bg-vps-100 { background-color: var(--color-vps-800) !important; }
+.dark .text-vps-800 { color: var(--color-vps-100) !important; }
+.dark .bg-js-100 { background-color: var(--color-js-800) !important; }
+.dark .text-js-800 { color: var(--color-js-100) !important; }
+.dark .bg-postgresql-100 { background-color: var(--color-postgresql-800) !important; }
+.dark .text-postgresql-800 { color: var(--color-postgresql-100) !important; }
+.dark .bg-php-100 { background-color: var(--color-php-800) !important; }
+.dark .text-php-800 { color: var(--color-php-100) !important; }
+.dark .bg-vb-100 { background-color: var(--color-vb-800) !important; }
+.dark .text-vb-800 { color: var(--color-vb-100) !important; }
+.dark .bg-servers-100 { background-color: var(--color-servers-800) !important; }
+.dark .text-servers-800 { color: var(--color-servers-100) !important; }
+
+@keyframes fadeIn {
+	0% { opacity: 0; transform: translateY(20px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+	0% { opacity: 0; transform: translateY(30px); }
+	100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounceSubtle {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-5px); }
+}
+
+.animate-fade-in {
+	animation: fadeIn 0.6s ease-in-out;
+}
+.animate-slide-up {
+	animation: slideUp 0.6s ease-out;
+}
+.animate-bounce-subtle {
+	animation: bounceSubtle 2s infinite;
+}
+.animate-pulse-slow {
+	animation: pulse 3s infinite;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+    animation: fade-in 1s ease-out;
+}
+@keyframes fade-in-delay {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.animate-fade-in-delay {
+    animation: fade-in-delay 1.5s 0.5s forwards;
+    opacity: 0;
+}
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 2s infinite;
+}
+@keyframes gradient-text {
+    to { background-position: 200% center; }
+}
+.animate-gradient-text {
+    background-size: 200% 200%;
+    animation: gradient-text 3s infinite alternate;
+}
+@keyframes slide-down {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-down {
+    animation: slide-down 1s ease-out;
+}
+@keyframes slide-up {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up {
+    animation: slide-up 1s ease-out;
+}
+@keyframes pop {
+    0% { transform: scale(0.95); }
+    60% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+.animate-pop {
+    animation: pop 0.6s cubic-bezier(.17,.67,.83,.67);
+}
