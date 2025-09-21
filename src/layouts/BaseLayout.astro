@@ -43,6 +43,7 @@
     <script is:inline>
         tailwind.config = {
             theme: {
+                darkMode: 'class',
                 extend: {
                     fontFamily: {
                         'sans': ['Inter', 'system-ui', 'sans-serif'],
@@ -86,6 +87,12 @@
                 }
             }
         }
+        // Aplica el tema oscuro si el usuario lo prefiere
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,5 +102,98 @@
 <body>
     <slot />
     <script src="/script.js" is:inline></script>
+    <script is:inline>
+        // Script para alternar el tema
+        const themeToggle = document.getElementsByClassName('theme-toggle');
+        const themeToggleText = document.getElementsByClassName('theme-toggle-text');
+        function setTheme(theme, target) {
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                target.textContent = '☀️ Modo claro';
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                target.textContent = '🌙 Modo oscuro';
+            }
+        }
+        for (let i = 0; i < themeToggle.length; i++) {
+            const btn = themeToggle[i];
+            btn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    for (let j = 0; j < themeToggleText.length; j++) {
+                        setTheme('light', themeToggleText[j]);
+                    }
+                } else {
+                    for (let j = 0; j < themeToggleText.length; j++) {
+                        setTheme('dark', themeToggleText[j]);
+                    }
+                }
+            });
+        }
+        // Inicializa el texto del botón
+        if (document.documentElement.classList.contains('dark')) {
+            for (let i = 1; i < themeToggleText.length; i++) {
+                themeToggleText[i].textContent = '☀️ Modo claro';
+            }
+        } else {            
+            for (let i = 1; i < themeToggleText.length; i++) {
+                themeToggleText[i].textContent = '🌙 Modo oscuro';
+            }
+        }
+    </script>
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fade-in 1s ease-out;
+        }
+        @keyframes fade-in-delay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in-delay {
+            animation: fade-in-delay 1.5s 0.5s forwards;
+            opacity: 0;
+        }
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite;
+        }
+        @keyframes gradient-text {
+            to { background-position: 200% center; }
+        }
+        .animate-gradient-text {
+            background-size: 200% 200%;
+            animation: gradient-text 3s infinite alternate;
+        }
+        @keyframes slide-down {
+            from { transform: translateY(-30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-down {
+            animation: slide-down 1s ease-out;
+        }
+        @keyframes slide-up {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slide-up 1s ease-out;
+        }
+        @keyframes pop {
+            0% { transform: scale(0.95); }
+            60% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pop {
+            animation: pop 0.6s cubic-bezier(.17,.67,.83,.67);
+        }
+    </style>
 </body>
 </html>
