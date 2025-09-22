@@ -203,106 +203,116 @@ import Footer from '../components/Footer.astro';
         </SectionTitle>
         
         <SectionTitle id="projects" title="Experiencia Profesional" accent="bg-gray-100">
-            <p class="text-xl text-gray-600">15+ años construyendo productos que impulsan el crecimiento empresarial</p>
-            <!-- Más proyectos -->
-             <div class="space-y-8" slot="content">
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                            <h4 class="text-2xl font-bold text-gray-900">Líder Técnico</h4>
-                            <p class="text-blue-600 font-semibold">Revenatium</p>
+            <p class="text-xl text-gray-600 text-center mb-12">15+ años construyendo productos que impulsan el crecimiento empresarial</p>
+            <!-- Timeline visual -->
+            <div class="relative mx-auto max-w-4xl" slot="content">
+                <!-- Línea vertical central -->
+                <div class="absolute left-1/2 top-0 h-full w-1 bg-gradient-to-b from-blue-400 via-gray-300 to-gray-400 -translate-x-1/2 z-0"></div>
+
+                <div class="flex flex-col gap-20 relative z-10">
+                    <!-- Nodo más reciente: Líder Técnico -->
+                    <div id="lider-tecnico" class="timeline-node group relative flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-8 h-8 bg-blue-600 border-4 border-blue-300 rounded-full shadow-lg flex items-center justify-center animate-pulse-slow z-10"></div>
+                            <span class="text-blue-700 font-bold text-lg">2019 - Actualidad</span>
                         </div>
-                        <span class="text-gray-500 font-medium">2019 - Actualidad</span>
+                        <div class="bg-white rounded-2xl p-8 shadow-2xl border-2 border-blue-600 group-hover:scale-105 transition-all duration-300 w-full">
+                            <h4 class="text-2xl font-extrabold text-blue-900 mb-1">Líder Técnico</h4>
+                            <p class="text-blue-600 font-semibold mb-2">Revenatium</p>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                Lideré la transformación digital del motor de reservaciones hoteleras, migrando sistemas legados 
+                                a arquitecturas modernas con microservicios. Dirigí equipos multidisciplinarios y mentoré 
+                                desarrolladores en buenas prácticas y tecnologías emergentes.
+                            </p>
+                            <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                                <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java</span>
+                                <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Boot</span>
+                                <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Microservicios</span>
+                                <span class="px-3 py-1 bg-aws-100 text-aws-800 rounded-full text-sm font-medium">AWS</span>
+                            </div>
+                        </div>
                     </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Lideré la transformación digital del motor de reservaciones hoteleras, migrando sistemas legados 
-                        a arquitecturas modernas con microservicios. Dirigí equipos multidisciplinarios y mentoré 
-                        desarrolladores en buenas prácticas y tecnologías emergentes.
-                    </p>
-                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
-                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java</span>
-                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Boot</span>
-                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Microservicios</span>
-                        <span class="px-3 py-1 bg-aws-100 text-aws-800 rounded-full text-sm font-medium">AWS</span>
+                    <!-- Nodo: Arquitecto de Software -->
+                    <div id="arquitecto-software" class="timeline-node group relative flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-6 h-6 bg-blue-400 border-4 border-blue-200 rounded-full shadow-md z-10"></div>
+                            <span class="text-blue-600 font-semibold text-base">2018 - 2019</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-blue-200 group-hover:scale-105 transition-all duration-300 w-full">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1">Arquitecto de Software</h4>
+                            <p class="text-blue-600 font-semibold mb-2">StarChoice / StarTalent.mx</p>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                Rediseñé completamente el sistema ATS con tecnologías modernas, escalando la plataforma 
+                                de PyME a referente en soluciones de reclutamiento para hotelería. Implementé prácticas 
+                                DevOps y arquitecturas escalables.
+                            </p>
+                            <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                                <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
+                                <span class="px-3 py-1 bg-mysql-100 text-mysql-800 rounded-full text-sm font-medium">MySQL</span>
+                                <span class="px-3 py-1 bg-vps-100 text-vps-800 rounded-full text-sm font-medium">VPS</span>
+                                <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nodo: Jefe de Marketing Digital & Programador -->
+                    <div id="jefe-marketing" class="timeline-node group relative flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-5 h-5 bg-purple-400 border-4 border-purple-200 rounded-full shadow-md z-10"></div>
+                            <span class="text-purple-600 font-semibold text-base">2012 - 2018</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-purple-200 group-hover:scale-105 transition-all duration-300 w-full">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1">Jefe de Marketing Digital &amp; Programador </h4>
+                            <p class="text-blue-600 font-semibold mb-2">Grupo Argos</p>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                Dirigí la estrategia digital logrando +40% de tráfico orgánico. Desarrollé (Java/Grails) internamente sistemas administrativos y un timbrado de nómina, optimizando procesos fiscales y administrativos.
+                            </p>
+                            <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                                <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
+                                <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Framework</span>
+                                <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nodo: Programador Java -->
+                    <div id="programador-java" class="timeline-node group relative flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-5 h-5 bg-yellow-400 border-4 border-yellow-200 rounded-full shadow-md z-10"></div>
+                            <span class="text-yellow-600 font-semibold text-base">2009 - 2012</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-yellow-200 group-hover:scale-105 transition-all duration-300 w-full">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1">Programador Java</h4>
+                            <p class="text-blue-600 font-semibold mb-2">Sunset World Hotels &amp; Resorts</p>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                Implementé el sistema Travelbook de reservaciones online con Java, consolidando la venta directa y reduciendo la dependencia de OTAs. Administré servidores y entornos de producción, asegurando disponibilidad superior al 99.9%.
+                            </p>
+                            <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                                <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
+                                <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Play Framework</span>
+                                <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Nodo más antiguo: Consultor & Soporte Técnico -->
+                    <div id="consultor-soporte" class="timeline-node group relative flex flex-col items-center md:items-start">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="w-4 h-4 bg-gray-400 border-4 border-gray-200 rounded-full shadow-md z-10"></div>
+                            <span class="text-gray-600 font-semibold text-base">2005 - 2009</span>
+                        </div>
+                        <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-200 group-hover:scale-105 transition-all duration-300 w-full">
+                            <h4 class="text-xl font-bold text-gray-900 mb-1">Consultor &amp; Soporte Técnico</h4>
+                            <p class="text-blue-600 font-semibold mb-2">Freelance</p>
+                            <p class="text-gray-700 mb-4 leading-relaxed">
+                                Este periodo fortaleció mi adaptabilidad a múltiples stacks y la capacidad de enseñar a clientes y equipos a aprovechar nuevas herramientas digitales.
+                            </p>
+                            <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
+                                <span class="px-3 py-1 bg-servers-100 text-servers-800 rounded-full text-sm font-medium">Servidores y Redes</span>
+                                <span class="px-3 py-1 bg-php-100 text-php-800 rounded-full text-sm font-medium">PHP</span>
+                                <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
+                                <span class="px-3 py-1 bg-vb-100 text-vb-800 rounded-full text-sm font-medium">Visual Basic 6.0</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                            <h4 class="text-2xl font-bold text-gray-900">Arquitecto de Software</h4>
-                            <p class="text-blue-600 font-semibold">StarChoice / StarTalent.mx</p>
-                        </div>
-                        <span class="text-gray-500 font-medium">2018 - 2019</span>
-                    </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Rediseñé completamente el sistema ATS con tecnologías modernas, escalando la plataforma 
-                        de PyME a referente en soluciones de reclutamiento para hotelería. Implementé prácticas 
-                        DevOps y arquitecturas escalables.
-                    </p>
-                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
-                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-mysql-100 text-mysql-800 rounded-full text-sm font-medium">MySQL</span>
-                        <span class="px-3 py-1 bg-vps-100 text-vps-800 rounded-full text-sm font-medium">VPS</span>
-                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                            <h4 class="text-2xl font-bold text-gray-900">Jefe de Marketing Digital &amp; Programador </h4>
-                            <p class="text-blue-600 font-semibold">Grupo Argos</p>
-                        </div>
-                        <span class="text-gray-500 font-medium">2012 - 2018</span>
-                    </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Dirigí la estrategia digital logrando +40% de tráfico orgánico. Desarrollé (Java/Grails) internamente sistemas administrativos y un timbrado de nómina, optimizando procesos fiscales y administrativos.
-                    </p>
-                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
-                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Framework</span>
-                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                            <h4 class="text-2xl font-bold text-gray-900">Programador Java</h4>
-                            <p class="text-blue-600 font-semibold">Sunset World Hotels &amp; Resorts</p>
-                        </div>
-                        <span class="text-gray-500 font-medium">2009 - 2012</span>
-                    </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Implementé el sistema Travelbook de reservaciones online con Java, consolidando la venta directa y reduciendo la dependencia de OTAs. Administré servidores y entornos de producción, asegurando disponibilidad superior al 99.9%.
-                    </p>
-                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
-                        <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Grails</span>
-                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Play Framework</span>
-                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                            <h4 class="text-2xl font-bold text-gray-900">Consultor &amp; Soporte Técnico</h4>
-                            <p class="text-blue-600 font-semibold">Freelance</p>
-                        </div>
-                        <span class="text-gray-500 font-medium">2005 - 2009</span>
-                    </div>
-                    <p class="text-gray-600 mb-4 leading-relaxed">
-                        Este periodo fortaleció mi adaptabilidad a múltiples stacks y la capacidad de enseñar a clientes y equipos a aprovechar nuevas herramientas digitales.
-                    </p>
-                    <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
-                        <span class="px-3 py-1 bg-servers-100 text-servers-800 rounded-full text-sm font-medium">Servidores y Redes</span>
-                        <span class="px-3 py-1 bg-php-100 text-php-800 rounded-full text-sm font-medium">PHP</span>
-                        <span class="px-3 py-1 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
-                        <span class="px-3 py-1 bg-vb-100 text-vb-800 rounded-full text-sm font-medium">Visual Basic 6.0</span>
-                    </div>
-                </div>
-
             </div>
         </SectionTitle>
 

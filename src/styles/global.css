@@ -207,3 +207,38 @@
 .animate-rotate-grow {
 	will-change: transform;
 }
+/* Timeline de experiencia */
+.timeline-node {
+	width: 100%;
+	position: relative;
+}
+.timeline-node .border-2,
+.timeline-node .border {
+	box-shadow: 0 4px 24px 0 rgb(0 0 0 / 8%);
+}
+.timeline-node .shadow-2xl {
+	box-shadow: 0 8px 32px 0 rgb(0 0 0 / 16%);
+}
+.timeline-node .group-hover\:scale-105:hover {
+	transform: scale(1.05);
+}
+.timeline-node .animate-pulse-slow {
+	animation: pulse-slow 2s infinite;
+}
+@keyframes pulse-slow {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(59,130,246,0.5); }
+	50% { box-shadow: 0 0 0 8px rgba(59,130,246,0.15); }
+}
+@media (min-width: 768px) {
+	.timeline-node.md\:items-end {
+		align-items: flex-end;
+	}
+	.timeline-node.md\:items-start {
+		align-items: flex-start;
+	}
+}
+@media (max-width: 767px) {
+	.timeline-node {
+		align-items: center !important;
+	}
+}
