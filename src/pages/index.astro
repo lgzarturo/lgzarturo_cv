@@ -9,42 +9,71 @@ import Footer from '../components/Footer.astro';
 ---
 <BaseLayout title="Arturo López Gómez - Líder Técnico">
     <Header title="Arturo López" />
-    <main class="pt-20">
+    <main>
         <!-- Hero Section -->
-        <section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden outline-dashed outline-stone-100 outline-offset-0">
-            <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
-            <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-                <div class="animate-fade-in">
-                    <div class="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6 animate-bounce-subtle">
-                        <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-                        Disponible para nuevos proyectos
-                    </div>
-                    <h2 class="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                        Transformo ideas en
-                        <span class="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                            arquitecturas escalables
-                        </span>
-                    </h2>
-                    <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-                        Líder Técnico con 15+ años construyendo productos web con Java, Spring Boot y Next.js. 
-                        Especialista en formar equipos de alto desempeño y entregar soluciones que impulsan el negocio.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                        <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                            Comenzar un proyecto
-                        </a>
-                        <a href="#projects" class="text-gray-700 px-8 py-4 rounded-xl border-2 border-gray-300 hover:border-blue-600 hover:text-blue-600 transition-all duration-300 font-semibold text-lg">
-                            Ver mi trabajo
-                        </a>
-                    </div>
+        <section class="relative min-h-screen flex items-center justify-center">
+            <!-- Imagen de fondo con overlay sutil -->
+            <picture>
+                <!-- Imagen para pantallas grandes -->
+                <source srcset="/beautiful-cancun-large.webp" media="(min-width: 1024px)" type="image/webp" />
+                <!-- Imagen para pantallas móviles -->
+                <source srcset="/beautiful-cancun-half.webp" media="(max-width: 1023px)" type="image/webp" />
+                <img 
+                    src="/beautiful-cancun-large.webp"
+                    alt="Cancún" 
+                    class="absolute inset-0 w-full h-full object-cover object-center"
+                    style="filter: brightness(0.75);" 
+                    loading="lazy"
+                />
+            </picture>
+
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+
+            <!-- Contenido -->
+            <div class="relative z-10 max-w-4xl mx-auto px-6 text-center space-y-8">
+                
+                <!-- Badge de disponibilidad -->
+                <div class="inline-flex items-center px-4 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium shadow-sm animate-bounce-subtle">
+                    <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse-slow"></div>
+                    Disponible para nuevos proyectos
+                </div>
+
+                <!-- Título principal -->
+                <h1 class="text-4xl md:text-6xl font-extrabold  leading-tight text-white animate-pop">
+                    Transformo ideas en
+                    <span class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                        arquitecturas escalables
+                    </span>
+                </h1>
+
+                <!-- Descripción -->
+                <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
+                    Líder Técnico con 15+ años construyendo productos web con Java, Spring Boot y Next.js. 
+                    Especialista en formar equipos de alto desempeño y entregar soluciones que impulsan el negocio.
+                </p>
+
+                <!-- Botones -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact" 
+                        class="px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold text-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-transform duration-300 hover:-translate-y-1">
+                        Comenzar un proyecto
+                    </a>
+                    <a href="#projects" 
+                        class="px-8 py-4 rounded-xl border border-white/40 text-white hover:bg-white/10 hover:border-white transition-colors duration-300 font-semibold text-lg">
+                        Ver mi trabajo
+                    </a>
                 </div>
             </div>
-            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-                <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+
+            <!-- Flecha hacia abajo -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce" aria-hidden="true" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });" style="cursor: pointer;">
+                <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
             </div>
         </section>
+
+
 		
         <SectionColumn id="about" title="Sobre Mí" accent="bg-white  outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
@@ -173,7 +202,7 @@ import Footer from '../components/Footer.astro';
             </div>
         </SectionTitle>
         
-        <SectionTitle id="projects" title="Experiencia Profesional" accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0">
+        <SectionTitle id="projects" title="Experiencia Profesional" accent="bg-gray-100">
             <p class="text-xl text-gray-600">15+ años construyendo productos que impulsan el crecimiento empresarial</p>
             <!-- Más proyectos -->
              <div class="space-y-8" slot="content">

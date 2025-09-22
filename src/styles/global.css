@@ -195,3 +195,15 @@
 .animate-pop {
     animation: pop 0.6s cubic-bezier(.17,.67,.83,.67);
 }
+
+.animate-rotate-grow {
+	transition: transform 0.4s cubic-bezier(.17,.67,.83,.67);
+}
+.animate-rotate-grow:hover {
+	transform: rotate(-45deg) scale(1.15);
+}
+
+/* Para suavizar el regreso al estado original */
+.animate-rotate-grow {
+	will-change: transform;
+}
