@@ -247,3 +247,13 @@
 		align-items: center !important;
 	}
 }
+.animate-pop-scale-and-rotate-15:hover {
+    transition: transform 0.4s cubic-bezier(.17,.67,.83,.67);
+    transform: scale(1.15) rotate(-15deg);
+    will-change: transform;
+}
+.animate-pop-scale-and-rotate-15 {
+    will-change: transform;
+    /*slow reset to original state*/
+    transition: transform 0.4s cubic-bezier(.17,.67,.83,.67);
+}

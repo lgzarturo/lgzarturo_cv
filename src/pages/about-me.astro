@@ -1,0 +1,41 @@
+---
+// src/pages/index.astro
+import { Image } from 'astro:assets';
+import aboutMeDay from '../assets/images/arturo-lopez-day.png';
+import aboutMeNight from '../assets/images/arturo-lopez-night.png';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SectionColumn from '../components/SectionColumn.astro';
+---
+<BaseLayout title="Arturo López Gómez - Líder Técnico">
+    <Header title="Arturo López" />
+    <main>
+        <SectionColumn id="sobre-mi" title="Hola!, Soy Arturo López" accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0">
+            <div class="space-y-4 relative">
+                <span class="absolute -top-30 -left-24 text-gray-400 font-extrabold text-9xl opacity-20">&lt;\&gt;</span>
+                <p>Un apasionado Líder Técnico con más de 15 años de experiencia en el desarrollo de software, especializado en Java y Spring Boot. A lo largo de mi carrera, he tenido la oportunidad de liderar equipos talentosos y trabajar en proyectos desafiantes que abarcan desde aplicaciones empresariales hasta soluciones web modernas utilizando Next.js.</p>
+
+                <p>Mi enfoque se centra en la creación de arquitecturas robustas y escalables, promoviendo las mejores prácticas de desarrollo y fomentando una cultura de colaboración y aprendizaje continuo dentro de los equipos que lidero. Además, cuento con experiencia en DevOps, CI/CD y despliegue en la nube, lo que me permite asegurar que las soluciones que entregamos no solo sean funcionales, sino también eficientes y mantenibles.
+                </p>
+            </div>
+            <div class="relative mt-16" slot="content">
+                <div class="w-full h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center">
+                    <picture>
+                        <!-- Imagen para pantallas grandes -->
+                        <source srcset={aboutMeDay.src} media="(min-width: 1024px)" type="image/png" />
+                        <!-- Imagen para pantallas móviles -->
+                        <source srcset={aboutMeNight.src} media="(max-width: 1023px)" type="image/png" />
+                        <Image 
+                            src={aboutMeDay}
+                            alt="Sobre mí - Arturo López Gómez" 
+                            class="absolute inset-0 w-full h-full object-cover object-center rounded-2xl -m-5"
+                            loading="eager"
+                        />
+                    </picture>
+                </div>
+            </div>
+        </SectionColumn>
+    </main>
+    <Footer />
+</BaseLayout>
