@@ -1,6 +1,8 @@
 ---
 // src/pages/index.astro
 import { Image } from 'astro:assets';
+import aboutMeDay from '../assets/images/arturo-lopez-day.png';
+import aboutMeNight from '../assets/images/arturo-lopez-night.png';
 import beautifulCancunLarge from '../assets/images/beautiful-cancun-large.webp';
 import beautifulCancunHalf from '../assets/images/beautiful-cancun-half.webp';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -96,7 +98,18 @@ import Footer from '../components/Footer.astro';
             </div>
             <div class="relative" slot="content">
                 <div class="w-full h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center">
-                    <div class="text-6xl">👨‍💻</div>
+                    <picture>
+                        <!-- Imagen para pantallas grandes -->
+                        <source srcset={aboutMeDay.src} media="(min-width: 1024px)" type="image/png" />
+                        <!-- Imagen para pantallas móviles -->
+                        <source srcset={aboutMeNight.src} media="(max-width: 1023px)" type="image/png" />
+                        <Image 
+                            src={aboutMeDay}
+                            alt="Sobre mí - Arturo López Gómez" 
+                            class="absolute inset-0 w-full h-full object-cover object-center rounded-2xl -m-5"
+                            loading="eager"
+                        />
+                    </picture>
                 </div>
                 <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-600 rounded-full flex items-center justify-center animate-pulse-slow cursor-pointer animate-pop-scale-and-rotate-15 transition-all duration-100" onclick="window.location.href='/about-me'" title="Conoce más sobre mí">
                     <span class="text-white font-bold text-lg">15+</span>
