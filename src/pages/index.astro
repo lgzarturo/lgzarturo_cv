@@ -40,32 +40,34 @@ import Footer from '../components/Footer.astro';
                 <!-- Badge de disponibilidad -->
                 <div class="inline-flex items-center px-4 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium shadow-sm animate-bounce-subtle">
                     <div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse-slow"></div>
-                    Creando&nbsp;<span class="font-mono bg-gray-600 text-green-600 rounded px-3 mx-2">side projects</span>&nbsp;de forma activa
+                    Arquitectura • Microservicios • Mentoría • Observabilidad • Side Projects
                 </div>
 
                 <!-- Título principal -->
                 <h1 class="text-4xl md:text-6xl font-extrabold  leading-tight text-white animate-pop">
-                    Transformo ideas en
+                    Construyo productos escalables
                     <span class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-text">
-                        arquitecturas escalables
+                        y comparto lo que aprendo
                     </span>
                 </h1>
 
                 <!-- Descripción -->
                 <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
-                    Líder Técnico con 15+ años construyendo productos web con Java, Spring Boot y Next.js. 
-                    Especialista en formar equipos de alto desempeño y entregar soluciones que impulsan el negocio.
+                    Líder Técnico en Revenatium (2019–actual) • Java, Spring Boot, Next.js • Arquitectura de microservicios, observabilidad y prácticas de ingeniería
+                </p>
+                <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
+                    Bitácora de aprendizajes y side projects (laboratorio personal).
                 </p>
 
                 <!-- Botones -->
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="#contact" 
                         class="px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold text-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition-transform duration-300 hover:-translate-y-1">
-                        Comenzar un proyecto
+                        Notas técnicas
                     </a>
                     <a href="#projects" 
                         class="px-8 py-4 rounded-xl border border-white/40 text-white hover:bg-white/10 hover:border-white transition-colors duration-300 font-semibold text-lg">
-                        Ver mi trabajo
+                        Ver proyectos personales
                     </a>
                 </div>
             </div>
@@ -82,12 +84,10 @@ import Footer from '../components/Footer.astro';
 		
         <SectionColumn id="about" title="Sobre Mí" accent="bg-white  outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                Soy un Ingeniero en Sistemas y Líder Técnico especializado en <strong>Java, Spring Boot y arquitectura de microservicios</strong>. 
-                Fundé mi carrera en la creación de productos web escalables que resuelven problemas reales de negocio.
+                Soy Ingeniero en Sistemas y Líder Técnico enfocado en diseñar y escalar productos web con Java, Spring Boot y arquitectura de microservicios. Me interesan los fundamentos: diseño modular, resiliencia, contratos claros, observabilidad y delivery predecible.
             </p>
             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                En mi tiempo libre, usualmente podrás encontrarme mentoreando desarrolladores, 
-                explorando nuevas tecnologías como Next.js y Python, o construyendo side projects.
+                En mi día a día en Revenatium lidero iniciativas de arquitectura y evolución de plataforma. Fuera de horario, mantengo un “laboratorio personal” de side projects donde exploro ideas, pruebo patrones y documento aprendizajes. Me motiva compartir prácticas que funcionen en equipos reales.
             </p>
             <div class="flex flex-wrap gap-3" aria-label="Tecnologías usadas">
                 <span class="px-4 py-2 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java</span>
@@ -117,9 +117,9 @@ import Footer from '../components/Footer.astro';
             </div>
         </SectionColumn>
 
-        <SectionTitle id="experience" title="Proyectos Destacados" accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0">
+        <SectionTitle id="experience" title="Laboratorio de ideas" accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                Algunos de los proyectos que han impulsado el crecimiento de las empresas donde trabajo.
+                Selección de casos que documentan decisiones de diseño, patrones aplicados y aprendizajes prácticos. Algunos fueron desarrollados en entornos empresariales; otros pertenecen a mi laboratorio personal de side projects.
             </p>
             <!-- Más experiencias -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" slot="content">
@@ -173,12 +173,20 @@ import Footer from '../components/Footer.astro';
             </div>
         </SectionTitle>
 
-        <SectionTitle id="skills" title="Tu proyecto necesita de la mejor experiencia" accent="bg-white outline-dashed outline-stone-100 outline-offset-0">
+        <SectionTitle id="skills" title="Colaboraciones y comunidad" accent="bg-white outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Hagamos que tu idea se vuelva una realidad. Puedo ayudarte con una variedad de servicios 
-                para que tu proyecto despegue y llegue a manos de tus usuarios.
+                No estoy en búsqueda activa de empleo. Si surge una conversación interesante de tecnología y producto, siempre es bienvenida. Estos son mis intereses actuales:
             </p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" slot="content">
+                <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition-colors duration-300 group">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Liderazgo Técnico</h4>
+                    <p class="text-gray-600 text-sm">Mentoring, Arquitectura, Equipos Ágiles</p>
+                </div>
                 <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition-colors duration-300 group">
                     <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -206,20 +214,11 @@ import Footer from '../components/Footer.astro';
                     <h4 class="text-lg font-semibold text-gray-900 mb-2">DevOps & Cloud</h4>
                     <p class="text-gray-600 text-sm">Docker, AWS, CI/CD, Kubernetes</p>
                 </div>
-                <div class="text-center p-6 rounded-2xl hover:bg-gray-50 transition-colors duration-300 group">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-8 h-8 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                        </svg>
-                    </div>
-                    <h4 class="text-lg font-semibold text-gray-900 mb-2">Liderazgo Técnico</h4>
-                    <p class="text-gray-600 text-sm">Mentoring, Arquitectura, Equipos Ágiles</p>
-                </div>
             </div>
         </SectionTitle>
         
         <SectionTitle id="projects" title="Experiencia Profesional" accent="bg-gray-100">
-            <p class="text-xl text-gray-600 text-center mb-12">15+ años construyendo productos que impulsan el crecimiento empresarial</p>
+            <p class="text-xl text-gray-600 text-center mb-12">15+ años construyendo productos y plataformas</p>
             <!-- Timeline visual -->
             <div class="relative mx-auto max-w-4xl" slot="content">
                 <!-- Línea vertical central -->
@@ -236,8 +235,8 @@ import Footer from '../components/Footer.astro';
                             <h4 class="text-2xl font-extrabold text-blue-900 mb-1">Líder Técnico</h4>
                             <p class="text-blue-600 font-semibold mb-2">Revenatium</p>
                             <p class="text-gray-700 mb-4 leading-relaxed">
-                                Lideré la transformación digital del motor de reservaciones hoteleras, migrando sistemas legados 
-                                a arquitecturas modernas con microservicios. Dirigí equipos multidisciplinarios y mentoré 
+                                Enfocado en la transformación digital del motor de reservaciones hoteleras, migrando sistemas legados 
+                                a arquitecturas modernas con microservicios. Dirijo equipos multidisciplinarios y mentoreo 
                                 desarrolladores en buenas prácticas y tecnologías emergentes.
                             </p>
                             <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
@@ -332,10 +331,9 @@ import Footer from '../components/Footer.astro';
             </div>
         </SectionTitle>
 
-        <SectionRow id="contact" title="¿Trabajamos juntos?">
+        <SectionRow id="contact" title="Colaboraciones y comunidad">
             <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                Estoy disponible para proyectos de liderazgo técnico, consultoría en arquitectura 
-                o desarrollo de productos web escalables. Conversemos sobre tu próximo reto.
+                Este espacio no es un canal de servicios, es mi perfil profesional. Si surge una invitación interesante para conversar sobre tecnología y producto (incluyendo oportunidades retadoras), feliz de escuchar.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <a href="mailto:lgzarturo@gmail.com" class="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
@@ -385,7 +383,7 @@ import Footer from '../components/Footer.astro';
             </div>
             <div class="mt-8 text-sm opacity-75">
                 <p>Cancún (🇲🇽🌴) Quintana Roo, México (UTC-5)</p>
-                <p class="text-lime-100 mt-6 text-base">Disponible para proyectos remotos y presenciales</p>
+                <p class="text-lime-100 mt-6 text-base">¿Compartimos ideas, aprendemos algo juntos o colaboramos en comunidad? Escríbeme.</p>
             </div>
         </SectionRow>
     </main>
