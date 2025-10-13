@@ -123,7 +123,58 @@ import Footer from '../components/Footer.astro';
             </p>
             <!-- Más experiencias -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" slot="content">
-                <!-- Project 1 -->
+                <!-- Project SpringBoot+Course -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Curso SpringBoot + Kotlin</h4>
+                    <p class="text-gray-600 mb-4">En curso, es un repositorio de aprendizaje práctico sobre desarrollo de aplicaciones con Spring Boot y Kotlin. Aquí nos enfocaremos en contenido de calidad, orientado a resolver problemas reales.</p>
+                    <a href="https://github.com/lgzarturo/springboot-course/wiki" target="_blank" class="text-blue-500 hover:underline">Ver proyecto</a>
+                    <div class="flex flex-wrap gap-2 mt-4" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Java</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring Boot</span>
+                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">Microservicios</span>
+                    </div>
+                </div>
+
+                <!-- Project Blog -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Blog Personal</h4>
+                    <p class="text-gray-600 mb-4">A lo largo de mi carrera, he compartido mis conocimientos y experiencias en un blog personal, donde publico artículos sobre desarrollo de software, mejores prácticas y tutoriales.</p>
+                    <a href="https://www.arthurolg.com/" target="_blank" class="text-blue-500 hover:underline">Ver proyecto</a>
+                    <div class="flex flex-wrap gap-2 mt-4" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Astro</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Markdown</span>
+                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">Webp</span>
+                    </div>
+                </div>
+
+                <!-- Project Bootzen -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Bootzen</h4>
+                    <p class="text-gray-600 mb-4">Micro Framework con PHP para el desarrollo de aplicaciones web. El objetivo es simplificar el proceso de creación de aplicaciones web al proporcionar una estructura básica y herramientas útiles.</p>
+                    <a href="https://github.com/lgzarturo/bootzen" target="_blank" class="text-blue-500 hover:underline">Ver proyecto</a>
+                    <div class="flex flex-wrap gap-2 mt-4" aria-label="Tecnologías usadas">
+                        <span class="px-3 py-1 bg-php-100 text-php-800 rounded-full text-xs font-medium">PHP</span>
+                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">HTML</span>
+                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">CSS</span>
+                    </div>
+                </div>
+
+                <!-- Project Loyalty -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
                     <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +190,7 @@ import Footer from '../components/Footer.astro';
                     </div>
                 </div>
 
-                <!-- Project 2 -->
+                <!-- Project ATS -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
                     <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -155,7 +206,7 @@ import Footer from '../components/Footer.astro';
                     </div>
                 </div>
 
-                <!-- Project 3 -->
+                <!-- Project Booking Engine -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
                     <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -336,7 +387,10 @@ import Footer from '../components/Footer.astro';
                 Este espacio no es un canal de servicios, es mi perfil profesional. Si surge una invitación interesante para conversar sobre tecnología y producto (incluyendo oportunidades retadoras), feliz de escuchar.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <a href="mailto:lgzarturo@gmail.com" class="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                <a href="https://github.com/lgzarturo/tech-notes" class="bg-white text-blue-600 px-8 py-4 rounded-xl hover:bg-gray-100 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1" target="_blank">
+                    Notas Técnicas
+                </a>
+                <a href="mailto:lgzarturo@gmail.com" class="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 font-semibold text-lg">
                     Enviar Email
                 </a>
                 <a href="https://www.linkedin.com/in/lgzarturo" target="_blank" class="border-2 border-white text-white px-8 py-4 rounded-xl hover:bg-white hover:text-blue-600 transition-all duration-300 font-semibold text-lg">
