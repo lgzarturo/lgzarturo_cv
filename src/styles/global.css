@@ -30,64 +30,96 @@
 	--color-vb-800: #68217A;
 	--color-servers-100: #E0E7FF;
 	--color-servers-800: #1E293B;
+	/* Nuevos colores para tecnologías */
+	--color-astro-100: #F5F3FF;      /* Astro: fondo lavanda claro, moderno */
+	--color-astro-800: #6C2BD7;      /* Astro: púrpura profundo, branding oficial */
+	--color-markdown-100: #F7F7F7;   /* Markdown: fondo gris claro, neutral */
+	--color-markdown-800: #404040;   /* Markdown: gris oscuro, texto */
+	--color-webp-100: #E0F7FA;       /* Webp: azul claro, imagen optimizada */
+	--color-webp-800: #009688;       /* Webp: verde azulado, eficiencia */
+	--color-html-100: #FFE5E0;       /* HTML: fondo coral claro, clásico */
+	--color-html-800: #E44D26;       /* HTML: naranja/rojo, logo oficial */
+	--color-css-100: #E0F0FF;        /* CSS: azul pastel, suavidad */
+	--color-css-800: #264DE4;        /* CSS: azul fuerte, logo oficial */
 }
 
-.bg-java-100 { background-color: var(--color-java-100) !important; }
-.bg-java-800 { background-color: var(--color-java-800) !important; }
-.text-java-100 { color: var(--color-java-100) !important; }
-.text-java-800 { color: var(--color-java-800) !important; }
-.bg-spring-100 { background-color: var(--color-spring-100) !important; }
-.bg-spring-800 { background-color: var(--color-spring-800) !important; }
-.text-spring-100 { color: var(--color-spring-100) !important; }
-.text-spring-800 { color: var(--color-spring-800) !important; }
-.bg-micro-100 { background-color: var(--color-micro-100) !important; }
-.bg-micro-800 { background-color: var(--color-micro-800) !important; }
-.text-micro-100 { color: var(--color-micro-100) !important; }
-.text-micro-800 { color: var(--color-micro-800) !important; }
-.bg-nextjs-100 { background-color: var(--color-nextjs-100) !important; }
-.bg-nextjs-800 { background-color: var(--color-nextjs-800) !important; }
-.text-nextjs-100 { color: var(--color-nextjs-100) !important; }
-.text-nextjs-800 { color: var(--color-nextjs-800) !important; }
-.bg-devops-100 { background-color: var(--color-devops-100) !important; }
-.bg-devops-800 { background-color: var(--color-devops-800) !important; }
-.text-devops-100 { color: var(--color-devops-100) !important; }
-.text-devops-800 { color: var(--color-devops-800) !important; }
-.bg-grails-100 { background-color: var(--color-grails-100) !important; }
-.bg-grails-800 { background-color: var(--color-grails-800) !important; }
-.text-grails-100 { color: var(--color-grails-100) !important; }
-.text-grails-800 { color: var(--color-grails-800) !important; }
-.bg-aws-100 { background-color: var(--color-aws-100) !important; }
-.bg-aws-800 { background-color: var(--color-aws-800) !important; }
-.text-aws-100 { color: var(--color-aws-100) !important; }
-.text-aws-800 { color: var(--color-aws-800) !important; }
-.bg-mysql-100 { background-color: var(--color-mysql-100) !important; }
-.bg-mysql-800 { background-color: var(--color-mysql-800) !important; }
-.text-mysql-100 { color: var(--color-mysql-100) !important; }
-.text-mysql-800 { color: var(--color-mysql-800) !important; }
-.bg-vps-100 { background-color: var(--color-vps-100) !important; }
-.bg-vps-800 { background-color: var(--color-vps-800) !important; }
-.text-vps-100 { color: var(--color-vps-100) !important; }
-.text-vps-800 { color: var(--color-vps-800) !important; }
-.bg-js-100 { background-color: var(--color-js-100) !important; }
-.bg-js-800 { background-color: var(--color-js-800) !important; }
-.text-js-100 { color: var(--color-js-100) !important; }
-.text-js-800 { color: var(--color-js-800) !important; }
-.bg-postgresql-100 { background-color: var(--color-postgresql-100) !important; }
-.bg-postgresql-800 { background-color: var(--color-postgresql-800) !important; }
-.text-postgresql-100 { color: var(--color-postgresql-100) !important; }
-.text-postgresql-800 { color: var(--color-postgresql-800) !important; }
-.bg-php-100 { background-color: var(--color-php-100) !important; }
-.bg-php-800 { background-color: var(--color-php-800) !important; }
-.text-php-100 { color: var(--color-php-100) !important; }
-.text-php-800 { color: var(--color-php-800) !important; }
-.bg-vb-100 { background-color: var(--color-vb-100) !important; }
-.bg-vb-800 { background-color: var(--color-vb-800) !important; }
-.text-vb-100 { color: var(--color-vb-100) !important; }
-.text-vb-800 { color: var(--color-vb-800) !important; }
-.bg-servers-100 { background-color: var(--color-servers-100) !important; }
-.bg-servers-800 { background-color: var(--color-servers-800) !important; }
-.text-servers-100 { color: var(--color-servers-100) !important; }
-.text-servers-800 { color: var(--color-servers-800) !important; }
+	.bg-java-100 { background-color: var(--color-java-100) !important; }
+	.bg-java-800 { background-color: var(--color-java-800) !important; }
+	.text-java-100 { color: var(--color-java-100) !important; }
+	.text-java-800 { color: var(--color-java-800) !important; }
+	.bg-spring-100 { background-color: var(--color-spring-100) !important; }
+	.bg-spring-800 { background-color: var(--color-spring-800) !important; }
+	.text-spring-100 { color: var(--color-spring-100) !important; }
+	.text-spring-800 { color: var(--color-spring-800) !important; }
+	.bg-micro-100 { background-color: var(--color-micro-100) !important; }
+	.bg-micro-800 { background-color: var(--color-micro-800) !important; }
+	.text-micro-100 { color: var(--color-micro-100) !important; }
+	.text-micro-800 { color: var(--color-micro-800) !important; }
+	.bg-nextjs-100 { background-color: var(--color-nextjs-100) !important; }
+	.bg-nextjs-800 { background-color: var(--color-nextjs-800) !important; }
+	.text-nextjs-100 { color: var(--color-nextjs-100) !important; }
+	.text-nextjs-800 { color: var(--color-nextjs-800) !important; }
+	.bg-devops-100 { background-color: var(--color-devops-100) !important; }
+	.bg-devops-800 { background-color: var(--color-devops-800) !important; }
+	.text-devops-100 { color: var(--color-devops-100) !important; }
+	.text-devops-800 { color: var(--color-devops-800) !important; }
+	.bg-grails-100 { background-color: var(--color-grails-100) !important; }
+	.bg-grails-800 { background-color: var(--color-grails-800) !important; }
+	.text-grails-100 { color: var(--color-grails-100) !important; }
+	.text-grails-800 { color: var(--color-grails-800) !important; }
+	.bg-aws-100 { background-color: var(--color-aws-100) !important; }
+	.bg-aws-800 { background-color: var(--color-aws-800) !important; }
+	.text-aws-100 { color: var(--color-aws-100) !important; }
+	.text-aws-800 { color: var(--color-aws-800) !important; }
+	.bg-mysql-100 { background-color: var(--color-mysql-100) !important; }
+	.bg-mysql-800 { background-color: var(--color-mysql-800) !important; }
+	.text-mysql-100 { color: var(--color-mysql-100) !important; }
+	.text-mysql-800 { color: var(--color-mysql-800) !important; }
+	.bg-vps-100 { background-color: var(--color-vps-100) !important; }
+	.bg-vps-800 { background-color: var(--color-vps-800) !important; }
+	.text-vps-100 { color: var(--color-vps-100) !important; }
+	.text-vps-800 { color: var(--color-vps-800) !important; }
+	.bg-js-100 { background-color: var(--color-js-100) !important; }
+	.bg-js-800 { background-color: var(--color-js-800) !important; }
+	.text-js-100 { color: var(--color-js-100) !important; }
+	.text-js-800 { color: var(--color-js-800) !important; }
+	.bg-postgresql-100 { background-color: var(--color-postgresql-100) !important; }
+	.bg-postgresql-800 { background-color: var(--color-postgresql-800) !important; }
+	.text-postgresql-100 { color: var(--color-postgresql-100) !important; }
+	.text-postgresql-800 { color: var(--color-postgresql-800) !important; }
+	.bg-php-100 { background-color: var(--color-php-100) !important; }
+	.bg-php-800 { background-color: var(--color-php-800) !important; }
+	.text-php-100 { color: var(--color-php-100) !important; }
+	.text-php-800 { color: var(--color-php-800) !important; }
+	.bg-vb-100 { background-color: var(--color-vb-100) !important; }
+	.bg-vb-800 { background-color: var(--color-vb-800) !important; }
+	.text-vb-100 { color: var(--color-vb-100) !important; }
+	.text-vb-800 { color: var(--color-vb-800) !important; }
+	.bg-servers-100 { background-color: var(--color-servers-100) !important; }
+	.bg-servers-800 { background-color: var(--color-servers-800) !important; }
+	.text-servers-100 { color: var(--color-servers-100) !important; }
+	.text-servers-800 { color: var(--color-servers-800) !important; }
+	/* Clases para nuevas tecnologías */
+	.bg-astro-100 { background-color: var(--color-astro-100) !important; }
+	.bg-astro-800 { background-color: var(--color-astro-800) !important; }
+	.text-astro-100 { color: var(--color-astro-100) !important; }
+	.text-astro-800 { color: var(--color-astro-800) !important; }
+	.bg-markdown-100 { background-color: var(--color-markdown-100) !important; }
+	.bg-markdown-800 { background-color: var(--color-markdown-800) !important; }
+	.text-markdown-100 { color: var(--color-markdown-100) !important; }
+	.text-markdown-800 { color: var(--color-markdown-800) !important; }
+	.bg-webp-100 { background-color: var(--color-webp-100) !important; }
+	.bg-webp-800 { background-color: var(--color-webp-800) !important; }
+	.text-webp-100 { color: var(--color-webp-100) !important; }
+	.text-webp-800 { color: var(--color-webp-800) !important; }
+	.bg-html-100 { background-color: var(--color-html-100) !important; }
+	.bg-html-800 { background-color: var(--color-html-800) !important; }
+	.text-html-100 { color: var(--color-html-100) !important; }
+	.text-html-800 { color: var(--color-html-800) !important; }
+	.bg-css-100 { background-color: var(--color-css-100) !important; }
+	.bg-css-800 { background-color: var(--color-css-800) !important; }
+	.text-css-100 { color: var(--color-css-100) !important; }
+	.text-css-800 { color: var(--color-css-800) !important; }
 
 .dark .bg-java-100 { background-color: var(--color-java-800) !important; }
 .dark .text-java-800 { color: var(--color-java-100) !important; }

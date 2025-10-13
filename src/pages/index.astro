@@ -53,10 +53,10 @@ import Footer from '../components/Footer.astro';
 
                 <!-- Descripción -->
                 <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
-                    Líder Técnico en Revenatium (2019–actual) • Java, Spring Boot, Next.js • Arquitectura de microservicios, observabilidad y prácticas de ingeniería
+                    Líder Técnico en Revenatium (2019–actual) • Java, Spring Boot, Next.js • Arquitectura de microservicios, observabilidad y prácticas de ingeniería.
                 </p>
                 <p class="text-lg md:text-xl text-gray-200 leading-relaxed">
-                    Bitácora de aprendizajes y side projects (laboratorio personal).
+                    Este sitio es una bitácora de aprendizajes y side projects (laboratorio personal).
                 </p>
 
                 <!-- Botones -->
@@ -84,10 +84,10 @@ import Footer from '../components/Footer.astro';
 		
         <SectionColumn id="about" title="Sobre Mí" accent="bg-white  outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                Soy Ingeniero en Sistemas y Líder Técnico enfocado en diseñar y escalar productos web con Java, Spring Boot y arquitectura de microservicios. Me interesan los fundamentos: diseño modular, resiliencia, contratos claros, observabilidad y delivery predecible.
+                Soy Ingeniero en Sistemas y Líder Técnico enfocado en diseñar y escalar productos web con <strong>Java</strong>, <strong>Spring Boot</strong> y arquitectura de microservicios. Me interesan los fundamentos: <em>diseño modular, resiliencia, contratos claros, observabilidad y delivery predecible</em>.
             </p>
             <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                En mi día a día en Revenatium lidero iniciativas de arquitectura y evolución de plataforma. Fuera de horario, mantengo un “laboratorio personal” de side projects donde exploro ideas, pruebo patrones y documento aprendizajes. Me motiva compartir prácticas que funcionen en equipos reales.
+                En mi día a día en <strong>Revenatium</strong> desarrollo iniciativas de arquitectura y evolución de plataforma. Fuera de horario, mantengo un <em>"laboratorio personal"</em> de side projects donde exploro ideas, pruebo patrones y documento aprendizajes. Me motiva compartir prácticas que funcionen en equipos reales.
             </p>
             <div class="flex flex-wrap gap-3" aria-label="Tecnologías usadas">
                 <span class="px-4 py-2 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java</span>
@@ -118,21 +118,22 @@ import Footer from '../components/Footer.astro';
         </SectionColumn>
 
         <SectionTitle id="experience" title="Laboratorio de ideas" accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0">
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
                 Selección de casos que documentan decisiones de diseño, patrones aplicados y aprendizajes prácticos. Algunos fueron desarrollados en entornos empresariales; otros pertenecen a mi laboratorio personal de side projects.
             </p>
             <!-- Más experiencias -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" slot="content">
                 <!-- Project SpringBoot+Course -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-teal-400 to-teal-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12l2 2 4-4" />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Curso SpringBoot + Kotlin</h4>
-                    <p class="text-gray-600 mb-4">En curso, es un repositorio de aprendizaje práctico sobre desarrollo de aplicaciones con Spring Boot y Kotlin. Aquí nos enfocaremos en contenido de calidad, orientado a resolver problemas reales.</p>
-                    <a href="https://github.com/lgzarturo/springboot-course/wiki" target="_blank" class="text-blue-500 hover:underline">Ver proyecto</a>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Curso SpringBoot + Kotlin (Backend)</h4>
+                    <p class="text-gray-600 mb-4">Repositorio de aprendizaje práctico sobre desarrollo de aplicaciones con Spring Boot y Kotlin.</p>
+                    <a href="https://github.com/lgzarturo/springboot-course/wiki" target="_blank" class="text-teal-500 hover:underline">Ver proyecto</a>
                     <div class="flex flex-wrap gap-2 mt-4" aria-label="Tecnologías usadas">
                         <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Java</span>
                         <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring Boot</span>
@@ -142,35 +143,37 @@ import Footer from '../components/Footer.astro';
 
                 <!-- Project Blog -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2" fill="none" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 8h8M8 12h8M8 16h4" />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Blog Personal</h4>
-                    <p class="text-gray-600 mb-4">A lo largo de mi carrera, he compartido mis conocimientos y experiencias en un blog personal, donde publico artículos sobre desarrollo de software, mejores prácticas y tutoriales.</p>
-                    <a href="https://www.arthurolg.com/" target="_blank" class="text-blue-500 hover:underline">Ver proyecto</a>
-                    <div class="flex flex-wrap gap-2 mt-4" aria-label="Tecnologías usadas">
-                        <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Astro</span>
-                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Markdown</span>
-                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">Webp</span>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Blog Personal (Contenido)</h4>
+                    <p class="text-gray-600 mb-4">Donde comparto artículos sobre desarrollo de software, mejores prácticas y tutoriales. Enfocado en contenido, markdown y experiencias reales.</p>
+                    <a href="https://www.arthurolg.com/" target="_blank" class="text-yellow-500 hover:underline">Ver proyecto</a>
+                    <div class="flex flex-wrap gap-2 mt-4" aria-label='Tecnologías usadas'>
+                        <span class="px-3 py-1 bg-astro-100 text-astro-800 rounded-full text-xs font-medium">Astro</span>
+                        <span class="px-3 py-1 bg-markdown-100 text-markdown-800 rounded-full text-xs font-medium">Markdown</span>
+                        <span class="px-3 py-1 bg-webp-100 text-webp-800 rounded-full text-xs font-medium">Webp</span>
                     </div>
                 </div>
 
                 <!-- Project Bootzen -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                    <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div class="w-12 h-12 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            <polygon points="12,2 22,22 2,22" stroke="currentColor" stroke-width="2" fill="none" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v6" />
                         </svg>
                     </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-2">Bootzen</h4>
-                    <p class="text-gray-600 mb-4">Micro Framework con PHP para el desarrollo de aplicaciones web. El objetivo es simplificar el proceso de creación de aplicaciones web al proporcionar una estructura básica y herramientas útiles.</p>
-                    <a href="https://github.com/lgzarturo/bootzen" target="_blank" class="text-blue-500 hover:underline">Ver proyecto</a>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Bootzen (Framework)</h4>
+                    <p class="text-gray-600 mb-4">Micro Framework con PHP para el desarrollo de aplicaciones web. Enfocado en estructura, herramientas útiles y simplicidad para desarrolladores.</p>
+                    <a href="https://github.com/lgzarturo/bootzen" target="_blank" class="text-indigo-500 hover:underline">Ver proyecto</a>
                     <div class="flex flex-wrap gap-2 mt-4" aria-label="Tecnologías usadas">
                         <span class="px-3 py-1 bg-php-100 text-php-800 rounded-full text-xs font-medium">PHP</span>
-                        <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">HTML</span>
-                        <span class="px-3 py-1 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">CSS</span>
+                        <span class="px-3 py-1 bg-html-100 text-html-800 rounded-full text-xs font-medium">HTML</span>
+                        <span class="px-3 py-1 bg-css-100 text-css-800 rounded-full text-xs font-medium">CSS</span>
                     </div>
                 </div>
 
@@ -220,7 +223,7 @@ import Footer from '../components/Footer.astro';
                         <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring Boot</span>
                         <span class="px-3 py-1 bg-postgresql-100 text-postgresql-800 rounded-full text-xs font-medium">PostgreSQL</span>
                     </div>
-                </div>
+                </div>                
             </div>
         </SectionTitle>
 
