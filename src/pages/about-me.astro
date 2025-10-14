@@ -7,6 +7,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SectionColumn from '../components/SectionColumn.astro';
+import SectionTitle from '../components/SectionTitle.astro';
 ---
 <BaseLayout title="Arturo López Gómez - Líder Técnico">
     <Header title="Arturo López" />
@@ -36,6 +37,48 @@ import SectionColumn from '../components/SectionColumn.astro';
                 </div>
             </div>
         </SectionColumn>
+        <SectionTitle title="Recursos para aprendizaje y notas">
+            <!-- Sección de recursos de aprendizaje -->
+            <section id="recursos-aprendizaje" class="mt-8 bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200 rounded-2xl p-6 shadow-lg">
+                <div class="mb-6 flex items-center gap-3">
+                    <span class="inline-block px-3 py-1 bg-purple-200 text-purple-800 font-bold rounded-full text-sm"># recursos-aprendizaje</span>
+                    <span class="text-gray-500">Accede fácilmente a mis repositorios de notas y ejemplos</span>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-purple-200">
+                        <thead class="bg-purple-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-purple-700 uppercase tracking-wider">Título</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-purple-700 uppercase tracking-wider">Descripción</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-purple-700 uppercase tracking-wider">Enlace</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-purple-100 text-left">
+                            <tr>
+                                <td class="px-6 py-4 font-semibold text-blue-700">Recursos para aprendizaje sobre programación</td>
+                                <td class="px-6 py-4 text-gray-700">Repositorio donde comparto recursos, notas y enlaces útiles para aprender sobre programación. Ideal para desarrolladores que buscan material de apoyo.</td>
+                                <td class="px-6 py-4"><a href="https://github.com/lgzarturo/learning-resources" target="_blank" rel="noopener" class="text-blue-500 hover:underline">Ver en GitHub</a></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-semibold text-blue-700">Patrones de diseño en Java</td>
+                                <td class="px-6 py-4 text-gray-700">Presento los patrones de diseño y su implementación en Java, con ejemplos prácticos y explicaciones claras.</td>
+                                <td class="px-6 py-4"><a href="https://github.com/lgzarturo/practice-examples" target="_blank" rel="noopener" class="text-blue-500 hover:underline">Ver en GitHub</a></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-semibold text-blue-700">Productividad para desarrolladores</td>
+                                <td class="px-6 py-4 text-gray-700">Repositorio que recopila herramientas y técnicas que utilizo para mejorar mi productividad en el desarrollo de software.</td>
+                                <td class="px-6 py-4"><a href="https://github.com/lgzarturo/productividad" target="_blank" rel="noopener" class="text-blue-500 hover:underline">Ver en GitHub</a></td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-semibold text-blue-700">Notas sobre desarrollo de software</td>
+                                <td class="px-6 py-4 text-gray-700">Notas y apuntes sobre diversos temas de desarrollo de software, útiles para consulta y aprendizaje continuo.</td>
+                                <td class="px-6 py-4"><a href="https://github.com/lgzarturo/notes" target="_blank" rel="noopener" class="text-blue-500 hover:underline">Ver en GitHub</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </SectionTitle>
     </main>
     <Footer />
 </BaseLayout>

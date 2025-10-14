@@ -1,6 +1,24 @@
 ---
 // src/components/Header.astro
 const { title } = Astro.props;
+const frases = [
+    "Don’t comment bad code — rewrite it.",
+    "Talk is cheap. Show me the code.",
+    "Learn little by little, start with the basics",
+    "Write code for humans, not just for machines",
+    "Good design adds value quickly",
+    "Experiment and learn from your mistakes",
+    "Enjoy programming",
+    "Code is like humor. When you have to explain it, it’s bad.",
+    "Simplicity is the soul of efficiency.",
+    "First, solve the problem. Then, write the code.",
+    "Premature optimization is the root of all evil.",
+    "Make it work, make it right, make it fast.",
+    "Clean code always looks like it was written by someone who cares.",
+    "Programming isn't about what you know; it's about what you can figure out.",
+];
+const isHome = Astro.url.pathname === "/";
+const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
 ---
 <!-- Header -->
 <header class="fixed top-0 p-2 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300">
@@ -12,45 +30,55 @@ const { title } = Astro.props;
                 </div>&nbsp;
                 <h1 class="text-xl font-bold text-gray-900">{title}</h1>
             </div>
-            <ul class="hidden md:flex items-center space-x-8">
-                <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Sobre Mí</a></li>
-                <li><a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Laboratorio</a></li>
-                <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Habilidades</a></li>
-                <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Experiencia</a></li>
-                <li><a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">Contacto</a></li>
-                <li style="display: none;"><button class="p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg shadow transition hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
-                    <span class="theme-toggle-text">🌙 Modo oscuro</span>
-                </button></li>
-            </ul>
-            <button id="mobile-menu-button" class="md:hidden p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-            <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col transition-transform duration-500 transform translate-x-full md:hidden bg-gradient-to-br from-blue-400 via-white to-purple-400 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 backdrop-blur-xl shadow-2xl opacity-0 pointer-events-none" style="display: none; min-height: 90vh; opacity: 0.97; backdrop-filter: blur(80px);">
-                <button id="close-mobile-menu" class="absolute top-6 right-6 p-2">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-                <ul class="flex flex-1 flex-col justify-evenly items-center w-full text-center text-2xl font-bold">
-                    <li class="w-full my-2"><a href="#about" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Sobre Mí</a></li>
-                    <li class="w-full my-2"><a href="#experience" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Experiencia</a></li>
-                    <li class="w-full my-2"><a href="#skills" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Habilidades</a></li>
-                    <li class="w-full my-2"><a href="#projects" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Proyectos</a></li>
-                    <li class="w-full my-2"><a href="#contact" class="block py-4 w-full mx-4 rounded-xl bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200 shadow-md">Contacto</a></li>
-                    <li class="w-full my-2" style="display: none;"><button class="block py-4 w-full mx-4 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 shadow-md transition-colors hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle duration-200 cursor-pointer">
+            {isHome ? (
+                <>
+                <ul id="desktop-menu" class="hidden md:flex items-center space-x-8">
+                    <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Sobre Mí</a></li>
+                    <li><a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Laboratorio</a></li>
+                    <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Habilidades</a></li>
+                    <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Experiencia</a></li>
+                    <li><a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">Contacto</a></li>
+                    <li style="display: none;"><button class="p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg shadow transition hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
                         <span class="theme-toggle-text">🌙 Modo oscuro</span>
                     </button></li>
                 </ul>
-            </div>
+                <button id="mobile-menu-button" class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col transition-transform duration-500 transform translate-x-full md:hidden bg-gradient-to-br from-blue-400 via-white to-purple-400 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 backdrop-blur-xl shadow-2xl opacity-0 pointer-events-none" style="display: none; min-height: 90vh; opacity: 0.97; backdrop-filter: blur(80px);">
+                    <button id="close-mobile-menu" class="absolute top-6 right-6 p-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                    <ul class="flex flex-1 flex-col justify-evenly items-center w-full text-center text-2xl font-bold">
+                        <li class="w-full my-2"><a href="#about" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Sobre Mí</a></li>
+                        <li class="w-full my-2"><a href="#experience" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Experiencia</a></li>
+                        <li class="w-full my-2"><a href="#skills" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Habilidades</a></li>
+                        <li class="w-full my-2"><a href="#projects" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Proyectos</a></li>
+                        <li class="w-full my-2"><a href="#contact" class="block py-4 w-full mx-4 rounded-xl bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200 shadow-md">Contacto</a></li>
+                        <li class="w-full my-2" style="display: none;"><button class="block py-4 w-full mx-4 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 shadow-md transition-colors hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle duration-200 cursor-pointer">
+                            <span class="theme-toggle-text">🌙 Modo oscuro</span>
+                        </button></li>
+                    </ul>
+                </div>
+                </>
+            ) : (
+                <div class="flex-1 flex justify-end items-center">
+                    <a href="/" class="text-lg italic text-purple-700 font-semibold animate-fade-in-delay">
+                        {fraseAleatoria}
+                    </a>
+                </div>
+            )}
         </div>
     </nav>
 <script is:inline>
     const menuBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeBtn = document.getElementById('close-mobile-menu');
-    menuBtn.addEventListener('click', () => {
+    menuBtn?.addEventListener('click', () => {
         mobileMenu.style.display = 'flex';
         setTimeout(() => {
             mobileMenu.classList.remove('translate-x-full');
@@ -59,7 +87,7 @@ const { title } = Astro.props;
             mobileMenu.classList.add('opacity-100');
         }, 10);
     });
-    closeBtn.addEventListener('click', () => {
+    closeBtn?.addEventListener('click', () => {
         mobileMenu.classList.remove('opacity-100');
         mobileMenu.classList.add('opacity-0');
         mobileMenu.classList.remove('translate-x-0');
