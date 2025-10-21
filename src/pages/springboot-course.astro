@@ -1,0 +1,123 @@
+---
+// src/pages/springboot-course.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<BaseLayout title="Arturo López Gómez - Líder Técnico">
+    <link is:raw href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+    <Header title="Arturo López" />
+    <style is:inline>
+    /* Animaciones sutiles */
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .pulse-slow {
+      animation: pulse-slow 4s ease-in-out infinite;
+    }
+    /* Estilo tipo videojuego pixel art */
+    .pixel-font {
+      font-family: 'Press Start 2P', cursive;
+    }
+  </style>
+    <main class="min-h-screen flex flex-col">
+        <!-- Header -->
+  <header class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 shadow-lg p-6 flex flex-col items-center mt-20">
+    <h1 class="text-4xl md:text-6xl font-extrabold pixel-font mb-2 drop-shadow-lg animate-pulse text-center">Curso Gamificado de Desarrollo</h1>
+    <p class="text-lg md:text-2xl max-w-4xl text-center drop-shadow-md">Aprende Spring Boot, buenas prácticas y arquitectura con una historia gamificada inspirada en Pokémon, hotelería y ecommerce.</p>
+    <a href="#participa" class="mt-6 px-8 py-3 bg-white text-red-600 font-bold rounded-lg shadow-lg hover:bg-red-600 hover:text-white transition duration-300">¡Únete y participa!</a>
+  </header>
+
+  <main class="flex-grow container mx-auto px-6 py-12 space-y-20">
+
+    <!-- ¿Qué es este curso? -->
+    <section id="que-es" class="max-w-5xl mx-auto bg-blue-800 bg-opacity-70 rounded-xl p-8 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4 border-b-4 border-yellow-400 inline-block pixel-font">¿Qué es este curso?</h2>
+      <p class="text-lg leading-relaxed">
+        Este curso es una experiencia única que combina el aprendizaje técnico de Spring Boot con una narrativa gamificada inspirada en el universo Pokémon, usando ejemplos prácticos de hotelería y ecommerce. 
+        No solo aprenderás a programar con buenas prácticas, arquitectura hexagonal y TDD, sino que también te sumergirás en una historia que hace el aprendizaje divertido, memorable y motivador.
+      </p>
+    </section>
+
+    <!-- ¿Por qué gamificar con Pokémon? -->
+    <section id="gamificacion" class="max-w-5xl mx-auto bg-blue-800 bg-opacity-70 rounded-xl p-8 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4 border-b-4 border-red-500 inline-block pixel-font">¿Por qué gamificar con Pokémon?</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        Pokémon es una franquicia que ha marcado generaciones por su capacidad de contar historias, incentivar la exploración y el aprendizaje progresivo a través de retos y recompensas. 
+        Al gamificar el curso con esta temática, buscamos:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-lg">
+        <li>Crear una experiencia inmersiva que motive a los desarrolladores a avanzar y superar desafíos.</li>
+        <li>Fomentar la curiosidad y el deseo de "capturar" nuevos conocimientos y habilidades.</li>
+        <li>Utilizar una narrativa conocida para facilitar la conexión emocional y la retención del aprendizaje.</li>
+        <li>Incentivar la colaboración y competencia sana dentro de la comunidad.</li>
+      </ul>
+      <p class="mt-4 italic text-yellow-300">"Aprender es una aventura, y cada línea de código es un paso hacia convertirte en un maestro desarrollador."</p>
+    </section>
+
+    <!-- ¿Por qué ejemplos de hotelería y ecommerce? -->
+    <section id="ejemplos" class="max-w-5xl mx-auto bg-blue-800 bg-opacity-70 rounded-xl p-8 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4 border-b-4 border-green-400 inline-block pixel-font">¿Por qué usar ejemplos de hotelería y ecommerce?</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        Elegimos hotelería y ecommerce porque son dominios reales, con casos de uso complejos y variados que permiten aplicar conceptos técnicos de forma práctica y relevante:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-lg">
+        <li>La hotelería representa un negocio con múltiples actores, reservas, disponibilidad y reglas de negocio que desafían la arquitectura y diseño.</li>
+        <li>El ecommerce es un dominio dinámico con flujos de compra, inventarios, pagos y logística, ideal para practicar integración y pruebas.</li>
+        <li>Ambos ejemplos permiten mostrar cómo aplicar patrones, buenas prácticas y arquitectura hexagonal en contextos reales.</li>
+        <li>Facilitan la creación de una narrativa coherente y atractiva para la gamificación.</li>
+      </ul>
+      <p class="mt-4 italic text-green-300">"La mejor forma de aprender es construyendo soluciones que reflejen el mundo real."</p>
+    </section>
+
+    <!-- Fundamento pedagógico y narrativa gamificada -->
+    <section id="fundamento" class="max-w-5xl mx-auto bg-blue-800 bg-opacity-70 rounded-xl p-8 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4 border-b-4 border-purple-500 inline-block pixel-font">Fundamento pedagógico y narrativa gamificada</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        La gamificación no es solo un recurso lúdico, sino una estrategia pedagógica poderosa que:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-lg">
+        <li>Utiliza la narrativa para crear un contexto emocional y cognitivo que facilita la comprensión y retención.</li>
+        <li>Incorpora retos, recompensas y progresión para mantener la motivación y el compromiso.</li>
+        <li>Fomenta el aprendizaje activo y la experimentación a través de casos prácticos y feedback inmediato.</li>
+        <li>Combina la historia con buenas prácticas de desarrollo para que el aprendizaje técnico sea significativo y aplicable.</li>
+      </ul>
+      <p class="mt-4 italic text-purple-300">"Contar historias es la forma más antigua y efectiva de enseñar, y la tecnología nos permite reinventar esa tradición."</p>
+    </section>
+
+    <!-- Beneficios para desarrolladores -->
+    <section id="beneficios" class="max-w-5xl mx-auto bg-blue-800 bg-opacity-70 rounded-xl p-8 shadow-lg">
+      <h2 class="text-3xl font-bold mb-4 border-b-4 border-yellow-300 inline-block pixel-font">Beneficios para desarrolladores</h2>
+      <p class="text-lg leading-relaxed mb-4">
+        Al participar en este curso, los desarrolladores obtendrán:
+      </p>
+      <ul class="list-disc list-inside space-y-2 text-lg">
+        <li>Dominio práctico de Spring Boot 3.x con arquitectura hexagonal y TDD.</li>
+        <li>Experiencia en diseño de software limpio, mantenible y escalable.</li>
+        <li>Comprensión profunda de patrones de diseño y buenas prácticas.</li>
+        <li>Participación en una comunidad activa que comparte conocimiento y apoyo.</li>
+        <li>Motivación constante gracias a la narrativa gamificada y retos progresivos.</li>
+      </ul>
+      <p class="mt-4 font-bold text-yellow-400">¡Prepárate para transformar tu forma de aprender y desarrollar software!</p>
+    </section>
+
+    <!-- Cómo participar y formar comunidad -->
+    <section id="participa" class="max-w-5xl mx-auto bg-blue-800 bg-opacity-70 rounded-xl p-8 shadow-lg text-center">
+      <h2 class="text-3xl font-bold mb-6 border-b-4 border-red-400 inline-block pixel-font">¿Cómo participar y formar parte de la comunidad?</h2>
+      <p class="text-lg mb-6 max-w-3xl mx-auto">
+        La comunidad es el corazón de este proyecto. Aquí no solo aprendes, sino que colaboras, compartes y creces con otros desarrolladores apasionados.
+      </p>
+      <a href="https://github.com/lgzarturo/springboot-course" target="_blank" rel="noopener" class="inline-block px-10 py-4 bg-red-600 hover:bg-red-700 rounded-lg font-bold text-white shadow-lg transition duration-300 pixel-font animate-pulse-slow">
+        Únete a la comunidad y comienza tu aventura de aprendizaje
+      </a>
+      <p class="mt-6 text-sm text-gray-300 max-w-md mx-auto">
+        Únete a la wiki, descarga el código, realiza un fork, participa en retos semanales, comparte tus avances y ayuda a otros. Juntos creamos una nueva forma de aprender desarrollo.
+      </p>
+    </section>
+
+  </main>
+
+    </main>
+    <Footer />
+</BaseLayout>
