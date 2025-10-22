@@ -424,7 +424,154 @@ import Footer from "../components/Footer.astro";
                 </p>
             </section>
 
-            <!-- Cómo participar y formar comunidad -->
+            <!-- Calendario de liberaciones de milestones -->
+            <section id="calendario-milestones" class="max-w-5xl mx-auto level-section p-8 mb-12" aria-labelledby="calendario-titulo">
+                <h2 id="calendario-titulo" class="text-3xl font-bold mb-6 border-b-4 border-blue-400 inline-block pixel-font glow-title">
+                    📅 Actualizaciones solo fines de semana
+                </h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full text-sm md:text-base text-left border-collapse rounded-lg overflow-hidden shadow-lg">
+                        <thead class="bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 text-white">
+                            <tr>
+                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">OK</th>
+                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Semana</th>
+                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Fechas (Sábado y Domingo)</th>
+                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Actividades principales (según milestone)</th>
+                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Fecha de liberación (domingo)</th>
+                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Versión Milestone</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-[#181c1f] text-white">
+                            <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
+                                <td class="px-3 py-2 flex items-center gap-2"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
+                                <td class="px-3 py-2">1</td>
+                                <td class="px-3 py-2">18-19 Oct 2025</td>
+                                <td class="px-3 py-2">Milestone 0: Inicio y versión base</td>
+                                <td class="px-3 py-2">19 Oct 2025</td>
+                                <td class="px-3 py-2">0.0.1</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">2</td>
+                                <td class="px-3 py-2">25-26 Oct 2025</td>
+                                <td class="px-3 py-2">Milestone 1: Fundamentos de persistencia y configuración básica (inicio)</td>
+                                <td class="px-3 py-2">26 Oct 2025</td>
+                                <td class="px-3 py-2">0.0.2</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">3</td>
+                                <td class="px-3 py-2">1-2 Nov 2025</td>
+                                <td class="px-3 py-2">Milestone 1: Continuación y cierre (persistencia, perfiles, Gradle, Sentry, casos de uso)</td>
+                                <td class="px-3 py-2">2 Nov 2025</td>
+                                <td class="px-3 py-2">0.0.2</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">4</td>
+                                <td class="px-3 py-2">8-9 Nov 2025</td>
+                                <td class="px-3 py-2">Milestone 2: Validación con Jakarta Validation, manejo global de errores</td>
+                                <td class="px-3 py-2">9 Nov 2025</td>
+                                <td class="px-3 py-2">0.0.3</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">5</td>
+                                <td class="px-3 py-2">15-16 Nov 2025</td>
+                                <td class="px-3 py-2">Milestone 2: Seguridad básica con Spring Security y JWT, roles, protección endpoints</td>
+                                <td class="px-3 py-2">16 Nov 2025</td>
+                                <td class="px-3 py-2">0.0.3</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">6</td>
+                                <td class="px-3 py-2">22-23 Nov 2025</td>
+                                <td class="px-3 py-2">Milestone 3: Pruebas unitarias e integración, Testcontainers</td>
+                                <td class="px-3 py-2">23 Nov 2025</td>
+                                <td class="px-3 py-2">0.0.4</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">7</td>
+                                <td class="px-3 py-2">29-30 Nov 2025</td>
+                                <td class="px-3 py-2">Milestone 3: Documentación API con OpenAPI/Swagger, integración Sentry en tests</td>
+                                <td class="px-3 py-2">30 Nov 2025</td>
+                                <td class="px-3 py-2">0.0.4</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">8</td>
+                                <td class="px-3 py-2">6-7 Dec 2025</td>
+                                <td class="px-3 py-2">Milestone 4: Configuración Spring Boot Actuator, empaquetado para producción</td>
+                                <td class="px-3 py-2">7 Dec 2025</td>
+                                <td class="px-3 py-2">0.0.5</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">9</td>
+                                <td class="px-3 py-2">13-14 Dec 2025</td>
+                                <td class="px-3 py-2">Milestone 4: Seguridad reforzada (CORS, rate limiting, cabeceras), monitoreo avanzado Sentry</td>
+                                <td class="px-3 py-2">14 Dec 2025</td>
+                                <td class="px-3 py-2">0.0.5</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">10</td>
+                                <td class="px-3 py-2">20-21 Dec 2025</td>
+                                <td class="px-3 py-2">Milestone 5: Eventos de dominio, async, mensajería (RabbitMQ/Kafka), caching</td>
+                                <td class="px-3 py-2">21 Dec 2025</td>
+                                <td class="px-3 py-2">0.0.6</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">11</td>
+                                <td class="px-3 py-2">27-28 Dec 2025</td>
+                                <td class="px-3 py-2">Milestone 5: Optimización Gradle, pruebas integración mensajería y caching, seguridad avanzada JWT</td>
+                                <td class="px-3 py-2">28 Dec 2025</td>
+                                <td class="px-3 py-2">0.0.6</td>
+                            </tr>
+                            <tr class="border-b border-blue-800/40">
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">12</td>
+                                <td class="px-3 py-2">3-4 Jan 2026</td>
+                                <td class="px-3 py-2">Milestone 6: Integración final, gestión completa de módulos, pruebas y documentación</td>
+                                <td class="px-3 py-2">4 Jan 2026</td>
+                                <td class="px-3 py-2">1.0.0</td>
+                            </tr>
+                            <tr>
+                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                                <td class="px-3 py-2">13</td>
+                                <td class="px-3 py-2">10-11 Jan 2026</td>
+                                <td class="px-3 py-2">Milestone 6: Pipeline CI/CD, cobertura &gt;85%, versionamiento semántico, release final</td>
+                                <td class="px-3 py-2">11 Jan 2026</td>
+                                <td class="px-3 py-2">1.0.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-8 text-base md:text-lg text-green-200">
+                    <h3 class="font-bold text-lg md:text-xl mb-2 text-green-300">Notas:</h3>
+                    <ul class="list-disc pl-6 space-y-1">
+                        <li>La semana 1 ya fue completada con la <a href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.1" target="_blank" rel="noopener" class="underline text-green-300 hover:text-green-400">versión 0.0.1</a>.</li>
+                        <li>El calendario continúa con trabajo solo sábados y domingos.</li>
+                        <li>Las fechas de liberación son los domingos al final de cada fin de semana de trabajo.</li>
+                        <li>Se mantiene la distribución equilibrada para un avance constante.</li>
+                    </ul>
+                </div>
+
+                <div class="mt-10">
+                    <div class="rounded-lg border-4 border-yellow-400 bg-yellow-100/90 px-6 py-4 shadow-xl flex flex-col items-center gap-2 animate-pulse-slow">
+                        <span class="font-bold text-lg text-yellow-700 flex items-center gap-2">
+                            ⚠️ Aviso importante
+                        </span>
+                        <p class="text-yellow-900 text-base md:text-lg text-center">
+                            Todas las <strong>actualizaciones de tareas, cambios de calendario, retrasos o notificaciones importantes</strong> se publicarán en el proyecto de GitHub <a href="https://github.com/users/lgzarturo/projects/12" target="_blank" rel="noopener" class="underline font-bold text-blue-700 hover:text-blue-900">springboot-course (Project Board)</a>.<br/>
+                            <span class="font-semibold">¡Mantente al tanto del repositorio para no perderte ninguna novedad!</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
             <section
                 id="participa"
                 class="max-w-5xl mx-auto level-section p-8 text-center"
