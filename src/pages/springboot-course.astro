@@ -203,6 +203,9 @@ import Footer from "../components/Footer.astro";
             margin-right: 0.5em;
         }
 
+        .text-outline {
+            -webkit-text-stroke: 1px #2b2a2a;
+        }
     </style>
     <div class="min-h-screen flex flex-col pixel-bg md:p-20" itemscope itemtype="https://schema.org/Course">
         <!-- Header -->
@@ -211,7 +214,7 @@ import Footer from "../components/Footer.astro";
             itemprop="provider" itemscope itemtype="https://schema.org/Person"
         >
             <h1
-                class="text-4xl md:text-6xl font-extrabold pixel-font mb-2 drop-shadow-lg animate-pulse glow-h1 text-center text-shadow-2xs text-shadow-sky-300"
+                class="text-3xl sm:text-4xl md:text-6xl font-extrabold drop-shadow-lg animate-pulse glow-h1 text-center text-shadow-2xs text-shadow-sky-300 font-sans md:pixel-font mb-8 text-outline"
                 itemprop="name"
             >
                 Curso Gamificado de <span class="text-green-300">Spring Boot</span> con <span class="text-blue-300">Arquitectura Hexagonal</span> y <span class="text-yellow-300">TDD</span>
@@ -443,23 +446,23 @@ import Footer from "../components/Footer.astro";
                         </thead>
                         <tbody class="bg-[#181c1f] text-white">
                             <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
-                                <td class="px-3 py-2 flex items-center gap-2"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
+                                <td class="px-3 py-2 text-center align-middle"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
                                 <td class="px-3 py-2">1</td>
                                 <td class="px-3 py-2">18-19 Oct 2025</td>
                                 <td class="px-3 py-2">Milestone 0: Inicio y versión base</td>
                                 <td class="px-3 py-2">19 Oct 2025</td>
                                 <td class="px-3 py-2">0.0.1</td>
                             </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                            <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
+                                <td class="px-3 py-2 text-center align-middle"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
                                 <td class="px-3 py-2">2</td>
                                 <td class="px-3 py-2">25-26 Oct 2025</td>
                                 <td class="px-3 py-2">Milestone 1: Fundamentos de persistencia y configuración básica (inicio)</td>
                                 <td class="px-3 py-2">26 Oct 2025</td>
                                 <td class="px-3 py-2">0.0.2</td>
                             </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                            <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
+                                <td class="px-3 py-2 text-center align-middle"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
                                 <td class="px-3 py-2">3</td>
                                 <td class="px-3 py-2">1-2 Nov 2025</td>
                                 <td class="px-3 py-2">Milestone 1: Continuación y cierre (persistencia, perfiles, Gradle, Sentry, casos de uso)</td>
@@ -553,7 +556,7 @@ import Footer from "../components/Footer.astro";
                 <div class="mt-8 text-base md:text-lg text-green-200">
                     <h3 class="font-bold text-lg md:text-xl mb-2 text-green-300">Notas:</h3>
                     <ul class="list-disc pl-6 space-y-1">
-                        <li>La semana 1 ya fue completada con la <a href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.1" target="_blank" rel="noopener" class="underline text-green-300 hover:text-green-400">versión 0.0.1</a>.</li>
+                        <li>La semana 3 ya fue completada con la <a href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.2" target="_blank" rel="noopener" class="underline text-green-300 hover:text-green-400">versión 0.0.2</a>.</li>
                         <li>El calendario continúa con trabajo solo sábados y domingos.</li>
                         <li>Las fechas de liberación son los domingos al final de cada fin de semana de trabajo.</li>
                         <li>Se mantiene la distribución equilibrada para un avance constante.</li>
