@@ -5,606 +5,857 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<BaseLayout title="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce | Arturo López Gómez">
-    <head>
-        <meta name="description" content="Curso gamificado de Spring Boot con arquitectura hexagonal, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. ¡Únete a la comunidad de desarrolladores!" />
-        <meta name="keywords" content="Spring Boot, curso gamificado, arquitectura hexagonal, TDD, Pokémon, hotelería, ecommerce, comunidad de desarrolladores, programación, Java, backend, buenas prácticas, desarrollo de software" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://lgzarturo.dev/springboot-course" />
-        <!-- Open Graph -->
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce" />
-        <meta property="og:description" content="Aprende Spring Boot, arquitectura hexagonal y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!" />
-        <meta property="og:url" content="https://lgzarturo.dev/springboot-course" />
-        <meta property="og:image" content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp" />
-        <meta property="og:image:alt" content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce" />
-        <meta property="og:site_name" content="Arturo López Gómez" />
-        <!-- Twitter Card -->
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce" />
-        <meta name="twitter:description" content="Aprende Spring Boot, arquitectura hexagonal y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!" />
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp" />
-        <meta name="twitter:image:alt" content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce" />
-        <script type="application/ld+json" is:raw>
-        {
-            "@context": "https://schema.org",
-            "@type": "Course",
-            "name": "Curso Gamificado de Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce",
-            "description": "Curso gamificado de Spring Boot con arquitectura hexagonal, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. Únete a la comunidad de desarrolladores.",
-            "provider": {
-                "@type": "Person",
-                "name": "Arturo López Gómez",
-                "url": "https://lgzarturo.dev"
-            },
-            "educationalCredentialAwarded": "Certificado de participación y dominio en Spring Boot, arquitectura hexagonal y TDD.",
-            "image": "https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp",
-            "keywords": [
-                "Spring Boot", "curso gamificado", "arquitectura hexagonal", "TDD", "Pokémon", "hotelería", "ecommerce", "comunidad de desarrolladores", "Java", "backend", "buenas prácticas", "desarrollo de software"
-            ],
-            "url": "https://lgzarturo.dev/springboot-course"
-        }
-        </script>
-    </head>
-    <link is:raw rel="preconnect" href="https://fonts.googleapis.com" />
-    <link is:raw rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-    <link is:raw href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
-    <Header title="Arturo López" />
-    <style is:inline>
-        /* Fondo animado pixel art */
-        body,
-        .pixel-bg {
-            background: #181c1f
-                url("https://www.transparenttextures.com/patterns/pixel-weave.png");
-            min-height: 100vh;
-            position: relative;
-            z-index: 0;
-        }
-        .pixel-bg::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: repeating-linear-gradient(
-                    135deg,
-                    #2aff6a 0 2px,
-                    transparent 2px 20px
-                ),
-                repeating-linear-gradient(
-                    45deg,
-                    #00e0ff 0 2px,
-                    transparent 2px 20px
-                );
-            opacity: 0.08;
-            z-index: 1;
-            pointer-events: none;
-            animation: pixel-move 20s linear infinite;
-        }
-        @keyframes pixel-move {
-            0% {
-                background-position:
-                    0 0,
-                    0 0;
-            }
-            100% {
-                background-position:
-                    200px 200px,
-                    -200px -200px;
-            }
-        }
-        /* Animaciones sutiles */
-        @keyframes pulse-slow {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.7;
-            }
-        }
-        .pulse-slow {
-            animation: pulse-slow 4s ease-in-out infinite;
-        }
-        /* Estilo tipo videojuego pixel art */
-        .pixel-font {
-            font-family: "Pixelify Sans", cursive;
-            font-optical-sizing: auto;
-            font-style: normal;
-            letter-spacing: 1px;
-            text-shadow:
-                2px 2px 0 #222,
-                4px 4px 0 #2aff6a;
-        }
-        /* Bordes pixelados */
-        .pixel-border {
-            border: 4px solid #2aff6a;
-            box-shadow:
-                0 0 0 4px #222,
-                0 0 16px 2px #2aff6a44;
-            border-radius: 0.5rem;
-        }
-        /* Botón retro */
-        .btn-retro {
-            font-family: "Pixelify Sans", cursive;
-            background: linear-gradient(90deg, #2aff6a 0%, #00e0ff 100%);
-            color: #181c1f;
-            border: 3px solid #fff;
-            box-shadow:
-                0 0 0 3px #2aff6a,
-                0 0 12px 2px #00e0ff99;
-            text-shadow: 1px 1px 0 #fff;
-            transition:
-                background 0.2s,
-                color 0.2s,
-                box-shadow 0.2s;
-        }
-        .btn-retro:hover {
-            background: #181c1f;
-            color: #2aff6a;
-            box-shadow:
-                0 0 0 3px #00e0ff,
-                0 0 24px 4px #2aff6a99;
-        }
-        /* Secciones como "pantallas" de videojuego */
-        .level-section {
-            background: rgba(24, 28, 31, 0.95);
-            border: 4px solid #00e0ff;
-            box-shadow:
-                0 0 0 4px #2aff6a,
-                0 0 24px 2px #00e0ff44;
-            border-radius: 0.5rem;
-            margin-bottom: 2rem;
-        }
-        /* Títulos con efecto glow */
-        .glow-h1 {
-            color: #fff;
-            text-shadow:
-                0 0 8px #00e0ff,
-                0 0 16px #2aff6a;
-        }
-        .glow-title {
-            color: #2aff6a;
-            text-shadow:
-                0 0 8px #00e0ff,
-                0 0 16px #2aff6a;
-        }
-        /* Responsive fix para pixel font */
-        @media (max-width: 600px) {
-            .pixel-font {
-                font-size: 1.1rem !important;
-            }
-        }
+<BaseLayout
+  title="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce | Arturo López Gómez"
+>
+  <head>
+    <meta
+      name="description"
+      content="Curso gamificado de Spring Boot con arquitectura hexagonal, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. ¡Únete a la comunidad de desarrolladores!"
+    />
+    <meta
+      name="keywords"
+      content="Spring Boot, curso gamificado, arquitectura hexagonal, TDD, Pokémon, hotelería, ecommerce, comunidad de desarrolladores, programación, Java, backend, buenas prácticas, desarrollo de software"
+    />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://lgzarturo.dev/springboot-course" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce"
+    />
+    <meta
+      property="og:description"
+      content="Aprende Spring Boot, arquitectura hexagonal y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
+    />
+    <meta property="og:url" content="https://lgzarturo.dev/springboot-course" />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
+    />
+    <meta
+      property="og:image:alt"
+      content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce"
+    />
+    <meta property="og:site_name" content="Arturo López Gómez" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce"
+    />
+    <meta
+      name="twitter:description"
+      content="Aprende Spring Boot, arquitectura hexagonal y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce"
+    />
+    <script type="application/ld+json" is:raw>
+      {
+        "@context": "https://schema.org",
+        "@type": "Course",
+        "name": "Curso Gamificado de Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce",
+        "description": "Curso gamificado de Spring Boot con arquitectura hexagonal, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. Únete a la comunidad de desarrolladores.",
+        "provider": {
+          "@type": "Person",
+          "name": "Arturo López Gómez",
+          "url": "https://lgzarturo.dev"
+        },
+        "educationalCredentialAwarded": "Certificado de participación y dominio en Spring Boot, arquitectura hexagonal y TDD.",
+        "image": "https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp",
+        "keywords": [
+          "Spring Boot",
+          "curso gamificado",
+          "arquitectura hexagonal",
+          "TDD",
+          "Pokémon",
+          "hotelería",
+          "ecommerce",
+          "comunidad de desarrolladores",
+          "Java",
+          "backend",
+          "buenas prácticas",
+          "desarrollo de software"
+        ],
+        "url": "https://lgzarturo.dev/springboot-course"
+      }
+    </script>
+  </head>
+  <link is:raw rel="preconnect" href="https://fonts.googleapis.com" />
+  <link is:raw rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    is:raw
+    href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+    rel="stylesheet"
+  />
+  <Header title="Arturo López" />
+  <style is:inline>
+    /* Fondo animado pixel art */
+    body,
+    .pixel-bg {
+      background: #181c1f
+        url("https://www.transparenttextures.com/patterns/pixel-weave.png");
+      min-height: 100vh;
+      position: relative;
+      z-index: 0;
+    }
+    .pixel-bg::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(
+          135deg,
+          #2aff6a 0 2px,
+          transparent 2px 20px
+        ),
+        repeating-linear-gradient(45deg, #00e0ff 0 2px, transparent 2px 20px);
+      opacity: 0.08;
+      z-index: 1;
+      pointer-events: none;
+      animation: pixel-move 20s linear infinite;
+    }
+    @keyframes pixel-move {
+      0% {
+        background-position:
+          0 0,
+          0 0;
+      }
+      100% {
+        background-position:
+          200px 200px,
+          -200px -200px;
+      }
+    }
+    /* Animaciones sutiles */
+    @keyframes pulse-slow {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+    }
+    .pulse-slow {
+      animation: pulse-slow 4s ease-in-out infinite;
+    }
+    /* Estilo tipo videojuego pixel art */
+    .pixel-font {
+      font-family: "Pixelify Sans", cursive;
+      font-optical-sizing: auto;
+      font-style: normal;
+      letter-spacing: 1px;
+      text-shadow:
+        2px 2px 0 #222,
+        4px 4px 0 #2aff6a;
+    }
+    /* Bordes pixelados */
+    .pixel-border {
+      border: 4px solid #2aff6a;
+      box-shadow:
+        0 0 0 4px #222,
+        0 0 16px 2px #2aff6a44;
+      border-radius: 0.5rem;
+    }
+    /* Botón retro */
+    .btn-retro {
+      font-family: "Pixelify Sans", cursive;
+      background: linear-gradient(90deg, #2aff6a 0%, #00e0ff 100%);
+      color: #181c1f;
+      border: 3px solid #fff;
+      box-shadow:
+        0 0 0 3px #2aff6a,
+        0 0 12px 2px #00e0ff99;
+      text-shadow: 1px 1px 0 #fff;
+      transition:
+        background 0.2s,
+        color 0.2s,
+        box-shadow 0.2s;
+    }
+    .btn-retro:hover {
+      background: #181c1f;
+      color: #2aff6a;
+      box-shadow:
+        0 0 0 3px #00e0ff,
+        0 0 24px 4px #2aff6a99;
+    }
+    /* Secciones como "pantallas" de videojuego */
+    .level-section {
+      background: rgba(24, 28, 31, 0.95);
+      border: 4px solid #00e0ff;
+      box-shadow:
+        0 0 0 4px #2aff6a,
+        0 0 24px 2px #00e0ff44;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    /* Títulos con efecto glow */
+    .glow-h1 {
+      color: #fff;
+      text-shadow:
+        0 0 8px #00e0ff,
+        0 0 16px #2aff6a;
+    }
+    .glow-title {
+      color: #2aff6a;
+      text-shadow:
+        0 0 8px #00e0ff,
+        0 0 16px #2aff6a;
+    }
+    /* Responsive fix para pixel font */
+    @media (max-width: 600px) {
+      .pixel-font {
+        font-size: 1.1rem !important;
+      }
+    }
 
-        ul.cherry-list {
-            list-style-image: url('/cherries-icon.svg');
-            list-style-position: inside;
-            list-style-type: none; /* evita el disco si usas imagen */
-        }
+    ul.cherry-list {
+      list-style-image: url("/cherries-icon.svg");
+      list-style-position: inside;
+      list-style-type: none; /* evita el disco si usas imagen */
+    }
 
-        ul.cherry-list li {
-            display: flex;
-            align-items: center;
-            gap: 0.5em; /* espacio entre ícono y texto */
-        }
+    ul.cherry-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.5em; /* espacio entre ícono y texto */
+    }
 
-        ul.cherry-list {
-            list-style: none; /* desactiva el ícono automático */
-        }
+    ul.cherry-list {
+      list-style: none; /* desactiva el ícono automático */
+    }
 
-        ul.cherry-list li::before {
-            content: '';
-            display: inline-block;
-            width: 1.5em;
-            height: 1.5em;
-            background-image: url('/cherries-icon.svg');
-            background-size: contain;
-            background-repeat: no-repeat;
-            margin-right: 0.5em;
-        }
+    ul.cherry-list li::before {
+      content: "";
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      background-image: url("/cherries-icon.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-right: 0.5em;
+    }
 
-        .text-outline {
-            -webkit-text-stroke: 1px #2b2a2a;
-        }
-    </style>
-    <div class="min-h-screen flex flex-col pixel-bg md:p-20" itemscope itemtype="https://schema.org/Course">
-        <!-- Header -->
-        <header
-            class="shadow-lg flex flex-col items-center mt-20 pixel-border bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 relative z-10 p-20 shadow-xl/30"
-            itemprop="provider" itemscope itemtype="https://schema.org/Person"
+    .text-outline {
+      -webkit-text-stroke: 1px #2b2a2a;
+    }
+  </style>
+  <div
+    class="min-h-screen flex flex-col pixel-bg md:p-20"
+    itemscope
+    itemtype="https://schema.org/Course"
+  >
+    <!-- Header -->
+    <header
+      class="shadow-lg flex flex-col items-center mt-20 pixel-border bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 relative z-10 p-20 shadow-xl/30"
+      itemprop="provider"
+      itemscope
+      itemtype="https://schema.org/Person"
+    >
+      <h1
+        class="text-3xl sm:text-4xl md:text-6xl font-extrabold drop-shadow-lg animate-pulse glow-h1 text-center text-shadow-2xs text-shadow-sky-300 font-sans md:pixel-font mb-8 text-outline"
+        itemprop="name"
+      >
+        Curso Gamificado de <span class="text-green-300">Spring Boot</span> con <span
+          class="text-blue-300">Arquitectura Hexagonal</span
+        > y <span class="text-yellow-300">TDD</span>
+      </h1>
+      <p
+        class="text-lg md:text-2xl max-w-4xl text-center drop-shadow-md text-white"
+        itemprop="description"
+      >
+        <strong
+          >Aprende <span class="text-green-300">Spring Boot</span>, <span
+            class="text-blue-300">buenas prácticas</span
+          > y <span class="text-yellow-300">arquitectura hexagonal</span> con <span
+            class="text-pink-400">TDD</span
+          ></strong
+        > en una experiencia única y divertida. Vive una <strong
+          >historia gamificada inspirada en <span class="text-pink-300"
+            >Pokémon</span
+          ></strong
+        >, resolviendo retos reales de <strong>hotelería</strong> y <strong
+          >ecommerce</strong
+        >. ¡Conviértete en un <span class="text-green-400"
+          >maestro desarrollador</span
+        > y únete a la <span class="text-blue-400">comunidad</span>!
+      </p>
+      <nav aria-label="Navegación de secciones">
+        <ul class="flex flex-wrap justify-center gap-4 mt-4">
+          <li>
+            <a
+              href="#que-es"
+              class="underline text-green-300 hover:text-green-400">¿Qué es?</a>
+          </li>
+          <li>
+            <a
+              href="#gamificacion"
+              class="underline text-pink-300 hover:text-pink-400"
+              >Gamificación</a>
+          </li>
+          <li>
+            <a
+              href="#ejemplos"
+              class="underline text-blue-300 hover:text-blue-400">Ejemplos</a>
+          </li>
+          <li>
+            <a
+              href="#fundamento"
+              class="underline text-purple-300 hover:text-purple-400"
+              >Fundamento</a>
+          </li>
+          <li>
+            <a
+              href="#beneficios"
+              class="underline text-yellow-300 hover:text-yellow-400"
+              >Beneficios</a>
+          </li>
+          <li>
+            <a
+              href="#participa"
+              class="underline text-red-300 hover:text-red-400">Participa</a>
+          </li>
+        </ul>
+      </nav>
+      <a href="#participa" class="mt-6 px-8 py-3 btn-retro"
+        >¡Únete y participa en el curso de Spring Boot!</a
+      >
+      <meta
+        itemprop="image"
+        content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
+      />
+      <meta itemprop="url" content="https://lgzarturo.dev/springboot-course" />
+      <span itemprop="name" class="hidden">Arturo López Gómez</span>
+      <meta itemprop="url" content="https://lgzarturo.dev" />
+    </header>
+
+    <main class="flex-grow container mx-auto px-6 py-12 space-y-20 z-10">
+      <!-- ¿Qué es este curso? -->
+      <section
+        id="que-es"
+        class="max-w-5xl mx-auto level-section p-8"
+        aria-labelledby="que-es-titulo"
+      >
+        <h2
+          id="que-es-titulo"
+          class="text-3xl font-bold mb-4 border-b-4 border-yellow-400 inline-block pixel-font glow-title"
         >
-            <h1
-                class="text-3xl sm:text-4xl md:text-6xl font-extrabold drop-shadow-lg animate-pulse glow-h1 text-center text-shadow-2xs text-shadow-sky-300 font-sans md:pixel-font mb-8 text-outline"
-                itemprop="name"
+          ¿Qué es este <span class="text-green-300"
+            >curso gamificado de Spring Boot</span
+          >?
+        </h2>
+        <p class="text-lg leading-relaxed text-white">
+          Este <strong>curso online de Spring Boot</strong> es una experiencia educativa
+          innovadora que combina el <strong>aprendizaje técnico</strong> con una
+          <strong>narrativa gamificada</strong> inspirada en <span
+            class="text-pink-300">Pokémon</span
+          >. Aprenderás <strong>arquitectura hexagonal</strong>, <strong
+            >TDD</strong
+          > y <strong>buenas prácticas de desarrollo</strong> resolviendo retos reales
+          de <strong>hotelería</strong> y <strong>ecommerce</strong>. ¡Ideal
+          para desarrolladores que buscan dominar <span class="text-green-300"
+            >Java backend</span
+          > y destacar en la industria!
+        </p>
+      </section>
+
+      <!-- ¿Por qué gamificar con Pokémon? -->
+      <section
+        id="gamificacion"
+        class="max-w-5xl mx-auto level-section p-8"
+        aria-labelledby="gamificacion-titulo"
+      >
+        <h2
+          id="gamificacion-titulo"
+          class="text-3xl font-bold mb-4 border-b-4 border-red-500 inline-block pixel-font glow-title"
+        >
+          ¿Por qué <span class="text-pink-300">gamificar</span> el aprendizaje de
+          Spring Boot?
+        </h2>
+        <p class="text-lg leading-relaxed mb-4 text-white">
+          <strong>Pokémon</strong> es una franquicia que ha marcado generaciones
+          por su capacidad de contar historias, incentivar la exploración y el <strong
+            >aprendizaje progresivo</strong
+          > a través de retos y recompensas. Al gamificar el <strong
+            >curso de Spring Boot</strong
+          > con esta temática, buscamos:
+        </p>
+        <ul class="cherry-list space-y-2 text-lg text-green-300">
+          <li>
+            Crear una experiencia inmersiva que motive a los desarrolladores a
+            avanzar y superar desafíos.
+          </li>
+          <li>
+            Fomentar la curiosidad y el deseo de "capturar" nuevos conocimientos
+            y habilidades.
+          </li>
+          <li>
+            Utilizar una narrativa conocida para facilitar la conexión emocional
+            y la retención del aprendizaje.
+          </li>
+          <li>
+            Incentivar la colaboración y competencia sana dentro de la
+            comunidad.
+          </li>
+        </ul>
+        <p
+          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+        >
+          "Aprender es una aventura, y cada línea de código es un paso hacia
+          convertirte en un maestro desarrollador."
+        </p>
+      </section>
+
+      <!-- ¿Por qué ejemplos de hotelería y ecommerce? -->
+      <section
+        id="ejemplos"
+        class="max-w-5xl mx-auto level-section p-8"
+        aria-labelledby="ejemplos-titulo"
+      >
+        <h2
+          id="ejemplos-titulo"
+          class="text-3xl font-bold mb-4 border-b-4 border-green-400 inline-block pixel-font glow-title"
+        >
+          Ejemplos reales de <span class="text-green-300">hotelería</span> y <span
+            class="text-blue-300">ecommerce</span
+          >
+        </h2>
+        <p class="text-lg leading-relaxed mb-4 text-white">
+          Por mi experiencia elegí los sectores de <strong>hotelería</strong> y <strong
+            >ecommerce</strong
+          > porque son dominios reales, con <strong
+            >casos de uso complejos</strong
+          > y variados que permiten aplicar <strong>conceptos técnicos</strong> de
+          forma práctica y relevante. Así, aprenderás a resolver problemas reales
+          con <span class="text-green-300">Spring Boot</span> y <span
+            class="text-yellow-300">arquitectura hexagonal</span
+          >.
+        </p>
+        <ul class="cherry-list space-y-2 text-lg text-green-300">
+          <li>
+            La hotelería representa un negocio con múltiples actores, reservas,
+            disponibilidad y reglas de negocio que desafían la arquitectura y
+            diseño.
+          </li>
+          <li>
+            El ecommerce es un dominio dinámico con flujos de compra,
+            inventarios, pagos y logística, ideal para practicar integración y
+            pruebas.
+          </li>
+          <li>
+            Ambos ejemplos permiten mostrar cómo aplicar patrones, buenas
+            prácticas y arquitectura hexagonal en contextos reales.
+          </li>
+          <li>
+            Facilitan la creación de una narrativa coherente y atractiva para la
+            gamificación.
+          </li>
+        </ul>
+        <p
+          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+        >
+          "La mejor forma de aprender es construyendo soluciones que reflejen el
+          mundo real."
+        </p>
+      </section>
+
+      <!-- Fundamento pedagógico y narrativa gamificada -->
+      <section
+        id="fundamento"
+        class="max-w-5xl mx-auto level-section p-8"
+        aria-labelledby="fundamento-titulo"
+      >
+        <h2
+          id="fundamento-titulo"
+          class="text-3xl font-bold mb-4 border-b-4 border-purple-500 inline-block pixel-font glow-title"
+        >
+          Fundamento pedagógico y <span class="text-pink-300"
+            >narrativa gamificada</span
+          >
+        </h2>
+        <p class="text-lg leading-relaxed mb-4 text-white">
+          La <strong>gamificación</strong> no es solo un recurso lúdico, sino una
+          <strong>estrategia pedagógica</strong> poderosa que:
+        </p>
+        <ul class="cherry-list space-y-2 text-lg text-green-300">
+          <li>
+            Utiliza la narrativa para crear un contexto emocional y cognitivo
+            que facilita la comprensión y retención.
+          </li>
+          <li>
+            Incorpora retos, recompensas y progresión para mantener la
+            motivación y el compromiso.
+          </li>
+          <li>
+            Fomenta el aprendizaje activo y la experimentación a través de casos
+            prácticos y feedback inmediato.
+          </li>
+          <li>
+            Combina la historia con buenas prácticas de desarrollo para que el
+            aprendizaje técnico sea significativo y aplicable.
+          </li>
+        </ul>
+        <p
+          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+        >
+          "Contar historias es la forma más antigua y efectiva de enseñar, y la
+          tecnología nos permite reinventar esa tradición."
+        </p>
+      </section>
+
+      <!-- Beneficios para desarrolladores -->
+      <section
+        id="beneficios"
+        class="max-w-5xl mx-auto level-section p-8"
+        aria-labelledby="beneficios-titulo"
+      >
+        <h2
+          id="beneficios-titulo"
+          class="text-3xl font-bold mb-4 border-b-4 border-yellow-300 inline-block pixel-font glow-title"
+        >
+          Beneficios de aprender <span class="text-green-300">Spring Boot</span>
+          con gamificación
+        </h2>
+        <p class="text-lg leading-relaxed mb-4 text-white">
+          Al participar en este <strong>curso gamificado de Spring Boot</strong
+          >, los desarrolladores obtendrán:
+        </p>
+        <ul class="cherry-list space-y-2 text-lg text-green-300">
+          <li>
+            Dominio práctico de Spring Boot 3.x con arquitectura hexagonal y
+            TDD.
+          </li>
+          <li>
+            Experiencia en diseño de software limpio, mantenible y escalable.
+          </li>
+          <li>
+            Comprensión profunda de patrones de diseño y buenas prácticas.
+          </li>
+          <li>
+            Participación en una comunidad activa que comparte conocimiento y
+            apoyo.
+          </li>
+          <li>
+            Motivación constante gracias a la narrativa gamificada y retos
+            progresivos.
+          </li>
+        </ul>
+        <p
+          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+        >
+          ¡Prepárate para transformar tu forma de aprender y desarrollar
+          software!
+        </p>
+      </section>
+
+      <!-- Calendario de liberaciones de milestones -->
+      <section
+        id="calendario-milestones"
+        class="max-w-5xl mx-auto level-section p-8 mb-12"
+        aria-labelledby="calendario-titulo"
+      >
+        <h2
+          id="calendario-titulo"
+          class="text-3xl font-bold mb-6 border-b-4 border-blue-400 inline-block pixel-font glow-title"
+        >
+          📅 Actualizaciones solo fines de semana
+        </h2>
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full text-sm md:text-base text-left border-collapse rounded-lg overflow-hidden shadow-lg"
+          >
+            <thead
+              class="bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 text-white"
             >
-                Curso Gamificado de <span class="text-green-300">Spring Boot</span> con <span class="text-blue-300">Arquitectura Hexagonal</span> y <span class="text-yellow-300">TDD</span>
-            </h1>
-            <p
-                class="text-lg md:text-2xl max-w-4xl text-center drop-shadow-md text-white"
-                itemprop="description"
+              <tr>
+                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
+                  >OK</th
+                >
+                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
+                  >Semana</th
+                >
+                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
+                  >Fechas (Sábado y Domingo)</th
+                >
+                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
+                  >Actividades principales (según milestone)</th
+                >
+                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
+                  >Fecha de liberación (domingo)</th
+                >
+                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
+                  >Versión Milestone</th
+                >
+              </tr>
+            </thead>
+            <tbody class="bg-[#181c1f] text-white">
+              <tr
+                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+              >
+                <td class="px-3 py-2 text-center align-middle"
+                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
+                  ></td
+                >
+                <td class="px-3 py-2">1</td>
+                <td class="px-3 py-2">18-19 Oct 2025</td>
+                <td class="px-3 py-2">Milestone 0: Inicio y versión base</td>
+                <td class="px-3 py-2">19 Oct 2025</td>
+                <td class="px-3 py-2">0.0.1</td>
+              </tr>
+              <tr
+                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+              >
+                <td class="px-3 py-2 text-center align-middle"
+                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
+                  ></td
+                >
+                <td class="px-3 py-2">2</td>
+                <td class="px-3 py-2">25-26 Oct 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 1: Fundamentos de persistencia y configuración
+                  básica (inicio)</td
+                >
+                <td class="px-3 py-2">26 Oct 2025</td>
+                <td class="px-3 py-2">0.0.2</td>
+              </tr>
+              <tr
+                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+              >
+                <td class="px-3 py-2 text-center align-middle"
+                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
+                  ></td
+                >
+                <td class="px-3 py-2">3</td>
+                <td class="px-3 py-2">1-2 Nov 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 1: Continuación y cierre (persistencia, perfiles,
+                  Gradle, Sentry, casos de uso)</td
+                >
+                <td class="px-3 py-2">2 Nov 2025</td>
+                <td class="px-3 py-2">0.0.2</td>
+              </tr>
+              <tr
+                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+              >
+                <td class="px-3 py-2 text-center align-middle"
+                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
+                  ></td
+                >
+                <td class="px-3 py-2">4</td>
+                <td class="px-3 py-2">8-9 Nov 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 2: Validación con Jakarta Validation, manejo global
+                  de errores</td
+                >
+                <td class="px-3 py-2">9 Nov 2025</td>
+                <td class="px-3 py-2">0.0.3</td>
+              </tr>
+              <tr
+                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+              >
+                <td class="px-3 py-2 text-center align-middle"
+                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
+                  ></td
+                >
+                <td class="px-3 py-2">5</td>
+                <td class="px-3 py-2">15-16 Nov 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 2: Seguridad básica con Spring Security y JWT,
+                  roles, protección endpoints</td
+                >
+                <td class="px-3 py-2">16 Nov 2025</td>
+                <td class="px-3 py-2">0.0.3</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">6</td>
+                <td class="px-3 py-2">22-23 Nov 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 3: Pruebas unitarias e integración, Testcontainers</td
+                >
+                <td class="px-3 py-2">23 Nov 2025</td>
+                <td class="px-3 py-2">0.0.4</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">7</td>
+                <td class="px-3 py-2">29-30 Nov 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 3: Documentación API con OpenAPI/Swagger,
+                  integración Sentry en tests</td
+                >
+                <td class="px-3 py-2">30 Nov 2025</td>
+                <td class="px-3 py-2">0.0.4</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">8</td>
+                <td class="px-3 py-2">6-7 Dec 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 4: Configuración Spring Boot Actuator, empaquetado
+                  para producción</td
+                >
+                <td class="px-3 py-2">7 Dec 2025</td>
+                <td class="px-3 py-2">0.0.5</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">9</td>
+                <td class="px-3 py-2">13-14 Dec 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 4: Seguridad reforzada (CORS, rate limiting,
+                  cabeceras), monitoreo avanzado Sentry</td
+                >
+                <td class="px-3 py-2">14 Dec 2025</td>
+                <td class="px-3 py-2">0.0.5</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">10</td>
+                <td class="px-3 py-2">20-21 Dec 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 5: Eventos de dominio, async, mensajería
+                  (RabbitMQ/Kafka), caching</td
+                >
+                <td class="px-3 py-2">21 Dec 2025</td>
+                <td class="px-3 py-2">0.0.6</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">11</td>
+                <td class="px-3 py-2">27-28 Dec 2025</td>
+                <td class="px-3 py-2"
+                  >Milestone 5: Optimización Gradle, pruebas integración
+                  mensajería y caching, seguridad avanzada JWT</td
+                >
+                <td class="px-3 py-2">28 Dec 2025</td>
+                <td class="px-3 py-2">0.0.6</td>
+              </tr>
+              <tr class="border-b border-blue-800/40">
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">12</td>
+                <td class="px-3 py-2">3-4 Jan 2026</td>
+                <td class="px-3 py-2"
+                  >Milestone 6: Integración final, gestión completa de módulos,
+                  pruebas y documentación</td
+                >
+                <td class="px-3 py-2">4 Jan 2026</td>
+                <td class="px-3 py-2">1.0.0</td>
+              </tr>
+              <tr>
+                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="px-3 py-2">13</td>
+                <td class="px-3 py-2">10-11 Jan 2026</td>
+                <td class="px-3 py-2"
+                  >Milestone 6: Pipeline CI/CD, cobertura &gt;85%,
+                  versionamiento semántico, release final</td
+                >
+                <td class="px-3 py-2">11 Jan 2026</td>
+                <td class="px-3 py-2">1.0.0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-8 text-base md:text-lg text-green-200">
+          <h3 class="font-bold text-lg md:text-xl mb-2 text-green-300">
+            Notas:
+          </h3>
+          <ul class="list-disc pl-6 space-y-1">
+            <li>
+              La semana 3 ya fue completada con la <a
+                href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.2"
+                target="_blank"
+                rel="noopener"
+                class="underline text-green-300 hover:text-green-400"
+                >versión 0.0.2</a
+              >.
+            </li>
+            <li>El calendario continúa con trabajo solo sábados y domingos.</li>
+            <li>
+              Las fechas de liberación son los domingos al final de cada fin de
+              semana de trabajo.
+            </li>
+            <li>
+              Se mantiene la distribución equilibrada para un avance constante.
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-10">
+          <div
+            class="rounded-lg border-4 border-yellow-400 bg-yellow-100/90 px-6 py-4 shadow-xl flex flex-col items-center gap-2 animate-pulse-slow"
+          >
+            <span
+              class="font-bold text-lg text-yellow-700 flex items-center gap-2"
             >
-                <strong>Aprende <span class="text-green-300">Spring Boot</span>, <span class="text-blue-300">buenas prácticas</span> y <span class="text-yellow-300">arquitectura hexagonal</span> con <span class="text-pink-400">TDD</span></strong> en una experiencia única y divertida. Vive una <strong>historia gamificada inspirada en <span class="text-pink-300">Pokémon</span></strong>, resolviendo retos reales de <strong>hotelería</strong> y <strong>ecommerce</strong>. ¡Conviértete en un <span class="text-green-400">maestro desarrollador</span> y únete a la <span class="text-blue-400">comunidad</span>!
+              ⚠️ Aviso importante
+            </span>
+            <p class="text-yellow-900 text-base md:text-lg text-center">
+              Todas las <strong
+                >actualizaciones de tareas, cambios de calendario, retrasos o
+                notificaciones importantes</strong
+              > se publicarán en el proyecto de GitHub <a
+                href="https://github.com/users/lgzarturo/projects/12"
+                target="_blank"
+                rel="noopener"
+                class="underline font-bold text-blue-700 hover:text-blue-900"
+                >springboot-course (Project Board)</a
+              >.<br />
+              <span class="font-semibold"
+                >¡Mantente al tanto del repositorio para no perderte ninguna
+                novedad!</span
+              >
             </p>
-            <nav aria-label="Navegación de secciones">
-                <ul class="flex flex-wrap justify-center gap-4 mt-4">
-                    <li><a href="#que-es" class="underline text-green-300 hover:text-green-400">¿Qué es?</a></li>
-                    <li><a href="#gamificacion" class="underline text-pink-300 hover:text-pink-400">Gamificación</a></li>
-                    <li><a href="#ejemplos" class="underline text-blue-300 hover:text-blue-400">Ejemplos</a></li>
-                    <li><a href="#fundamento" class="underline text-purple-300 hover:text-purple-400">Fundamento</a></li>
-                    <li><a href="#beneficios" class="underline text-yellow-300 hover:text-yellow-400">Beneficios</a></li>
-                    <li><a href="#participa" class="underline text-red-300 hover:text-red-400">Participa</a></li>
-                </ul>
-            </nav>
-            <a href="#participa" class="mt-6 px-8 py-3 btn-retro"
-                >¡Únete y participa en el curso de Spring Boot!</a
-            >
-            <meta itemprop="image" content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp" />
-            <meta itemprop="url" content="https://lgzarturo.dev/springboot-course" />
-            <span itemprop="name" class="hidden">Arturo López Gómez</span>
-            <meta itemprop="url" content="https://lgzarturo.dev" />
-        </header>
-
-        <main class="flex-grow container mx-auto px-6 py-12 space-y-20 z-10">
-            <!-- ¿Qué es este curso? -->
-            <section id="que-es" class="max-w-5xl mx-auto level-section p-8" aria-labelledby="que-es-titulo">
-                <h2
-                    id="que-es-titulo"
-                    class="text-3xl font-bold mb-4 border-b-4 border-yellow-400 inline-block pixel-font glow-title"
-                >
-                    ¿Qué es este <span class="text-green-300">curso gamificado de Spring Boot</span>?
-                </h2>
-                <p class="text-lg leading-relaxed text-white">
-                    Este <strong>curso online de Spring Boot</strong> es una experiencia educativa innovadora que combina el <strong>aprendizaje técnico</strong> con una <strong>narrativa gamificada</strong> inspirada en <span class="text-pink-300">Pokémon</span>. Aprenderás <strong>arquitectura hexagonal</strong>, <strong>TDD</strong> y <strong>buenas prácticas de desarrollo</strong> resolviendo retos reales de <strong>hotelería</strong> y <strong>ecommerce</strong>. ¡Ideal para desarrolladores que buscan dominar <span class="text-green-300">Java backend</span> y destacar en la industria!
-                </p>
-            </section>
-
-            <!-- ¿Por qué gamificar con Pokémon? -->
-            <section
-                id="gamificacion"
-                class="max-w-5xl mx-auto level-section p-8"
-                aria-labelledby="gamificacion-titulo"
-            >
-                <h2
-                    id="gamificacion-titulo"
-                    class="text-3xl font-bold mb-4 border-b-4 border-red-500 inline-block pixel-font glow-title"
-                >
-                    ¿Por qué <span class="text-pink-300">gamificar</span> el aprendizaje de Spring Boot?
-                </h2>
-                <p class="text-lg leading-relaxed mb-4 text-white">
-                    <strong>Pokémon</strong> es una franquicia que ha marcado generaciones por su capacidad de contar historias, incentivar la exploración y el <strong>aprendizaje progresivo</strong> a través de retos y recompensas. Al gamificar el <strong>curso de Spring Boot</strong> con esta temática, buscamos:
-                </p>
-                <ul
-                    class="cherry-list space-y-2 text-lg text-green-300"
-                >
-                    <li>
-                        Crear una experiencia inmersiva que motive a los
-                        desarrolladores a avanzar y superar desafíos.
-                    </li>
-                    <li>
-                        Fomentar la curiosidad y el deseo de "capturar" nuevos
-                        conocimientos y habilidades.
-                    </li>
-                    <li>
-                        Utilizar una narrativa conocida para facilitar la
-                        conexión emocional y la retención del aprendizaje.
-                    </li>
-                    <li>
-                        Incentivar la colaboración y competencia sana dentro de
-                        la comunidad.
-                    </li>
-                </ul>
-                <p class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg">
-                    "Aprender es una aventura, y cada línea de código es un paso
-                    hacia convertirte en un maestro desarrollador."
-                </p>
-            </section>
-
-            <!-- ¿Por qué ejemplos de hotelería y ecommerce? -->
-            <section id="ejemplos" class="max-w-5xl mx-auto level-section p-8" aria-labelledby="ejemplos-titulo">
-                <h2
-                    id="ejemplos-titulo"
-                    class="text-3xl font-bold mb-4 border-b-4 border-green-400 inline-block pixel-font glow-title"
-                >
-                    Ejemplos reales de <span class="text-green-300">hotelería</span> y <span class="text-blue-300">ecommerce</span>
-                </h2>
-                <p class="text-lg leading-relaxed mb-4 text-white">
-                    Por mi experiencia elegí los sectores de <strong>hotelería</strong> y <strong>ecommerce</strong> porque son dominios reales, con <strong>casos de uso complejos</strong> y variados que permiten aplicar <strong>conceptos técnicos</strong> de forma práctica y relevante. Así, aprenderás a resolver problemas reales con <span class="text-green-300">Spring Boot</span> y <span class="text-yellow-300">arquitectura hexagonal</span>.
-                </p>
-                <ul
-                    class="cherry-list space-y-2 text-lg text-green-300"
-                >
-                    <li>
-                        La hotelería representa un negocio con múltiples
-                        actores, reservas, disponibilidad y reglas de negocio
-                        que desafían la arquitectura y diseño.
-                    </li>
-                    <li>
-                        El ecommerce es un dominio dinámico con flujos de
-                        compra, inventarios, pagos y logística, ideal para
-                        practicar integración y pruebas.
-                    </li>
-                    <li>
-                        Ambos ejemplos permiten mostrar cómo aplicar patrones,
-                        buenas prácticas y arquitectura hexagonal en contextos
-                        reales.
-                    </li>
-                    <li>
-                        Facilitan la creación de una narrativa coherente y
-                        atractiva para la gamificación.
-                    </li>
-                </ul>
-                <p class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg">
-                    "La mejor forma de aprender es construyendo soluciones que
-                    reflejen el mundo real."
-                </p>
-            </section>
-
-            <!-- Fundamento pedagógico y narrativa gamificada -->
-            <section
-                id="fundamento"
-                class="max-w-5xl mx-auto level-section p-8"
-                aria-labelledby="fundamento-titulo"
-            >
-                <h2
-                    id="fundamento-titulo"
-                    class="text-3xl font-bold mb-4 border-b-4 border-purple-500 inline-block pixel-font glow-title"
-                >
-                    Fundamento pedagógico y <span class="text-pink-300">narrativa gamificada</span>
-                </h2>
-                <p class="text-lg leading-relaxed mb-4 text-white">
-                    La <strong>gamificación</strong> no es solo un recurso lúdico, sino una <strong>estrategia pedagógica</strong> poderosa que:
-                </p>
-                <ul
-                    class="cherry-list space-y-2 text-lg text-green-300"
-                >
-                    <li>
-                        Utiliza la narrativa para crear un contexto emocional y
-                        cognitivo que facilita la comprensión y retención.
-                    </li>
-                    <li>
-                        Incorpora retos, recompensas y progresión para mantener
-                        la motivación y el compromiso.
-                    </li>
-                    <li>
-                        Fomenta el aprendizaje activo y la experimentación a
-                        través de casos prácticos y feedback inmediato.
-                    </li>
-                    <li>
-                        Combina la historia con buenas prácticas de desarrollo
-                        para que el aprendizaje técnico sea significativo y
-                        aplicable.
-                    </li>
-                </ul>
-                <p class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg">
-                    "Contar historias es la forma más antigua y efectiva de
-                    enseñar, y la tecnología nos permite reinventar esa
-                    tradición."
-                </p>
-            </section>
-
-            <!-- Beneficios para desarrolladores -->
-            <section
-                id="beneficios"
-                class="max-w-5xl mx-auto level-section p-8"
-                aria-labelledby="beneficios-titulo"
-            >
-                <h2
-                    id="beneficios-titulo"
-                    class="text-3xl font-bold mb-4 border-b-4 border-yellow-300 inline-block pixel-font glow-title"
-                >
-                    Beneficios de aprender <span class="text-green-300">Spring Boot</span> con gamificación
-                </h2>
-                <p class="text-lg leading-relaxed mb-4 text-white">
-                    Al participar en este <strong>curso gamificado de Spring Boot</strong>, los desarrolladores obtendrán:
-                </p>
-                <ul
-                    class="cherry-list space-y-2 text-lg text-green-300"
-                >
-                    <li>
-                        Dominio práctico de Spring Boot 3.x con arquitectura
-                        hexagonal y TDD.
-                    </li>
-                    <li>
-                        Experiencia en diseño de software limpio, mantenible y
-                        escalable.
-                    </li>
-                    <li>
-                        Comprensión profunda de patrones de diseño y buenas
-                        prácticas.
-                    </li>
-                    <li>
-                        Participación en una comunidad activa que comparte
-                        conocimiento y apoyo.
-                    </li>
-                    <li>
-                        Motivación constante gracias a la narrativa gamificada y
-                        retos progresivos.
-                    </li>
-                </ul>
-                <p class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg">
-                    ¡Prepárate para transformar tu forma de aprender y
-                    desarrollar software!
-                </p>
-            </section>
-
-            <!-- Calendario de liberaciones de milestones -->
-            <section id="calendario-milestones" class="max-w-5xl mx-auto level-section p-8 mb-12" aria-labelledby="calendario-titulo">
-                <h2 id="calendario-titulo" class="text-3xl font-bold mb-6 border-b-4 border-blue-400 inline-block pixel-font glow-title">
-                    📅 Actualizaciones solo fines de semana
-                </h2>
-                <div class="overflow-x-auto">
-                    <table class="min-w-full text-sm md:text-base text-left border-collapse rounded-lg overflow-hidden shadow-lg">
-                        <thead class="bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 text-white">
-                            <tr>
-                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">OK</th>
-                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Semana</th>
-                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Fechas (Sábado y Domingo)</th>
-                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Actividades principales (según milestone)</th>
-                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Fecha de liberación (domingo)</th>
-                                <th class="px-3 py-2 font-bold border-b-4 border-blue-300">Versión Milestone</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-[#181c1f] text-white">
-                            <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
-                                <td class="px-3 py-2 text-center align-middle"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
-                                <td class="px-3 py-2">1</td>
-                                <td class="px-3 py-2">18-19 Oct 2025</td>
-                                <td class="px-3 py-2">Milestone 0: Inicio y versión base</td>
-                                <td class="px-3 py-2">19 Oct 2025</td>
-                                <td class="px-3 py-2">0.0.1</td>
-                            </tr>
-                            <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
-                                <td class="px-3 py-2 text-center align-middle"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
-                                <td class="px-3 py-2">2</td>
-                                <td class="px-3 py-2">25-26 Oct 2025</td>
-                                <td class="px-3 py-2">Milestone 1: Fundamentos de persistencia y configuración básica (inicio)</td>
-                                <td class="px-3 py-2">26 Oct 2025</td>
-                                <td class="px-3 py-2">0.0.2</td>
-                            </tr>
-                            <tr class="bg-green-900/60 font-semibold border-b-2 border-green-400">
-                                <td class="px-3 py-2 text-center align-middle"><span class="inline-block w-5 h-5 text-green-300">✔️</span></td>
-                                <td class="px-3 py-2">3</td>
-                                <td class="px-3 py-2">1-2 Nov 2025</td>
-                                <td class="px-3 py-2">Milestone 1: Continuación y cierre (persistencia, perfiles, Gradle, Sentry, casos de uso)</td>
-                                <td class="px-3 py-2">2 Nov 2025</td>
-                                <td class="px-3 py-2">0.0.2</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">4</td>
-                                <td class="px-3 py-2">8-9 Nov 2025</td>
-                                <td class="px-3 py-2">Milestone 2: Validación con Jakarta Validation, manejo global de errores</td>
-                                <td class="px-3 py-2">9 Nov 2025</td>
-                                <td class="px-3 py-2">0.0.3</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">5</td>
-                                <td class="px-3 py-2">15-16 Nov 2025</td>
-                                <td class="px-3 py-2">Milestone 2: Seguridad básica con Spring Security y JWT, roles, protección endpoints</td>
-                                <td class="px-3 py-2">16 Nov 2025</td>
-                                <td class="px-3 py-2">0.0.3</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">6</td>
-                                <td class="px-3 py-2">22-23 Nov 2025</td>
-                                <td class="px-3 py-2">Milestone 3: Pruebas unitarias e integración, Testcontainers</td>
-                                <td class="px-3 py-2">23 Nov 2025</td>
-                                <td class="px-3 py-2">0.0.4</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">7</td>
-                                <td class="px-3 py-2">29-30 Nov 2025</td>
-                                <td class="px-3 py-2">Milestone 3: Documentación API con OpenAPI/Swagger, integración Sentry en tests</td>
-                                <td class="px-3 py-2">30 Nov 2025</td>
-                                <td class="px-3 py-2">0.0.4</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">8</td>
-                                <td class="px-3 py-2">6-7 Dec 2025</td>
-                                <td class="px-3 py-2">Milestone 4: Configuración Spring Boot Actuator, empaquetado para producción</td>
-                                <td class="px-3 py-2">7 Dec 2025</td>
-                                <td class="px-3 py-2">0.0.5</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">9</td>
-                                <td class="px-3 py-2">13-14 Dec 2025</td>
-                                <td class="px-3 py-2">Milestone 4: Seguridad reforzada (CORS, rate limiting, cabeceras), monitoreo avanzado Sentry</td>
-                                <td class="px-3 py-2">14 Dec 2025</td>
-                                <td class="px-3 py-2">0.0.5</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">10</td>
-                                <td class="px-3 py-2">20-21 Dec 2025</td>
-                                <td class="px-3 py-2">Milestone 5: Eventos de dominio, async, mensajería (RabbitMQ/Kafka), caching</td>
-                                <td class="px-3 py-2">21 Dec 2025</td>
-                                <td class="px-3 py-2">0.0.6</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">11</td>
-                                <td class="px-3 py-2">27-28 Dec 2025</td>
-                                <td class="px-3 py-2">Milestone 5: Optimización Gradle, pruebas integración mensajería y caching, seguridad avanzada JWT</td>
-                                <td class="px-3 py-2">28 Dec 2025</td>
-                                <td class="px-3 py-2">0.0.6</td>
-                            </tr>
-                            <tr class="border-b border-blue-800/40">
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">12</td>
-                                <td class="px-3 py-2">3-4 Jan 2026</td>
-                                <td class="px-3 py-2">Milestone 6: Integración final, gestión completa de módulos, pruebas y documentación</td>
-                                <td class="px-3 py-2">4 Jan 2026</td>
-                                <td class="px-3 py-2">1.0.0</td>
-                            </tr>
-                            <tr>
-                                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
-                                <td class="px-3 py-2">13</td>
-                                <td class="px-3 py-2">10-11 Jan 2026</td>
-                                <td class="px-3 py-2">Milestone 6: Pipeline CI/CD, cobertura &gt;85%, versionamiento semántico, release final</td>
-                                <td class="px-3 py-2">11 Jan 2026</td>
-                                <td class="px-3 py-2">1.0.0</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <div class="mt-8 text-base md:text-lg text-green-200">
-                    <h3 class="font-bold text-lg md:text-xl mb-2 text-green-300">Notas:</h3>
-                    <ul class="list-disc pl-6 space-y-1">
-                        <li>La semana 3 ya fue completada con la <a href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.2" target="_blank" rel="noopener" class="underline text-green-300 hover:text-green-400">versión 0.0.2</a>.</li>
-                        <li>El calendario continúa con trabajo solo sábados y domingos.</li>
-                        <li>Las fechas de liberación son los domingos al final de cada fin de semana de trabajo.</li>
-                        <li>Se mantiene la distribución equilibrada para un avance constante.</li>
-                    </ul>
-                </div>
-
-                <div class="mt-10">
-                    <div class="rounded-lg border-4 border-yellow-400 bg-yellow-100/90 px-6 py-4 shadow-xl flex flex-col items-center gap-2 animate-pulse-slow">
-                        <span class="font-bold text-lg text-yellow-700 flex items-center gap-2">
-                            ⚠️ Aviso importante
-                        </span>
-                        <p class="text-yellow-900 text-base md:text-lg text-center">
-                            Todas las <strong>actualizaciones de tareas, cambios de calendario, retrasos o notificaciones importantes</strong> se publicarán en el proyecto de GitHub <a href="https://github.com/users/lgzarturo/projects/12" target="_blank" rel="noopener" class="underline font-bold text-blue-700 hover:text-blue-900">springboot-course (Project Board)</a>.<br/>
-                            <span class="font-semibold">¡Mantente al tanto del repositorio para no perderte ninguna novedad!</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
-            <section
-                id="participa"
-                class="max-w-5xl mx-auto level-section p-8 text-center"
-                aria-labelledby="participa-titulo"
-            >
-                <h2
-                    id="participa-titulo"
-                    class="text-3xl font-bold mb-6 border-b-4 border-red-400 inline-block pixel-font glow-title"
-                >
-                    ¿Cómo participar y formar parte de la <span class="text-blue-300">comunidad de desarrolladores</span>?
-                </h2>
-                <p class="text-lg mb-6 max-w-3xl mx-auto text-white">
-                    La <strong>comunidad</strong> es el corazón de este proyecto. Aquí no solo aprendes <span class="text-green-300">Spring Boot</span>, sino que colaboras, compartes y creces con otros <strong>desarrolladores apasionados</strong>.
-                </p>
-                <a
-                    href="https://github.com/lgzarturo/springboot-course"
-                    target="_blank"
-                    rel="noopener"
-                    class="inline-block px-10 py-4 btn-retro animate-pulse-slow"
-                >
-                    Únete a la comunidad de Spring Boot y comienza tu aventura de aprendizaje
-                </a>
-                <p class="mt-6 text-sm text-green-200 max-w-md mx-auto">
-                    Únete a la wiki, descarga el código, realiza un fork,
-                    participa en retos semanales, comparte tus avances y ayuda a
-                    otros. Juntos creamos una nueva forma de aprender
-                    desarrollo.
-                </p>
-            </section>
-        </main>
-    </div>
-    <Footer />
+          </div>
+        </div>
+      </section>
+      <section
+        id="participa"
+        class="max-w-5xl mx-auto level-section p-8 text-center"
+        aria-labelledby="participa-titulo"
+      >
+        <h2
+          id="participa-titulo"
+          class="text-3xl font-bold mb-6 border-b-4 border-red-400 inline-block pixel-font glow-title"
+        >
+          ¿Cómo participar y formar parte de la <span class="text-blue-300"
+            >comunidad de desarrolladores</span
+          >?
+        </h2>
+        <p class="text-lg mb-6 max-w-3xl mx-auto text-white">
+          La <strong>comunidad</strong> es el corazón de este proyecto. Aquí no solo
+          aprendes <span class="text-green-300">Spring Boot</span>, sino que
+          colaboras, compartes y creces con otros <strong
+            >desarrolladores apasionados</strong
+          >.
+        </p>
+        <a
+          href="https://github.com/lgzarturo/springboot-course"
+          target="_blank"
+          rel="noopener"
+          class="inline-block px-10 py-4 btn-retro animate-pulse-slow"
+        >
+          Únete a la comunidad de Spring Boot y comienza tu aventura de
+          aprendizaje
+        </a>
+        <p class="mt-6 text-sm text-green-200 max-w-md mx-auto">
+          Únete a la wiki, descarga el código, realiza un fork, participa en
+          retos semanales, comparte tus avances y ayuda a otros. Juntos creamos
+          una nueva forma de aprender desarrollo.
+        </p>
+      </section>
+    </main>
+  </div>
+  <Footer />
 </BaseLayout>
