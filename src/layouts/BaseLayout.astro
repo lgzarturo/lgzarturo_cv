@@ -4,24 +4,37 @@ import "../styles/global.css";
 
 const GTM_ID = import.meta.env.VITE_GTM_ID;
 
+interface Props {
+    title?: string;
+    description?: string;
+    canonical?: string;
+    ogType?: string;
+}
+const {
+    title = "Arturo López Gómez — Ingeniero Full Stack & Líder Técnico",
+    description = "15 años construyendo productos web escalables con Java, Spring Boot, Python y PHP. Líder técnico con experiencia en arquitectura de microservicios, automatización y estrategia digital.",
+    canonical = "https://lgzarturo.com",
+    ogType = "website"
+} = Astro.props;
 ---
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arturo López Gómez - Líder Técnico | Java & Spring Boot</title>
-    <meta name="description" content="Líder Técnico con 15+ años en Java, Spring Boot, microservicios y Next.js. Especialista en arquitectura web, automatización y formación de equipos. Disponible para nuevos retos.">
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <meta name="keywords" content="Líder Técnico, Java, Spring Boot, Microservicios, Next.js, Arquitectura de Software, DevOps, CI/CD, AWS, Docker, Kubernetes, Python, TailwindCSS, Hugo, Astro, Mandrill, Mailchimp, Git, ATS, Reclutamiento, Turismo, Hotelería">
     <meta name="author" content="Arturo López Gómez">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Arturo López Gómez - Líder Técnico | Java & Spring Boot">
-    <meta property="og:description" content="Perfil profesional de Arturo López Gómez, experto en Java, Spring Boot y proyectos web. Listo para colaborar.">
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:image" content="https://lgzarturo.com/og-image.jpg">
-    <meta property="og:url" content="https://lgzarturo.com">
-    <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Arturo López Gómez - Líder Técnico">
-    <meta name="twitter:description" content="Experto en Java, Spring Boot y arquitectura de microservicios. Disponible para oportunidades.">
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
     <meta name="twitter:image" content="https://lgzarturo.com/twitter-image.jpg">
     <script type="application/ld+json">
     {
@@ -31,7 +44,12 @@ const GTM_ID = import.meta.env.VITE_GTM_ID;
         "jobTitle": "Líder Técnico",
         "description": "Líder Técnico con experiencia en Java, Spring Boot, microservicios y Next.js. Especialista en arquitectura web y formación de equipos.",
         "url": "https://lgzarturo.com",
-        "sameAs": ["https://www.linkedin.com/in/lgzarturo"],
+        "sameAs": [
+            "https://www.linkedin.com/in/lgzarturo",
+            "https://github.com/lgzarturo",
+            "https://x.com/arturolgdev",
+            "https://www.arthurolg.com"
+        ],
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Cancún",
@@ -43,7 +61,7 @@ const GTM_ID = import.meta.env.VITE_GTM_ID;
             "telephone": "+52-998-222-9740",
             "email": "lgzarturo@gmail.com"
         },
-        "knowsAbout": ["Java", "Spring Boot", "Microservicios", "Next.js", "React", "TypeScript", "Python", "Docker", "AWS", "CI/CD", "DevOps", "Arquitectura de Software"]
+        "knowsAbout": ["Java", "Spring Boot", "Kotlin", "Python", "Django", "FastAPI", "PHP", "Laravel", "Microservicios", "Next.js", "React", "Docker", "AWS", "SEO Técnico", "Marketing Digital"]
     }
     </script>    
     <script is:inline>
