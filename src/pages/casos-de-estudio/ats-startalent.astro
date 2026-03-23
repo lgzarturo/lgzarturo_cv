@@ -1,0 +1,250 @@
+---
+// src/pages/casos-de-estudio/ats-startalent.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout
+    title="Caso de Estudio: Rediseño del ATS StarTalent — Arturo López Gómez"
+    description="Cómo rediseñé el sistema ATS de StarChoice convirtiéndolo en un SaaS referente para reclutamiento hotelero, logrando +60% en clientes corporativos."
+    canonical="https://lgzarturo.com/casos-de-estudio/ats-startalent"
+>
+    <Header title="Arturo López" />
+    <main class="max-w-4xl mx-auto px-6 py-24">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-500 flex items-center gap-2">
+            <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
+            <span>/</span>
+            <span class="text-gray-800 font-medium">Caso de Estudio</span>
+        </nav>
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">StarChoice / StarTalent.mx</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">2018 – 2019</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Rediseño SaaS</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                Rediseño del ATS StarTalent: de herramienta interna a SaaS hotelero
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed">
+                Cómo convertí un sistema de reclutamiento legacy en un producto SaaS referente para la industria hotelera, logrando +60% en clientes corporativos en menos de dos años.
+            </p>
+        </div>
+
+        <!-- Métricas de impacto -->
+        <div class="grid grid-cols-3 gap-4 mb-16 p-8 bg-gradient-to-br from-green-600 to-teal-700 rounded-2xl text-white text-center">
+            <div>
+                <span class="block text-4xl font-extrabold">+60%</span>
+                <span class="text-green-100 text-sm mt-1 block">Clientes corporativos</span>
+            </div>
+            <div>
+                <span class="block text-4xl font-extrabold">SaaS</span>
+                <span class="text-green-100 text-sm mt-1 block">De interno a producto</span>
+            </div>
+            <div>
+                <span class="block text-4xl font-extrabold">VPS</span>
+                <span class="text-green-100 text-sm mt-1 block">Infraestructura escalable</span>
+            </div>
+        </div>
+
+        <!-- 01 El Reto -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span class="text-red-600 font-bold text-sm">01</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">El Reto</h2>
+            </div>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p>StarChoice tenía un sistema ATS (Applicant Tracking System) que había nacido como herramienta interna para gestionar candidatos en la industria hotelera. Con el tiempo, la empresa vio la oportunidad de convertirlo en un producto SaaS para vender a otros hoteles. El problema: <strong>el sistema no estaba preparado para ello</strong>.</p>
+                <ul class="space-y-3 ml-4">
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Arquitectura monousuario:</strong> El sistema fue diseñado para un solo cliente. No tenía multitenancy, gestión de permisos por empresa ni separación de datos.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>UI anticuada:</strong> La interfaz desactualizaba la experiencia de reclutadores y candidatos. La tasa de conversión del proceso de aplicación era baja.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Sin integraciones de marketing:</strong> No había visibilidad sobre la fuente de candidatos, el rendimiento de las publicaciones ni el comportamiento en el funnel.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Infraestructura frágil:</strong> Un servidor compartido sin capacidad de escalar horizontalmente ni estrategia de backups confiable.</span>
+                    </li>
+                </ul>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6">
+                    <p class="text-amber-800 font-medium text-sm">El objetivo era claro: rediseñar el sistema desde la arquitectura hasta la UI para poder venderlo a hoteles y cadenas como un producto SaaS profesional.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 La Arquitectura -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span class="text-blue-600 font-bold text-sm">02</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">La Arquitectura y Decisiones Técnicas</h2>
+            </div>
+
+            <p class="text-gray-700 leading-relaxed mb-8">
+                Opté por una <strong>reescritura completa sobre Groovy y Grails</strong>, aprovechando la productividad del framework para iterar rápido, con MySQL como base de datos y VPS en Linode y Digital Ocean para la infraestructura. La clave fue diseñar la nueva plataforma como multi-tenant desde el día uno.
+            </p>
+
+            <!-- Diagrama: Antes -->
+            <div class="mb-8">
+                <h3 class="text-base font-semibold text-gray-600 mb-3 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400 flex-shrink-0"></span>
+                    Sistema Original — Legacy Monousuario
+                </h3>
+                <div class="bg-gray-950 rounded-2xl p-6 font-mono text-sm overflow-x-auto">
+                    <div class="flex flex-col items-center gap-3 min-w-max mx-auto">
+                        <div class="bg-gray-700 text-gray-200 px-5 py-2 rounded-lg text-center text-xs">Usuario Interno</div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <div class="bg-red-950 border border-red-700 rounded-xl px-6 py-4 text-center">
+                            <div class="text-red-300 font-bold text-sm mb-2">ATS Monolítico</div>
+                            <div class="text-red-500 text-xs">PHP / Legacy — Sin multitenancy</div>
+                        </div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <div class="bg-gray-700 text-gray-200 px-5 py-2 rounded-lg text-center text-xs">MySQL — Servidor Único</div>
+                        <div class="text-gray-600 text-xs italic mt-2">Sin integraciones · Sin métricas · Sin escalabilidad</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagrama: Después -->
+            <div class="mb-8">
+                <h3 class="text-base font-semibold text-gray-600 mb-3 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-green-400 flex-shrink-0"></span>
+                    Nueva Plataforma SaaS — Multi-tenant
+                </h3>
+                <div class="bg-gray-950 rounded-2xl p-6 font-mono text-sm overflow-x-auto">
+                    <div class="flex flex-col items-center gap-3 min-w-max mx-auto">
+                        <!-- Usuarios -->
+                        <div class="flex gap-4">
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center text-xs">Hotel A</div>
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center text-xs">Hotel B</div>
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center text-xs">Cadena C</div>
+                        </div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <!-- App principal -->
+                        <div class="bg-green-950 border border-green-700 rounded-xl px-8 py-4 text-center">
+                            <div class="text-green-300 font-bold text-sm mb-2">ATS SaaS — Grails + Groovy</div>
+                            <div class="flex justify-center gap-3 text-xs text-green-500">
+                                <span class="bg-green-900/50 border border-green-800 px-2 py-1 rounded">Multi-tenant</span>
+                                <span class="bg-green-900/50 border border-green-800 px-2 py-1 rounded">RBAC</span>
+                                <span class="bg-green-900/50 border border-green-800 px-2 py-1 rounded">Funnel Analytics</span>
+                            </div>
+                        </div>
+                        <!-- Fila de dependencias -->
+                        <div class="flex gap-8">
+                            <div class="flex flex-col items-center gap-1">
+                                <div class="w-px h-5 bg-gray-600"></div>
+                                <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs text-center">MySQL<br/><span class="text-gray-500">Linode / DO</span></div>
+                            </div>
+                            <div class="flex flex-col items-center gap-1">
+                                <div class="w-px h-5 bg-gray-600"></div>
+                                <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs text-center">Google Analytics<br/><span class="text-gray-500">Tag Manager</span></div>
+                            </div>
+                            <div class="flex flex-col items-center gap-1">
+                                <div class="w-px h-5 bg-gray-600"></div>
+                                <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs text-center">Mailchimp<br/><span class="text-gray-500">AdWords</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decisiones técnicas -->
+            <div class="space-y-6">
+                <div class="bg-green-50 border-l-4 border-green-500 rounded-r-xl p-5">
+                    <h4 class="font-bold text-gray-900 mb-2">¿Por qué Groovy y Grails?</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed">Grails nos permitió movernos muy rápido en el rediseño gracias a su convención sobre configuración y la madurez del ecosistema JVM. La curva de aprendizaje desde Java era mínima para el equipo existente, y la productividad para construir CRUDs y relaciones complejas era difícil de igualar.</p>
+                </div>
+                <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-5">
+                    <h4 class="font-bold text-gray-900 mb-2">Multi-tenancy desde el diseño</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed">A diferencia del sistema anterior, diseñé la nueva base de datos con tenant_id en todas las tablas críticas y un sistema RBAC (Role-Based Access Control) que permitía a cada hotel configurar sus propios flujos de reclutamiento, etapas y plantillas de comunicación.</p>
+                </div>
+                <div class="bg-purple-50 border-l-4 border-purple-500 rounded-r-xl p-5">
+                    <h4 class="font-bold text-gray-900 mb-2">Integraciones de marketing digital</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed">Integré Google Analytics con Tag Manager para rastrear el funnel de candidatos, Mailchimp para las secuencias de comunicación automatizadas con candidatos, y AdWords para medir el costo por aplicación de cada campaña. Esto fue un diferenciador clave frente a la competencia.</p>
+                </div>
+                <div class="bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-5">
+                    <h4 class="font-bold text-gray-900 mb-2">Infraestructura VPS con Linode y Digital Ocean</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed">Elegí VPS sobre hosting compartido para tener control total del entorno: configuración de Nginx, backups automáticos a S3, deploys mediante scripts versionados y separación de ambientes staging/producción. Una decisión simple que eliminó una clase entera de problemas de disponibilidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 El Impacto -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span class="text-green-600 font-bold text-sm">03</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">El Impacto</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-green-700 mb-2">+60%</div>
+                    <div class="font-semibold text-gray-900 mb-2">Clientes corporativos</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">El rediseño posicionó a StarTalent como referente en soluciones de reclutamiento para la industria hotelera, atrayendo hoteles y cadenas de mayor tamaño.</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-blue-700 mb-2">Multi-tenant</div>
+                    <div class="font-semibold text-gray-900 mb-2">Arquitectura SaaS escalable</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">De herramienta con un solo cliente a plataforma que podía incorporar nuevos hoteles en horas, con configuración y datos completamente aislados.</p>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-purple-700 mb-2">Visibilidad</div>
+                    <div class="font-semibold text-gray-900 mb-2">Analytics integrado en el funnel</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">Por primera vez, los clientes podían ver exactamente de dónde venían sus mejores candidatos, el tiempo por etapa y el costo de reclutamiento por canal.</p>
+                </div>
+                <div class="bg-teal-50 border border-teal-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-teal-700 mb-2">DevOps</div>
+                    <div class="font-semibold text-gray-900 mb-2">Deploys predecibles y seguros</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">Implementé un pipeline de deploy automatizado con scripts versionados, ambientes separados y backups automáticos que eliminaron los deploys manuales con riesgo.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                <h3 class="font-bold text-gray-900 mb-2">Lección clave</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">El mayor aprendizaje fue que un rediseño exitoso no es solo sobre tecnología: hay que entender profundamente el proceso de negocio que el software soporta. Pasé semanas entrevistando a reclutadores y managers antes de escribir una sola línea de código nuevo. Esa inversión fue lo que hizo que el producto resonara con los clientes.</p>
+            </div>
+        </section>
+
+        <!-- Stack -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Stack Utilizado</h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-grails-100 text-grails-800 rounded-full text-sm font-medium">Groovy / Grails</span>
+                <span class="px-4 py-2 bg-mysql-100 text-mysql-800 rounded-full text-sm font-medium">MySQL</span>
+                <span class="px-4 py-2 bg-js-100 text-js-800 rounded-full text-sm font-medium">JavaScript</span>
+                <span class="px-4 py-2 bg-vps-100 text-vps-800 rounded-full text-sm font-medium">Linode / Digital Ocean</span>
+                <span class="px-4 py-2 bg-seo-100 text-seo-800 rounded-full text-sm font-medium">Google Analytics / GTM</span>
+                <span class="px-4 py-2 bg-devops-100 text-devops-800 rounded-full text-sm font-medium">Nginx / VPS</span>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-r from-green-600 to-teal-600 rounded-2xl p-8 text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">¿Tienes un producto que necesita un rediseño estratégico?</h3>
+            <p class="text-green-100 mb-6">Cuéntame el contexto. Siempre estoy abierto a conversar sobre producto y arquitectura.</p>
+            <a href="mailto:lgzarturo@gmail.com" class="inline-block bg-white text-green-700 font-semibold px-8 py-3 rounded-xl hover:bg-green-50 transition-colors">
+                Escribirme
+            </a>
+        </div>
+
+        <!-- Navegación entre casos -->
+        <div class="mt-12 flex justify-between items-center pt-8 border-t border-gray-200">
+            <a href="/casos-de-estudio/programa-de-lealtad" class="text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium">← Ver caso anterior</a>
+            <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">Volver al inicio →</a>
+        </div>
+    </main>
+    <Footer />
+</BaseLayout>

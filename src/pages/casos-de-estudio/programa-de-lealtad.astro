@@ -1,0 +1,266 @@
+---
+// src/pages/casos-de-estudio/programa-de-lealtad.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+<BaseLayout
+    title="Caso de Estudio: Migración del Programa de Lealtad — Arturo López Gómez"
+    description="Cómo migré el programa de lealtad con 70,000 usuarios activos de un monolito a microservicios con Spring Boot y AWS, sin downtime y con +25% en suscriptores."
+    canonical="https://lgzarturo.com/casos-de-estudio/programa-de-lealtad"
+>
+    <Header title="Arturo López" />
+    <main class="max-w-4xl mx-auto px-6 py-24">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-500 flex items-center gap-2">
+            <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
+            <span>/</span>
+            <span class="text-gray-800 font-medium">Caso de Estudio</span>
+        </nav>
+
+        <!-- Header -->
+        <div class="mb-12">
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Revenatium</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">2019 – 2021</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Arquitectura de Microservicios</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                Migración del Programa de Lealtad a Microservicios
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed">
+                Cómo transformamos un sistema monolítico con 70,000+ usuarios activos en una arquitectura de microservicios —sin un minuto de downtime— y con resultados de negocio medibles.
+            </p>
+        </div>
+
+        <!-- Métricas de impacto -->
+        <div class="grid grid-cols-3 gap-4 mb-16 p-8 bg-gradient-to-br from-blue-600 to-purple-700 rounded-2xl text-white text-center">
+            <div>
+                <span class="block text-4xl font-extrabold">70K+</span>
+                <span class="text-blue-100 text-sm mt-1 block">Usuarios activos</span>
+            </div>
+            <div>
+                <span class="block text-4xl font-extrabold">+25%</span>
+                <span class="text-blue-100 text-sm mt-1 block">Nuevos suscriptores</span>
+            </div>
+            <div>
+                <span class="block text-4xl font-extrabold">0 min</span>
+                <span class="text-blue-100 text-sm mt-1 block">Downtime en migración</span>
+            </div>
+        </div>
+
+        <!-- 01 El Reto -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span class="text-red-600 font-bold text-sm">01</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">El Reto</h2>
+            </div>
+            <div class="space-y-4 text-gray-700 leading-relaxed">
+                <p>El programa de lealtad de Revenatium había crecido <strong>dentro de un monolito Java</strong>. Con más de 70,000 usuarios activos, el sistema enfrentaba problemas críticos que bloqueaban el crecimiento:</p>
+                <ul class="space-y-3 ml-4">
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Acoplamiento total:</strong> Cualquier cambio en el módulo de lealtad requería redeploy completo de la plataforma, afectando al motor de reservaciones y al resto de servicios.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Escalabilidad limitada:</strong> En temporadas altas (puentes y festividades), no era posible escalar el módulo de lealtad de forma independiente sin afectar el costo de toda la plataforma.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Deuda técnica acumulada:</strong> El código llevaba años sin refactorización significativa. Añadir funcionalidades tomaba semanas en lugar de días.</span>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span><strong>Riesgo de negocio alto:</strong> Un bug en el módulo de lealtad podía comprometer reservaciones activas. El costo de un fallo era enorme.</span>
+                    </li>
+                </ul>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6">
+                    <p class="text-amber-800 font-medium text-sm">El reto no era solo técnico: había que migrar con el sistema en producción, sin afectar a los 70,000 usuarios activos y sin que el equipo de negocio percibiera ninguna interrupción.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02 La Arquitectura -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span class="text-blue-600 font-bold text-sm">02</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">La Arquitectura y Decisiones Técnicas</h2>
+            </div>
+
+            <p class="text-gray-700 leading-relaxed mb-8">
+                Elegimos una <strong>estrategia de migración gradual</strong> basada en el patrón <em>Strangler Fig</em>: no reescribimos el sistema desde cero, sino que fuimos extrayendo módulos del monolito hacia microservicios autónomos de forma progresiva, usando el API Gateway como punto de control del tráfico.
+            </p>
+
+            <!-- Diagrama: Antes -->
+            <div class="mb-8">
+                <h3 class="text-base font-semibold text-gray-600 mb-3 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-red-400 flex-shrink-0"></span>
+                    Arquitectura Inicial — Monolito
+                </h3>
+                <div class="bg-gray-950 rounded-2xl p-6 font-mono text-sm overflow-x-auto">
+                    <div class="flex flex-col items-center gap-3 min-w-max mx-auto">
+                        <div class="flex gap-4">
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center">Cliente Web</div>
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center">App Móvil</div>
+                        </div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <div class="bg-red-950 border border-red-700 rounded-xl px-6 py-4 text-center">
+                            <div class="text-red-300 font-bold text-sm mb-3">Monolito Java / Spring MVC</div>
+                            <div class="flex flex-wrap justify-center gap-2 text-xs text-red-400">
+                                <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Reservaciones</span>
+                                <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Lealtad</span>
+                                <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Usuarios</span>
+                                <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Tarifas</span>
+                            </div>
+                        </div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <div class="bg-gray-700 text-gray-200 px-6 py-2 rounded-lg text-center text-sm">Base de Datos Única (MySQL)</div>
+                        <div class="text-gray-600 text-xs mt-2 italic">Problema: un fallo en cualquier módulo afecta todo el sistema</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Diagrama: Después -->
+            <div class="mb-8">
+                <h3 class="text-base font-semibold text-gray-600 mb-3 flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-green-400 flex-shrink-0"></span>
+                    Arquitectura Nueva — Microservicios
+                </h3>
+                <div class="bg-gray-950 rounded-2xl p-6 font-mono text-sm overflow-x-auto">
+                    <div class="flex flex-col items-center gap-3 min-w-max mx-auto">
+                        <!-- Clientes -->
+                        <div class="flex gap-4">
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center text-xs">Cliente Web</div>
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center text-xs">App Móvil</div>
+                            <div class="bg-gray-700 text-gray-200 px-4 py-2 rounded-lg text-center text-xs">Dashboard Admin</div>
+                        </div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <!-- API Gateway -->
+                        <div class="bg-yellow-950 border border-yellow-700 text-yellow-300 px-8 py-3 rounded-xl text-sm font-semibold">
+                            API Gateway — Enrutamiento y Autenticación
+                        </div>
+                        <!-- Líneas hacia servicios -->
+                        <div class="flex gap-16 text-gray-600 text-xs">
+                            <span>│</span>
+                            <span>│</span>
+                            <span>│</span>
+                        </div>
+                        <!-- Microservicios -->
+                        <div class="flex gap-4">
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="bg-blue-950 border border-blue-700 text-blue-300 px-4 py-3 rounded-xl text-xs text-center">
+                                    <div class="font-bold">Auth Service</div>
+                                    <div class="text-blue-500 mt-1">Spring Boot</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="bg-green-950 border border-green-700 text-green-300 px-4 py-3 rounded-xl text-xs text-center">
+                                    <div class="font-bold">Loyalty Service</div>
+                                    <div class="text-green-500 mt-1">Spring Boot + Kotlin</div>
+                                </div>
+                                <div class="w-px h-4 bg-gray-600"></div>
+                                <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs">PostgreSQL</div>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="bg-purple-950 border border-purple-700 text-purple-300 px-4 py-3 rounded-xl text-xs text-center">
+                                    <div class="font-bold">Notif. Service</div>
+                                    <div class="text-purple-500 mt-1">Spring Boot</div>
+                                </div>
+                                <div class="w-px h-4 bg-gray-600"></div>
+                                <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs">Email / Push</div>
+                            </div>
+                        </div>
+                        <!-- Infraestructura -->
+                        <div class="border border-dashed border-gray-600 rounded-xl px-6 py-2 text-gray-500 text-xs mt-2">
+                            AWS ECS · Docker · SQS · CloudWatch
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decisiones técnicas -->
+            <div class="space-y-6">
+                <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-5">
+                    <h4 class="font-bold text-gray-900 mb-2">¿Por qué Spring Boot?</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed">El equipo ya tenía expertise en Java. Spring Boot nos dio un path de migración incremental sin tener que reescribir en un lenguaje nuevo. La madurez del ecosistema —Spring Cloud, Actuator, Micrometer— fue clave para tener observabilidad desde el día uno.</p>
+                </div>
+                <div class="bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-5">
+                    <h4 class="font-bold text-gray-900 mb-2">¿Por qué AWS ECS y no Kubernetes?</h4>
+                    <p class="text-gray-700 text-sm leading-relaxed">La decisión de no ir a K8s fue deliberada. El equipo era pequeño y la complejidad operacional de Kubernetes hubiera sido over-engineering para nuestro tamaño en ese momento. ECS nos dio orquestación de contenedores con una curva de aprendizaje manejable.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03 El Impacto -->
+        <section class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span class="text-green-600 font-bold text-sm">03</span>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">El Impacto</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-green-700 mb-2">+25%</div>
+                    <div class="font-semibold text-gray-900 mb-2">Incremento en suscriptores</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">Al poder desplegar mejoras del programa de forma independiente y frecuente, la tasa de adopción creció sostenidamente tras la migración.</p>
+                </div>
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-blue-700 mb-2">0 min</div>
+                    <div class="font-semibold text-gray-900 mb-2">Downtime durante la migración</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">La estrategia de routing progresivo garantizó continuidad total del servicio para los 70,000+ usuarios activos durante todo el proceso.</p>
+                </div>
+                <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-purple-700 mb-2">5x</div>
+                    <div class="font-semibold text-gray-900 mb-2">Velocidad de deploys</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">De deploys semanales que afectaban toda la plataforma, a deploys diarios por servicio con riesgo contenido y rollback automático.</p>
+                </div>
+                <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6">
+                    <div class="text-4xl font-extrabold text-orange-700 mb-2">Aislamiento</div>
+                    <div class="font-semibold text-gray-900 mb-2">Fallos contenidos por servicio</div>
+                    <p class="text-gray-600 text-sm leading-relaxed">Un bug en notificaciones ya no impacta al motor de reservaciones. La resiliencia del sistema mejoró radicalmente.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+                <h3 class="font-bold text-gray-900 mb-2">Lección clave</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">La migración de un monolito no es un proyecto de "big bang". El éxito vino de tener paciencia para dar pasos pequeños y reversibles, mantener el sistema en producción funcionando en todo momento, y definir métricas de éxito claras antes de declarar que algo estaba "migrado".</p>
+            </div>
+        </section>
+
+        <!-- Stack -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Stack Utilizado</h2>
+            <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java 11+</span>
+                <span class="px-4 py-2 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Boot</span>
+                <span class="px-4 py-2 bg-kotlin-100 text-kotlin-800 rounded-full text-sm font-medium">Kotlin</span>
+                <span class="px-4 py-2 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Microservicios</span>
+                <span class="px-4 py-2 bg-aws-100 text-aws-800 rounded-full text-sm font-medium">AWS ECS</span>
+                <span class="px-4 py-2 bg-devops-100 text-devops-800 rounded-full text-sm font-medium">Docker</span>
+                <span class="px-4 py-2 bg-postgresql-100 text-postgresql-800 rounded-full text-sm font-medium">PostgreSQL</span>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 text-center text-white">
+            <h3 class="text-2xl font-bold mb-2">¿Tienes un sistema que necesita evolucionar?</h3>
+            <p class="text-blue-100 mb-6">Hablemos sobre arquitectura y estrategias de migración.</p>
+            <a href="mailto:lgzarturo@gmail.com" class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-xl hover:bg-blue-50 transition-colors">
+                Escribirme
+            </a>
+        </div>
+
+        <!-- Navegación entre casos -->
+        <div class="mt-12 flex justify-between items-center pt-8 border-t border-gray-200">
+            <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Volver al inicio</a>
+            <a href="/casos-de-estudio/ats-startalent" class="text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium">Ver siguiente caso de estudio →</a>
+        </div>
+    </main>
+    <Footer />
+</BaseLayout>

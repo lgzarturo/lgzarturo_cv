@@ -11,6 +11,24 @@ import SectionColumn from '../components/SectionColumn.astro';
 import SectionRow from '../components/SectionRow.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import Footer from '../components/Footer.astro';
+
+// Fetch artículos recientes del blog
+interface BlogPost { title: string; link: string; description: string; pubDate: string; }
+let recentPosts: BlogPost[] = [];
+try {
+    const rssRes = await fetch('https://www.arthurolg.com/rss.xml');
+    if (rssRes.ok) {
+        const xml = await rssRes.text();
+        const items = xml.match(/<item>([\s\S]*?)<\/item>/g)?.slice(0, 6) ?? [];
+        recentPosts = items.map(item => {
+            const title   = item.match(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/)?.[1]?.trim() ?? '';
+            const link    = item.match(/<link>(.*?)<\/link>/)?.[1]?.trim() ?? '';
+            const desc    = item.match(/<description>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/)?.[1] ?? '';
+            const pubDate = item.match(/<pubDate>(.*?)<\/pubDate>/)?.[1]?.trim() ?? '';
+            return { title, link, description: desc.replace(/<[^>]+>/g, '').slice(0, 130) + '…', pubDate };
+        });
+    }
+} catch { /* sin artículos disponibles */ }
 ---
 <BaseLayout title="Arturo López Gómez - Líder Técnico">
     <Header title="Arturo López" />
@@ -130,29 +148,52 @@ import Footer from '../components/Footer.astro';
                 Más allá del código, me enfoco en resolver problemas de negocio y escalar plataformas para soportar el crecimiento.
             </p>
             <div class="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
-                <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
-                    <div class="text-5xl font-extrabold text-white mb-2">+70k</div>
-                    <div class="text-blue-200 font-bold text-lg mb-3">Usuarios Activos</div>
-                    <p class="text-sm text-blue-50/90 leading-relaxed">
-                        Migración de programa de lealtad a microservicios completada sin downtime, logrando un aumento del 25% en suscriptores.
-                    </p>
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">
+                        <span class="counter" data-target="70" data-prefix="" data-suffix="K+">70K+</span>
+                    </div>
+                    <div class="text-blue-200 font-bold text-sm mb-2">Usuarios Migrados</div>
+                    <p class="text-xs text-blue-50/80 leading-relaxed hidden md:block">Sin downtime — Programa de Lealtad</p>
                 </div>
-                <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
-                    <div class="text-5xl font-extrabold text-white mb-2">+60%</div>
-                    <div class="text-blue-200 font-bold text-lg mb-3">Crecimiento B2B</div>
-                    <p class="text-sm text-blue-50/90 leading-relaxed">
-                        Rediseño arquitectónico de plataforma ATS, escalando de herramienta interna a un producto SaaS referente.
-                    </p>
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">
+                        <span class="counter" data-target="40" data-prefix="-" data-suffix="%">-40%</span>
+                    </div>
+                    <div class="text-blue-200 font-bold text-sm mb-2">Tiempos Operativos</div>
+                    <p class="text-xs text-blue-50/80 leading-relaxed hidden md:block">Motor de tarifas y carga masiva</p>
                 </div>
-                <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
-                    <div class="text-5xl font-extrabold text-white mb-2">-40%</div>
-                    <div class="text-blue-200 font-bold text-lg mb-3">Tiempos Operativos</div>
-                    <p class="text-sm text-blue-50/90 leading-relaxed">
-                        Optimización de motor de tarifas y carga masiva, eliminando errores manuales y mejorando la eficiencia del equipo.
-                    </p>
+                <div class="bg-white/10 p-6 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-4xl md:text-5xl font-extrabold text-white mb-2">
+                        <span class="counter" data-target="60" data-prefix="+" data-suffix="%">+60%</span>
+                    </div>
+                    <div class="text-blue-200 font-bold text-sm mb-2">Clientes B2B</div>
+                    <p class="text-xs text-blue-50/80 leading-relaxed hidden md:block">Crecimiento ATS SaaS</p>
                 </div>
             </div>
         </SectionRow>
+        <script>
+            (function () {
+                const counters = document.querySelectorAll('.counter');
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (!entry.isIntersecting) return;
+                        const el = entry.target as HTMLElement;
+                        const target = parseInt(el.dataset.target ?? '0', 10);
+                        const prefix = el.dataset.prefix ?? '';
+                        const suffix = el.dataset.suffix ?? '';
+                        let current = 0;
+                        const step = Math.max(1, Math.ceil(target / 50));
+                        const timer = setInterval(() => {
+                            current = Math.min(current + step, target);
+                            el.textContent = prefix + current + suffix;
+                            if (current >= target) clearInterval(timer);
+                        }, 25);
+                        observer.unobserve(el);
+                    });
+                }, { threshold: 0.4 });
+                counters.forEach(c => observer.observe(c));
+            })();
+        </script>
 
         <SectionTitle id="filosofia" title="Filosofía de Liderazgo Técnico" accent="bg-white outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 text-center">
@@ -250,14 +291,17 @@ import Footer from '../components/Footer.astro';
                 </div>
 
                 <!-- Project Loyalty -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col">
                     <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-2">Programa de Lealtad</h4>
-                    <p class="text-gray-600 mb-4">Migración completa a arquitectura de microservicios con Spring Boot, logrando +25% en suscriptores y mejoras en ventas.</p>
+                    <p class="text-gray-600 mb-4 flex-grow">Migración completa a arquitectura de microservicios con Spring Boot, logrando +25% en suscriptores y mejoras en ventas.</p>
+                    <a href="/casos-de-estudio/programa-de-lealtad" class="text-blue-600 font-semibold text-sm hover:underline mb-4 flex items-center gap-1">
+                        Ver caso de estudio <span aria-hidden="true">→</span>
+                    </a>
                     <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
                         <span class="px-3 py-1 bg-java-100 text-java-800 rounded-full text-xs font-medium">Java</span>
                         <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring Boot</span>
@@ -266,14 +310,17 @@ import Footer from '../components/Footer.astro';
                 </div>
 
                 <!-- Project ATS -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group flex flex-col">
                     <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
                     <h4 class="text-xl font-bold text-gray-900 mb-2">ATS StarTalent.mx</h4>
-                    <p class="text-gray-600 mb-4">Rediseño completo del sistema de reclutamiento con Grails y Spring, crecimiento del +60% en clientes corporativos.</p>
+                    <p class="text-gray-600 mb-4 flex-grow">Rediseño completo del sistema de reclutamiento con Grails y Spring, crecimiento del +60% en clientes corporativos.</p>
+                    <a href="/casos-de-estudio/ats-startalent" class="text-green-600 font-semibold text-sm hover:underline mb-4 flex items-center gap-1">
+                        Ver caso de estudio <span aria-hidden="true">→</span>
+                    </a>
                     <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
                         <span class="px-3 py-1 bg-grails-100 text-grails-800 rounded-full text-xs font-medium">Grails</span>
                         <span class="px-3 py-1 bg-spring-100 text-spring-800 rounded-full text-xs font-medium">Spring</span>
@@ -479,6 +526,40 @@ import Footer from '../components/Footer.astro';
                 </div>
             </div>
         </SectionTitle>
+
+        <!-- Artículos Recientes del Blog -->
+        {recentPosts.length > 0 ? (
+            <SectionTitle id="articulos" title="Últimas notas del blog" accent="bg-white">
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Reflexiones técnicas, patrones y aprendizajes del laboratorio personal.
+                </p>
+                <div class="grid md:grid-cols-3 gap-6" slot="content">
+                    {recentPosts.map(post => (
+                        <a href={post.link} target="_blank" rel="noopener" class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group border border-gray-100 flex flex-col">
+                            <h4 class="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-snug">{post.title}</h4>
+                            <p class="text-gray-600 text-sm flex-grow leading-relaxed">{post.description}</p>
+                            <span class="text-blue-500 text-sm font-medium mt-4 flex items-center gap-1 group-hover:gap-2 transition-all">Leer artículo <span aria-hidden="true">→</span></span>
+                        </a>
+                    ))}
+                </div>
+                <div class="mt-10 text-center" slot="content">
+                    <a href="https://www.arthurolg.com" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold shadow-md">
+                        Ver todos los artículos →
+                    </a>
+                </div>
+            </SectionTitle>
+        ) : (
+            <SectionTitle id="articulos" title="Notas del blog" accent="bg-white">
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Escribo sobre arquitectura, backend y decisiones técnicas en mi blog personal.
+                </p>
+                <div class="text-center mt-8" slot="content">
+                    <a href="https://www.arthurolg.com" target="_blank" class="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-semibold text-lg shadow-md">
+                        Visitar arthurolg.com →
+                    </a>
+                </div>
+            </SectionTitle>
+        )}
 
         <SectionRow id="contact" title="Colaboraciones y comunidad">
             <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
