@@ -45,6 +45,8 @@
 	--color-html-800: #E44D26;       /* HTML: naranja/rojo, logo oficial */
 	--color-css-100: #E0F0FF;        /* CSS: azul pastel, suavidad */
 	--color-css-800: #264DE4;        /* CSS: azul fuerte, logo oficial */
+	--color-kotlin-100: #EDE9FE;     /* Kotlin: lavanda claro */
+	--color-kotlin-800: #7F52FF;     /* Kotlin: púrpura, branding oficial */
 }
 
 	.bg-java-100 { background-color: var(--color-java-100) !important; }
@@ -134,6 +136,13 @@
 	.bg-css-800 { background-color: var(--color-css-800) !important; }
 	.text-css-100 { color: var(--color-css-100) !important; }
 	.text-css-800 { color: var(--color-css-800) !important; }
+	.bg-kotlin-100 { background-color: var(--color-kotlin-100) !important; }
+	.bg-kotlin-800 { background-color: var(--color-kotlin-800) !important; }
+	.text-kotlin-100 { color: var(--color-kotlin-100) !important; }
+	.text-kotlin-800 { color: var(--color-kotlin-800) !important; }
+
+.dark .bg-kotlin-100 { background-color: var(--color-kotlin-800) !important; }
+.dark .text-kotlin-800 { color: var(--color-kotlin-100) !important; }
 
 .dark .bg-java-100 { background-color: var(--color-java-800) !important; }
 .dark .text-java-800 { color: var(--color-java-100) !important; }
