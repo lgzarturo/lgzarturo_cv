@@ -70,6 +70,11 @@ import Footer from '../components/Footer.astro';
                         class="px-8 py-4 rounded-xl border border-white/40 text-white hover:bg-white/10 hover:border-white transition-colors duration-300 font-semibold text-lg">
                         Ver proyectos
                     </a>
+                    <a href="/cv-arturo-lopez-lider-tecnico.pdf" target="_blank"
+                        class="px-8 py-4 rounded-xl bg-white/10 border border-white/40 text-white hover:bg-white/20 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                        Descargar CV
+                    </a>
                 </div>
             </div>
 
@@ -119,6 +124,70 @@ import Footer from '../components/Footer.astro';
                 </div>
             </div>
         </SectionColumn>
+
+        <SectionRow id="impacto" title="Impacto y Resultados">
+            <p class="text-xl mb-12 opacity-90 max-w-2xl mx-auto text-center">
+                Más allá del código, me enfoco en resolver problemas de negocio y escalar plataformas para soportar el crecimiento.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 text-center max-w-5xl mx-auto">
+                <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-5xl font-extrabold text-white mb-2">+70k</div>
+                    <div class="text-blue-200 font-bold text-lg mb-3">Usuarios Activos</div>
+                    <p class="text-sm text-blue-50/90 leading-relaxed">
+                        Migración de programa de lealtad a microservicios completada sin downtime, logrando un aumento del 25% en suscriptores.
+                    </p>
+                </div>
+                <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-5xl font-extrabold text-white mb-2">+60%</div>
+                    <div class="text-blue-200 font-bold text-lg mb-3">Crecimiento B2B</div>
+                    <p class="text-sm text-blue-50/90 leading-relaxed">
+                        Rediseño arquitectónico de plataforma ATS, escalando de herramienta interna a un producto SaaS referente.
+                    </p>
+                </div>
+                <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-colors">
+                    <div class="text-5xl font-extrabold text-white mb-2">-40%</div>
+                    <div class="text-blue-200 font-bold text-lg mb-3">Tiempos Operativos</div>
+                    <p class="text-sm text-blue-50/90 leading-relaxed">
+                        Optimización de motor de tarifas y carga masiva, eliminando errores manuales y mejorando la eficiencia del equipo.
+                    </p>
+                </div>
+            </div>
+        </SectionRow>
+
+        <SectionTitle id="filosofia" title="Filosofía de Liderazgo Técnico" accent="bg-white outline-dashed outline-stone-100 outline-offset-0">
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 text-center">
+                Mis principios para construir software y guiar equipos de alto rendimiento.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8" slot="content">
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-left">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Arquitectura Pragmática</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Evito la sobre-ingeniería. Elijo la herramienta adecuada para el problema actual, priorizando la mantenibilidad, contratos claros y un diseño modular que pueda evolucionar de forma iterativa.
+                    </p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-left">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Calidad y Entrega</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        El código no está listo hasta que es testeable, observable y desplegable. Promuevo la automatización, CI/CD y revisiones de código enfocadas en el "por qué" más que en el "qué".
+                    </p>
+                </div>
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-100 text-left">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">Cultura y Mentoring</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Fomento la seguridad psicológica en los equipos. Priorizo el mentoring constante para desarrolladores, creando espacios donde el error es parte del aprendizaje y crecimiento.
+                    </p>
+                </div>
+            </div>
+        </SectionTitle>
 
         <SectionTitle id="projects" title="Laboratorio de ideas" accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0">
             <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-4">
