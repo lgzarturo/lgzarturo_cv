@@ -4,30 +4,41 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import { completedWeeks, totalWeeks } from "../data/course";
+import {
+  weeks,
+  blogPosts,
+  MILESTONES,
+  completedWeeks,
+  totalWeeks,
+  progressPercent,
+  currentLevel,
+  lastVersion,
+} from "../data/course";
 
 const title = "Curso Gamificado Spring Boot + Kotlin | Arturo López";
 const description =
-  "Aprende Spring Boot 3.x con Kotlin, arquitectura hexagonal y TDD. Retos reales de hotelería y ecommerce. Sin relleno.";
+  "Aprende Spring Boot 3.x con Kotlin, arquitectura y TDD. Retos reales de hotelería y ecommerce.";
 const pendingWeeks = totalWeeks - completedWeeks;
 ---
 
 <BaseLayout
-  title="Curso Gamificado Spring Boot + Kotlin | Arturo López Gómez"
-  description="Aprende Spring Boot con arquitectura hexagonal y TDD en una experiencia gamificada. Ejemplos reales de hotelería y ecommerce."
+  title={title}
+  description={description}
   canonical="https://lgzarturo.com/springboot-course"
 >
+  <!-- ══ HEAD: SEO, OG, fuentes ══════════════════════════════════ -->
   <head>
     <meta
       name="description"
-      content="Curso gamificado de Spring Boot con arquitectura hexagonal, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. ¡Únete a la comunidad de desarrolladores!"
+      content="Curso gamificado de Spring Boot con arquitectura, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. ¡Únete a la comunidad de desarrolladores!"
     />
     <meta
       name="keywords"
-      content="Spring Boot, curso gamificado, arquitectura hexagonal, TDD, Pokémon, hotelería, ecommerce, comunidad de desarrolladores, programación, Java, backend, buenas prácticas, desarrollo de software"
+      content="Spring Boot, curso gamificado, arquitectura, TDD, Pokémon, hotelería, ecommerce, comunidad de desarrolladores, programación, Java, backend, buenas prácticas, desarrollo de software"
     />
     <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://lgzarturo.dev/springboot-course" />
+    <link rel="canonical" href="https://lgzarturo.com/springboot-course" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta
@@ -36,9 +47,9 @@ const pendingWeeks = totalWeeks - completedWeeks;
     />
     <meta
       property="og:description"
-      content="Aprende Spring Boot, arquitectura hexagonal y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
+      content="Aprende Spring Boot, arquitectura y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
     />
-    <meta property="og:url" content="https://lgzarturo.dev/springboot-course" />
+    <meta property="og:url" content="https://lgzarturo.com/springboot-course" />
     <meta
       property="og:image"
       content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
@@ -48,6 +59,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
       content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce"
     />
     <meta property="og:site_name" content="Arturo López Gómez" />
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -56,7 +68,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     />
     <meta
       name="twitter:description"
-      content="Aprende Spring Boot, arquitectura hexagonal y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
+      content="Aprende Spring Boot, arquitectura y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
     />
     <meta
       name="twitter:image"
@@ -66,808 +78,1550 @@ const pendingWeeks = totalWeeks - completedWeeks;
       name="twitter:image:alt"
       content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce"
     />
+
+    <!-- JSON-LD -->
     <script type="application/ld+json" is:raw>
       {
         "@context": "https://schema.org",
         "@type": "Course",
         "name": "Curso Gamificado de Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce",
-        "description": "Curso gamificado de Spring Boot con arquitectura hexagonal, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. Únete a la comunidad de desarrolladores.",
+        "description": "Curso gamificado de Spring Boot con arquitectura, TDD y ejemplos reales de hotelería y ecommerce.",
         "provider": {
           "@type": "Person",
           "name": "Arturo López Gómez",
-          "url": "https://lgzarturo.dev"
+          "url": "https://lgzarturo.com"
         },
-        "educationalCredentialAwarded": "Certificado de participación y dominio en Spring Boot, arquitectura hexagonal y TDD.",
         "image": "https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp",
-        "keywords": [
-          "Spring Boot",
-          "curso gamificado",
-          "arquitectura hexagonal",
-          "TDD",
-          "Pokémon",
-          "hotelería",
-          "ecommerce",
-          "comunidad de desarrolladores",
-          "Java",
-          "backend",
-          "buenas prácticas",
-          "desarrollo de software"
-        ],
-        "url": "https://lgzarturo.dev/springboot-course"
+        "url": "https://lgzarturo.com/springboot-course"
       }
     </script>
+
+    <!-- Pixelify Sans para títulos retro + JetBrains Mono para código/badges -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <link is:raw rel="preconnect" href="https://fonts.googleapis.com" />
-  <link is:raw rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    is:raw
-    href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
-    rel="stylesheet"
-  />
+
+  <!-- ══ CONTENIDO ════════════════════════════════════════════════ -->
   <Header title="Arturo López" />
-  <style is:inline>
-    /* Fondo animado pixel art */
-    body,
-    .pixel-bg {
-      background: #181c1f
-        url("https://www.transparenttextures.com/patterns/pixel-weave.png");
-      min-height: 100vh;
-      position: relative;
-      z-index: 0;
-    }
-    .pixel-bg::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background:
-        repeating-linear-gradient(135deg, #2aff6a 0 2px, transparent 2px 20px),
-        repeating-linear-gradient(45deg, #00e0ff 0 2px, transparent 2px 20px);
-      opacity: 0.08;
-      z-index: 1;
-      pointer-events: none;
-      animation: pixel-move 20s linear infinite;
-    }
-    @keyframes pixel-move {
-      0% {
-        background-position:
-          0 0,
-          0 0;
-      }
-      100% {
-        background-position:
-          200px 200px,
-          -200px -200px;
-      }
-    }
-    /* Animaciones sutiles */
-    @keyframes pulse-slow {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.7;
-      }
-    }
-    .pulse-slow {
-      animation: pulse-slow 4s ease-in-out infinite;
-    }
-    /* Estilo tipo videojuego pixel art */
-    .pixel-font {
-      font-family: "Pixelify Sans", cursive;
-      font-optical-sizing: auto;
-      font-style: normal;
-      letter-spacing: 1px;
-      text-shadow:
-        2px 2px 0 #222,
-        4px 4px 0 #2aff6a;
-    }
-    /* Bordes pixelados */
-    .pixel-border {
-      border: 4px solid #2aff6a;
-      box-shadow:
-        0 0 0 4px #222,
-        0 0 16px 2px #2aff6a44;
-      border-radius: 0.5rem;
-    }
-    /* Botón retro */
-    .btn-retro {
-      font-family: "Pixelify Sans", cursive;
-      background: linear-gradient(90deg, #2aff6a 0%, #00e0ff 100%);
-      color: #181c1f;
-      border: 3px solid #fff;
-      box-shadow:
-        0 0 0 3px #2aff6a,
-        0 0 12px 2px #00e0ff99;
-      text-shadow: 1px 1px 0 #fff;
-      transition:
-        background 0.2s,
-        color 0.2s,
-        box-shadow 0.2s;
-    }
-    .btn-retro:hover {
-      background: #181c1f;
-      color: #2aff6a;
-      box-shadow:
-        0 0 0 3px #00e0ff,
-        0 0 24px 4px #2aff6a99;
-    }
-    /* Secciones como "pantallas" de videojuego */
-    .level-section {
-      background: rgba(24, 28, 31, 0.95);
-      border: 4px solid #00e0ff;
-      box-shadow:
-        0 0 0 4px #2aff6a,
-        0 0 24px 2px #00e0ff44;
-      border-radius: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    /* Títulos con efecto glow */
-    .glow-h1 {
-      color: #fff;
-      text-shadow:
-        0 0 8px #00e0ff,
-        0 0 16px #2aff6a;
-    }
-    .glow-title {
-      color: #2aff6a;
-      text-shadow:
-        0 0 8px #00e0ff,
-        0 0 16px #2aff6a;
-    }
-    /* Responsive fix para pixel font */
-    @media (max-width: 600px) {
-      .pixel-font {
-        font-size: 1.1rem !important;
-      }
-    }
 
-    ul.cherry-list {
-      list-style-image: url("/cherries-icon.svg");
-      list-style-position: inside;
-      list-style-type: none; /* evita el disco si usas imagen */
-    }
+  <div class="course-page">
+    <!-- ── HERO ─────────────────────────────────────────────────── -->
+    <section class="mt-16 hero reveal" aria-labelledby="hero-title">
+      <div class="breadcrumb">
+        <a href="/#projects">← Laboratorio</a>
+        <span aria-hidden="true">/</span>
+        <span>Curso SpringBoot + Kotlin</span>
+      </div>
 
-    ul.cherry-list li {
-      display: flex;
-      align-items: center;
-      gap: 0.5em; /* espacio entre ícono y texto */
-    }
-
-    ul.cherry-list {
-      list-style: none; /* desactiva el ícono automático */
-    }
-
-    ul.cherry-list li::before {
-      content: "";
-      display: inline-block;
-      width: 1.5em;
-      height: 1.5em;
-      background-image: url("/cherries-icon.svg");
-      background-size: contain;
-      background-repeat: no-repeat;
-      margin-right: 0.5em;
-    }
-
-    .text-outline {
-      -webkit-text-stroke: 1px #2b2a2a;
-    }
-  </style>
-  <div
-    class="flex flex-col min-h-screen pixel-bg md:p-20"
-    itemscope
-    itemtype="https://schema.org/Course"
-  >
-    <!-- Header -->
-    <header
-      class="relative z-10 flex flex-col items-center p-20 mt-20 shadow-lg pixel-border bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 shadow-xl/30"
-      itemprop="provider"
-      itemscope
-      itemtype="https://schema.org/Person"
-    >
-      <h1
-        class="mb-8 font-sans text-3xl font-extrabold text-center sm:text-4xl md:text-6xl drop-shadow-lg animate-pulse glow-h1 text-shadow-2xs text-shadow-sky-300 md:pixel-font text-outline"
-        itemprop="name"
-      >
-        Curso Gamificado de <span class="text-green-300">Spring Boot</span> con <span
-          class="text-blue-300">Arquitectura Hexagonal</span
-        > y <span class="text-yellow-300">TDD</span>
+      <h1 id="hero-title" class="pixel-font">
+        Curso Gamificado de
+        <span class="text-green">Spring Boot</span> con
+        <span class="text-blue">Arquitectura MVC</span> y
+        <span class="text-yellow">TDD</span>
       </h1>
-      <p
-        class="max-w-4xl text-lg text-center text-white md:text-2xl drop-shadow-md"
-        itemprop="description"
-      >
+
+      <p class="hero-sub">
         <strong
-          >Aprende <span class="text-green-300">Spring Boot</span>, <span
-            class="text-blue-300">buenas prácticas</span
-          > y <span class="text-yellow-300">arquitectura hexagonal</span> con <span
-            class="text-pink-400">TDD</span
-          ></strong
-        > en una experiencia única y divertida. Vive una <strong
-          >historia gamificada inspirada en <span class="text-pink-300"
-            >Pokémon</span
-          ></strong
-        >, resolviendo retos reales de <strong>hotelería</strong> y <strong
-          >ecommerce</strong
-        >. ¡Conviértete en un <span class="text-green-400"
-          >maestro desarrollador</span
-        > y únete a la <span class="text-blue-400">comunidad</span>!
+          >Aprende Spring Boot, buenas prácticas y arquitectura con TDD</strong
+        > en una experiencia única. Vive una <strong
+          >historia gamificada inspirada en Pokémon</strong
+        >, resolviendo retos reales de hotelería y ecommerce.
       </p>
-      <nav aria-label="Navegación de secciones">
-        <ul class="flex flex-wrap justify-center gap-4 mt-4">
-          <li>
-            <a
-              href="#que-es"
-              class="text-green-300 underline hover:text-green-400">¿Qué es?</a
-            >
-          </li>
-          <li>
-            <a
-              href="#gamificacion"
-              class="text-pink-300 underline hover:text-pink-400"
-              >Gamificación</a
-            >
-          </li>
-          <li>
-            <a
-              href="#ejemplos"
-              class="text-blue-300 underline hover:text-blue-400">Ejemplos</a
-            >
-          </li>
-          <li>
-            <a
-              href="#fundamento"
-              class="text-purple-300 underline hover:text-purple-400"
-              >Fundamento</a
-            >
-          </li>
-          <li>
-            <a
-              href="#beneficios"
-              class="text-yellow-300 underline hover:text-yellow-400"
-              >Beneficios</a
-            >
-          </li>
-          <li>
-            <a
-              href="#participa"
-              class="text-red-300 underline hover:text-red-400">Participa</a
-            >
-          </li>
-        </ul>
+
+      <div class="hero-chips">
+        <span class="chip chip-live">
+          <span class="chip-dot" aria-hidden="true"></span>
+          Actualizado cada fin de semana
+        </span>
+        {
+          [
+            "Spring Boot 3.x",
+            "Kotlin",
+            "TDD",
+            "MVC Arch",
+            "Docker",
+            "CI/CD",
+          ].map((tag) => <span class="chip">{tag}</span>)
+        }
+      </div>
+
+      <nav aria-label="Secciones de la página" class="hero-nav">
+        <a href="#exp-tracker">Progreso</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#que-es">¿Qué es?</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#blog">Blog</a>
+        <a href="#participa">Participar</a>
       </nav>
-      <a href="#participa" class="px-8 py-3 mt-6 btn-retro"
-        >¡Únete y participa en el curso de Spring Boot!</a
-      >
-      <meta
-        itemprop="image"
-        content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
-      />
-      <meta itemprop="url" content="https://lgzarturo.dev/springboot-course" />
-      <span itemprop="name" class="hidden">Arturo López Gómez</span>
-      <meta itemprop="url" content="https://lgzarturo.dev" />
-    </header>
+    </section>
 
-    <main class="container z-10 flex-grow px-6 py-12 mx-auto space-y-20">
-      <!-- ¿Qué es este curso? -->
-      <section
-        id="que-es"
-        class="max-w-5xl p-8 mx-auto level-section"
-        aria-labelledby="que-es-titulo"
-      >
-        <h2
-          id="que-es-titulo"
-          class="inline-block mb-4 text-3xl font-bold border-b-4 border-yellow-400 pixel-font glow-title"
-        >
-          ¿Qué es este <span class="text-green-300"
-            >curso gamificado de Spring Boot</span
-          >?
-        </h2>
-        <p class="text-lg leading-relaxed text-white">
-          Este <strong>curso online de Spring Boot</strong> es una experiencia educativa
-          innovadora que combina el <strong>aprendizaje técnico</strong> con una
-          <strong>narrativa gamificada</strong> inspirada en <span
-            class="text-pink-300">Pokémon</span
-          >. Aprenderás <strong>arquitectura hexagonal</strong>, <strong
-            >TDD</strong
-          > y <strong>buenas prácticas de desarrollo</strong> resolviendo retos reales
-          de <strong>hotelería</strong> y <strong>ecommerce</strong>. ¡Ideal
-          para desarrolladores que buscan dominar <span class="text-green-300"
-            >Java backend</span
-          > y destacar en la industria!
-        </p>
-      </section>
+    <!-- ── EXP TRACKER (Pokémon-style) ──────────────────────────── -->
+    <section
+      id="exp-tracker"
+      class="exp-card pixel-border reveal"
+      role="region"
+      aria-label="Progreso del curso"
+    >
+      <!-- Stripe de color arriba del card -->
+      <div class="exp-stripe" aria-hidden="true"></div>
 
-      <!-- ¿Por qué gamificar con Pokémon? -->
-      <section
-        id="gamificacion"
-        class="max-w-5xl p-8 mx-auto level-section"
-        aria-labelledby="gamificacion-titulo"
-      >
-        <h2
-          id="gamificacion-titulo"
-          class="inline-block mb-4 text-3xl font-bold border-b-4 border-red-500 pixel-font glow-title"
-        >
-          ¿Por qué <span class="text-pink-300">gamificar</span> el aprendizaje de
-          Spring Boot?
-        </h2>
-        <p class="mb-4 text-lg leading-relaxed text-white">
-          <strong>Pokémon</strong> es una franquicia que ha marcado generaciones por
-          su capacidad de contar historias, incentivar la exploración y el <strong
-            >aprendizaje progresivo</strong
-          > a través de retos y recompensas. Al gamificar el <strong
-            >curso de Spring Boot</strong
-          > con esta temática, buscamos:
-        </p>
-        <ul class="space-y-2 text-lg text-green-300 cherry-list">
-          <li>
-            Crear una experiencia inmersiva que motive a los desarrolladores a
-            avanzar y superar desafíos.
-          </li>
-          <li>
-            Fomentar la curiosidad y el deseo de "capturar" nuevos conocimientos
-            y habilidades.
-          </li>
-          <li>
-            Utilizar una narrativa conocida para facilitar la conexión emocional
-            y la retención del aprendizaje.
-          </li>
-          <li>
-            Incentivar la colaboración y competencia sana dentro de la
-            comunidad.
-          </li>
-        </ul>
-        <p
-          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
-        >
-          "Aprender es una aventura, y cada línea de código es un paso hacia
-          convertirte en un maestro desarrollador."
-        </p>
-      </section>
-
-      <!-- ¿Por qué ejemplos de hotelería y ecommerce? -->
-      <section
-        id="ejemplos"
-        class="max-w-5xl p-8 mx-auto level-section"
-        aria-labelledby="ejemplos-titulo"
-      >
-        <h2
-          id="ejemplos-titulo"
-          class="inline-block mb-4 text-3xl font-bold border-b-4 border-green-400 pixel-font glow-title"
-        >
-          Ejemplos reales de <span class="text-green-300">hotelería</span> y <span
-            class="text-blue-300">ecommerce</span
-          >
-        </h2>
-        <p class="mb-4 text-lg leading-relaxed text-white">
-          Por mi experiencia elegí los sectores de <strong>hotelería</strong> y <strong
-            >ecommerce</strong
-          > porque son dominios reales, con <strong
-            >casos de uso complejos</strong
-          > y variados que permiten aplicar <strong>conceptos técnicos</strong> de
-          forma práctica y relevante. Así, aprenderás a resolver problemas reales
-          con <span class="text-green-300">Spring Boot</span> y <span
-            class="text-yellow-300">arquitectura hexagonal</span
-          >.
-        </p>
-        <ul class="space-y-2 text-lg text-green-300 cherry-list">
-          <li>
-            La hotelería representa un negocio con múltiples actores, reservas,
-            disponibilidad y reglas de negocio que desafían la arquitectura y
-            diseño.
-          </li>
-          <li>
-            El ecommerce es un dominio dinámico con flujos de compra,
-            inventarios, pagos y logística, ideal para practicar integración y
-            pruebas.
-          </li>
-          <li>
-            Ambos ejemplos permiten mostrar cómo aplicar patrones, buenas
-            prácticas y arquitectura hexagonal en contextos reales.
-          </li>
-          <li>
-            Facilitan la creación de una narrativa coherente y atractiva para la
-            gamificación.
-          </li>
-        </ul>
-        <p
-          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
-        >
-          "La mejor forma de aprender es construyendo soluciones que reflejen el
-          mundo real."
-        </p>
-      </section>
-
-      <!-- Fundamento pedagógico y narrativa gamificada -->
-      <section
-        id="fundamento"
-        class="max-w-5xl p-8 mx-auto level-section"
-        aria-labelledby="fundamento-titulo"
-      >
-        <h2
-          id="fundamento-titulo"
-          class="inline-block mb-4 text-3xl font-bold border-b-4 border-purple-500 pixel-font glow-title"
-        >
-          Fundamento pedagógico y <span class="text-pink-300"
-            >narrativa gamificada</span
-          >
-        </h2>
-        <p class="mb-4 text-lg leading-relaxed text-white">
-          La <strong>gamificación</strong> no es solo un recurso lúdico, sino una
-          <strong>estrategia pedagógica</strong> poderosa que:
-        </p>
-        <ul class="space-y-2 text-lg text-green-300 cherry-list">
-          <li>
-            Utiliza la narrativa para crear un contexto emocional y cognitivo
-            que facilita la comprensión y retención.
-          </li>
-          <li>
-            Incorpora retos, recompensas y progresión para mantener la
-            motivación y el compromiso.
-          </li>
-          <li>
-            Fomenta el aprendizaje activo y la experimentación a través de casos
-            prácticos y feedback inmediato.
-          </li>
-          <li>
-            Combina la historia con buenas prácticas de desarrollo para que el
-            aprendizaje técnico sea significativo y aplicable.
-          </li>
-        </ul>
-        <p
-          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
-        >
-          "Contar historias es la forma más antigua y efectiva de enseñar, y la
-          tecnología nos permite reinventar esa tradición."
-        </p>
-      </section>
-
-      <!-- Beneficios para desarrolladores -->
-      <section
-        id="beneficios"
-        class="max-w-5xl p-8 mx-auto level-section"
-        aria-labelledby="beneficios-titulo"
-      >
-        <h2
-          id="beneficios-titulo"
-          class="inline-block mb-4 text-3xl font-bold border-b-4 border-yellow-300 pixel-font glow-title"
-        >
-          Beneficios de aprender <span class="text-green-300">Spring Boot</span>
-          con gamificación
-        </h2>
-        <p class="mb-4 text-lg leading-relaxed text-white">
-          Al participar en este <strong>curso gamificado de Spring Boot</strong
-          >, los desarrolladores obtendrán:
-        </p>
-        <ul class="space-y-2 text-lg text-green-300 cherry-list">
-          <li>
-            Dominio práctico de Spring Boot 3.x con arquitectura hexagonal y
-            TDD.
-          </li>
-          <li>
-            Experiencia en diseño de software limpio, mantenible y escalable.
-          </li>
-          <li>
-            Comprensión profunda de patrones de diseño y buenas prácticas.
-          </li>
-          <li>
-            Participación en una comunidad activa que comparte conocimiento y
-            apoyo.
-          </li>
-          <li>
-            Motivación constante gracias a la narrativa gamificada y retos
-            progresivos.
-          </li>
-        </ul>
-        <p
-          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
-        >
-          ¡Prepárate para transformar tu forma de aprender y desarrollar
-          software!
-        </p>
-      </section>
-
-      <!-- Calendario de liberaciones de milestones -->
-      <section
-        id="calendario-milestones"
-        class="max-w-5xl p-8 mx-auto mb-12 level-section"
-        aria-labelledby="calendario-titulo"
-      >
-        <h2
-          id="calendario-titulo"
-          class="inline-block mb-6 text-3xl font-bold border-b-4 border-blue-400 pixel-font glow-title"
-        >
-          📅 Actualizaciones solo fines de semana
-        </h2>
-        <div class="overflow-x-auto">
-          <table
-            class="min-w-full overflow-hidden text-sm text-left border-collapse rounded-lg shadow-lg md:text-base"
-          >
-            <thead
-              class="text-white bg-gradient-to-r from-green-400 via-blue-700 to-purple-700"
-            >
-              <tr>
-                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
-                  >OK</th
-                >
-                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
-                  >Semana</th
-                >
-                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
-                  >Fechas (Sábado y Domingo)</th
-                >
-                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
-                  >Actividades principales (según milestone)</th
-                >
-                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
-                  >Fecha de liberación (domingo)</th
-                >
-                <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
-                  >Versión Milestone</th
-                >
-              </tr>
-            </thead>
-            <tbody class="bg-[#181c1f] text-white">
-              <tr
-                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
-              >
-                <td class="px-3 py-2 text-center align-middle"
-                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
-                  ></td
-                >
-                <td class="px-3 py-2">1</td>
-                <td class="px-3 py-2">18-19 Oct 2025</td>
-                <td class="px-3 py-2">Milestone 0: Inicio y versión base</td>
-                <td class="px-3 py-2">19 Oct 2025</td>
-                <td class="px-3 py-2">0.0.1</td>
-              </tr>
-              <tr
-                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
-              >
-                <td class="px-3 py-2 text-center align-middle"
-                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
-                  ></td
-                >
-                <td class="px-3 py-2">2</td>
-                <td class="px-3 py-2">25-26 Oct 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 1: Fundamentos de persistencia y configuración
-                  básica (inicio)</td
-                >
-                <td class="px-3 py-2">26 Oct 2025</td>
-                <td class="px-3 py-2">0.0.2</td>
-              </tr>
-              <tr
-                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
-              >
-                <td class="px-3 py-2 text-center align-middle"
-                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
-                  ></td
-                >
-                <td class="px-3 py-2">3</td>
-                <td class="px-3 py-2">1-2 Nov 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 1: Continuación y cierre (persistencia, perfiles,
-                  Gradle, Sentry, casos de uso)</td
-                >
-                <td class="px-3 py-2">2 Nov 2025</td>
-                <td class="px-3 py-2">0.0.2</td>
-              </tr>
-              <tr
-                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
-              >
-                <td class="px-3 py-2 text-center align-middle"
-                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
-                  ></td
-                >
-                <td class="px-3 py-2">4</td>
-                <td class="px-3 py-2">8-9 Nov 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 2: Validación con Jakarta Validation, manejo global
-                  de errores</td
-                >
-                <td class="px-3 py-2">9 Nov 2025</td>
-                <td class="px-3 py-2">0.0.3</td>
-              </tr>
-              <tr
-                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
-              >
-                <td class="px-3 py-2 text-center align-middle"
-                  ><span class="inline-block w-5 h-5 text-green-300">✔️</span
-                  ></td
-                >
-                <td class="px-3 py-2">5</td>
-                <td class="px-3 py-2">15-16 Nov 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 2: Seguridad básica con Spring Security y JWT,
-                  roles, protección endpoints</td
-                >
-                <td class="px-3 py-2">16 Nov 2025</td>
-                <td class="px-3 py-2">0.0.3</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">6</td>
-                <td class="px-3 py-2">22-23 Nov 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 3: Pruebas unitarias e integración, Testcontainers</td
-                >
-                <td class="px-3 py-2">23 Nov 2025</td>
-                <td class="px-3 py-2">0.0.4</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">7</td>
-                <td class="px-3 py-2">29-30 Nov 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 3: Documentación API con OpenAPI/Swagger,
-                  integración Sentry en tests</td
-                >
-                <td class="px-3 py-2">30 Nov 2025</td>
-                <td class="px-3 py-2">0.0.4</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">8</td>
-                <td class="px-3 py-2">6-7 Dec 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 4: Configuración Spring Boot Actuator, empaquetado
-                  para producción</td
-                >
-                <td class="px-3 py-2">7 Dec 2025</td>
-                <td class="px-3 py-2">0.0.5</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">9</td>
-                <td class="px-3 py-2">13-14 Dec 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 4: Seguridad reforzada (CORS, rate limiting,
-                  cabeceras), monitoreo avanzado Sentry</td
-                >
-                <td class="px-3 py-2">14 Dec 2025</td>
-                <td class="px-3 py-2">0.0.5</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">10</td>
-                <td class="px-3 py-2">20-21 Dec 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 5: Eventos de dominio, async, mensajería
-                  (RabbitMQ/Kafka), caching</td
-                >
-                <td class="px-3 py-2">21 Dec 2025</td>
-                <td class="px-3 py-2">0.0.6</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">11</td>
-                <td class="px-3 py-2">27-28 Dec 2025</td>
-                <td class="px-3 py-2"
-                  >Milestone 5: Optimización Gradle, pruebas integración
-                  mensajería y caching, seguridad avanzada JWT</td
-                >
-                <td class="px-3 py-2">28 Dec 2025</td>
-                <td class="px-3 py-2">0.0.6</td>
-              </tr>
-              <tr class="border-b border-blue-800/40">
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">12</td>
-                <td class="px-3 py-2">3-4 Jan 2026</td>
-                <td class="px-3 py-2"
-                  >Milestone 6: Integración final, gestión completa de módulos,
-                  pruebas y documentación</td
-                >
-                <td class="px-3 py-2">4 Jan 2026</td>
-                <td class="px-3 py-2">1.0.0</td>
-              </tr>
-              <tr>
-                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
-                <td class="px-3 py-2">13</td>
-                <td class="px-3 py-2">10-11 Jan 2026</td>
-                <td class="px-3 py-2"
-                  >Milestone 6: Pipeline CI/CD, cobertura &gt;85%,
-                  versionamiento semántico, release final</td
-                >
-                <td class="px-3 py-2">11 Jan 2026</td>
-                <td class="px-3 py-2">1.0.0</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="mt-8 text-base text-green-200 md:text-lg">
-          <h3 class="mb-2 text-lg font-bold text-green-300 md:text-xl">
-            Notas:
-          </h3>
-          <ul class="pl-6 space-y-1 list-disc">
-            <li>
-              La semana 3 ya fue completada con la <a
-                href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.2"
-                target="_blank"
-                rel="noopener"
-                class="text-green-300 underline hover:text-green-400"
-                >versión 0.0.2</a
-              >.
-            </li>
-            <li>El calendario continúa con trabajo solo sábados y domingos.</li>
-            <li>
-              Las fechas de liberación son los domingos al final de cada fin de
-              semana de trabajo.
-            </li>
-            <li>
-              Se mantiene la distribución equilibrada para un avance constante.
-            </li>
-          </ul>
-        </div>
-
-        <div class="mt-10">
-          <div
-            class="flex flex-col items-center gap-2 px-6 py-4 border-4 border-yellow-400 rounded-lg shadow-xl bg-yellow-100/90 animate-pulse-slow"
-          >
-            <span
-              class="flex items-center gap-2 text-lg font-bold text-yellow-700"
-            >
-              ⚠️ Aviso importante
-            </span>
-            <p class="text-base text-center text-yellow-900 md:text-lg">
-              Todas las <strong
-                >actualizaciones de tareas, cambios de calendario, retrasos o
-                notificaciones importantes</strong
-              > se publicarán en el proyecto de GitHub <a
-                href="https://github.com/users/lgzarturo/projects/12"
-                target="_blank"
-                rel="noopener"
-                class="font-bold text-blue-700 underline hover:text-blue-900"
-                >springboot-course (Project Board)</a
-              >.<br />
-              <span class="font-semibold"
-                >¡Mantente al tanto del repositorio para no perderte ninguna
-                novedad!</span
-              >
-            </p>
+      <div class="exp-top">
+        <div>
+          <div class="exp-title pixel-font">🎮 Progreso del entrenamiento</div>
+          <div class="exp-flavor mono">
+            "Conviértete en un maestro desarrollador"
           </div>
         </div>
-      </section>
-      <section
-        id="participa"
-        class="max-w-5xl p-8 mx-auto text-center level-section"
-        aria-labelledby="participa-titulo"
-      >
-        <h2
-          id="participa-titulo"
-          class="inline-block mb-6 text-3xl font-bold border-b-4 border-red-400 pixel-font glow-title"
+        <span class="level-badge mono" aria-label={`Nivel ${currentLevel}`}>
+          LVL {currentLevel}
+        </span>
+      </div>
+
+      <!-- EXP bar clásica Pokémon -->
+      <div class="exp-bar-wrap">
+        <div class="exp-bar-labels">
+          <span class="mono" style="color:var(--text-3)">EXP</span>
+          <span class="mono" id="pct-label" style="color:var(--poke-yellow)">
+            0 / {totalWeeks} semanas
+          </span>
+        </div>
+        <div
+          class="exp-bar-track"
+          role="progressbar"
+          aria-valuenow={completedWeeks}
+          aria-valuemin={0}
+          aria-valuemax={totalWeeks}
+          aria-label="Semanas completadas"
         >
-          ¿Cómo participar y formar parte de la <span class="text-blue-300"
-            >comunidad de desarrolladores</span
-          >?
+          <div class="exp-bar-fill" id="exp-fill"></div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stat-grid">
+        <div class="stat-cell">
+          <div class="stat-val" style="color:var(--poke-yellow)">
+            {completedWeeks}
+          </div>
+          <div class="stat-key">Completadas</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-val" style="color:var(--text-3)">{pendingWeeks}</div>
+          <div class="stat-key">Pendientes</div>
+        </div>
+        <div class="stat-cell">
+          <div
+            class="stat-val mono"
+            style="color:var(--poke-green);font-size:20px"
+          >
+            {lastVersion}
+          </div>
+          <div class="stat-key">Release</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ROADMAP ───────────────────────────────────────────────── -->
+    <section
+      id="roadmap"
+      class="section-block reveal"
+      aria-labelledby="roadmap-title"
+    >
+      <div class="section-header">
+        <h2 id="roadmap-title" class="section-title pixel-font glow-title">
+          🗓 Roadmap semanal
         </h2>
-        <p class="max-w-3xl mx-auto mb-6 text-lg text-white">
-          La <strong>comunidad</strong> es el corazón de este proyecto. Aquí no solo
-          aprendes <span class="text-green-300">Spring Boot</span>, sino que
-          colaboras, compartes y creces con otros <strong
-            >desarrolladores apasionados</strong
-          >.
-        </p>
-        <a
-          href="https://github.com/lgzarturo/springboot-course"
-          target="_blank"
-          rel="noopener"
-          class="inline-block px-10 py-4 btn-retro animate-pulse-slow"
+        <span class="mono week-count" id="week-count">{totalWeeks} semanas</span
         >
-          Únete a la comunidad de Spring Boot y comienza tu aventura de
-          aprendizaje
-        </a>
-        <p class="max-w-md mx-auto mt-6 text-sm text-green-200">
-          Únete a la wiki, descarga el código, realiza un fork, participa en
-          retos semanales, comparte tus avances y ayuda a otros. Juntos creamos
-          una nueva forma de aprender desarrollo.
+      </div>
+
+      <!-- Gym badge filter: cada milestone es un badge -->
+      <div
+        class="badge-filter"
+        id="badge-filter"
+        role="group"
+        aria-label="Filtrar por milestone"
+      >
+        <button class="gym-badge active" data-ms="all" aria-pressed="true">
+          <div
+            class="gym-badge-icon"
+            style="background:#2a2f3a"
+            aria-hidden="true"
+          >
+            🎮
+          </div>
+          <span class="gym-badge-label mono">Todas</span>
+        </button>
+
+        {
+          Object.entries(MILESTONES).map(([key, ms]) => {
+            const done = weeks.filter((w) => w.ms === key && w.done).length;
+            const count = weeks.filter((w) => w.ms === key).length;
+            const allDone = done === count;
+            return (
+              <button
+                class="gym-badge"
+                data-ms={key}
+                aria-pressed="false"
+                aria-label={`${ms.label}: ${done} de ${count} completadas`}
+              >
+                <div
+                  class="gym-badge-icon"
+                  style={`background:${allDone ? ms.color : "#2a2f3a"};${!allDone ? "filter:grayscale(1);opacity:0.5" : ""}`}
+                  aria-hidden="true"
+                >
+                  {ms.icon}
+                </div>
+                <span class="gym-badge-label mono">{key}</span>
+              </button>
+            );
+          })
+        }
+      </div>
+
+      <!-- Las week cards las renderiza JS para soportar filtro + acordeón -->
+      <div id="weeks-stack" class="weeks-stack" aria-live="polite"></div>
+
+      <!-- GitHub notice -->
+      <div class="gh-notice" role="note">
+        <span aria-hidden="true">⚠️</span>
+        <span>
+          Actualizaciones de calendario y cambios importantes en el{" "}
+          <a
+            href="https://github.com/users/lgzarturo/projects/12"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Project Board de GitHub →
+          </a>
+        </span>
+      </div>
+    </section>
+
+    <!-- ── ¿QUÉ ES? ──────────────────────────────────────────────── -->
+    <section
+      id="que-es"
+      class="section-block level-section reveal"
+      aria-labelledby="que-es-titulo"
+    >
+      <h2
+        id="que-es-titulo"
+        class="pixel-font glow-title section-h2 border-yellow"
+      >
+        ¿Qué es este <span class="text-blue">curso gamificado</span>?
+      </h2>
+      <p>
+        Este <strong>curso online de Spring Boot</strong> es una experiencia educativa
+        innovadora que combina el <strong>aprendizaje técnico</strong> con una
+        <strong>narrativa gamificada</strong> inspirada en <span
+          class="text-pink">Pokémon</span
+        >. Aprenderás <strong>arquitectura MVC</strong>, <strong>TDD</strong> y
+        <strong>buenas prácticas de desarrollo</strong> resolviendo retos reales de
+        <strong>hotelería</strong> y <strong>ecommerce</strong>. Ideal para
+        desarrolladores que buscan dominar <span class="text-green"
+          >Java backend</span
+        >
+        y destacar en la industria.
+      </p>
+    </section>
+
+    <!-- ── GAMIFICACIÓN ──────────────────────────────────────────── -->
+    <section
+      id="gamificacion"
+      class="section-block level-section reveal"
+      aria-labelledby="gamificacion-titulo"
+    >
+      <h2
+        id="gamificacion-titulo"
+        class="pixel-font glow-title section-h2 border-red"
+      >
+        ¿Por qué <span class="text-blue">gamificar</span> el aprendizaje?
+      </h2>
+      <p class="mb-block">
+        <strong>Pokémon</strong> es una franquicia que ha marcado generaciones por
+        su capacidad de contar historias, incentivar la exploración y el
+        <strong>aprendizaje progresivo</strong> a través de retos y recompensas.
+      </p>
+      <ul class="poke-list">
+        <li>
+          Crear una experiencia inmersiva que motive a los desarrolladores a
+          avanzar y superar desafíos.
+        </li>
+        <li>
+          Fomentar la curiosidad y el deseo de "capturar" nuevos conocimientos y
+          habilidades.
+        </li>
+        <li>
+          Usar una narrativa conocida para facilitar la conexión emocional y la
+          retención del aprendizaje.
+        </li>
+        <li>
+          Incentivar la colaboración y competencia sana dentro de la comunidad.
+        </li>
+      </ul>
+      <p class="quote">
+        "Aprender es una aventura, y cada línea de código es un paso hacia
+        convertirte en un maestro desarrollador."
+      </p>
+    </section>
+
+    <!-- ── EJEMPLOS REALES ───────────────────────────────────────── -->
+    <section
+      id="ejemplos"
+      class="section-block level-section reveal"
+      aria-labelledby="ejemplos-titulo"
+    >
+      <h2
+        id="ejemplos-titulo"
+        class="pixel-font glow-title section-h2 border-green"
+      >
+        Ejemplos de <span class="text-green">hotelería</span> y <span
+          class="text-blue">ecommerce</span
+        >
+      </h2>
+      <p class="mb-block">
+        Elegí estos sectores porque son dominios reales con <strong
+          >casos de uso complejos</strong
+        >
+        que permiten aplicar conceptos técnicos de forma práctica y relevante.
+      </p>
+      <ul class="poke-list">
+        <li>
+          La hotelería: múltiples actores, reservas, disponibilidad y reglas de
+          negocio que desafían la arquitectura.
+        </li>
+        <li>
+          El ecommerce: flujos de compra, inventarios, pagos y logística, ideal
+          para practicar integración y pruebas.
+        </li>
+        <li>
+          Ambos dominios muestran cómo aplicar patrones y arquitectura MVC en
+          contextos reales.
+        </li>
+        <li>
+          Facilitan una narrativa coherente y atractiva para la gamificación.
+        </li>
+      </ul>
+      <p class="quote">
+        "La mejor forma de aprender es construyendo soluciones que reflejen el
+        mundo real."
+      </p>
+    </section>
+
+    <!-- ── FUNDAMENTO ────────────────────────────────────────────── -->
+    <section
+      id="fundamento"
+      class="section-block level-section reveal"
+      aria-labelledby="fundamento-titulo"
+    >
+      <h2
+        id="fundamento-titulo"
+        class="pixel-font glow-title section-h2 border-purple"
+      >
+        Fundamento pedagógico y <span class="text-blue"
+          >narrativa gamificada</span
+        >
+      </h2>
+      <p class="mb-block">
+        La <strong>gamificación</strong> no es solo un recurso lúdico, sino una
+        <strong>estrategia pedagógica</strong> poderosa que:
+      </p>
+      <ul class="poke-list">
+        <li>
+          Usa la narrativa para crear un contexto emocional y cognitivo que
+          facilita la comprensión y retención.
+        </li>
+        <li>
+          Incorpora retos, recompensas y progresión para mantener la motivación
+          y el compromiso.
+        </li>
+        <li>
+          Fomenta el aprendizaje activo a través de casos prácticos y feedback
+          inmediato.
+        </li>
+        <li>
+          Combina historia con buenas prácticas para que el aprendizaje técnico
+          sea significativo y aplicable.
+        </li>
+      </ul>
+      <p class="quote">
+        "Contar historias es la forma más antigua y efectiva de enseñar, y la
+        tecnología nos permite reinventar esa tradición."
+      </p>
+    </section>
+
+    <!-- ── BENEFICIOS ────────────────────────────────────────────── -->
+    <section
+      id="beneficios"
+      class="section-block reveal"
+      aria-labelledby="beneficios-titulo"
+    >
+      <h2
+        id="beneficios-titulo"
+        class="pixel-font glow-title section-title border-yellow"
+      >
+        🏆 Beneficios del curso
+      </h2>
+      <div class="features-grid">
+        {
+          [
+            {
+              icon: "🏗️",
+              title: "Arquitectura MVC",
+              desc: "Diseño desacoplado con capas y features. Tu lógica de negocio sin depender de Spring.",
+            },
+            {
+              icon: "🧪",
+              title: "TDD real",
+              desc: "Red → Green → Refactor con Testcontainers. Tests que prueban comportamiento, no implementación.",
+            },
+            {
+              icon: "🔐",
+              title: "Spring Security",
+              desc: "JWT, roles, CORS y rate limiting bien configurados para producción.",
+            },
+            {
+              icon: "🚀",
+              title: "Deploy real",
+              desc: "Actuator, Docker, CI/CD con cobertura >85% y monitoreo con Sentry.",
+            },
+            {
+              icon: "📡",
+              title: "Mensajería",
+              desc: "Eventos de dominio, Kafka/RabbitMQ y caching con Spring Cache.",
+            },
+            {
+              icon: "🏨",
+              title: "Casos reales",
+              desc: "Hotelería y ecommerce: reservas, inventario, pagos y flujos complejos.",
+            },
+          ].map((f) => (
+            <div class="feat-card pixel-border-sm">
+              <div class="feat-icon" aria-hidden="true">
+                {f.icon}
+              </div>
+              <div class="feat-title">{f.title}</div>
+              <div class="feat-desc">{f.desc}</div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ── BLOG ──────────────────────────────────────────────────── -->
+    <section
+      id="blog"
+      class="section-block reveal"
+      aria-labelledby="blog-titulo"
+    >
+      <h2 id="blog-titulo" class="pixel-font glow-title section-title">
+        📝 Del blog
+      </h2>
+      <div class="blog-stack">
+        {
+          blogPosts.map((post) => (
+            <a
+              href={post.ready ? post.href : undefined}
+              class:list={["blog-card", { "blog-card--ready": post.ready }]}
+              aria-disabled={!post.ready}
+            >
+              <span
+                class="blog-dot"
+                style={`background:${post.tagColor}`}
+                aria-hidden="true"
+              />
+              <div class="blog-content">
+                <div class="blog-cat mono" style={`color:${post.tagColor}`}>
+                  {post.tag}
+                </div>
+                <div class="blog-title">{post.title}</div>
+                <div class="blog-desc">{post.desc}</div>
+              </div>
+              <span class="blog-status mono">
+                {post.ready ? "Leer →" : "Pronto"}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ── PARTICIPA / CTA ───────────────────────────────────────── -->
+    <section
+      id="participa"
+      class="section-block cta-section reveal"
+      aria-labelledby="participa-titulo"
+    >
+      <div class="cta-card pixel-border">
+        <h2 id="participa-titulo" class="pixel-font glow-h1 cta-title">
+          ¡Únete a la aventura! 🎮
+        </h2>
+        <p class="cta-sub">
+          El repositorio es público. Clona, forkea, abre un PR y forma parte de
+          la comunidad. Únete a la wiki, descarga el código, participa en retos
+          semanales y ayuda a otros.
         </p>
-      </section>
-    </main>
-  </div>
+        <div class="warning-box" role="note">
+          <span aria-hidden="true">⚠️</span>
+          <span>
+            Actualizaciones, retrasos y cambios de calendario en el{" "}
+            <a
+              href="https://github.com/users/lgzarturo/projects/12"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Project Board de GitHub
+            </a>. ¡Activa las notificaciones!
+          </span>
+        </div>
+        <div class="cta-buttons">
+          <a
+            href="https://github.com/lgzarturo/springboot-course"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-retro"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
+              ></path>
+            </svg>
+            Ver en GitHub
+          </a>
+          <a
+            href="https://github.com/lgzarturo/springboot-course/wiki"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            📖 Wiki del proyecto
+          </a>
+        </div>
+      </div>
+    </section>
+  </div><!-- /course-page -->
+
   <Footer />
 </BaseLayout>
+
+<style is:global>
+  /* ── Design tokens ──────────────────────────────────────────── */
+  :root {
+    /* Colores base del sitio (dark by default, igual que tu sitio) */
+    --bg: #181c1f;
+    --surface: #1e2328;
+    --surface-2: #252b31;
+    --border: #2e353d;
+    --border-2: #3d4752;
+    --text: #e8edf2;
+    --text-2: #8b98a8;
+    --text-3: #5a6472;
+
+    /* Paleta Pokémon */
+    --poke-yellow: #f59e0b;
+    --poke-red: #ef4444;
+    --poke-blue: #3b82f6;
+    --poke-green: #2aff6a;
+    --poke-purple: #8b5cf6;
+    --poke-pink: #ec4899;
+    --poke-orange: #f97316;
+    --poke-cyan: #00e0ff;
+
+    /* Shadows & radii */
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  /* ── Fuentes ────────────────────────────────────────────────── */
+  .pixel-font {
+    font-family: "Pixelify Sans", cursive;
+    font-optical-sizing: auto;
+    letter-spacing: 1px;
+  }
+  .mono {
+    font-family: "JetBrains Mono", monospace;
+  }
+
+  /* ── Colores de texto Pokémon ───────────────────────────────── */
+  .text-green {
+    color: var(--poke-green);
+  }
+  .text-blue {
+    color: var(--poke-cyan);
+  }
+  .text-yellow {
+    color: var(--poke-yellow);
+  }
+  .text-pink {
+    color: var(--poke-pink);
+  }
+  .text-purple {
+    color: var(--poke-purple);
+  }
+
+  /* ── Glow effects ───────────────────────────────────────────── */
+  .glow-h1 {
+    color: var(--poke-blue);
+    text-shadow:
+      0 0 8px var(--poke-cyan),
+      0 0 20px rgba(0, 224, 255, 0.3);
+  }
+  .glow-title {
+    color: var(--poke-green);
+    text-shadow:
+      0 0 8px var(--poke-cyan),
+      0 0 16px rgba(42, 255, 106, 0.3);
+  }
+
+  /* ── Pixel borders ──────────────────────────────────────────── */
+  .pixel-border {
+    border: 3px solid var(--poke-green);
+    box-shadow:
+      0 0 0 3px var(--bg),
+      0 0 16px 2px rgba(42, 255, 106, 0.2);
+    border-radius: var(--radius);
+  }
+  .pixel-border-sm {
+    border: 2px solid var(--border-2);
+    border-radius: var(--radius);
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+  }
+  .pixel-border-sm:hover {
+    border-color: var(--poke-green);
+    box-shadow: 0 0 10px rgba(42, 255, 106, 0.15);
+  }
+
+  /* ── Animated pixel background ──────────────────────────────── */
+  .course-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px 40px;
+    position: relative;
+  }
+
+  /* ── Scroll reveal ──────────────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.5s ease;
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ══ HERO ══════════════════════════════════════════════════════ */
+  .hero {
+    padding: 40px 0 32px;
+  }
+  #hero-title {
+    font-size: clamp(22px, 4.5vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-3);
+    margin-bottom: 16px;
+  }
+  .breadcrumb a {
+    color: var(--poke-cyan);
+  }
+  .hero h1 {
+    font-size: clamp(22px, 4.5vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 14px;
+    /* pixel-font y glow-h1 vienen de clases */
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-2);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
+    color: var(--text-2);
+    padding: 4px 10px;
+    border-radius: 99px;
+  }
+  .chip-live {
+    background: rgba(42, 255, 106, 0.08);
+    border-color: rgba(42, 255, 106, 0.3);
+    color: var(--poke-green);
+  }
+  .chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--poke-green);
+  }
+  .hero-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .hero-nav a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition:
+      color 0.15s,
+      border-color 0.15s;
+    text-decoration: none;
+  }
+  .hero-nav a:hover {
+    color: var(--poke-cyan);
+    border-color: var(--poke-cyan);
+  }
+
+  /* ══ EXP TRACKER ═══════════════════════════════════════════════ */
+  .exp-card {
+    background: var(--surface);
+    padding: 0; /* El stripe ocupa el top, el contenido va debajo */
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  .exp-stripe {
+    height: 4px;
+    background: linear-gradient(90deg, var(--poke-yellow), var(--poke-orange));
+  }
+  .exp-card > *:not(.exp-stripe) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 18px;
+    padding-bottom: 4px;
+  }
+  .exp-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .exp-flavor {
+    font-size: 12px;
+    color: var(--text-2);
+    font-style: italic;
+    margin-top: 3px;
+  }
+  .level-badge {
+    background: var(--poke-yellow);
+    color: #000;
+    font-weight: 800;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 99px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .exp-bar-wrap {
+    padding-top: 14px;
+    padding-bottom: 0;
+  }
+  .exp-bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .exp-bar-track {
+    height: 11px;
+    border-radius: 99px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-2);
+    overflow: hidden;
+  }
+  .exp-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #d97706, #f59e0b, #fcd34d);
+    border-radius: 99px;
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-top: 16px;
+    padding-bottom: 20px;
+  }
+  .stat-cell {
+    background: var(--surface-2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .stat-val {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1;
+    font-family: "JetBrains Mono", monospace;
+    margin-bottom: 3px;
+  }
+  .stat-key {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+  }
+
+  /* ══ SECTION BLOCKS ════════════════════════════════════════════ */
+  .section-block {
+    margin: 36px 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-size: 20px;
+    /* pixel-font + glow-title vienen de clases en el markup */
+  }
+  .week-count {
+    font-size: 12px;
+    color: var(--text-3);
+  }
+
+  /* Títulos de section con borde inferior de color */
+  .section-h2 {
+    display: inline-block;
+    font-size: 22px;
+    margin-bottom: 16px;
+    padding-bottom: 6px;
+  }
+  .border-yellow {
+    border-bottom: 4px solid var(--poke-yellow);
+  }
+  .border-red {
+    border-bottom: 4px solid var(--poke-red);
+  }
+  .border-green {
+    border-bottom: 4px solid var(--poke-green);
+  }
+  .border-purple {
+    border-bottom: 4px solid var(--poke-purple);
+  }
+
+  /* level-section: panel de videojuego */
+  .level-section {
+    background: var(--surface);
+    border: 2px solid var(--border-2);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow:
+      0 0 0 1px rgba(0, 224, 255, 0.05),
+      var(--shadow);
+  }
+  .level-section p {
+    color: var(--text-2);
+    font-size: 15px;
+    line-height: 1.7;
+  }
+  .mb-block {
+    margin-bottom: 12px;
+  }
+
+  /* Listas estilo Pokémon */
+  .poke-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .poke-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--poke-green);
+    line-height: 1.55;
+  }
+  .poke-list li::before {
+    content: "▶";
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-size: 10px;
+    color: var(--poke-cyan);
+  }
+
+  /* Cita */
+  .quote {
+    margin-top: 16px;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--poke-yellow);
+    border-left: 3px solid var(--poke-pink);
+    padding-left: 12px;
+    line-height: 1.6;
+  }
+
+  /* ══ GYM BADGE FILTER ══════════════════════════════════════════ */
+  .badge-filter {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+  }
+  .badge-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gym-badge {
+    flex-shrink: 0;
+    cursor: pointer;
+    background: none;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 8px;
+    border-radius: 10px;
+    transition: all 0.18s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .gym-badge.active {
+    background: var(--surface-2);
+    border-color: var(--border-2);
+    box-shadow: 0 0 8px rgba(0, 224, 255, 0.1);
+  }
+  .gym-badge-icon {
+    width: 36px;
+    height: 36px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    transition: opacity 0.18s;
+  }
+  .gym-badge-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-3);
+  }
+  .gym-badge.active .gym-badge-label {
+    color: var(--text-2);
+  }
+
+  /* ══ WEEK CARDS (JS-rendered) ══════════════════════════════════ */
+  .weeks-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .week-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition:
+      box-shadow 0.18s,
+      transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .week-card:active {
+    transform: scale(0.997);
+  }
+  .week-card.done {
+    border-color: rgba(42, 255, 106, 0.2);
+  }
+  .week-card.open {
+    box-shadow: var(--shadow-md);
+    border-color: var(--border-2);
+  }
+
+  /* Stripe izquierda por milestone */
+  .week-stripe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .week-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px 13px 18px;
+  }
+  .week-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 12px;
+    background: var(--surface-2);
+    color: var(--text-3);
+    border: 1px solid var(--border);
+  }
+  .week-card.done .week-num {
+    background: rgba(42, 255, 106, 0.1);
+    color: var(--poke-green);
+    border-color: rgba(42, 255, 106, 0.25);
+  }
+  .week-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .week-ms-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 2px;
+  }
+  .week-ms-chip {
+    font-size: 10px;
+    font-weight: 700;
+    font-family: "JetBrains Mono", monospace;
+    padding: 1px 6px;
+    border-radius: 4px;
+    line-height: 1.6;
+  }
+  .week-ms-label {
+    font-size: 10px;
+    color: var(--text-3);
+  }
+  .week-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text);
+  }
+  .week-card:not(.done) .week-name {
+    color: var(--text-2);
+  }
+  .week-date {
+    font-size: 11px;
+    color: var(--text-3);
+    font-family: "JetBrains Mono", monospace;
+    margin-top: 2px;
+  }
+
+  /* Pokéball status */
+  .pokeball {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--border-2);
+    position: relative;
+    overflow: hidden;
+    background: var(--surface-2);
+  }
+  .pokeball::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 50%;
+    background: var(--border-2);
+    transition: background 0.2s;
+  }
+  .pokeball::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--surface-2);
+    border: 2px solid var(--border-2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .week-card.done .pokeball {
+    border-color: var(--poke-red);
+  }
+  .week-card.done .pokeball::before {
+    background: var(--poke-red);
+  }
+  .week-card.done .pokeball::after {
+    background: #fff;
+    border-color: #fff;
+  }
+
+  .week-arrow {
+    flex-shrink: 0;
+    color: var(--text-3);
+    font-size: 12px;
+    margin-left: 4px;
+    transition: transform 0.2s;
+  }
+  .week-card.open .week-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Acordeón */
+  .week-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .week-card.open .week-body {
+    max-height: 240px;
+  }
+  .week-body-inner {
+    padding: 0 18px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .week-body-inner p {
+    font-size: 13px;
+    color: var(--text-2);
+    padding-top: 12px;
+    line-height: 1.65;
+  }
+  .week-body-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .ver-tag {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(42, 255, 106, 0.08);
+    color: var(--poke-green);
+    border: 1px solid rgba(42, 255, 106, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .gh-link {
+    font-size: 12px;
+    color: var(--poke-cyan);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .gh-link:hover {
+    text-decoration: underline;
+  }
+
+  /* GitHub notice */
+  .gh-notice {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: rgba(0, 224, 255, 0.05);
+    border: 1px solid rgba(0, 224, 255, 0.15);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text-2);
+  }
+  .gh-notice a {
+    color: var(--poke-cyan);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .gh-notice a:hover {
+    text-decoration: underline;
+  }
+
+  /* ══ FEATURES GRID ═════════════════════════════════════════════ */
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .feat-card {
+    background: var(--surface);
+    padding: 18px;
+    /* pixel-border-sm viene de clase en markup */
+  }
+  .feat-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .feat-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .feat-desc {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.55;
+  }
+
+  /* ══ BLOG ══════════════════════════════════════════════════════ */
+  .blog-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .blog-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    opacity: 0.55;
+    text-decoration: none;
+    transition:
+      opacity 0.18s,
+      border-color 0.18s,
+      box-shadow 0.18s;
+  }
+  .blog-card--ready {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .blog-card--ready:hover {
+    border-color: var(--poke-cyan);
+    box-shadow: 0 0 10px rgba(0, 224, 255, 0.1);
+  }
+  .blog-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .blog-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .blog-cat {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 4px;
+  }
+  .blog-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .blog-desc {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .blog-status {
+    flex-shrink: 0;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--surface-2);
+    color: var(--text-3);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+
+  /* ══ CTA ═══════════════════════════════════════════════════════ */
+  .cta-card {
+    padding: 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .cta-title {
+    font-size: clamp(20px, 4vw, 28px);
+    margin-bottom: 10px;
+  }
+  .cta-sub {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.65;
+    max-width: 480px;
+    margin: 0 auto 20px;
+  }
+  .warning-box {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    text-align: left;
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: #fcd34d;
+  }
+  .warning-box a {
+    color: var(--poke-cyan);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .warning-box a:hover {
+    text-decoration: underline;
+  }
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .btn-retro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "Pixelify Sans", cursive;
+    font-size: 15px;
+    font-weight: 700;
+    background: linear-gradient(
+      90deg,
+      var(--poke-green) 0%,
+      var(--poke-cyan) 100%
+    );
+    color: #181c1f;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 12px rgba(42, 255, 106, 0.3);
+    padding: 14px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition:
+      box-shadow 0.2s,
+      opacity 0.18s,
+      transform 0.12s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-retro:hover {
+    box-shadow: 0 0 24px rgba(42, 255, 106, 0.5);
+    opacity: 0.92;
+  }
+  .btn-retro:active {
+    transform: scale(0.98);
+  }
+  .btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--surface-2);
+    color: var(--text-2);
+    border: 1px solid var(--border-2);
+    padding: 11px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition:
+      border-color 0.18s,
+      color 0.18s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-secondary:hover {
+    border-color: var(--poke-cyan);
+    color: var(--text);
+  }
+
+  /* ── Responsive ─────────────────────────────────────────────── */
+  @media (max-width: 500px) {
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+    .stat-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+    .hero h1 {
+      font-size: 20px;
+    }
+    .cta-card {
+      padding: 24px 16px;
+    }
+  }
+</style>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SCRIPT — define:vars pasa la data del frontmatter al cliente
+════════════════════════════════════════════════════════════════ -->
+<script
+  define:vars={{
+    weeks,
+    MILESTONES,
+    completedWeeks,
+    totalWeeks,
+    progressPercent,
+  }}
+>
+  // ── EXP bar animation ──────────────────────────────────────
+  setTimeout(() => {
+    const fill = document.getElementById("exp-fill");
+    const label = document.getElementById("pct-label");
+    if (fill) fill.style.width = progressPercent + "%";
+
+    let n = 0;
+    const iv = setInterval(() => {
+      n++;
+      if (n >= completedWeeks) {
+        n = completedWeeks;
+        clearInterval(iv);
+      }
+      if (label) label.textContent = `${n} / ${totalWeeks} semanas`;
+    }, 120);
+  }, 350);
+
+  // ── Render week cards ──────────────────────────────────────
+  function renderWeeks(filter) {
+    const stack = document.getElementById("weeks-stack");
+    const counter = document.getElementById("week-count");
+    if (!stack) return;
+
+    stack.innerHTML = "";
+    const list =
+      filter === "all" ? weeks : weeks.filter((w) => w.ms === filter);
+    if (counter)
+      counter.textContent = `${list.length} semana${list.length !== 1 ? "s" : ""}`;
+
+    list.forEach((w) => {
+      const ms = MILESTONES[w.ms];
+      const card = document.createElement("div");
+      card.className = "week-card" + (w.done ? " done" : "");
+
+      // Stripe de color del milestone
+      const stripe = document.createElement("div");
+      stripe.className = "week-stripe";
+      stripe.style.background = w.done ? ms.color : "var(--border)";
+      card.appendChild(stripe);
+
+      card.innerHTML += `
+      <div class="week-head">
+        <div class="week-num mono">W${w.n}</div>
+        <div class="week-info">
+          <div class="week-ms-row">
+            <span class="week-ms-chip mono"
+              style="background:${ms.color}20;color:${ms.color}">${w.ms}</span>
+            <span class="week-ms-label">${ms.label}</span>
+          </div>
+          <div class="week-name">${w.name}</div>
+          <div class="week-date mono">${w.date}</div>
+        </div>
+        <div class="pokeball" aria-hidden="true"></div>
+        <div class="week-arrow" aria-hidden="true">▾</div>
+      </div>
+      <div class="week-body" role="region">
+        <div class="week-body-inner">
+          <p>${w.detail}</p>
+          <div class="week-body-footer">
+            <span class="ver-tag mono">${w.ver}</span>
+            ${
+              w.done
+                ? `<a class="gh-link" href="https://github.com/lgzarturo/springboot-course/releases/tag/${w.ver}"
+                    target="_blank" rel="noopener noreferrer">ver release →</a>`
+                : ""
+            }
+          </div>
+        </div>
+      </div>
+    `;
+
+      card.addEventListener("click", () => {
+        const isOpen = card.classList.toggle("open");
+        const arrow = card.querySelector(".week-arrow");
+        if (arrow) arrow.textContent = isOpen ? "▴" : "▾";
+      });
+
+      stack.appendChild(card);
+    });
+  }
+  renderWeeks("all");
+
+  // ── Gym badge filter ───────────────────────────────────────
+  document.getElementById("badge-filter")?.addEventListener("click", (e) => {
+    const btn = e.target.closest(".gym-badge");
+    if (!btn) return;
+
+    document.querySelectorAll(".gym-badge").forEach((b) => {
+      b.classList.remove("active");
+      b.setAttribute("aria-pressed", "false");
+    });
+    btn.classList.add("active");
+    btn.setAttribute("aria-pressed", "true");
+    renderWeeks(btn.dataset.ms);
+  });
+
+  // ── Scroll reveal ──────────────────────────────────────────
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add("in");
+          io.unobserve(e.target);
+        }
+      });
+    },
+    { threshold: 0.07 },
+  );
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+</script>
