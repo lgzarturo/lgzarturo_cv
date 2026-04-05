@@ -6,46 +6,46 @@ const { title } = Astro.props;
 const isHome = Astro.url.pathname === "/";
 ---
 <!-- Header -->
-<header class="fixed top-0 p-2 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50 transition-all duration-300">
-    <nav class="max-w-6xl mx-auto px-6 py-4">
+<header class="fixed top-0 z-50 w-full p-2 transition-all duration-300 border-b border-gray-200 bg-white/80 backdrop-blur-md">
+    <nav class="max-w-6xl px-6 py-4 mx-auto">
         <div class="flex items-center justify-between">
             <div class="flex items-center space-x-2 animate-fade-in-delay" onclick="window.location.href='/'" style="cursor: pointer;">
-                <div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center animate-rotate-grow">
-                    <span class="text-white font-bold text-sm">ALG</span>
+                <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 animate-rotate-grow">
+                    <span class="text-sm font-bold text-white">ALG</span>
                 </div>&nbsp;
                 <h1 class="text-xl font-bold text-gray-900">{title}</h1>
             </div>
             {isHome ? (
                 <>
-                <ul id="desktop-menu" class="hidden md:flex items-center space-x-8">
-                    <li><a href="#about" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Sobre Mí</a></li>
-                    <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Laboratorio</a></li>
-                    <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Habilidades</a></li>
-                    <li><a href="#experience" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Experiencia</a></li>
-                    <li><a href="/recursos" class="text-gray-600 hover:text-blue-600 transition-colors duration-200 font-medium">Recursos</a></li>
-                    <li><a href="#contact" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">Contacto</a></li>
-                    <li style="display: none;"><button class="p-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-lg shadow transition hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
+                <ul id="desktop-menu" class="items-center hidden space-x-8 md:flex">
+                    <li><a href="#about" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Sobre Mí</a></li>
+                    <li><a href="#projects" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Laboratorio</a></li>
+                    <li><a href="#skills" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Habilidades</a></li>
+                    <li><a href="#experience" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Experiencia</a></li>
+                    <li><a href="/recursos" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Recursos</a></li>
+                    <li><a href="#contact" class="px-4 py-2 font-medium text-white transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700">Contacto</a></li>
+                    <li style="display: none;"><button class="p-2 text-gray-800 transition bg-gray-200 rounded-lg shadow dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
                         <span class="theme-toggle-text">🌙 Modo oscuro</span>
                     </button></li>
                 </ul>
-                <button id="mobile-menu-button" class="md:hidden p-2">
+                <button id="mobile-menu-button" class="p-2 md:hidden">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-                <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col transition-transform duration-500 transform translate-x-full md:hidden bg-gradient-to-br from-blue-400 via-white to-purple-400 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 backdrop-blur-xl shadow-2xl opacity-0 pointer-events-none" style="display: none; min-height: 90vh; opacity: 0.97; backdrop-filter: blur(80px);">
-                    <button id="close-mobile-menu" class="absolute top-6 right-6 p-2">
+                <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col transition-transform duration-500 transform translate-x-full shadow-2xl opacity-0 pointer-events-none md:hidden bg-gradient-to-br from-blue-400 via-white to-purple-400 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 backdrop-blur-xl" style="display: none; min-height: 90vh; opacity: 0.97; backdrop-filter: blur(80px);">
+                    <button id="close-mobile-menu" class="absolute p-2 top-6 right-6">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
-                    <ul class="flex flex-1 flex-col justify-evenly items-center w-full text-center text-2xl font-bold">
-                        <li class="w-full my-2"><a href="#about" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Sobre Mí</a></li>
-                        <li class="w-full my-2"><a href="#experience" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Experiencia</a></li>
-                        <li class="w-full my-2"><a href="#skills" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Habilidades</a></li>
-                        <li class="w-full my-2"><a href="#projects" class="block py-4 w-full mx-4 rounded-xl text-gray-600 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 bg-white/60 dark:bg-gray-800/80 shadow-md">Proyectos</a></li>
-                        <li class="w-full my-2"><a href="#contact" class="block py-4 w-full mx-4 rounded-xl bg-blue-600 dark:bg-blue-700 text-white hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors duration-200 shadow-md">Contacto</a></li>
-                        <li class="w-full my-2" style="display: none;"><button class="block py-4 w-full mx-4 rounded-xl bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 shadow-md transition-colors hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle duration-200 cursor-pointer">
+                    <ul class="flex flex-col items-center flex-1 w-full text-2xl font-bold text-center justify-evenly">
+                        <li class="w-full my-2"><a href="#about" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Sobre Mí</a></li>
+                        <li class="w-full my-2"><a href="#experience" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Experiencia</a></li>
+                        <li class="w-full my-2"><a href="#skills" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Habilidades</a></li>
+                        <li class="w-full my-2"><a href="#projects" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Proyectos</a></li>
+                        <li class="w-full my-2"><a href="#contact" class="block w-full py-4 mx-4 text-white transition-colors duration-200 bg-blue-600 shadow-md rounded-xl dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800">Contacto</a></li>
+                        <li class="w-full my-2" style="display: none;"><button class="block w-full py-4 mx-4 text-gray-800 transition-colors duration-200 bg-gray-200 shadow-md cursor-pointer rounded-xl dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
                             <span class="theme-toggle-text">🌙 Modo oscuro</span>
                         </button></li>
                     </ul>

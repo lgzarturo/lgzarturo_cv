@@ -1,13 +1,22 @@
 ---
 // src/pages/springboot-course.astro
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+import { completedWeeks, totalWeeks } from "../data/course";
+
+const title = "Curso Gamificado Spring Boot + Kotlin | Arturo López";
+const description =
+  "Aprende Spring Boot 3.x con Kotlin, arquitectura hexagonal y TDD. Retos reales de hotelería y ecommerce. Sin relleno.";
+const pendingWeeks = totalWeeks - completedWeeks;
 ---
 
-<BaseLayout title="Curso Gamificado Spring Boot + Kotlin | Arturo López Gómez"
-            description="Aprende Spring Boot con arquitectura hexagonal y TDD en una experiencia gamificada. Ejemplos reales de hotelería y ecommerce."
-            canonical="https://lgzarturo.com/springboot-course">
+<BaseLayout
+  title="Curso Gamificado Spring Boot + Kotlin | Arturo López Gómez"
+  description="Aprende Spring Boot con arquitectura hexagonal y TDD en una experiencia gamificada. Ejemplos reales de hotelería y ecommerce."
+  canonical="https://lgzarturo.com/springboot-course"
+>
   <head>
     <meta
       name="description"
@@ -113,11 +122,8 @@ import Footer from "../components/Footer.astro";
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: repeating-linear-gradient(
-          135deg,
-          #2aff6a 0 2px,
-          transparent 2px 20px
-        ),
+      background:
+        repeating-linear-gradient(135deg, #2aff6a 0 2px, transparent 2px 20px),
         repeating-linear-gradient(45deg, #00e0ff 0 2px, transparent 2px 20px);
       opacity: 0.08;
       z-index: 1;
@@ -251,19 +257,19 @@ import Footer from "../components/Footer.astro";
     }
   </style>
   <div
-    class="min-h-screen flex flex-col pixel-bg md:p-20"
+    class="flex flex-col min-h-screen pixel-bg md:p-20"
     itemscope
     itemtype="https://schema.org/Course"
   >
     <!-- Header -->
     <header
-      class="shadow-lg flex flex-col items-center mt-20 pixel-border bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 relative z-10 p-20 shadow-xl/30"
+      class="relative z-10 flex flex-col items-center p-20 mt-20 shadow-lg pixel-border bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 shadow-xl/30"
       itemprop="provider"
       itemscope
       itemtype="https://schema.org/Person"
     >
       <h1
-        class="text-3xl sm:text-4xl md:text-6xl font-extrabold drop-shadow-lg animate-pulse glow-h1 text-center text-shadow-2xs text-shadow-sky-300 font-sans md:pixel-font mb-8 text-outline"
+        class="mb-8 font-sans text-3xl font-extrabold text-center sm:text-4xl md:text-6xl drop-shadow-lg animate-pulse glow-h1 text-shadow-2xs text-shadow-sky-300 md:pixel-font text-outline"
         itemprop="name"
       >
         Curso Gamificado de <span class="text-green-300">Spring Boot</span> con <span
@@ -271,7 +277,7 @@ import Footer from "../components/Footer.astro";
         > y <span class="text-yellow-300">TDD</span>
       </h1>
       <p
-        class="text-lg md:text-2xl max-w-4xl text-center drop-shadow-md text-white"
+        class="max-w-4xl text-lg text-center text-white md:text-2xl drop-shadow-md"
         itemprop="description"
       >
         <strong
@@ -295,39 +301,45 @@ import Footer from "../components/Footer.astro";
           <li>
             <a
               href="#que-es"
-              class="underline text-green-300 hover:text-green-400">¿Qué es?</a>
+              class="text-green-300 underline hover:text-green-400">¿Qué es?</a
+            >
           </li>
           <li>
             <a
               href="#gamificacion"
-              class="underline text-pink-300 hover:text-pink-400"
-              >Gamificación</a>
+              class="text-pink-300 underline hover:text-pink-400"
+              >Gamificación</a
+            >
           </li>
           <li>
             <a
               href="#ejemplos"
-              class="underline text-blue-300 hover:text-blue-400">Ejemplos</a>
+              class="text-blue-300 underline hover:text-blue-400">Ejemplos</a
+            >
           </li>
           <li>
             <a
               href="#fundamento"
-              class="underline text-purple-300 hover:text-purple-400"
-              >Fundamento</a>
+              class="text-purple-300 underline hover:text-purple-400"
+              >Fundamento</a
+            >
           </li>
           <li>
             <a
               href="#beneficios"
-              class="underline text-yellow-300 hover:text-yellow-400"
-              >Beneficios</a>
+              class="text-yellow-300 underline hover:text-yellow-400"
+              >Beneficios</a
+            >
           </li>
           <li>
             <a
               href="#participa"
-              class="underline text-red-300 hover:text-red-400">Participa</a>
+              class="text-red-300 underline hover:text-red-400">Participa</a
+            >
           </li>
         </ul>
       </nav>
-      <a href="#participa" class="mt-6 px-8 py-3 btn-retro"
+      <a href="#participa" class="px-8 py-3 mt-6 btn-retro"
         >¡Únete y participa en el curso de Spring Boot!</a
       >
       <meta
@@ -339,16 +351,16 @@ import Footer from "../components/Footer.astro";
       <meta itemprop="url" content="https://lgzarturo.dev" />
     </header>
 
-    <main class="flex-grow container mx-auto px-6 py-12 space-y-20 z-10">
+    <main class="container z-10 flex-grow px-6 py-12 mx-auto space-y-20">
       <!-- ¿Qué es este curso? -->
       <section
         id="que-es"
-        class="max-w-5xl mx-auto level-section p-8"
+        class="max-w-5xl p-8 mx-auto level-section"
         aria-labelledby="que-es-titulo"
       >
         <h2
           id="que-es-titulo"
-          class="text-3xl font-bold mb-4 border-b-4 border-yellow-400 inline-block pixel-font glow-title"
+          class="inline-block mb-4 text-3xl font-bold border-b-4 border-yellow-400 pixel-font glow-title"
         >
           ¿Qué es este <span class="text-green-300"
             >curso gamificado de Spring Boot</span
@@ -372,25 +384,25 @@ import Footer from "../components/Footer.astro";
       <!-- ¿Por qué gamificar con Pokémon? -->
       <section
         id="gamificacion"
-        class="max-w-5xl mx-auto level-section p-8"
+        class="max-w-5xl p-8 mx-auto level-section"
         aria-labelledby="gamificacion-titulo"
       >
         <h2
           id="gamificacion-titulo"
-          class="text-3xl font-bold mb-4 border-b-4 border-red-500 inline-block pixel-font glow-title"
+          class="inline-block mb-4 text-3xl font-bold border-b-4 border-red-500 pixel-font glow-title"
         >
           ¿Por qué <span class="text-pink-300">gamificar</span> el aprendizaje de
           Spring Boot?
         </h2>
-        <p class="text-lg leading-relaxed mb-4 text-white">
-          <strong>Pokémon</strong> es una franquicia que ha marcado generaciones
-          por su capacidad de contar historias, incentivar la exploración y el <strong
+        <p class="mb-4 text-lg leading-relaxed text-white">
+          <strong>Pokémon</strong> es una franquicia que ha marcado generaciones por
+          su capacidad de contar historias, incentivar la exploración y el <strong
             >aprendizaje progresivo</strong
           > a través de retos y recompensas. Al gamificar el <strong
             >curso de Spring Boot</strong
           > con esta temática, buscamos:
         </p>
-        <ul class="cherry-list space-y-2 text-lg text-green-300">
+        <ul class="space-y-2 text-lg text-green-300 cherry-list">
           <li>
             Crear una experiencia inmersiva que motive a los desarrolladores a
             avanzar y superar desafíos.
@@ -409,7 +421,7 @@ import Footer from "../components/Footer.astro";
           </li>
         </ul>
         <p
-          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
         >
           "Aprender es una aventura, y cada línea de código es un paso hacia
           convertirte en un maestro desarrollador."
@@ -419,18 +431,18 @@ import Footer from "../components/Footer.astro";
       <!-- ¿Por qué ejemplos de hotelería y ecommerce? -->
       <section
         id="ejemplos"
-        class="max-w-5xl mx-auto level-section p-8"
+        class="max-w-5xl p-8 mx-auto level-section"
         aria-labelledby="ejemplos-titulo"
       >
         <h2
           id="ejemplos-titulo"
-          class="text-3xl font-bold mb-4 border-b-4 border-green-400 inline-block pixel-font glow-title"
+          class="inline-block mb-4 text-3xl font-bold border-b-4 border-green-400 pixel-font glow-title"
         >
           Ejemplos reales de <span class="text-green-300">hotelería</span> y <span
             class="text-blue-300">ecommerce</span
           >
         </h2>
-        <p class="text-lg leading-relaxed mb-4 text-white">
+        <p class="mb-4 text-lg leading-relaxed text-white">
           Por mi experiencia elegí los sectores de <strong>hotelería</strong> y <strong
             >ecommerce</strong
           > porque son dominios reales, con <strong
@@ -441,7 +453,7 @@ import Footer from "../components/Footer.astro";
             class="text-yellow-300">arquitectura hexagonal</span
           >.
         </p>
-        <ul class="cherry-list space-y-2 text-lg text-green-300">
+        <ul class="space-y-2 text-lg text-green-300 cherry-list">
           <li>
             La hotelería representa un negocio con múltiples actores, reservas,
             disponibilidad y reglas de negocio que desafían la arquitectura y
@@ -462,7 +474,7 @@ import Footer from "../components/Footer.astro";
           </li>
         </ul>
         <p
-          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
         >
           "La mejor forma de aprender es construyendo soluciones que reflejen el
           mundo real."
@@ -472,22 +484,22 @@ import Footer from "../components/Footer.astro";
       <!-- Fundamento pedagógico y narrativa gamificada -->
       <section
         id="fundamento"
-        class="max-w-5xl mx-auto level-section p-8"
+        class="max-w-5xl p-8 mx-auto level-section"
         aria-labelledby="fundamento-titulo"
       >
         <h2
           id="fundamento-titulo"
-          class="text-3xl font-bold mb-4 border-b-4 border-purple-500 inline-block pixel-font glow-title"
+          class="inline-block mb-4 text-3xl font-bold border-b-4 border-purple-500 pixel-font glow-title"
         >
           Fundamento pedagógico y <span class="text-pink-300"
             >narrativa gamificada</span
           >
         </h2>
-        <p class="text-lg leading-relaxed mb-4 text-white">
+        <p class="mb-4 text-lg leading-relaxed text-white">
           La <strong>gamificación</strong> no es solo un recurso lúdico, sino una
           <strong>estrategia pedagógica</strong> poderosa que:
         </p>
-        <ul class="cherry-list space-y-2 text-lg text-green-300">
+        <ul class="space-y-2 text-lg text-green-300 cherry-list">
           <li>
             Utiliza la narrativa para crear un contexto emocional y cognitivo
             que facilita la comprensión y retención.
@@ -506,7 +518,7 @@ import Footer from "../components/Footer.astro";
           </li>
         </ul>
         <p
-          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
         >
           "Contar historias es la forma más antigua y efectiva de enseñar, y la
           tecnología nos permite reinventar esa tradición."
@@ -516,21 +528,21 @@ import Footer from "../components/Footer.astro";
       <!-- Beneficios para desarrolladores -->
       <section
         id="beneficios"
-        class="max-w-5xl mx-auto level-section p-8"
+        class="max-w-5xl p-8 mx-auto level-section"
         aria-labelledby="beneficios-titulo"
       >
         <h2
           id="beneficios-titulo"
-          class="text-3xl font-bold mb-4 border-b-4 border-yellow-300 inline-block pixel-font glow-title"
+          class="inline-block mb-4 text-3xl font-bold border-b-4 border-yellow-300 pixel-font glow-title"
         >
           Beneficios de aprender <span class="text-green-300">Spring Boot</span>
           con gamificación
         </h2>
-        <p class="text-lg leading-relaxed mb-4 text-white">
+        <p class="mb-4 text-lg leading-relaxed text-white">
           Al participar en este <strong>curso gamificado de Spring Boot</strong
           >, los desarrolladores obtendrán:
         </p>
-        <ul class="cherry-list space-y-2 text-lg text-green-300">
+        <ul class="space-y-2 text-lg text-green-300 cherry-list">
           <li>
             Dominio práctico de Spring Boot 3.x con arquitectura hexagonal y
             TDD.
@@ -551,7 +563,7 @@ import Footer from "../components/Footer.astro";
           </li>
         </ul>
         <p
-          class="mt-10 italic text-yellow-300 underline decoration-pink-500 text-lg"
+          class="mt-10 text-lg italic text-yellow-300 underline decoration-pink-500"
         >
           ¡Prepárate para transformar tu forma de aprender y desarrollar
           software!
@@ -561,21 +573,21 @@ import Footer from "../components/Footer.astro";
       <!-- Calendario de liberaciones de milestones -->
       <section
         id="calendario-milestones"
-        class="max-w-5xl mx-auto level-section p-8 mb-12"
+        class="max-w-5xl p-8 mx-auto mb-12 level-section"
         aria-labelledby="calendario-titulo"
       >
         <h2
           id="calendario-titulo"
-          class="text-3xl font-bold mb-6 border-b-4 border-blue-400 inline-block pixel-font glow-title"
+          class="inline-block mb-6 text-3xl font-bold border-b-4 border-blue-400 pixel-font glow-title"
         >
           📅 Actualizaciones solo fines de semana
         </h2>
         <div class="overflow-x-auto">
           <table
-            class="min-w-full text-sm md:text-base text-left border-collapse rounded-lg overflow-hidden shadow-lg"
+            class="min-w-full overflow-hidden text-sm text-left border-collapse rounded-lg shadow-lg md:text-base"
           >
             <thead
-              class="bg-gradient-to-r from-green-400 via-blue-700 to-purple-700 text-white"
+              class="text-white bg-gradient-to-r from-green-400 via-blue-700 to-purple-700"
             >
               <tr>
                 <th class="px-3 py-2 font-bold border-b-4 border-blue-300"
@@ -600,7 +612,7 @@ import Footer from "../components/Footer.astro";
             </thead>
             <tbody class="bg-[#181c1f] text-white">
               <tr
-                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
               >
                 <td class="px-3 py-2 text-center align-middle"
                   ><span class="inline-block w-5 h-5 text-green-300">✔️</span
@@ -613,7 +625,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.1</td>
               </tr>
               <tr
-                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
               >
                 <td class="px-3 py-2 text-center align-middle"
                   ><span class="inline-block w-5 h-5 text-green-300">✔️</span
@@ -629,7 +641,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.2</td>
               </tr>
               <tr
-                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
               >
                 <td class="px-3 py-2 text-center align-middle"
                   ><span class="inline-block w-5 h-5 text-green-300">✔️</span
@@ -645,7 +657,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.2</td>
               </tr>
               <tr
-                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
               >
                 <td class="px-3 py-2 text-center align-middle"
                   ><span class="inline-block w-5 h-5 text-green-300">✔️</span
@@ -661,7 +673,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.3</td>
               </tr>
               <tr
-                class="bg-green-900/60 font-semibold border-b-2 border-green-400"
+                class="font-semibold border-b-2 border-green-400 bg-green-900/60"
               >
                 <td class="px-3 py-2 text-center align-middle"
                   ><span class="inline-block w-5 h-5 text-green-300">✔️</span
@@ -677,7 +689,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.3</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">6</td>
                 <td class="px-3 py-2">22-23 Nov 2025</td>
                 <td class="px-3 py-2"
@@ -687,7 +699,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.4</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">7</td>
                 <td class="px-3 py-2">29-30 Nov 2025</td>
                 <td class="px-3 py-2"
@@ -698,7 +710,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.4</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">8</td>
                 <td class="px-3 py-2">6-7 Dec 2025</td>
                 <td class="px-3 py-2"
@@ -709,7 +721,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.5</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">9</td>
                 <td class="px-3 py-2">13-14 Dec 2025</td>
                 <td class="px-3 py-2"
@@ -720,7 +732,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.5</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">10</td>
                 <td class="px-3 py-2">20-21 Dec 2025</td>
                 <td class="px-3 py-2"
@@ -731,7 +743,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.6</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">11</td>
                 <td class="px-3 py-2">27-28 Dec 2025</td>
                 <td class="px-3 py-2"
@@ -742,7 +754,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">0.0.6</td>
               </tr>
               <tr class="border-b border-blue-800/40">
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">12</td>
                 <td class="px-3 py-2">3-4 Jan 2026</td>
                 <td class="px-3 py-2"
@@ -753,7 +765,7 @@ import Footer from "../components/Footer.astro";
                 <td class="px-3 py-2">1.0.0</td>
               </tr>
               <tr>
-                <td class="px-3 py-2 flex items-center gap-2">&nbsp;</td>
+                <td class="flex items-center gap-2 px-3 py-2">&nbsp;</td>
                 <td class="px-3 py-2">13</td>
                 <td class="px-3 py-2">10-11 Jan 2026</td>
                 <td class="px-3 py-2"
@@ -767,17 +779,17 @@ import Footer from "../components/Footer.astro";
           </table>
         </div>
 
-        <div class="mt-8 text-base md:text-lg text-green-200">
-          <h3 class="font-bold text-lg md:text-xl mb-2 text-green-300">
+        <div class="mt-8 text-base text-green-200 md:text-lg">
+          <h3 class="mb-2 text-lg font-bold text-green-300 md:text-xl">
             Notas:
           </h3>
-          <ul class="list-disc pl-6 space-y-1">
+          <ul class="pl-6 space-y-1 list-disc">
             <li>
               La semana 3 ya fue completada con la <a
                 href="https://github.com/lgzarturo/springboot-course/releases/tag/v0.0.2"
                 target="_blank"
                 rel="noopener"
-                class="underline text-green-300 hover:text-green-400"
+                class="text-green-300 underline hover:text-green-400"
                 >versión 0.0.2</a
               >.
             </li>
@@ -794,14 +806,14 @@ import Footer from "../components/Footer.astro";
 
         <div class="mt-10">
           <div
-            class="rounded-lg border-4 border-yellow-400 bg-yellow-100/90 px-6 py-4 shadow-xl flex flex-col items-center gap-2 animate-pulse-slow"
+            class="flex flex-col items-center gap-2 px-6 py-4 border-4 border-yellow-400 rounded-lg shadow-xl bg-yellow-100/90 animate-pulse-slow"
           >
             <span
-              class="font-bold text-lg text-yellow-700 flex items-center gap-2"
+              class="flex items-center gap-2 text-lg font-bold text-yellow-700"
             >
               ⚠️ Aviso importante
             </span>
-            <p class="text-yellow-900 text-base md:text-lg text-center">
+            <p class="text-base text-center text-yellow-900 md:text-lg">
               Todas las <strong
                 >actualizaciones de tareas, cambios de calendario, retrasos o
                 notificaciones importantes</strong
@@ -809,7 +821,7 @@ import Footer from "../components/Footer.astro";
                 href="https://github.com/users/lgzarturo/projects/12"
                 target="_blank"
                 rel="noopener"
-                class="underline font-bold text-blue-700 hover:text-blue-900"
+                class="font-bold text-blue-700 underline hover:text-blue-900"
                 >springboot-course (Project Board)</a
               >.<br />
               <span class="font-semibold"
@@ -822,18 +834,18 @@ import Footer from "../components/Footer.astro";
       </section>
       <section
         id="participa"
-        class="max-w-5xl mx-auto level-section p-8 text-center"
+        class="max-w-5xl p-8 mx-auto text-center level-section"
         aria-labelledby="participa-titulo"
       >
         <h2
           id="participa-titulo"
-          class="text-3xl font-bold mb-6 border-b-4 border-red-400 inline-block pixel-font glow-title"
+          class="inline-block mb-6 text-3xl font-bold border-b-4 border-red-400 pixel-font glow-title"
         >
           ¿Cómo participar y formar parte de la <span class="text-blue-300"
             >comunidad de desarrolladores</span
           >?
         </h2>
-        <p class="text-lg mb-6 max-w-3xl mx-auto text-white">
+        <p class="max-w-3xl mx-auto mb-6 text-lg text-white">
           La <strong>comunidad</strong> es el corazón de este proyecto. Aquí no solo
           aprendes <span class="text-green-300">Spring Boot</span>, sino que
           colaboras, compartes y creces con otros <strong
@@ -849,7 +861,7 @@ import Footer from "../components/Footer.astro";
           Únete a la comunidad de Spring Boot y comienza tu aventura de
           aprendizaje
         </a>
-        <p class="mt-6 text-sm text-green-200 max-w-md mx-auto">
+        <p class="max-w-md mx-auto mt-6 text-sm text-green-200">
           Únete a la wiki, descarga el código, realiza un fork, participa en
           retos semanales, comparte tus avances y ayuda a otros. Juntos creamos
           una nueva forma de aprender desarrollo.
