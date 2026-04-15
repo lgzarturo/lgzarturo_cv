@@ -10,14 +10,80 @@ import SectionColumn from "../components/SectionColumn.astro";
 import SectionTitle from "../components/SectionTitle.astro";
 ---
 
-<BaseLayout title="Recursos y aprendizaje — Arturo López Gómez"
-            description="Repositorios, notas técnicas y proyectos en marcha de Arturo López Gómez. Recursos de Java, Spring Boot, Kotlin y arquitectura de software para desarrolladores backend."
-            canonical="https://lgzarturo.com/recursos">
+<BaseLayout
+  title="Recursos y aprendizaje — Arturo López Gómez"
+  description="Repositorios, notas técnicas y proyectos en marcha de Arturo López Gómez. Recursos de Java, Spring Boot, Kotlin y arquitectura de software para desarrolladores backend."
+  canonical="https://lgzarturo.com/recursos"
+>
+  <script slot="head" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CreativeWork",
+          "name": "Recursos de programación — lgzarturo",
+          "description": "Repositorio donde comparto recursos, notas y enlaces útiles para aprender. Ideal para desarrolladores que buscan material de apoyo.",
+          "url": "https://github.com/lgzarturo/learning-resources",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "inLanguage": "es",
+          "keywords": [
+            "Java",
+            "Spring Boot",
+            "programación",
+            "aprendizaje",
+            "backend"
+          ]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Patrones de diseño en Java",
+          "description": "Patrones de diseño y su implementación en Java, con ejemplos prácticos y explicaciones claras para arquitecturas robustas.",
+          "url": "https://github.com/lgzarturo/practice-examples",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "inLanguage": "es",
+          "keywords": ["Java", "patrones de diseño", "arquitectura", "backend"]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Backend Mastery: Spring Boot + Kotlin",
+          "description": "Curso completo sobre Spring Boot con enfoque en buenas prácticas, arquitectura hexagonal y TDD.",
+          "url": "https://github.com/lgzarturo/springboot-course",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "inLanguage": "es",
+          "keywords": [
+            "Spring Boot",
+            "Kotlin",
+            "arquitectura hexagonal",
+            "TDD",
+            "microservicios"
+          ]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Cotizador de proyectos",
+          "description": "Herramienta mobile first para generar cotizaciones de servicios usando PostgreSQL y Next.js.",
+          "url": "https://cotizador.lgzarturo.com/",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Faro-valt — Gestor de contraseñas",
+          "description": "Aplicación mobile first para generar y almacenar contraseñas encriptadas con IndexedDB, todo en el navegador.",
+          "url": "https://faro-vault.lgzarturo.com/",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "Web",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" }
+        }
+      ]
+    }
+  </script>
   <Header title="Arturo López" />
   <main>
     <SectionColumn
       id="sobre-mi"
-      title="Hola!, Soy Arturo López"
+      title="Arturo López — Líder Técnico y Arquitecto de Software"
       accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0"
     >
       <div class="space-y-4 relative">
@@ -26,22 +92,20 @@ import SectionTitle from "../components/SectionTitle.astro";
           >&lt;\&gt;</span
         >
         <p>
-          Un apasionado Líder Técnico con más de 15 años de experiencia en el
-          desarrollo de software, especializado en Java y Spring Boot. A lo
-          largo de mi carrera, he tenido la oportunidad de liderar equipos
-          talentosos y trabajar en proyectos desafiantes que abarcan desde
-          aplicaciones empresariales hasta soluciones web modernas utilizando
-          Next.js.
+          Líder Técnico en Revenatium con más de 15 años diseñando plataformas
+          hoteleras con Java, Spring Boot y arquitectura de microservicios. Aquí
+          centralizo los repositorios, notas y proyectos que forman parte de mi
+          práctica técnica diaria — desde patrones de diseño hasta experimentos
+          con Python e IA.
         </p>
 
         <p>
-          Mi enfoque se centra en la creación de arquitecturas robustas y
-          escalables, promoviendo las mejores prácticas de desarrollo y
-          fomentando una cultura de colaboración y aprendizaje continuo dentro
-          de los equipos que lidero. Además, cuento con experiencia en DevOps,
-          CI/CD y despliegue en la nube, lo que me permite asegurar que las
-          soluciones que entregamos no solo sean funcionales, sino también
-          eficientes y mantenibles.
+          Este espacio es mi laboratorio personal: donde documento aprendizajes,
+          comparto recursos para desarrolladores backend y construyo side
+          projects que exploran nuevas tecnologías. Si te interesa la
+          arquitectura de software, el desarrollo con Spring Boot o Kotlin, o
+          simplemente ver cómo funciona un sistema desde adentro, estás en el
+          lugar correcto.
         </p>
       </div>
       <div class="relative mt-16" slot="content">
@@ -88,63 +152,199 @@ import SectionTitle from "../components/SectionTitle.astro";
         </div>
         <div class="grid gap-6 md:grid-cols-2 mt-4">
           <!-- Card 1 -->
-          <a href="https://github.com/lgzarturo/learning-resources" target="_blank" rel="noopener" class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full">
+          <a
+            href="https://github.com/lgzarturo/learning-resources"
+            target="_blank"
+            rel="noopener"
+            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-blue-700 text-lg group-hover:text-blue-800">Recursos de programación</h4>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"></path></svg>
+              <h4
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+              >
+                Recursos de programación
+              </h4>
+              <svg
+                class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"
+                ></path></svg
+              >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">Repositorio donde comparto recursos, notas y enlaces útiles para aprender. Ideal para desarrolladores que buscan material de apoyo.</p>
-            <span class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Ver repositorio <span aria-hidden="true">&rarr;</span></span>
+            <p class="text-gray-600 text-sm mb-4 flex-grow">
+              Repositorio donde comparto recursos, notas y enlaces útiles para
+              aprender. Ideal para desarrolladores que buscan material de apoyo.
+            </p>
+            <span
+              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              >Ver repositorio <span aria-hidden="true">&rarr;</span></span
+            >
           </a>
 
           <!-- Card 2 -->
-          <a href="https://github.com/lgzarturo/practice-examples" target="_blank" rel="noopener" class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full">
+          <a
+            href="https://github.com/lgzarturo/practice-examples"
+            target="_blank"
+            rel="noopener"
+            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-blue-700 text-lg group-hover:text-blue-800">Patrones de diseño en Java</h4>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"></path></svg>
+              <h4
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+              >
+                Patrones de diseño en Java
+              </h4>
+              <svg
+                class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"
+                ></path></svg
+              >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">Presento los patrones de diseño y su implementación en Java, con ejemplos prácticos y explicaciones claras para arquitecturas robustas.</p>
-            <span class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Ver repositorio <span aria-hidden="true">&rarr;</span></span>
+            <p class="text-gray-600 text-sm mb-4 flex-grow">
+              Presento los patrones de diseño y su implementación en Java, con
+              ejemplos prácticos y explicaciones claras para arquitecturas
+              robustas.
+            </p>
+            <span
+              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              >Ver repositorio <span aria-hidden="true">&rarr;</span></span
+            >
           </a>
 
           <!-- Card 3 -->
-          <a href="https://github.com/lgzarturo/productividad" target="_blank" rel="noopener" class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full">
+          <a
+            href="https://github.com/lgzarturo/productividad"
+            target="_blank"
+            rel="noopener"
+            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-blue-700 text-lg group-hover:text-blue-800">Productividad Developer</h4>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"></path></svg>
+              <h4
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+              >
+                Productividad Developer
+              </h4>
+              <svg
+                class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"
+                ></path></svg
+              >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">Repositorio que recopila herramientas, dotfiles y técnicas que utilizo a diario para mejorar mi productividad técnica.</p>
-            <span class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Ver repositorio <span aria-hidden="true">&rarr;</span></span>
+            <p class="text-gray-600 text-sm mb-4 flex-grow">
+              Repositorio que recopila herramientas, dotfiles y técnicas que
+              utilizo a diario para mejorar mi productividad técnica.
+            </p>
+            <span
+              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              >Ver repositorio <span aria-hidden="true">&rarr;</span></span
+            >
           </a>
 
           <!-- Card 4 -->
-          <a href="https://github.com/lgzarturo/notes" target="_blank" rel="noopener" class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full">
+          <a
+            href="https://github.com/lgzarturo/notes"
+            target="_blank"
+            rel="noopener"
+            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-blue-700 text-lg group-hover:text-blue-800">Notas de Software</h4>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"></path></svg>
+              <h4
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+              >
+                Notas de Software
+              </h4>
+              <svg
+                class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"
+                ></path></svg
+              >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">Notas y apuntes sobre diseño de sistemas, arquitectura, DevOps y temas misceláneos de ingeniería de software.</p>
-            <span class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Ver repositorio <span aria-hidden="true">&rarr;</span></span>
+            <p class="text-gray-600 text-sm mb-4 flex-grow">
+              Notas y apuntes sobre diseño de sistemas, arquitectura, DevOps y
+              temas misceláneos de ingeniería de software.
+            </p>
+            <span
+              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              >Ver repositorio <span aria-hidden="true">&rarr;</span></span
+            >
           </a>
 
           <!-- Card 5: Frontend Lab -->
-          <a href="https://github.com/lgzarturo/frontend-fundamentals-lab" target="_blank" rel="noopener" class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full">
+          <a
+            href="https://github.com/lgzarturo/frontend-fundamentals-lab"
+            target="_blank"
+            rel="noopener"
+            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-blue-700 text-lg group-hover:text-blue-800">Frontend Lab: Modern JavaScript</h4>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"></path></svg>
+              <h4
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+              >
+                Frontend Lab: Modern JavaScript
+              </h4>
+              <svg
+                class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"
+                ></path></svg
+              >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">Mi bitácora técnica de JavaScript Moderno. Un laboratorio donde exploro desde los fundamentos hasta patrones avanzados, con un fuerte enfoque en UI/UX y diseño Mobile-First.</p>
-            <span class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Ver repositorio <span aria-hidden="true">&rarr;</span></span>
+            <p class="text-gray-600 text-sm mb-4 flex-grow">
+              Mi bitácora técnica de JavaScript Moderno. Un laboratorio donde
+              exploro desde los fundamentos hasta patrones avanzados, con un
+              fuerte enfoque en UI/UX y diseño Mobile-First.
+            </p>
+            <span
+              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              >Ver repositorio <span aria-hidden="true">&rarr;</span></span
+            >
           </a>
 
           <!-- Card 6: Backend Mastery -->
-          <a href="https://github.com/lgzarturo/springboot-course" target="_blank" rel="noopener" class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full">
+          <a
+            href="https://github.com/lgzarturo/springboot-course"
+            target="_blank"
+            rel="noopener"
+            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-blue-700 text-lg group-hover:text-blue-800">Backend Mastery: Spring Boot + Kotlin</h4>
-              <svg class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"></path></svg>
+              <h4
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+              >
+                Backend Mastery: Spring Boot + Kotlin
+              </h4>
+              <svg
+                class="w-5 h-5 text-gray-400 group-hover:text-blue-500 transition-colors"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                ><path
+                  d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.467-1.334-5.467-5.93 0-1.31.468-2.38 1.236-3.22-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013-.404c1 .005 2 .138 3 .404 2.291-1.552 3.297-1.23 3.297-1.23 .653 1.653 .242 2.873 .118 3.176 .77 .84 1.235 1.91 1.235 3.22 0 4.61 -2.807 5.625 -5.479 5.921 .43 .372 .823 1 .823 2v2.972c0 .319 .218 .694 .825 .576C20.565 21.795 24 17.297 24 12c0 -6.63 -5.37 -12 -12 -12z"
+                ></path></svg
+              >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">Un curso completo y altamente documentado sobre Spring Boot. Enfocado en Buenas Prácticas, Arquitectura Hexagonal y TDD. Incluye una experiencia gamificada inspirada en Pokémon para dominar los retos del desarrollo backend real.</p>
-            <span class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">Ver repositorio <span aria-hidden="true">&rarr;</span></span>
+            <p class="text-gray-600 text-sm mb-4 flex-grow">
+              Un curso completo y altamente documentado sobre Spring Boot.
+              Enfocado en Buenas Prácticas, Arquitectura Hexagonal y TDD.
+              Incluye una experiencia gamificada inspirada en Pokémon para
+              dominar los retos del desarrollo backend real.
+            </p>
+            <span
+              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              >Ver repositorio <span aria-hidden="true">&rarr;</span></span
+            >
           </a>
         </div>
       </section>
@@ -153,43 +353,97 @@ import SectionTitle from "../components/SectionTitle.astro";
     <SectionTitle title="Radar Tecnológico y Stack" accent="bg-white">
       <div class="grid md:grid-cols-3 gap-8 text-left" slot="content">
         <!-- Adopt -->
-        <div class="bg-gray-50 rounded-2xl p-6 border-t-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+        <div
+          class="bg-gray-50 rounded-2xl p-6 border-t-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <h4
+            class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2"
+          >
             <span class="w-3 h-3 rounded-full bg-blue-500"></span> Core (Adopción)
           </h4>
-          <p class="text-sm text-gray-600 mb-4">Tecnologías en las que confío para entornos de producción y escalabilidad.</p>
+          <p class="text-sm text-gray-600 mb-4">
+            Tecnologías en las que confío para entornos de producción y
+            escalabilidad.
+          </p>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200">Java / Spring Boot</span>
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200">AWS / Docker</span>
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200">PostgreSQL</span>
-            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200">Microservicios</span>
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              >Java / Spring Boot</span
+            >
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              >AWS / Docker</span
+            >
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              >PostgreSQL</span
+            >
+            <span
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              >Microservicios</span
+            >
           </div>
         </div>
 
         <!-- Trial -->
-        <div class="bg-gray-50 rounded-2xl p-6 border-t-4 border-green-500 shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+        <div
+          class="bg-gray-50 rounded-2xl p-6 border-t-4 border-green-500 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <h4
+            class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2"
+          >
             <span class="w-3 h-3 rounded-full bg-green-500"></span> Trial (Exploración)
           </h4>
-          <p class="text-sm text-gray-600 mb-4">Herramientas que estoy probando o utilizando en proyectos secundarios con excelentes resultados.</p>
+          <p class="text-sm text-gray-600 mb-4">
+            Herramientas que estoy probando o utilizando en proyectos
+            secundarios con excelentes resultados.
+          </p>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200">Next.js / React</span>
-            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200">Python / IA</span>
-            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200">Astro</span>
-            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200">Kotlin</span>
+            <span
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              >Next.js / React</span
+            >
+            <span
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              >Python / IA</span
+            >
+            <span
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              >Astro</span
+            >
+            <span
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              >Kotlin</span
+            >
           </div>
         </div>
 
         <!-- Assess/Hold -->
-        <div class="bg-gray-50 rounded-2xl p-6 border-t-4 border-gray-400 shadow-sm hover:shadow-md transition-shadow">
-          <h4 class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2">
+        <div
+          class="bg-gray-50 rounded-2xl p-6 border-t-4 border-gray-400 shadow-sm hover:shadow-md transition-shadow"
+        >
+          <h4
+            class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2"
+          >
             <span class="w-3 h-3 rounded-full bg-gray-400"></span> Hold (Mantenimiento)
           </h4>
-          <p class="text-sm text-gray-600 mb-4">Tecnologías con las que tengo gran experiencia pero que ya no elijo para proyectos nuevos.</p>
+          <p class="text-sm text-gray-600 mb-4">
+            Tecnologías con las que tengo gran experiencia pero que ya no elijo
+            para proyectos nuevos.
+          </p>
           <div class="flex flex-wrap gap-2">
-            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300">PHP Legado</span>
-            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300">Grails</span>
-            <span class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300">Vanilla JS (Complejo)</span>
+            <span
+              class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300"
+              >PHP Legado</span
+            >
+            <span
+              class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300"
+              >Grails</span
+            >
+            <span
+              class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300"
+              >Vanilla JS (Complejo)</span
+            >
           </div>
         </div>
       </div>
@@ -219,11 +473,13 @@ import SectionTitle from "../components/SectionTitle.astro";
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">📊</span>
-              <h3 class="text-lg font-bold text-green-700">Cotizador de proyectos</h3>
+              <h3 class="text-lg font-bold text-green-700">
+                Cotizador de proyectos
+              </h3>
             </div>
             <p class="text-gray-700">
-              Herramienta mobile first para generar cotizaciones de servicios usando
-              PostgreSQL y Next.js (frontend y backend).
+              Herramienta mobile first para generar cotizaciones de servicios
+              usando PostgreSQL y Next.js (frontend y backend).
             </p>
           </a>
 
@@ -239,8 +495,9 @@ import SectionTitle from "../components/SectionTitle.astro";
               <h3 class="text-lg font-bold text-green-700">Faro-valt</h3>
             </div>
             <p class="text-gray-700">
-              Aplicación mobile first para generar y almacenar contraseñas encriptadas
-              con IndexedDB. Sistema de calificación de seguridad, todo en el navegador.
+              Aplicación mobile first para generar y almacenar contraseñas
+              encriptadas con IndexedDB. Sistema de calificación de seguridad,
+              todo en el navegador.
             </p>
           </a>
 
@@ -256,8 +513,9 @@ import SectionTitle from "../components/SectionTitle.astro";
               <h3 class="text-lg font-bold text-green-700">Devtools</h3>
             </div>
             <p class="text-gray-700">
-              Catálogo de herramientas y aplicaciones desarrollado con Astro, Motion.js
-              y Alpine.js. Portafolio de proyectos e ideas en desarrollo.
+              Catálogo de herramientas y aplicaciones desarrollado con Astro,
+              Motion.js y Alpine.js. Portafolio de proyectos e ideas en
+              desarrollo.
             </p>
           </a>
 
@@ -286,9 +544,7 @@ import SectionTitle from "../components/SectionTitle.astro";
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🛠️</span>
-              <h3 class="text-lg font-bold text-green-700">
-                Herramientas SEO
-              </h3>
+              <h3 class="text-lg font-bold text-green-700">Herramientas SEO</h3>
             </div>
             <p class="text-gray-700">
               Conjunto de herramientas especializadas en SEO pensadas para
@@ -304,9 +560,7 @@ import SectionTitle from "../components/SectionTitle.astro";
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🚀</span>
-              <h3 class="text-lg font-bold text-green-700">
-                Personal manager
-              </h3>
+              <h3 class="text-lg font-bold text-green-700">Personal manager</h3>
             </div>
             <p class="text-gray-700">
               Proyecto para automatizar flujos de trabajo y mejorar la
@@ -318,7 +572,10 @@ import SectionTitle from "../components/SectionTitle.astro";
           <div
             class="relative bg-white rounded-2xl shadow-lg border-t-4 border-blue-500 p-6 flex flex-col cursor-not-allowed opacity-80"
           >
-            <span class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200">En desarrollo</span>
+            <span
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+              >En desarrollo</span
+            >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">💼</span>
               <h3 class="text-lg font-bold text-blue-700">joobslot.com</h3>
@@ -332,7 +589,10 @@ import SectionTitle from "../components/SectionTitle.astro";
           <div
             class="relative bg-white rounded-2xl shadow-lg border-t-4 border-blue-500 p-6 flex flex-col cursor-not-allowed opacity-80"
           >
-            <span class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200">En desarrollo</span>
+            <span
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+              >En desarrollo</span
+            >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🤖</span>
               <h3 class="text-lg font-bold text-blue-700">
@@ -348,7 +608,10 @@ import SectionTitle from "../components/SectionTitle.astro";
           <div
             class="relative bg-white rounded-2xl shadow-lg border-t-4 border-gray-400 p-6 flex flex-col cursor-not-allowed opacity-75"
           >
-            <span class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-gray-100 text-gray-600 rounded-full border border-gray-300">Próximamente</span>
+            <span
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-gray-100 text-gray-600 rounded-full border border-gray-300"
+              >Próximamente</span
+            >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🏨</span>
               <h3 class="text-lg font-bold text-gray-600">

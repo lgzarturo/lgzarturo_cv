@@ -4,6 +4,7 @@ import Quote from "./Quote";
 // src/components/Header.astro
 const { title } = Astro.props;
 const isHome = Astro.url.pathname === "/";
+const isRecursos = Astro.url.pathname === "/recursos" || Astro.url.pathname === "/recursos/";
 ---
 <!-- Header -->
 <header class="fixed top-0 z-50 w-full p-2 transition-all duration-300 border-b border-gray-200 bg-white/80 backdrop-blur-md">
@@ -51,6 +52,13 @@ const isHome = Astro.url.pathname === "/";
                     </ul>
                 </div>
                 </>
+            ) : isRecursos ? (
+                <ul class="items-center hidden space-x-6 md:flex">
+                    <li><a href="/" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Inicio</a></li>
+                    <li><a href="/#projects" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Laboratorio</a></li>
+                    <li><a href="/#experience" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Experiencia</a></li>
+                    <li><a href="/#contact" class="px-4 py-2 font-medium text-white transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700">Contacto</a></li>
+                </ul>
             ) : (
                 <Quote client:load />
             )}

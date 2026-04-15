@@ -51,6 +51,51 @@ try {
 ---
 
 <BaseLayout title="Arturo López Gómez - Líder Técnico">
+  <script slot="head" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "MailMind",
+          "description": "Plataforma de gestión y automatización de correos electrónicos con IA, diseñada para mejorar la productividad y organización del inbox.",
+          "url": "https://mailmindworks.com/",
+          "applicationCategory": "ProductivityApplication",
+          "operatingSystem": "Web",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "programmingLanguage": ["Python", "FastAPI", "HTMX"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "CompraEnLineaYa",
+          "description": "Plataforma de e-commerce con Django para la venta de productos en línea, con integración de pagos y gestión de inventario.",
+          "url": "https://compraenlineaya.com/",
+          "applicationCategory": "ShoppingApplication",
+          "operatingSystem": "Web",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "programmingLanguage": ["Python", "Django", "JavaScript"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Pokedev — Spring Boot Challenge",
+          "description": "Aplicación temática de Pokémon construida como reto de Spring Boot, explorando la PokéAPI con una interfaz moderna y responsiva.",
+          "url": "https://springboot-challenge.lgzarturo.com/",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Web",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "programmingLanguage": ["Java", "Spring Boot", "TailwindCSS"]
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Blog técnico — Java, Spring Boot y arquitectura de software",
+          "description": "Blog donde comparto artículos sobre desarrollo de software, mejores prácticas y tutoriales enfocados en Java y arquitectura backend.",
+          "url": "https://www.arthurolg.com/",
+          "author": { "@type": "Person", "name": "Arturo López Gómez" },
+          "inLanguage": "es"
+        }
+      ]
+    }
+  </script>
   <Header title="Arturo López" />
   <main>
     <!-- Hero Section -->
@@ -449,11 +494,15 @@ try {
       title="Laboratorio de ideas"
       accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0"
     >
-      <p class="max-w-2xl mx-auto mb-4 text-xl text-gray-600">
-        Selección de casos que documentan decisiones de diseño, patrones
-        aplicados y aprendizajes prácticos. Algunos fueron desarrollados en
-        entornos empresariales; otros pertenecen a mi laboratorio personal de
-        side projects.
+      <p class="max-w-2xl mx-auto mb-2 text-xl text-gray-600">
+        Desde migraciones de sistemas legacy hasta plataformas SaaS nuevas,
+        estos proyectos documentan decisiones de arquitectura real con Java,
+        Spring Boot, Python y PHP.
+      </p>
+      <p class="max-w-2xl mx-auto mb-4 text-base text-gray-500">
+        Algunos son casos empresariales de producción con resultados medibles;
+        otros son experimentos del laboratorio personal donde pruebo nuevas
+        tecnologías y patrones de diseño antes de llevarlos a entornos reales.
       </p>
       <!-- Más experiencias -->
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" slot="content">
@@ -485,7 +534,7 @@ try {
             </svg>
           </div>
           <h3 class="mb-2 text-xl font-bold text-gray-900">
-            Curso SpringBoot + Kotlin (Backend)
+            Curso Spring Boot + Kotlin — Backend con microservicios
           </h3>
           <p class="mb-4 text-gray-600">
             Repositorio de aprendizaje práctico sobre desarrollo de aplicaciones
@@ -494,7 +543,8 @@ try {
           <a
             href="/springboot-course"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900">Ver proyecto <span aria-hidden="true">→</span></a
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
             class="flex flex-wrap gap-2 mt-4"
@@ -545,7 +595,7 @@ try {
             </svg>
           </div>
           <h3 class="mb-2 text-xl font-bold text-gray-900">
-            Blog Personal (Contenido)
+            Blog técnico — Java, Spring Boot y arquitectura de software
           </h3>
           <p class="mb-4 text-gray-600">
             Donde comparto artículos sobre desarrollo de software, mejores
@@ -555,7 +605,8 @@ try {
           <a
             href="https://www.arthurolg.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900">Ver proyecto <span aria-hidden="true">→</span></a
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
             class="flex flex-wrap gap-2 mt-4"
@@ -602,7 +653,7 @@ try {
             </svg>
           </div>
           <h3 class="mb-2 text-xl font-bold text-gray-900">
-            Bootzen (Framework)
+            Bootzen — Micro Framework PHP para aplicaciones web
           </h3>
           <p class="mb-4 text-gray-600">
             Micro Framework con PHP para el desarrollo de aplicaciones web.
@@ -612,7 +663,8 @@ try {
           <a
             href="https://github.com/lgzarturo/bootzen"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900">Ver proyecto <span aria-hidden="true">→</span></a
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
             class="flex flex-wrap gap-2 mt-4"
@@ -637,8 +689,21 @@ try {
         <div
           class="relative flex flex-col p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
-          <span class="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full border border-blue-200">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          <span
+            class="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full border border-blue-200"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path></svg
+            >
             Caso de empresa
           </span>
           <div
@@ -690,8 +755,21 @@ try {
         <div
           class="relative flex flex-col p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
-          <span class="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full border border-blue-200">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          <span
+            class="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full border border-blue-200"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path></svg
+            >
             Caso de empresa
           </span>
           <div
@@ -744,8 +822,21 @@ try {
         <div
           class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
-          <span class="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full border border-blue-200">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+          <span
+            class="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium bg-blue-50 text-blue-600 rounded-full border border-blue-200"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path></svg
+            >
             Caso de empresa
           </span>
           <div
@@ -770,8 +861,21 @@ try {
             Sistema de carga masiva por layout que redujo tiempos operativos en
             un 40% y eliminó errores manuales, permitiendo una mayor eficiencia.
           </p>
-          <span class="inline-flex items-center gap-1 mb-4 text-xs font-medium text-gray-500">
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          <span
+            class="inline-flex items-center gap-1 mb-4 text-xs font-medium text-gray-500"
+          >
+            <svg
+              class="w-3 h-3"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              ><path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              ></path></svg
+            >
             Caso interno — sin demo pública
           </span>
           <div class="flex flex-wrap gap-2" aria-label="Tecnologías usadas">
@@ -794,7 +898,10 @@ try {
         <div
           class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
-          <span class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-rose-100 text-rose-700 rounded-full border border-rose-200">Nuevo</span>
+          <span
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-rose-100 text-rose-700 rounded-full border border-rose-200"
+            >Nuevo</span
+          >
           <div
             class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-rose-400 to-rose-600 rounded-xl group-hover:scale-110"
           >
@@ -820,7 +927,8 @@ try {
           <a
             href="https://mailmindworks.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900">Ver proyecto <span aria-hidden="true">→</span></a
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
             class="flex flex-wrap gap-2 mt-4"
@@ -849,7 +957,10 @@ try {
         <div
           class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
-          <span class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-orange-100 text-orange-700 rounded-full border border-orange-200">Nuevo</span>
+          <span
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-orange-100 text-orange-700 rounded-full border border-orange-200"
+            >Nuevo</span
+          >
           <div
             class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl group-hover:scale-110"
           >
@@ -875,7 +986,8 @@ try {
           <a
             href="https://compraenlineaya.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900">Ver proyecto <span aria-hidden="true">→</span></a
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
             class="flex flex-wrap gap-2 mt-4"
@@ -900,7 +1012,10 @@ try {
         <div
           class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
-          <span class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-red-100 text-red-700 rounded-full border border-red-200">Nuevo</span>
+          <span
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-red-100 text-red-700 rounded-full border border-red-200"
+            >Nuevo</span
+          >
           <div
             class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-red-400 to-red-600 rounded-xl group-hover:scale-110"
           >
@@ -939,7 +1054,8 @@ try {
           <a
             href="https://springboot-challenge.lgzarturo.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900">Ver proyecto <span aria-hidden="true">→</span></a
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
             class="flex flex-wrap gap-2 mt-4"
