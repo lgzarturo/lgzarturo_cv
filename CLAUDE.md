@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a personal portfolio/CV website for Arturo López, built with **Astro 5**, **React 18**, and **Tailwind CSS 4**. It targets Spanish-speaking audiences and is deployed at `https://lgzarturo.com`.
+This is a personal portfolio/CV website for Arturo L. Gómez, built with **Astro 5**, **React 18**, and **Tailwind CSS 4**. It targets Spanish-speaking audiences and is deployed at `https://lgzarturo.com`.
 
 ## Commands
 

@@ -1,4 +1,4 @@
-# Arturo López Gómez — Portafolio Profesional
+# Arturo L. Gómez — Portafolio Profesional
 
 Ingeniero Full Stack y Líder Técnico con +15 años de experiencia en el desarrollo de plataformas hoteleras con Java y Spring Boot. Actualmente dirijo arquitectura de microservicios y equipos de desarrollo en Revenatium.
 
