@@ -24,86 +24,60 @@ const pendingWeeks = totalWeeks - completedWeeks;
 <BaseLayout
   title={title}
   description={description}
-  canonical="https://lgzarturo.com/springboot-course"
+  canonical="https://lgzarturo.com/springboot-course/"
+  keywords="Spring Boot, Kotlin, curso gamificado, TDD, arquitectura MVC, Java backend, Testcontainers, microservicios"
+  ogType="article"
+  ogImage="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
+  ogImageAlt="Curso Gamificado Spring Boot — Pokémon, Hotelería y Ecommerce"
 >
-  <!-- ══ HEAD: SEO, OG, fuentes ══════════════════════════════════ -->
-  <head>
-    <meta
-      name="description"
-      content="Curso gamificado de Spring Boot con arquitectura, TDD y ejemplos reales de hotelería y ecommerce. Aprende programación con una narrativa inspirada en Pokémon. ¡Únete a la comunidad de desarrolladores!"
-    />
-    <meta
-      name="keywords"
-      content="Spring Boot, curso gamificado, arquitectura, TDD, Pokémon, hotelería, ecommerce, comunidad de desarrolladores, programación, Java, backend, buenas prácticas, desarrollo de software"
-    />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://lgzarturo.com/springboot-course" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce"
-    />
-    <meta
-      property="og:description"
-      content="Aprende Spring Boot, arquitectura y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
-    />
-    <meta property="og:url" content="https://lgzarturo.com/springboot-course" />
-    <meta
-      property="og:image"
-      content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
-    />
-    <meta
-      property="og:image:alt"
-      content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce"
-    />
-    <meta property="og:site_name" content="Arturo L. Gómez" />
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Curso Gamificado Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce"
-    />
-    <meta
-      name="twitter:description"
-      content="Aprende Spring Boot, arquitectura y TDD con una experiencia gamificada inspirada en Pokémon, hotelería y ecommerce. ¡Únete a la comunidad de desarrolladores!"
-    />
-    <meta
-      name="twitter:image"
-      content="https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp"
-    />
-    <meta
-      name="twitter:image:alt"
-      content="Curso Gamificado Spring Boot - Pokémon, Hotelería y Ecommerce"
-    />
-
-    <!-- JSON-LD -->
-    <script type="application/ld+json" is:raw>
-      {
-        "@context": "https://schema.org",
-        "@type": "Course",
-        "name": "Curso Gamificado de Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce",
-        "description": "Curso gamificado de Spring Boot con arquitectura, TDD y ejemplos reales de hotelería y ecommerce.",
-        "provider": {
+  <!-- ══ HEAD: datos estructurados + fuentes específicas (vía slot) ══ -->
+  <script slot="head" type="application/ld+json" is:raw>
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Curso Gamificado de Spring Boot: Aprende con Pokémon, Hotelería y Ecommerce",
+      "description": "Curso gamificado de Spring Boot con Kotlin, arquitectura MVC, TDD y ejemplos reales de hotelería y ecommerce.",
+      "url": "https://lgzarturo.com/springboot-course/",
+      "image": "https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp",
+      "inLanguage": "es",
+      "provider": {
+        "@type": "Person",
+        "name": "Arturo L. Gómez",
+        "url": "https://lgzarturo.com/"
+      },
+      "instructor": {
+        "@type": "Person",
+        "name": "Arturo L. Gómez",
+        "url": "https://lgzarturo.com/"
+      },
+      "teaches": ["Spring Boot", "Kotlin", "TDD", "Arquitectura MVC", "Testcontainers", "Spring Security"],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "category": "Free",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "online",
+        "inLanguage": "es",
+        "instructor": {
           "@type": "Person",
-          "name": "Arturo L. Gómez",
-          "url": "https://lgzarturo.com"
-        },
-        "image": "https://raw.githubusercontent.com/lgzarturo/arthurolg-blog-posts/refs/heads/main/articles/images/el-legado-del-desarrollador.webp",
-        "url": "https://lgzarturo.com/springboot-course"
+          "name": "Arturo L. Gómez"
+        }
       }
-    </script>
+    }
+  </script>
 
-    <!-- Pixelify Sans para títulos retro + JetBrains Mono para código/badges -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+  <!-- Pixelify Sans para títulos retro + JetBrains Mono para código/badges -->
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    slot="head"
+    href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&family=JetBrains+Mono:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
 
   <!-- ══ CONTENIDO ════════════════════════════════════════════════ -->
   <Header title="Arturo L. Gómez" />
@@ -216,7 +190,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
         <div class="stat-cell">
           <div
             class="stat-val mono"
-            style="color:var(--poke-green);font-size:20px"
+            style="color:var(--acc-green);font-size:20px"
           >
             {lastVersion}
           </div>
@@ -616,8 +590,44 @@ const pendingWeeks = totalWeeks - completedWeeks;
 
 <style is:global>
   /* ── Design tokens ──────────────────────────────────────────── */
+  /* Modo claro (default, alineado con el sistema de DESIGN.md).      */
   :root {
-    /* Colores base del sitio (dark by default, igual que tu sitio) */
+    --bg: #f9fafb;
+    --surface: #ffffff;
+    --surface-2: #f3f4f6;
+    --border: #e5e7eb;
+    --border-2: #d1d5db;
+    --text: #111827;
+    --text-2: #4b5563;
+    --text-3: #6b7280;
+
+    /* Paleta Pokémon (acentos vívidos; iguales en claro y oscuro) */
+    --poke-yellow: #f59e0b;
+    --poke-red: #ef4444;
+    --poke-blue: #3b82f6;
+    --poke-green: #22c55e;
+    --poke-purple: #8b5cf6;
+    --poke-pink: #ec4899;
+    --poke-orange: #f97316;
+    --poke-cyan: #06b6d4;
+
+    /* Acentos legibles como TEXTO sobre superficie (theme-aware) */
+    --acc-green: #059669;
+    --acc-cyan: #0e7490;
+
+    /* Glow: desactivado en claro, neón en oscuro */
+    --glow-title: none;
+    --glow-h1: none;
+
+    /* Shadows & radii */
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  /* Modo oscuro: recupera la estética retro/neón original. */
+  .dark {
     --bg: #181c1f;
     --surface: #1e2328;
     --surface-2: #252b31;
@@ -627,21 +637,22 @@ const pendingWeeks = totalWeeks - completedWeeks;
     --text-2: #8b98a8;
     --text-3: #5a6472;
 
-    /* Paleta Pokémon */
-    --poke-yellow: #f59e0b;
-    --poke-red: #ef4444;
-    --poke-blue: #3b82f6;
     --poke-green: #2aff6a;
-    --poke-purple: #8b5cf6;
-    --poke-pink: #ec4899;
-    --poke-orange: #f97316;
     --poke-cyan: #00e0ff;
 
-    /* Shadows & radii */
+    --acc-green: #2aff6a;
+    --acc-cyan: #00e0ff;
+
+    --glow-title: 0 0 8px var(--poke-cyan), 0 0 16px rgba(42, 255, 106, 0.3);
+    --glow-h1: 0 0 8px var(--poke-cyan), 0 0 20px rgba(0, 224, 255, 0.3);
+
     --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
-    --radius: 10px;
-    --radius-sm: 6px;
+  }
+
+  /* Fondo de página que respeta el tema activo. */
+  body {
+    background: var(--bg);
   }
 
   /* ── Fuentes ────────────────────────────────────────────────── */
@@ -656,10 +667,10 @@ const pendingWeeks = totalWeeks - completedWeeks;
 
   /* ── Colores de texto Pokémon ───────────────────────────────── */
   .text-green {
-    color: var(--poke-green);
+    color: var(--acc-green);
   }
   .text-blue {
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
   }
   .text-yellow {
     color: var(--poke-yellow);
@@ -674,15 +685,11 @@ const pendingWeeks = totalWeeks - completedWeeks;
   /* ── Glow effects ───────────────────────────────────────────── */
   .glow-h1 {
     color: var(--poke-blue);
-    text-shadow:
-      0 0 8px var(--poke-cyan),
-      0 0 20px rgba(0, 224, 255, 0.3);
+    text-shadow: var(--glow-h1);
   }
   .glow-title {
-    color: var(--poke-green);
-    text-shadow:
-      0 0 8px var(--poke-cyan),
-      0 0 16px rgba(42, 255, 106, 0.3);
+    color: var(--acc-green);
+    text-shadow: var(--glow-title);
   }
 
   /* ── Pixel borders ──────────────────────────────────────────── */
@@ -711,6 +718,8 @@ const pendingWeeks = totalWeeks - completedWeeks;
     margin: 0 auto;
     padding: 0 20px 40px;
     position: relative;
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
   }
 
   /* ── Scroll reveal ──────────────────────────────────────────── */
@@ -744,7 +753,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     margin-bottom: 16px;
   }
   .breadcrumb a {
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
   }
   .hero h1 {
     font-size: clamp(22px, 4.5vw, 36px);
@@ -780,7 +789,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
   .chip-live {
     background: rgba(42, 255, 106, 0.08);
     border-color: rgba(42, 255, 106, 0.3);
-    color: var(--poke-green);
+    color: var(--acc-green);
   }
   .chip-dot {
     width: 6px;
@@ -806,7 +815,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     text-decoration: none;
   }
   .hero-nav a:hover {
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
     border-color: var(--poke-cyan);
   }
 
@@ -980,7 +989,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     align-items: flex-start;
     gap: 10px;
     font-size: 14px;
-    color: var(--poke-green);
+    color: var(--acc-green);
     line-height: 1.55;
   }
   .poke-list li::before {
@@ -988,7 +997,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     flex-shrink: 0;
     margin-top: 2px;
     font-size: 10px;
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
   }
 
   /* Cita */
@@ -1117,7 +1126,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
   }
   .week-card.done .week-num {
     background: rgba(42, 255, 106, 0.1);
-    color: var(--poke-green);
+    color: var(--acc-green);
     border-color: rgba(42, 255, 106, 0.25);
   }
   .week-info {
@@ -1246,14 +1255,14 @@ const pendingWeeks = totalWeeks - completedWeeks;
     font-size: 11px;
     font-weight: 600;
     background: rgba(42, 255, 106, 0.08);
-    color: var(--poke-green);
+    color: var(--acc-green);
     border: 1px solid rgba(42, 255, 106, 0.2);
     padding: 2px 8px;
     border-radius: 4px;
   }
   .gh-link {
     font-size: 12px;
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
     font-weight: 600;
     text-decoration: none;
   }
@@ -1275,7 +1284,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     color: var(--text-2);
   }
   .gh-notice a {
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
     font-weight: 600;
     text-decoration: none;
   }
@@ -1416,7 +1425,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     color: #fcd34d;
   }
   .warning-box a {
-    color: var(--poke-cyan);
+    color: var(--acc-cyan);
     font-weight: 600;
     text-decoration: none;
   }

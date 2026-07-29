@@ -5,10 +5,41 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 ---
 <BaseLayout
-    title="Caso de Estudio: Migración del Programa de Lealtad — Arturo L. Gómez"
+    title="Programa de Lealtad a microservicios | Arturo L. Gómez"
     description="Cómo migré el programa de lealtad con 70,000 usuarios activos de un monolito a microservicios con Spring Boot y AWS, sin downtime y con +25% en suscriptores."
-    canonical="https://lgzarturo.com/casos-de-estudio/programa-de-lealtad"
+    canonical="https://lgzarturo.com/casos-de-estudio/programa-de-lealtad/"
+    keywords="microservicios, Spring Boot, Kotlin, AWS ECS, Strangler Fig, migración, arquitectura de software, monolito"
+    ogType="article"
 >
+    <script slot="head" type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://lgzarturo.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Casos de estudio", "item": "https://lgzarturo.com/#projects" },
+                    { "@type": "ListItem", "position": 3, "name": "Programa de Lealtad" }
+                ]
+            },
+            {
+                "@type": "TechArticle",
+                "headline": "Migración del Programa de Lealtad a Microservicios",
+                "description": "Cómo migré un programa de lealtad con 70,000+ usuarios activos de un monolito a microservicios con Spring Boot y AWS ECS, sin downtime y con +25% en suscriptores.",
+                "image": "https://lgzarturo.com/og-image.jpg",
+                "datePublished": "2026-07-28",
+                "dateModified": "2026-07-28",
+                "inLanguage": "es",
+                "author": { "@type": "Person", "name": "Arturo L. Gómez", "url": "https://lgzarturo.com/" },
+                "publisher": { "@type": "Person", "name": "Arturo L. Gómez" },
+                "mainEntityOfPage": "https://lgzarturo.com/casos-de-estudio/programa-de-lealtad/",
+                "about": ["Microservicios", "Spring Boot", "Kotlin", "AWS ECS", "Strangler Fig"],
+                "keywords": "microservicios, Spring Boot, Kotlin, AWS ECS, Strangler Fig, migración"
+            }
+        ]
+    }
+    </script>
     <Header title="Arturo L. Gómez" />
     <main class="max-w-4xl mx-auto px-6 py-24">
 
@@ -256,11 +287,26 @@ import Footer from '../../components/Footer.astro';
             </a>
         </div>
 
-        <!-- Navegación entre casos -->
-        <div class="mt-12 flex justify-between items-center pt-8 border-t border-gray-200">
-            <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Volver al inicio</a>
-            <a href="/casos-de-estudio/ats-startalent" class="text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium">Ver siguiente caso de estudio →</a>
-        </div>
+        <!-- Otros casos de estudio -->
+        <section class="mt-16 pt-8 border-t border-gray-200">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-4">Otros casos de estudio</h2>
+            <a href="/casos-de-estudio/ats-startalent/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 bg-grails-100 text-grails-800 rounded-full text-xs font-medium">Rediseño SaaS</span>
+                            <span class="px-2.5 py-0.5 bg-mysql-100 text-mysql-800 rounded-full text-xs font-medium">Multi-tenant</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Rediseño del ATS StarTalent a SaaS hotelero</h3>
+                        <p class="text-gray-600 text-sm mt-1">De herramienta interna a producto SaaS multi-tenant, con +60% en clientes corporativos.</p>
+                    </div>
+                    <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </a>
+            <div class="mt-6">
+                <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Volver al inicio</a>
+            </div>
+        </section>
     </main>
     <Footer />
 </BaseLayout>

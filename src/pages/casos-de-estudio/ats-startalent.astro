@@ -5,10 +5,41 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 ---
 <BaseLayout
-    title="Caso de Estudio: Rediseño del ATS StarTalent — Arturo L. Gómez"
+    title="Rediseño del ATS StarTalent a SaaS | Arturo L. Gómez"
     description="Cómo rediseñé el sistema ATS de StarChoice convirtiéndolo en un SaaS referente para reclutamiento hotelero, logrando +60% en clientes corporativos."
-    canonical="https://lgzarturo.com/casos-de-estudio/ats-startalent"
+    canonical="https://lgzarturo.com/casos-de-estudio/ats-startalent/"
+    keywords="ATS, SaaS hotelero, reclutamiento, multi-tenant, Grails, Groovy, arquitectura de software, Software Architect"
+    ogType="article"
 >
+    <script slot="head" type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://lgzarturo.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Casos de estudio", "item": "https://lgzarturo.com/#projects" },
+                    { "@type": "ListItem", "position": 3, "name": "ATS StarTalent" }
+                ]
+            },
+            {
+                "@type": "TechArticle",
+                "headline": "Rediseño del ATS StarTalent: de herramienta interna a SaaS hotelero",
+                "description": "Cómo rediseñé el sistema ATS de StarChoice convirtiéndolo en un SaaS multi-tenant referente para reclutamiento hotelero, logrando +60% en clientes corporativos.",
+                "image": "https://lgzarturo.com/og-image.jpg",
+                "datePublished": "2026-07-28",
+                "dateModified": "2026-07-28",
+                "inLanguage": "es",
+                "author": { "@type": "Person", "name": "Arturo L. Gómez", "url": "https://lgzarturo.com/" },
+                "publisher": { "@type": "Person", "name": "Arturo L. Gómez" },
+                "mainEntityOfPage": "https://lgzarturo.com/casos-de-estudio/ats-startalent/",
+                "about": ["ATS", "SaaS", "Arquitectura de software", "Multi-tenancy", "Grails"],
+                "keywords": "ATS, SaaS hotelero, multi-tenant, Grails, Groovy, arquitectura de software"
+            }
+        ]
+    }
+    </script>
     <Header title="Arturo L. Gómez" />
     <main class="max-w-4xl mx-auto px-6 py-24">
 
@@ -240,11 +271,26 @@ import Footer from '../../components/Footer.astro';
             </a>
         </div>
 
-        <!-- Navegación entre casos -->
-        <div class="mt-12 flex justify-between items-center pt-8 border-t border-gray-200">
-            <a href="/casos-de-estudio/programa-de-lealtad" class="text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium">← Ver caso anterior</a>
-            <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">Volver al inicio →</a>
-        </div>
+        <!-- Otros casos de estudio -->
+        <section class="mt-16 pt-8 border-t border-gray-200">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-4">Otros casos de estudio</h2>
+            <a href="/casos-de-estudio/programa-de-lealtad/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                <div class="flex items-center justify-between gap-4">
+                    <div>
+                        <div class="flex flex-wrap gap-2 mb-2">
+                            <span class="px-2.5 py-0.5 bg-micro-100 text-micro-800 rounded-full text-xs font-medium">Microservicios</span>
+                            <span class="px-2.5 py-0.5 bg-aws-100 text-aws-800 rounded-full text-xs font-medium">AWS ECS</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Migración del Programa de Lealtad a microservicios</h3>
+                        <p class="text-gray-600 text-sm mt-1">Patrón Strangler Fig con 70K+ usuarios, 0 min de downtime y 5x velocidad de deploys.</p>
+                    </div>
+                    <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </a>
+            <div class="mt-6">
+                <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Volver al inicio</a>
+            </div>
+        </section>
     </main>
     <Footer />
 </BaseLayout>

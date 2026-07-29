@@ -9,13 +9,24 @@ interface Props {
     description?: string;
     canonical?: string;
     ogType?: string;
+    ogImage?: string;
+    ogImageAlt?: string;
+    keywords?: string;
+    twitterCard?: string;
 }
 const {
     title = "Arturo L. Gómez — Ingeniero Full Stack & Líder Técnico",
     description = "Arturo L. Gómez — Technical Leader & Product Engineer en Cancún, México. 15+ años con Java, Spring Boot y microservicios. Mentoring, side projects y laboratorio técnico.",
     canonical = "https://lgzarturo.com",
-    ogType = "website"
+    ogType = "website",
+    ogImage = "/og-image.jpg",
+    ogImageAlt = "Arturo L. Gómez — Technical Leader & Software Architect",
+    keywords = "Líder Técnico, Software Architect, Microservicios, Spring Boot, Kotlin, Java, Next.js, AI-Assisted Engineering, Hospitality Tech, Travel Tech",
+    twitterCard = "summary_large_image"
 } = Astro.props;
+
+// Resuelve la imagen social a URL absoluta (acepta rutas relativas o URLs completas).
+const ogImageUrl = new URL(ogImage, Astro.site ?? "https://lgzarturo.com").href;
 ---
 <html lang="es">
 <head>
@@ -25,46 +36,29 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="keywords" content="Líder Técnico, Java, Spring Boot, Microservicios, Next.js, Arquitectura de Software, DevOps, CI/CD, AWS, Docker, Kubernetes, Python, TailwindCSS, Hugo, Astro, Mandrill, Mailchimp, Git, ATS, Reclutamiento, Turismo, Hotelería">
-    <meta name="author" content="Arturo L. Gómez">
-    <meta name="robots" content="index, follow">
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Arturo L. Gómez" />
+    <meta name="robots" content="index, follow" />
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="Arturo L. Gómez" />
+    <meta property="og:locale" content="es_MX" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content={ogType} />
-    <meta property="og:image" content="https://lgzarturo.com/og-image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content={title}>
-    <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content="https://lgzarturo.com/twitter-image.jpg">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Arturo L. Gómez",
-        "jobTitle": "Líder Técnico",
-        "description": "Líder Técnico con experiencia en Java, Spring Boot, microservicios y Next.js. Especialista en arquitectura web y formación de equipos.",
-        "url": "https://lgzarturo.com",
-        "sameAs": [
-            "https://www.linkedin.com/in/lgzarturo",
-            "https://github.com/lgzarturo",
-            "https://x.com/arturolgdev",
-            "https://www.arthurolg.com"
-        ],
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Cancún",
-            "addressRegion": "Quintana Roo",
-            "addressCountry": "México"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+52-998-222-9740",
-            "email": "lgzarturo@gmail.com"
-        },
-        "knowsAbout": ["Java", "Spring Boot", "Kotlin", "Python", "Django", "FastAPI", "PHP", "Laravel", "Microservicios", "Next.js", "React", "Docker", "AWS", "SEO Técnico", "Marketing Digital"]
-    }
-    </script>    
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content={twitterCard} />
+    <meta name="twitter:site" content="@arturolgdev" />
+    <meta name="twitter:creator" content="@arturolgdev" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+    <!-- Datos estructurados schema.org: se inyectan por página vía slot "head" -->
     <script is:inline>
         // Aplica el tema oscuro si el usuario lo prefiere
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {

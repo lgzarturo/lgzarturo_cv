@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "taskCards": [],
+  "lastScanHash": "137635040fe45740",
+  "lastScanAt": "2026-07-29T02:35:33.238Z",
+  "changePaths": {},
+  "itemSnapshots": {
+    "BC-006": "{\"status\":\"TODO\",\"progress\":0,\"title\":\"hreflang y preparación i18n para versión en inglés\"}",
+    "BC-007": "{\"status\":\"TODO\",\"progress\":0,\"title\":\"Unificar CTA de negocio con agenda directa\"}",
+    "BC-009": "{\"status\":\"TODO\",\"progress\":0,\"title\":\"Curar recursos: enfocar proyectos y estados consistentes\"}",
+    "BC-013": "{\"status\":\"TODO\",\"progress\":0,\"title\":\"Traducción al inglés de casos de estudio y Home\"}",
+    "BC-014": "{\"status\":\"TODO\",\"progress\":0,\"title\":\"ADR estrategia de consolidación de dominio\"}",
+    "BC-001": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Crear imágenes de vista previa social (OG/Twitter)\"}",
+    "BC-002": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Parametrizar Open Graph y Twitter Cards por página\"}",
+    "BC-003": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Corregir head duplicado y meta repetidas en springboot-course\"}",
+    "BC-004": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Reestructurar datos estructurados schema.org por tipo de página\"}",
+    "BC-005": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Optimizar title, description, keywords y canonical por página\"}",
+    "BC-008": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Home: separar casos con impacto y experimentos con badges de estado\"}",
+    "BC-010": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Sección o página Colaboraciones y Servicios\"}",
+    "BC-011": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Destacar el curso Spring Boot desde el Home\"}",
+    "BC-012": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Navegación cruzada visible entre casos de estudio\"}",
+    "BC-015": "{\"status\":\"DONE\",\"progress\":100,\"title\":\"Estandarización profunda del diseño de springboot-course\"}"
+  }
+}
