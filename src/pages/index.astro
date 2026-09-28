@@ -79,6 +79,7 @@ try {
           "@type": "Person",
           "@id": "https://lgzarturo.com/#person",
           "name": "Arturo L. Gómez",
+          "alternateName": "Arturo LG",
           "jobTitle": "Technical Leader & Software Architect",
           "description": "Líder Técnico y Arquitecto de Software con 15+ años en Java, Spring Boot, Kotlin, microservicios y arquitectura web. Mentor y builder en hospitality/travel tech e ingeniería asistida por IA.",
           "url": "https://lgzarturo.com/",
@@ -86,7 +87,7 @@ try {
           "sameAs": [
             "https://www.linkedin.com/in/lgzarturo",
             "https://github.com/lgzarturo",
-            "https://x.com/arturolgdev",
+            "https://x.com/algforge",
             "https://www.arthurolg.com"
           ],
           "address": {
@@ -100,12 +101,30 @@ try {
         {
           "@type": "SoftwareApplication",
           "name": "MailMind",
-          "description": "Plataforma de gestión y automatización de correos electrónicos con IA, diseñada para mejorar la productividad y organización del inbox.",
+          "description": "Centro de mando que unifica bandeja IMAP, notas cifradas y proyectos: triaje, reglas e incidentes, con write-back a Jira/Sentry (no crea tickets).",
           "url": "https://mailmindworks.com/",
-          "applicationCategory": "ProductivityApplication",
+          "applicationCategory": "BusinessApplication",
           "operatingSystem": "Web",
+          "softwareVersion": "0.12.3",
+          "isAccessibleForFree": true,
           "author": { "@type": "Person", "name": "Arturo L. Gómez" },
+          "email": "hello@mailmindworks.com",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free beta" },
           "programmingLanguage": ["Python", "FastAPI", "HTMX"]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "CodeConductor",
+          "alternateName": "cc-codeconductor",
+          "description": "Framework open source de ingeniería asistida por IA: convierte prompting caótico en un sistema de orquestación multi-agente reproducible.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Cross-platform (CLI / IDE targets)",
+          "softwareVersion": "1.5.0",
+          "license": "https://opensource.org/licenses/MIT",
+          "url": "https://github.com/lgzarturo/codeconductor",
+          "downloadUrl": "https://www.npmjs.com/package/cc-codeconductor",
+          "author": { "@type": "Person", "name": "Arturo L. Gómez", "url": "https://lgzarturo.com/" },
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
         },
         {
           "@type": "SoftwareApplication",
@@ -271,7 +290,8 @@ try {
       accent="bg-white  outline-dashed outline-stone-100 outline-offset-0"
     >
       <p class="mb-6 text-lg leading-relaxed text-gray-600">
-        Soy Ingeniero en Sistemas y Líder Técnico enfocado en diseñar y escalar
+        Soy Arturo L. Gómez —también conocido como <strong>Arturo LG</strong>—,
+        Ingeniero en Sistemas y Líder Técnico enfocado en diseñar y escalar
         productos web con <strong>Java</strong>, <strong>Spring Boot</strong> y arquitectura
         de microservicios. Me interesan los fundamentos: <em
           >diseño modular, resiliencia, contratos claros, observabilidad y
@@ -552,7 +572,7 @@ try {
       <div slot="content">
         <!-- Tarjeta destacada: Curso Spring Boot (BC-011) -->
         <a
-          href="/springboot-course"
+          href="/springboot-course/"
           class="relative block mb-14 overflow-hidden text-left text-white transition-transform duration-300 shadow-lg group rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:-translate-y-1"
         >
           <span
@@ -931,8 +951,8 @@ try {
           class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 rounded-full border border-amber-200"
-            >En desarrollo</span
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200"
+            >Beta producción</span
           >
           <div
             class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-rose-400 to-rose-600 rounded-xl group-hover:scale-110"
@@ -953,12 +973,20 @@ try {
           </div>
           <h3 class="mb-2 text-xl font-bold text-gray-900">MailMind</h3>
           <p class="mb-4 text-gray-600">
-            Plataforma de gestión y automatización de correos electrónicos con
-            IA, diseñada para mejorar la productividad y organización del inbox.
+            Centro de mando (v0.12.3) que unifica bandeja IMAP, notas cifradas y
+            proyectos: convierte el correo en trabajo ejecutable sin ser otro
+            Gmail ni un CRM.
           </p>
+          <a
+            href="/casos-de-estudio/mailmind/"
+            class="flex items-center gap-1 mb-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+          >
+            Ver caso de estudio <span aria-hidden="true">→</span>
+          </a>
           <a
             href="https://mailmindworks.com/"
             target="_blank"
+            rel="noopener"
             class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
             >Ver proyecto <span aria-hidden="true">→</span></a
           >
@@ -981,6 +1009,69 @@ try {
             <span
               class="px-3 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-800"
               >AlpineJS</span
+            >
+          </div>
+        </div>
+
+        <!-- Project CodeConductor -->
+        <div
+          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+        >
+          <span
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200"
+            >Open source</span
+          >
+          <div
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-slate-500 to-slate-700 rounded-xl group-hover:scale-110"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 17l-5-5 5-5m6 10l5-5-5-5"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-xl font-bold text-gray-900">CodeConductor</h3>
+          <p class="mb-4 text-gray-600">
+            Framework open source MIT (npm <code>cc-codeconductor</code> 1.5.0)
+            que convierte prompts sueltos en un loop planificar → implementar →
+            probar → revisar con agentes, contratos y task cards.
+          </p>
+          <a
+            href="/casos-de-estudio/codeconductor/"
+            class="flex items-center gap-1 mb-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+          >
+            Ver caso de estudio <span aria-hidden="true">→</span>
+          </a>
+          <a
+            href="https://github.com/lgzarturo/codeconductor"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            >Ver en GitHub <span aria-hidden="true">→</span></a
+          >
+          <div
+            class="flex flex-wrap gap-2 mt-4"
+            aria-label="Tecnologías usadas"
+          >
+            <span
+              class="px-3 py-1 text-xs font-medium rounded-full bg-js-100 text-js-800"
+              >TypeScript</span
+            >
+            <span
+              class="px-3 py-1 text-xs font-medium rounded-full bg-devops-100 text-devops-800"
+              >Multi-agent</span
+            >
+            <span
+              class="px-3 py-1 text-xs font-medium rounded-full bg-seo-100 text-seo-800"
+              >MIT</span
             >
           </div>
         </div>
@@ -1826,7 +1917,7 @@ try {
           </svg>
         </a>
         <a
-          href="https://x.com/arturolgdev"
+          href="https://x.com/algforge"
           target="_blank"
           class="text-white transition-colors duration-200 hover:text-blue-200"
           aria-label="X.com"

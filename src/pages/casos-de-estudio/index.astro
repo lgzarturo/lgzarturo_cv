@@ -1,0 +1,113 @@
+---
+// src/pages/casos-de-estudio/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const cases = [
+    {
+        href: '/casos-de-estudio/mailmind/',
+        badge: 'Producto indie',
+        badgeClass: 'bg-rose-100 text-rose-800 border-rose-200',
+        title: 'MailMind: convertir la señal del correo en trabajo ejecutable',
+        blurb: 'Centro de mando en producción (v0.12.3): unifica IMAP, notas cifradas y proyectos para convertir el correo en trabajo ejecutable —sin ser otro Gmail ni un CRM.',
+        tags: ['Python', 'FastAPI', 'IMAP IDLE'],
+    },
+    {
+        href: '/casos-de-estudio/codeconductor/',
+        badge: 'Open source / IA',
+        badgeClass: 'bg-purple-100 text-purple-800 border-purple-200',
+        title: 'CodeConductor: de prompts sueltos a un sistema de ingeniería orquestado',
+        blurb: 'Framework MIT (npm cc-codeconductor 1.5.0) que convierte prompts sueltos en un loop planificar → implementar → probar → revisar con agentes, contratos y task cards.',
+        tags: ['TypeScript', 'Multi-agent', 'MIT'],
+    },
+    {
+        href: '/casos-de-estudio/ats-startalent/',
+        badge: 'Rediseño SaaS',
+        badgeClass: 'bg-green-100 text-green-800 border-green-200',
+        title: 'Rediseño del ATS StarTalent a SaaS hotelero',
+        blurb: 'De herramienta interna a producto SaaS multi-tenant, con +60% en clientes corporativos.',
+        tags: ['Grails', 'Groovy', 'Multi-tenant'],
+    },
+    {
+        href: '/casos-de-estudio/programa-de-lealtad/',
+        badge: 'Microservicios',
+        badgeClass: 'bg-blue-100 text-blue-800 border-blue-200',
+        title: 'Migración del Programa de Lealtad a microservicios',
+        blurb: 'Patrón Strangler Fig con 70K+ usuarios, 0 min de downtime y 5x velocidad de deploys.',
+        tags: ['Spring Boot', 'Kotlin', 'AWS ECS'],
+    },
+];
+---
+<BaseLayout
+    title="Casos de estudio | Arturo L. Gómez (Arturo LG)"
+    description="Casos de estudio de Arturo LG: productos indie como MailMind y CodeConductor, y proyectos empresariales de arquitectura y migración a microservicios."
+    canonical="https://lgzarturo.com/casos-de-estudio/"
+    keywords="casos de estudio, Arturo LG, MailMind, CodeConductor, ATS StarTalent, Programa de Lealtad, arquitectura de software"
+    ogType="website"
+>
+    <script slot="head" type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://lgzarturo.com/" },
+                    { "@type": "ListItem", "position": 2, "name": "Casos de estudio", "item": "https://lgzarturo.com/casos-de-estudio/" }
+                ]
+            },
+            {
+                "@type": "CollectionPage",
+                "name": "Casos de estudio de Arturo LG",
+                "description": "Productos indie y proyectos empresariales documentados por Arturo L. Gómez (Arturo LG): MailMind, CodeConductor, ATS StarTalent y Programa de Lealtad.",
+                "url": "https://lgzarturo.com/casos-de-estudio/",
+                "inLanguage": "es",
+                "author": { "@type": "Person", "name": "Arturo L. Gómez", "alternateName": "Arturo LG", "url": "https://lgzarturo.com/" }
+            }
+        ]
+    }
+    </script>
+    <Header title="Arturo L. Gómez" />
+    <main class="max-w-4xl mx-auto px-6 py-24">
+
+        <!-- Breadcrumb -->
+        <nav class="mb-8 text-sm text-gray-500 flex items-center gap-2">
+            <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
+            <span>/</span>
+            <span class="text-gray-800 font-medium">Casos de estudio</span>
+        </nav>
+
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+                Casos de estudio
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed">
+                Productos indie que construyo y mantengo, y proyectos empresariales de arquitectura donde lideré el rediseño técnico. Cada caso documenta el reto, las decisiones y el impacto medible.
+            </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+            {cases.map((c) => (
+                <a href={c.href} class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                    <span class={`inline-block px-2.5 py-0.5 mb-3 rounded-full text-xs font-medium border ${c.badgeClass}`}>{c.badge}</span>
+                    <h2 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-2">{c.title}</h2>
+                    <p class="text-gray-600 text-sm mb-4">{c.blurb}</p>
+                    <div class="flex flex-wrap gap-2 mb-2">
+                        {c.tags.map((tag) => (
+                            <span class="px-2.5 py-0.5 bg-white text-gray-600 border border-gray-200 rounded-full text-xs font-medium">{tag}</span>
+                        ))}
+                    </div>
+                    <span class="inline-flex items-center gap-1 text-sm font-medium text-blue-600 group-hover:translate-x-1 transition-transform">
+                        Ver caso <span aria-hidden="true">→</span>
+                    </span>
+                </a>
+            ))}
+        </div>
+
+        <div class="mt-12">
+            <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Volver al inicio</a>
+        </div>
+    </main>
+    <Footer />
+</BaseLayout>

@@ -1,0 +1,11 @@
+{
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.lgzarturo.com" }],
+      "destination": "https://lgzarturo.com/$1",
+      "permanent": true
+    }
+  ]
+}

@@ -104,6 +104,59 @@ Entregados e archivados: BC-001, BC-002, BC-003, BC-004, BC-005, BC-008, BC-010,
 
 ## Archive
 
+### BC-018 | Redirect 301 www → apex y trailing slash
+
+- Priority: P1
+- Status: DONE
+- Type: bug
+- Depends on: none
+- Progress: 100
+- Description: El PR #13 reveló vía el comentario de Vercel que el hosting es Vercel (proyecto lgzarturo-cv en Vercel, deploy previews por rama); con eso confirmado se agregó vercel.json con trailingSlash forzado y un 301 de www.lgzarturo.com al apex, resolviendo lo que antes quedaba bloqueado por falta de config de hosting versionada en el repo.
+- Scope: vercel.json con "trailingSlash": true y redirect permanente de host www.lgzarturo.com → lgzarturo.com conservando el path.
+- Out of scope: Cambiar el DNS o el dominio en sí; la estrategia de dominio blog vs sitio (BC-014).
+- Acceptance:
+- [x] vercel.json existe con trailingSlash true y el redirect de www al apex.
+- [ ] Verificar en producción tras el deploy: curl -I https://www.lgzarturo.com/ → 301 a https://lgzarturo.com/, y curl -I https://lgzarturo.com/recursos → redirect a .../recursos/.
+
+---
+
+### BC-016 | Hub de casos de estudio + casos MailMind y CodeConductor
+
+- Priority: P1
+- Status: DONE
+- Type: feature
+- Depends on: none
+- Progress: 100
+- Description: El hub /casos-de-estudio/ no existía (404) aunque breadcrumbs y home lo asumían vía /#projects; se creó el hub listando los 4 casos, y se agregaron los casos MailMind (producto indie, v0.12.3) y CodeConductor (framework open source, npm cc-codeconductor 1.5.0), con JSON-LD TechArticle + SoftwareApplication, breadcrumbs reales y navegación cruzada recíproca entre los 4 casos.
+- Scope: Página /casos-de-estudio/index.astro; páginas mailmind.astro y codeconductor.astro; actualizar breadcrumbs y "Otros casos" en ats-startalent y programa-de-lealtad; enlazar los nuevos casos desde el home (tarjetas + Person/SoftwareApplication JSON-LD).
+- Out of scope: Traducciones (BC-013); imágenes OG específicas por caso.
+- Acceptance:
+- [x] /casos-de-estudio/ responde 200 y lista los 4 casos con enlace funcional.
+- [x] /casos-de-estudio/mailmind/ y /casos-de-estudio/codeconductor/ compilan y validan su JSON-LD (TechArticle + SoftwareApplication).
+- [x] Los 4 casos se enlazan recíprocamente y el home enlaza a los 2 casos nuevos.
+- [x] `npm run build` genera las 8 páginas sin errores y el sitemap incluye las nuevas rutas.
+
+---
+
+### BC-017 | Quick wins de SEO/AEO tras auditoría (H1, marca, favicons, bug de render)
+
+- Priority: P1
+- Status: DONE
+- Type: bug
+- Depends on: none
+- Progress: 100
+- Description: La auditoría SEO/AEO detectó: /recursos/ sin H1 real, falta de mención de la marca "Arturo LG" en home, favicons limitados a un solo SVG sin fallback ni manifest, un enlace inconsistente a /springboot-course sin slash final, y el roadmap del curso renderizado 100% por JS (el HTML estático exponía literalmente `${w.ver}` dentro del <script> en vez de contenido real, invisible para crawlers sin JS).
+- Scope: Prop titleTag en SectionColumn + H1 en recursos.astro; alternateName "Arturo LG" en Person schema y mención en el copy del home; favicon.ico + PNGs (16/32/180/192/512) + site.webmanifest + links en BaseLayout; fix del href del curso a "/springboot-course/"; roadmap del curso movido a render server-side (Astro map) conservando el acordeón y el filtro por milestone en JS progresivo.
+- Out of scope: Redirect 301 www→apex (BC-018, requiere hosting); sameAs bidireccional completo y OG por caso (fuera del alcance pedido en esta sesión).
+- Acceptance:
+- [x] /recursos/ tiene exactamente un <h1> visible.
+- [x] El Person JSON-LD del home incluye alternateName "Arturo LG" y el copy la menciona.
+- [x] BaseLayout emite favicon.ico, PNGs, apple-touch-icon y manifest; los archivos existen en public/.
+- [x] El HTML estático de /springboot-course/ contiene las versiones de semana (v0.0.1, etc.) como texto real, no como `${w.ver}` literal.
+- [x] `npm run build` limpio (8 páginas).
+
+---
+
 ### BC-001 | Crear imágenes de vista previa social (OG/Twitter)
 
 - Priority: P0
