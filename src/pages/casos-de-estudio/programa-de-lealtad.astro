@@ -19,7 +19,7 @@ import Footer from '../../components/Footer.astro';
                 "@type": "BreadcrumbList",
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://lgzarturo.com/" },
-                    { "@type": "ListItem", "position": 2, "name": "Casos de estudio", "item": "https://lgzarturo.com/#projects" },
+                    { "@type": "ListItem", "position": 2, "name": "Casos de estudio", "item": "https://lgzarturo.com/casos-de-estudio/" },
                     { "@type": "ListItem", "position": 3, "name": "Programa de Lealtad" }
                 ]
             },
@@ -47,7 +47,9 @@ import Footer from '../../components/Footer.astro';
         <nav class="mb-8 text-sm text-gray-500 flex items-center gap-2">
             <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
             <span>/</span>
-            <span class="text-gray-800 font-medium">Caso de Estudio</span>
+            <a href="/casos-de-estudio/" class="hover:text-blue-600 transition-colors">Casos de estudio</a>
+            <span>/</span>
+            <span class="text-gray-800 font-medium">Programa de Lealtad</span>
         </nav>
 
         <!-- Header -->
@@ -290,21 +292,48 @@ import Footer from '../../components/Footer.astro';
         <!-- Otros casos de estudio -->
         <section class="mt-16 pt-8 border-t border-gray-200">
             <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-4">Otros casos de estudio</h2>
-            <a href="/casos-de-estudio/ats-startalent/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
-                <div class="flex items-center justify-between gap-4">
-                    <div>
-                        <div class="flex flex-wrap gap-2 mb-2">
-                            <span class="px-2.5 py-0.5 bg-grails-100 text-grails-800 rounded-full text-xs font-medium">Rediseño SaaS</span>
-                            <span class="px-2.5 py-0.5 bg-mysql-100 text-mysql-800 rounded-full text-xs font-medium">Multi-tenant</span>
+            <div class="grid gap-4">
+                <a href="/casos-de-estudio/ats-startalent/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 bg-grails-100 text-grails-800 rounded-full text-xs font-medium">Rediseño SaaS</span>
+                                <span class="px-2.5 py-0.5 bg-mysql-100 text-mysql-800 rounded-full text-xs font-medium">Multi-tenant</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Rediseño del ATS StarTalent a SaaS hotelero</h3>
+                            <p class="text-gray-600 text-sm mt-1">De herramienta interna a producto SaaS multi-tenant, con +60% en clientes corporativos.</p>
                         </div>
-                        <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Rediseño del ATS StarTalent a SaaS hotelero</h3>
-                        <p class="text-gray-600 text-sm mt-1">De herramienta interna a producto SaaS multi-tenant, con +60% en clientes corporativos.</p>
+                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
                     </div>
-                    <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
-                </div>
-            </a>
-            <div class="mt-6">
-                <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Volver al inicio</a>
+                </a>
+                <a href="/casos-de-estudio/mailmind/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 bg-rose-100 text-rose-800 rounded-full text-xs font-medium">Producto indie</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">MailMind: convertir la señal del correo en trabajo ejecutable</h3>
+                            <p class="text-gray-600 text-sm mt-1">Centro de mando en producción (v0.12.3): IMAP, notas cifradas y proyectos.</p>
+                        </div>
+                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </a>
+                <a href="/casos-de-estudio/codeconductor/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-2">
+                                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">Open source</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">CodeConductor: de prompts sueltos a orquestación multi-agente</h3>
+                            <p class="text-gray-600 text-sm mt-1">Framework MIT (npm cc-codeconductor 1.5.0).</p>
+                        </div>
+                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-6 flex gap-4">
+                <a href="/casos-de-estudio/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Hub de casos</a>
+                <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">Inicio</a>
             </div>
         </section>
     </main>

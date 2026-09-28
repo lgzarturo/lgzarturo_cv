@@ -257,8 +257,55 @@ const pendingWeeks = totalWeeks - completedWeeks;
         }
       </div>
 
-      <!-- Las week cards las renderiza JS para soportar filtro + acordeón -->
-      <div id="weeks-stack" class="weeks-stack" aria-live="polite"></div>
+      <!-- Week cards renderizadas en el servidor; JS solo añade filtro + acordeón -->
+      <div id="weeks-stack" class="weeks-stack" aria-live="polite">
+        {
+          weeks.map((w) => {
+            const ms = MILESTONES[w.ms];
+            return (
+              <div class:list={["week-card", { done: w.done }]} data-ms={w.ms}>
+                <div class="week-stripe" style={`background:${w.done ? ms.color : "var(--border)"}`} />
+                <div class="week-head">
+                  <div class="week-num mono">W{w.n}</div>
+                  <div class="week-info">
+                    <div class="week-ms-row">
+                      <span
+                        class="week-ms-chip mono"
+                        style={`background:${ms.color}20;color:${ms.color}`}
+                      >
+                        {w.ms}
+                      </span>
+                      <span class="week-ms-label">{ms.label}</span>
+                    </div>
+                    <div class="week-name">{w.name}</div>
+                    <div class="week-date mono">{w.date}</div>
+                  </div>
+                  <div class="pokeball" aria-hidden="true" />
+                  <div class="week-arrow" aria-hidden="true">▾</div>
+                </div>
+                <div class="week-body" role="region">
+                  <div class="week-body-inner">
+                    <p>{w.detail}</p>
+                    <div class="week-body-footer">
+                      <span class="ver-tag mono">{w.ver}</span>
+                      {w.done && (
+                        <a
+                          class="gh-link"
+                          href={`https://github.com/lgzarturo/springboot-course/releases/tag/${w.ver}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          ver release →
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+      </div>
 
       <!-- GitHub notice -->
       <div class="gh-notice" role="note">
@@ -1517,8 +1564,6 @@ const pendingWeeks = totalWeeks - completedWeeks;
 ════════════════════════════════════════════════════════════════ -->
 <script
   define:vars={{
-    weeks,
-    MILESTONES,
     completedWeeks,
     totalWeeks,
     progressPercent,
@@ -1541,72 +1586,29 @@ const pendingWeeks = totalWeeks - completedWeeks;
     }, 120);
   }, 350);
 
-  // ── Render week cards ──────────────────────────────────────
-  function renderWeeks(filter) {
-    const stack = document.getElementById("weeks-stack");
+  // ── Acordeón de week cards (contenido ya viene renderizado del servidor) ──
+  document.getElementById("weeks-stack")?.addEventListener("click", (e) => {
+    const card = e.target.closest(".week-card");
+    if (!card) return;
+    const isOpen = card.classList.toggle("open");
+    const arrow = card.querySelector(".week-arrow");
+    if (arrow) arrow.textContent = isOpen ? "▴" : "▾";
+  });
+
+  // ── Gym badge filter (muestra/oculta cards por data-ms) ────
+  function filterWeeks(filter) {
+    const cards = document.querySelectorAll("#weeks-stack .week-card");
     const counter = document.getElementById("week-count");
-    if (!stack) return;
-
-    stack.innerHTML = "";
-    const list =
-      filter === "all" ? weeks : weeks.filter((w) => w.ms === filter);
-    if (counter)
-      counter.textContent = `${list.length} semana${list.length !== 1 ? "s" : ""}`;
-
-    list.forEach((w) => {
-      const ms = MILESTONES[w.ms];
-      const card = document.createElement("div");
-      card.className = "week-card" + (w.done ? " done" : "");
-
-      // Stripe de color del milestone
-      const stripe = document.createElement("div");
-      stripe.className = "week-stripe";
-      stripe.style.background = w.done ? ms.color : "var(--border)";
-      card.appendChild(stripe);
-
-      card.innerHTML += `
-      <div class="week-head">
-        <div class="week-num mono">W${w.n}</div>
-        <div class="week-info">
-          <div class="week-ms-row">
-            <span class="week-ms-chip mono"
-              style="background:${ms.color}20;color:${ms.color}">${w.ms}</span>
-            <span class="week-ms-label">${ms.label}</span>
-          </div>
-          <div class="week-name">${w.name}</div>
-          <div class="week-date mono">${w.date}</div>
-        </div>
-        <div class="pokeball" aria-hidden="true"></div>
-        <div class="week-arrow" aria-hidden="true">▾</div>
-      </div>
-      <div class="week-body" role="region">
-        <div class="week-body-inner">
-          <p>${w.detail}</p>
-          <div class="week-body-footer">
-            <span class="ver-tag mono">${w.ver}</span>
-            ${
-              w.done
-                ? `<a class="gh-link" href="https://github.com/lgzarturo/springboot-course/releases/tag/${w.ver}"
-                    target="_blank" rel="noopener noreferrer">ver release →</a>`
-                : ""
-            }
-          </div>
-        </div>
-      </div>
-    `;
-
-      card.addEventListener("click", () => {
-        const isOpen = card.classList.toggle("open");
-        const arrow = card.querySelector(".week-arrow");
-        if (arrow) arrow.textContent = isOpen ? "▴" : "▾";
-      });
-
-      stack.appendChild(card);
+    let visible = 0;
+    cards.forEach((card) => {
+      const match = filter === "all" || card.dataset.ms === filter;
+      card.style.display = match ? "" : "none";
+      if (match) visible++;
     });
+    if (counter)
+      counter.textContent = `${visible} semana${visible !== 1 ? "s" : ""}`;
   }
-  renderWeeks("all");
 
-  // ── Gym badge filter ───────────────────────────────────────
   document.getElementById("badge-filter")?.addEventListener("click", (e) => {
     const btn = e.target.closest(".gym-badge");
     if (!btn) return;
@@ -1617,7 +1619,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     });
     btn.classList.add("active");
     btn.setAttribute("aria-pressed", "true");
-    renderWeeks(btn.dataset.ms);
+    filterWeeks(btn.dataset.ms);
   });
 
   // ── Scroll reveal ──────────────────────────────────────────
