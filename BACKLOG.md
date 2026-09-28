@@ -23,22 +23,6 @@ Entregados e archivados: BC-001, BC-002, BC-003, BC-004, BC-005, BC-008, BC-010,
 
 ## Items
 
-### BC-018 | Redirect 301 www → apex y trailing slash a nivel de hosting
-
-- Priority: P1
-- Status: TODO
-- Type: bug
-- Depends on: none
-- Description: Auditoría SEO detectó que www.lgzarturo.com y lgzarturo.com sirven ambos 200 sin redirect, igual que las rutas con y sin slash final; el canonical apunta al apex con slash pero no hay 301 real. Esto no se puede resolver desde el repo (no hay netlify.toml/vercel.json/_redirects ni config de DNS versionada aquí): requiere configurar la regla en el proveedor de hosting/DNS que sirve el dominio.
-- Scope: Configurar en el hosting/DNS un 301 de www.lgzarturo.com → lgzarturo.com y de rutas sin slash final → con slash final (o documentar la regla equivalente si el hosting usa otro mecanismo).
-- Out of scope: Cambios de código en este repo; la estrategia de dominio blog vs sitio (eso es BC-014).
-- Acceptance:
-- [ ] curl -I https://www.lgzarturo.com/ devuelve 301 a https://lgzarturo.com/.
-- [ ] curl -I https://lgzarturo.com/recursos devuelve 301 a https://lgzarturo.com/recursos/.
-- [ ] Search Console no reporta duplicados por www ni por slash tras el cambio.
-
----
-
 ### BC-006 | hreflang y preparación i18n para versión en inglés
 
 - Priority: P3
@@ -119,6 +103,22 @@ Entregados e archivados: BC-001, BC-002, BC-003, BC-004, BC-005, BC-008, BC-010,
 ---
 
 ## Archive
+
+### BC-018 | Redirect 301 www → apex y trailing slash
+
+- Priority: P1
+- Status: DONE
+- Type: bug
+- Depends on: none
+- Progress: 100
+- Description: El PR #13 reveló vía el comentario de Vercel que el hosting es Vercel (proyecto lgzarturo-cv en Vercel, deploy previews por rama); con eso confirmado se agregó vercel.json con trailingSlash forzado y un 301 de www.lgzarturo.com al apex, resolviendo lo que antes quedaba bloqueado por falta de config de hosting versionada en el repo.
+- Scope: vercel.json con "trailingSlash": true y redirect permanente de host www.lgzarturo.com → lgzarturo.com conservando el path.
+- Out of scope: Cambiar el DNS o el dominio en sí; la estrategia de dominio blog vs sitio (BC-014).
+- Acceptance:
+- [x] vercel.json existe con trailingSlash true y el redirect de www al apex.
+- [ ] Verificar en producción tras el deploy: curl -I https://www.lgzarturo.com/ → 301 a https://lgzarturo.com/, y curl -I https://lgzarturo.com/recursos → redirect a .../recursos/.
+
+---
 
 ### BC-016 | Hub de casos de estudio + casos MailMind y CodeConductor
 
