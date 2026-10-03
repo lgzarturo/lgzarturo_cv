@@ -82,11 +82,11 @@ const pendingWeeks = totalWeeks - completedWeeks;
   <!-- ══ CONTENIDO ════════════════════════════════════════════════ -->
   <Header title="Arturo L. Gómez" />
 
-  <div class="course-page">
+  <main id="main" class="course-page">
     <!-- ── HERO ─────────────────────────────────────────────────── -->
     <section class="mt-16 hero reveal" aria-labelledby="hero-title">
       <div class="breadcrumb">
-        <a href="/#projects">← Laboratorio</a>
+        <a href="/#projects" class="inline-block py-1">← Laboratorio</a>
         <span aria-hidden="true">/</span>
         <span>Curso SpringBoot + Kotlin</span>
       </div>
@@ -159,7 +159,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
       <div class="exp-bar-wrap">
         <div class="exp-bar-labels">
           <span class="mono" style="color:var(--text-3)">EXP</span>
-          <span class="mono" id="pct-label" style="color:var(--poke-yellow)">
+          <span class="mono" id="pct-label" style="color:var(--poke-yellow-text)">
             0 / {totalWeeks} semanas
           </span>
         </div>
@@ -178,7 +178,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
       <!-- Stats -->
       <div class="stat-grid">
         <div class="stat-cell">
-          <div class="stat-val" style="color:var(--poke-yellow)">
+          <div class="stat-val" style="color:var(--poke-yellow-text)">
             {completedWeeks}
           </div>
           <div class="stat-key">Completadas</div>
@@ -271,7 +271,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
                     <div class="week-ms-row">
                       <span
                         class="week-ms-chip mono"
-                        style={`background:${ms.color}20;color:${ms.color}`}
+                        style={`--c:${ms.color}`}
                       >
                         {w.ms}
                       </span>
@@ -556,7 +556,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
                 aria-hidden="true"
               />
               <div class="blog-content">
-                <div class="blog-cat mono" style={`color:${post.tagColor}`}>
+                <div class="blog-cat mono" style={`--c:${post.tagColor}`}>
                   {post.tag}
                 </div>
                 <div class="blog-title">{post.title}</div>
@@ -630,9 +630,9 @@ const pendingWeeks = totalWeeks - completedWeeks;
         </div>
       </div>
     </section>
-  </div><!-- /course-page -->
+  </main><!-- /course-page -->
 
-  <Footer />
+  <Footer showQuote />
 </BaseLayout>
 
 <style is:global>
@@ -646,7 +646,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     --border-2: #d1d5db;
     --text: #111827;
     --text-2: #4b5563;
-    --text-3: #6b7280;
+    --text-3: #5f6b7a;
 
     /* Paleta Pokémon (acentos vívidos; iguales en claro y oscuro) */
     --poke-yellow: #f59e0b;
@@ -659,8 +659,17 @@ const pendingWeeks = totalWeeks - completedWeeks;
     --poke-cyan: #06b6d4;
 
     /* Acentos legibles como TEXTO sobre superficie (theme-aware) */
-    --acc-green: #059669;
+    --acc-green: #047857;
     --acc-cyan: #0e7490;
+
+    /* Variantes de acento para TEXTO (≥ 4.5:1 sobre superficies claras) */
+    --warn-text: #92400e;
+    --poke-yellow-text: #b45309;
+    --poke-red-text: #b91c1c;
+    --poke-blue-text: #1d4ed8;
+    --poke-purple-text: #6d28d9;
+    --poke-pink-text: #be185d;
+    --poke-orange-text: #c2410c;
 
     /* Glow: desactivado en claro, neón en oscuro */
     --glow-title: none;
@@ -682,13 +691,21 @@ const pendingWeeks = totalWeeks - completedWeeks;
     --border-2: #3d4752;
     --text: #e8edf2;
     --text-2: #8b98a8;
-    --text-3: #5a6472;
+    --text-3: #8e9aaa;
 
     --poke-green: #2aff6a;
     --poke-cyan: #00e0ff;
 
     --acc-green: #2aff6a;
     --acc-cyan: #00e0ff;
+
+    --warn-text: #fcd34d;
+    --poke-yellow-text: var(--poke-yellow);
+    --poke-red-text: var(--poke-red);
+    --poke-blue-text: #60a5fa;
+    --poke-purple-text: var(--poke-purple);
+    --poke-pink-text: #f472b6;
+    --poke-orange-text: var(--poke-orange);
 
     --glow-title: 0 0 8px var(--poke-cyan), 0 0 16px rgba(42, 255, 106, 0.3);
     --glow-h1: 0 0 8px var(--poke-cyan), 0 0 20px rgba(0, 224, 255, 0.3);
@@ -720,18 +737,18 @@ const pendingWeeks = totalWeeks - completedWeeks;
     color: var(--acc-cyan);
   }
   .text-yellow {
-    color: var(--poke-yellow);
+    color: var(--poke-yellow-text);
   }
   .text-pink {
-    color: var(--poke-pink);
+    color: var(--poke-pink-text);
   }
   .text-purple {
-    color: var(--poke-purple);
+    color: var(--poke-purple-text);
   }
 
   /* ── Glow effects ───────────────────────────────────────────── */
   .glow-h1 {
-    color: var(--poke-blue);
+    color: var(--poke-blue-text);
     text-shadow: var(--glow-h1);
   }
   .glow-title {
@@ -769,13 +786,21 @@ const pendingWeeks = totalWeeks - completedWeeks;
     font-family: "Inter", system-ui, -apple-system, sans-serif;
   }
 
+  .dark .week-ms-chip,
+  .dark .blog-cat {
+    color: color-mix(in srgb, var(--c) 55%, white);
+  }
+
   /* ── Scroll reveal ──────────────────────────────────────────── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition:
-      opacity 0.5s ease,
-      transform 0.5s ease;
+  /* Oculto solo si hay JS para revelarlo (sin JS el contenido queda visible). */
+  @media (scripting: enabled) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+    }
   }
   .reveal.in {
     opacity: 1;
@@ -903,7 +928,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     background: var(--poke-yellow);
     color: #000;
     font-weight: 800;
-    font-size: 11px;
+    font-size: 12px;
     padding: 4px 10px;
     border-radius: 99px;
     white-space: nowrap;
@@ -916,7 +941,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
   .exp-bar-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     margin-bottom: 6px;
   }
@@ -957,7 +982,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     margin-bottom: 3px;
   }
   .stat-key {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -1043,7 +1068,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     content: "▶";
     flex-shrink: 0;
     margin-top: 2px;
-    font-size: 10px;
+    font-size: 12px;
     color: var(--acc-cyan);
   }
 
@@ -1052,7 +1077,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     margin-top: 16px;
     font-size: 14px;
     font-style: italic;
-    color: var(--poke-yellow);
+    color: var(--poke-yellow-text);
     border-left: 3px solid var(--poke-pink);
     padding-left: 12px;
     line-height: 1.6;
@@ -1101,7 +1126,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     transition: opacity 0.18s;
   }
   .gym-badge-label {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     color: var(--text-3);
   }
@@ -1187,7 +1212,9 @@ const pendingWeeks = totalWeeks - completedWeeks;
     margin-bottom: 2px;
   }
   .week-ms-chip {
-    font-size: 10px;
+    color: color-mix(in srgb, var(--c) 60%, black);
+    background: color-mix(in srgb, var(--c) 14%, transparent);
+    font-size: 12px;
     font-weight: 700;
     font-family: "JetBrains Mono", monospace;
     padding: 1px 6px;
@@ -1195,7 +1222,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     line-height: 1.6;
   }
   .week-ms-label {
-    font-size: 10px;
+    font-size: 12px;
     color: var(--text-3);
   }
   .week-name {
@@ -1211,7 +1238,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     color: var(--text-2);
   }
   .week-date {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-3);
     font-family: "JetBrains Mono", monospace;
     margin-top: 2px;
@@ -1251,7 +1278,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     transform: translate(-50%, -50%);
   }
   .week-card.done .pokeball {
-    border-color: var(--poke-red);
+    border-color: var(--poke-red-text);
   }
   .week-card.done .pokeball::before {
     background: var(--poke-red);
@@ -1299,7 +1326,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
   }
   .ver-tag {
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
     background: rgba(42, 255, 106, 0.08);
     color: var(--acc-green);
@@ -1409,7 +1436,8 @@ const pendingWeeks = totalWeeks - completedWeeks;
     min-width: 0;
   }
   .blog-cat {
-    font-size: 10px;
+    color: color-mix(in srgb, var(--c) 60%, black);
+    font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.07em;
@@ -1429,7 +1457,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
   }
   .blog-status {
     flex-shrink: 0;
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     background: var(--surface-2);
     color: var(--text-3);
@@ -1469,7 +1497,7 @@ const pendingWeeks = totalWeeks - completedWeeks;
     padding: 12px 14px;
     margin-bottom: 20px;
     font-size: 13px;
-    color: #fcd34d;
+    color: var(--warn-text);
   }
   .warning-box a {
     color: var(--acc-cyan);
