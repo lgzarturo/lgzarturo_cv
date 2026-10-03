@@ -41,28 +41,28 @@ import Footer from '../../components/Footer.astro';
     }
     </script>
     <Header title="Arturo L. Gómez" />
-    <main class="max-w-4xl mx-auto px-6 py-24">
+    <main id="main" class="max-w-4xl mx-auto px-6 py-24">
 
         <!-- Breadcrumb -->
-        <nav class="mb-8 text-sm text-gray-500 flex items-center gap-2">
-            <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
+        <nav class="mb-8 text-sm text-gray-500 dark:text-gray-400 flex items-center gap-2">
+            <a href="/" class="inline-block py-1 hover:text-blue-600 transition-colors">Inicio</a>
             <span>/</span>
-            <a href="/casos-de-estudio/" class="hover:text-blue-600 transition-colors">Casos de estudio</a>
+            <a href="/casos-de-estudio/" class="inline-block py-1 hover:text-blue-600 transition-colors">Casos de estudio</a>
             <span>/</span>
-            <span class="text-gray-800 font-medium">Programa de Lealtad</span>
+            <span class="text-gray-800 font-medium dark:text-gray-100">Programa de Lealtad</span>
         </nav>
 
         <!-- Header -->
         <div class="mb-12">
             <div class="flex flex-wrap gap-2 mb-4">
-                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Revenatium</span>
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">2019 – 2021</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium">Arquitectura de Microservicios</span>
+                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium dark:bg-blue-900/40 dark:text-blue-300">Revenatium</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium dark:bg-green-900/40 dark:text-green-300">2019 – 2021</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium dark:bg-purple-900/40 dark:text-purple-300">Arquitectura de Microservicios</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
                 Migración del Programa de Lealtad a Microservicios
             </h1>
-            <p class="text-xl text-gray-600 leading-relaxed">
+            <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                 Cómo transformamos un sistema monolítico con 70,000+ usuarios activos en una arquitectura de microservicios —sin un minuto de downtime— y con resultados de negocio medibles.
             </p>
         </div>
@@ -86,33 +86,33 @@ import Footer from '../../components/Footer.astro';
         <!-- 01 El Reto -->
         <section class="mb-16">
             <div class="flex items-center gap-3 mb-6">
-                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span class="text-red-600 font-bold text-sm">01</span>
+                <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0 dark:bg-red-900/40">
+                    <span class="text-red-700 font-bold text-sm dark:text-red-400">01</span>
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900">El Reto</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">El Reto</h2>
             </div>
-            <div class="space-y-4 text-gray-700 leading-relaxed">
+            <div class="space-y-4 text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p>El programa de lealtad de Revenatium había crecido <strong>dentro de un monolito Java</strong>. Con más de 70,000 usuarios activos, el sistema enfrentaba problemas críticos que bloqueaban el crecimiento:</p>
                 <ul class="space-y-3 ml-4">
                     <li class="flex gap-3">
-                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0 dark:text-red-400">→</span>
                         <span><strong>Acoplamiento total:</strong> Cualquier cambio en el módulo de lealtad requería redeploy completo de la plataforma, afectando al motor de reservaciones y al resto de servicios.</span>
                     </li>
                     <li class="flex gap-3">
-                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0 dark:text-red-400">→</span>
                         <span><strong>Escalabilidad limitada:</strong> En temporadas altas (puentes y festividades), no era posible escalar el módulo de lealtad de forma independiente sin afectar el costo de toda la plataforma.</span>
                     </li>
                     <li class="flex gap-3">
-                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0 dark:text-red-400">→</span>
                         <span><strong>Deuda técnica acumulada:</strong> El código llevaba años sin refactorización significativa. Añadir funcionalidades tomaba semanas en lugar de días.</span>
                     </li>
                     <li class="flex gap-3">
-                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                        <span class="text-red-500 font-bold mt-0.5 flex-shrink-0 dark:text-red-400">→</span>
                         <span><strong>Riesgo de negocio alto:</strong> Un bug en el módulo de lealtad podía comprometer reservaciones activas. El costo de un fallo era enorme.</span>
                     </li>
                 </ul>
-                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6">
-                    <p class="text-amber-800 font-medium text-sm">El reto no era solo técnico: había que migrar con el sistema en producción, sin afectar a los 70,000 usuarios activos y sin que el equipo de negocio percibiera ninguna interrupción.</p>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mt-6 dark:bg-amber-950/40 dark:border-amber-800">
+                    <p class="text-amber-800 font-medium text-sm dark:text-amber-300">El reto no era solo técnico: había que migrar con el sistema en producción, sin afectar a los 70,000 usuarios activos y sin que el equipo de negocio percibiera ninguna interrupción.</p>
                 </div>
             </div>
         </section>
@@ -120,19 +120,19 @@ import Footer from '../../components/Footer.astro';
         <!-- 02 La Arquitectura -->
         <section class="mb-16">
             <div class="flex items-center gap-3 mb-6">
-                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span class="text-blue-600 font-bold text-sm">02</span>
+                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 dark:bg-blue-900/40">
+                    <span class="text-blue-700 font-bold text-sm dark:text-blue-400">02</span>
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900">La Arquitectura y Decisiones Técnicas</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">La Arquitectura y Decisiones Técnicas</h2>
             </div>
 
-            <p class="text-gray-700 leading-relaxed mb-8">
+            <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
                 Elegimos una <strong>estrategia de migración gradual</strong> basada en el patrón <em>Strangler Fig</em>: no reescribimos el sistema desde cero, sino que fuimos extrayendo módulos del monolito hacia microservicios autónomos de forma progresiva, usando el API Gateway como punto de control del tráfico.
             </p>
 
             <!-- Diagrama: Antes -->
             <div class="mb-8">
-                <h3 class="text-base font-semibold text-gray-600 mb-3 flex items-center gap-2">
+                <h3 class="text-base font-semibold text-gray-600 dark:text-gray-300 mb-3 flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-red-400 flex-shrink-0"></span>
                     Arquitectura Inicial — Monolito
                 </h3>
@@ -145,7 +145,7 @@ import Footer from '../../components/Footer.astro';
                         <div class="w-px h-5 bg-gray-600"></div>
                         <div class="bg-red-950 border border-red-700 rounded-xl px-6 py-4 text-center">
                             <div class="text-red-300 font-bold text-sm mb-3">Monolito Java / Spring MVC</div>
-                            <div class="flex flex-wrap justify-center gap-2 text-xs text-red-400">
+                            <div class="flex flex-wrap justify-center gap-2 text-xs text-red-300">
                                 <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Reservaciones</span>
                                 <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Lealtad</span>
                                 <span class="bg-red-900/60 border border-red-800 px-3 py-1.5 rounded">Módulo Usuarios</span>
@@ -154,14 +154,14 @@ import Footer from '../../components/Footer.astro';
                         </div>
                         <div class="w-px h-5 bg-gray-600"></div>
                         <div class="bg-gray-700 text-gray-200 px-6 py-2 rounded-lg text-center text-sm">Base de Datos Única (MySQL)</div>
-                        <div class="text-gray-600 text-xs mt-2 italic">Problema: un fallo en cualquier módulo afecta todo el sistema</div>
+                        <div class="text-gray-400 text-xs mt-2 italic">Problema: un fallo en cualquier módulo afecta todo el sistema</div>
                     </div>
                 </div>
             </div>
 
             <!-- Diagrama: Después -->
             <div class="mb-8">
-                <h3 class="text-base font-semibold text-gray-600 mb-3 flex items-center gap-2">
+                <h3 class="text-base font-semibold text-gray-600 dark:text-gray-300 mb-3 flex items-center gap-2">
                     <span class="w-3 h-3 rounded-full bg-green-400 flex-shrink-0"></span>
                     Arquitectura Nueva — Microservicios
                 </h3>
@@ -179,7 +179,7 @@ import Footer from '../../components/Footer.astro';
                             API Gateway — Enrutamiento y Autenticación
                         </div>
                         <!-- Líneas hacia servicios -->
-                        <div class="flex gap-16 text-gray-600 text-xs">
+                        <div class="flex gap-16 text-gray-600 dark:text-gray-300 text-xs">
                             <span>│</span>
                             <span>│</span>
                             <span>│</span>
@@ -189,13 +189,13 @@ import Footer from '../../components/Footer.astro';
                             <div class="flex flex-col items-center gap-2">
                                 <div class="bg-blue-950 border border-blue-700 text-blue-300 px-4 py-3 rounded-xl text-xs text-center">
                                     <div class="font-bold">Auth Service</div>
-                                    <div class="text-blue-500 mt-1">Spring Boot</div>
+                                    <div class="text-blue-400 mt-1">Spring Boot</div>
                                 </div>
                             </div>
                             <div class="flex flex-col items-center gap-2">
                                 <div class="bg-green-950 border border-green-700 text-green-300 px-4 py-3 rounded-xl text-xs text-center">
                                     <div class="font-bold">Loyalty Service</div>
-                                    <div class="text-green-500 mt-1">Spring Boot + Kotlin</div>
+                                    <div class="text-green-500 mt-1 dark:text-green-400">Spring Boot + Kotlin</div>
                                 </div>
                                 <div class="w-px h-4 bg-gray-600"></div>
                                 <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs">PostgreSQL</div>
@@ -203,14 +203,14 @@ import Footer from '../../components/Footer.astro';
                             <div class="flex flex-col items-center gap-2">
                                 <div class="bg-purple-950 border border-purple-700 text-purple-300 px-4 py-3 rounded-xl text-xs text-center">
                                     <div class="font-bold">Notif. Service</div>
-                                    <div class="text-purple-500 mt-1">Spring Boot</div>
+                                    <div class="text-purple-400 mt-1">Spring Boot</div>
                                 </div>
                                 <div class="w-px h-4 bg-gray-600"></div>
                                 <div class="bg-gray-800 text-gray-300 px-3 py-1.5 rounded text-xs">Email / Push</div>
                             </div>
                         </div>
                         <!-- Infraestructura -->
-                        <div class="border border-dashed border-gray-600 rounded-xl px-6 py-2 text-gray-500 text-xs mt-2">
+                        <div class="border border-dashed border-gray-600 rounded-xl px-6 py-2 text-gray-400 text-xs mt-2">
                             AWS ECS · Docker · SQS · CloudWatch
                         </div>
                     </div>
@@ -219,13 +219,13 @@ import Footer from '../../components/Footer.astro';
 
             <!-- Decisiones técnicas -->
             <div class="space-y-6">
-                <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-5">
-                    <h4 class="font-bold text-gray-900 mb-2">¿Por qué Spring Boot?</h4>
-                    <p class="text-gray-700 text-sm leading-relaxed">El equipo ya tenía expertise en Java. Spring Boot nos dio un path de migración incremental sin tener que reescribir en un lenguaje nuevo. La madurez del ecosistema —Spring Cloud, Actuator, Micrometer— fue clave para tener observabilidad desde el día uno.</p>
+                <div class="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-5 dark:bg-blue-950/40">
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">¿Por qué Spring Boot?</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">El equipo ya tenía expertise en Java. Spring Boot nos dio un path de migración incremental sin tener que reescribir en un lenguaje nuevo. La madurez del ecosistema —Spring Cloud, Actuator, Micrometer— fue clave para tener observabilidad desde el día uno.</p>
                 </div>
-                <div class="bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-5">
-                    <h4 class="font-bold text-gray-900 mb-2">¿Por qué AWS ECS y no Kubernetes?</h4>
-                    <p class="text-gray-700 text-sm leading-relaxed">La decisión de no ir a K8s fue deliberada. El equipo era pequeño y la complejidad operacional de Kubernetes hubiera sido over-engineering para nuestro tamaño en ese momento. ECS nos dio orquestación de contenedores con una curva de aprendizaje manejable.</p>
+                <div class="bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-5 dark:bg-orange-950/40">
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">¿Por qué AWS ECS y no Kubernetes?</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">La decisión de no ir a K8s fue deliberada. El equipo era pequeño y la complejidad operacional de Kubernetes hubiera sido over-engineering para nuestro tamaño en ese momento. ECS nos dio orquestación de contenedores con una curva de aprendizaje manejable.</p>
                 </div>
             </div>
         </section>
@@ -233,42 +233,42 @@ import Footer from '../../components/Footer.astro';
         <!-- 03 El Impacto -->
         <section class="mb-16">
             <div class="flex items-center gap-3 mb-6">
-                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span class="text-green-600 font-bold text-sm">03</span>
+                <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center flex-shrink-0 dark:bg-green-900/40">
+                    <span class="text-green-800 font-bold text-sm dark:text-green-400">03</span>
                 </div>
-                <h2 class="text-2xl font-bold text-gray-900">El Impacto</h2>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">El Impacto</h2>
             </div>
             <div class="grid md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
-                    <div class="text-4xl font-extrabold text-green-700 mb-2">+25%</div>
-                    <div class="font-semibold text-gray-900 mb-2">Incremento en suscriptores</div>
-                    <p class="text-gray-600 text-sm leading-relaxed">Al poder desplegar mejoras del programa de forma independiente y frecuente, la tasa de adopción creció sostenidamente tras la migración.</p>
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-6 dark:bg-green-950/40 dark:border-green-800">
+                    <div class="text-4xl font-extrabold text-green-700 mb-2 dark:text-green-300">+25%</div>
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Incremento en suscriptores</div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Al poder desplegar mejoras del programa de forma independiente y frecuente, la tasa de adopción creció sostenidamente tras la migración.</p>
                 </div>
-                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6">
-                    <div class="text-4xl font-extrabold text-blue-700 mb-2">0 min</div>
-                    <div class="font-semibold text-gray-900 mb-2">Downtime durante la migración</div>
-                    <p class="text-gray-600 text-sm leading-relaxed">La estrategia de routing progresivo garantizó continuidad total del servicio para los 70,000+ usuarios activos durante todo el proceso.</p>
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 dark:bg-blue-950/40 dark:border-blue-800">
+                    <div class="text-4xl font-extrabold text-blue-700 mb-2 dark:text-blue-300">0 min</div>
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Downtime durante la migración</div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">La estrategia de routing progresivo garantizó continuidad total del servicio para los 70,000+ usuarios activos durante todo el proceso.</p>
                 </div>
-                <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6">
-                    <div class="text-4xl font-extrabold text-purple-700 mb-2">5x</div>
-                    <div class="font-semibold text-gray-900 mb-2">Velocidad de deploys</div>
-                    <p class="text-gray-600 text-sm leading-relaxed">De deploys semanales que afectaban toda la plataforma, a deploys diarios por servicio con riesgo contenido y rollback automático.</p>
+                <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6 dark:bg-purple-950/40 dark:border-purple-800">
+                    <div class="text-4xl font-extrabold text-purple-700 mb-2 dark:text-purple-300">5x</div>
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Velocidad de deploys</div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">De deploys semanales que afectaban toda la plataforma, a deploys diarios por servicio con riesgo contenido y rollback automático.</p>
                 </div>
-                <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6">
-                    <div class="text-4xl font-extrabold text-orange-700 mb-2">Aislamiento</div>
-                    <div class="font-semibold text-gray-900 mb-2">Fallos contenidos por servicio</div>
-                    <p class="text-gray-600 text-sm leading-relaxed">Un bug en notificaciones ya no impacta al motor de reservaciones. La resiliencia del sistema mejoró radicalmente.</p>
+                <div class="bg-orange-50 border border-orange-200 rounded-2xl p-6 dark:bg-orange-950/40 dark:border-orange-800">
+                    <div class="text-4xl font-extrabold text-orange-700 mb-2 dark:text-orange-300">Aislamiento</div>
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Fallos contenidos por servicio</div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">Un bug en notificaciones ya no impacta al motor de reservaciones. La resiliencia del sistema mejoró radicalmente.</p>
                 </div>
             </div>
-            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
-                <h3 class="font-bold text-gray-900 mb-2">Lección clave</h3>
-                <p class="text-gray-600 text-sm leading-relaxed">La migración de un monolito no es un proyecto de "big bang". El éxito vino de tener paciencia para dar pasos pequeños y reversibles, mantener el sistema en producción funcionando en todo momento, y definir métricas de éxito claras antes de declarar que algo estaba "migrado".</p>
+            <div class="bg-gray-50 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 dark:bg-gray-900">
+                <h3 class="font-bold text-gray-900 dark:text-white mb-2">Lección clave</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">La migración de un monolito no es un proyecto de "big bang". El éxito vino de tener paciencia para dar pasos pequeños y reversibles, mantener el sistema en producción funcionando en todo momento, y definir métricas de éxito claras antes de declarar que algo estaba "migrado".</p>
             </div>
         </section>
 
         <!-- Stack -->
         <section class="mb-16">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Stack Utilizado</h2>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Stack Utilizado</h2>
             <div class="flex flex-wrap gap-3">
                 <span class="px-4 py-2 bg-java-100 text-java-800 rounded-full text-sm font-medium">Java 11+</span>
                 <span class="px-4 py-2 bg-spring-100 text-spring-800 rounded-full text-sm font-medium">Spring Boot</span>
@@ -290,52 +290,52 @@ import Footer from '../../components/Footer.astro';
         </div>
 
         <!-- Otros casos de estudio -->
-        <section class="mt-16 pt-8 border-t border-gray-200">
-            <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 mb-4">Otros casos de estudio</h2>
+        <section class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <h2 class="text-sm font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-4">Otros casos de estudio</h2>
             <div class="grid gap-4">
-                <a href="/casos-de-estudio/ats-startalent/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                <a href="/casos-de-estudio/ats-startalent/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 transition-colors dark:bg-gray-900">
                     <div class="flex items-center justify-between gap-4">
                         <div>
                             <div class="flex flex-wrap gap-2 mb-2">
                                 <span class="px-2.5 py-0.5 bg-grails-100 text-grails-800 rounded-full text-xs font-medium">Rediseño SaaS</span>
                                 <span class="px-2.5 py-0.5 bg-mysql-100 text-mysql-800 rounded-full text-xs font-medium">Multi-tenant</span>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">Rediseño del ATS StarTalent a SaaS hotelero</h3>
-                            <p class="text-gray-600 text-sm mt-1">De herramienta interna a producto SaaS multi-tenant, con +60% en clientes corporativos.</p>
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-700 transition-colors">Rediseño del ATS StarTalent a SaaS hotelero</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">De herramienta interna a producto SaaS multi-tenant, con +60% en clientes corporativos.</p>
                         </div>
-                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform dark:text-blue-400">→</span>
                     </div>
                 </a>
-                <a href="/casos-de-estudio/mailmind/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                <a href="/casos-de-estudio/mailmind/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 transition-colors dark:bg-gray-900">
                     <div class="flex items-center justify-between gap-4">
                         <div>
                             <div class="flex flex-wrap gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 bg-rose-100 text-rose-800 rounded-full text-xs font-medium">Producto indie</span>
+                                <span class="px-2.5 py-0.5 bg-rose-100 text-rose-800 rounded-full text-xs font-medium dark:bg-rose-900/40 dark:text-rose-300">Producto indie</span>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">MailMind: convertir la señal del correo en trabajo ejecutable</h3>
-                            <p class="text-gray-600 text-sm mt-1">Centro de mando en producción (v0.12.3): IMAP, notas cifradas y proyectos.</p>
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-700 transition-colors">MailMind: convertir la señal del correo en trabajo ejecutable</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">Centro de mando en producción (v0.12.3): IMAP, notas cifradas y proyectos.</p>
                         </div>
-                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform dark:text-blue-400">→</span>
                     </div>
                 </a>
-                <a href="/casos-de-estudio/codeconductor/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-2xl p-6 transition-colors">
+                <a href="/casos-de-estudio/codeconductor/" class="group block bg-gray-50 hover:bg-gray-100 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 transition-colors dark:bg-gray-900">
                     <div class="flex items-center justify-between gap-4">
                         <div>
                             <div class="flex flex-wrap gap-2 mb-2">
-                                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 rounded-full text-xs font-medium">Open source</span>
+                                <span class="px-2.5 py-0.5 bg-purple-100 text-purple-800 rounded-full text-xs font-medium dark:bg-purple-900/40 dark:text-purple-300">Open source</span>
                             </div>
-                            <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 transition-colors">CodeConductor: de prompts sueltos a orquestación multi-agente</h3>
-                            <p class="text-gray-600 text-sm mt-1">Framework MIT (npm cc-codeconductor 1.5.0).</p>
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-blue-700 transition-colors">CodeConductor: de prompts sueltos a orquestación multi-agente</h3>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">Framework MIT (npm cc-codeconductor 1.5.0).</p>
                         </div>
-                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform">→</span>
+                        <span class="text-blue-600 text-2xl flex-shrink-0 group-hover:translate-x-1 transition-transform dark:text-blue-400">→</span>
                     </div>
                 </a>
             </div>
             <div class="mt-6 flex gap-4">
-                <a href="/casos-de-estudio/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">← Hub de casos</a>
-                <a href="/" class="text-gray-500 hover:text-blue-600 transition-colors text-sm">Inicio</a>
+                <a href="/casos-de-estudio/" class="inline-block py-1 text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors text-sm">← Hub de casos</a>
+                <a href="/" class="inline-block py-1 text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors text-sm">Inicio</a>
             </div>
         </section>
     </main>
-    <Footer />
+    <Footer showQuote />
 </BaseLayout>

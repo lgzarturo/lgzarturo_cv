@@ -158,9 +158,9 @@ try {
     }
   </script>
   <Header title="Arturo L. Gómez" />
-  <main>
+  <main id="main">
     <!-- Hero Section -->
-    <section class="relative flex items-center justify-center min-h-screen">
+    <section class="relative flex items-center min-h-[85svh]">
       <!-- Imagen de fondo con overlay sutil -->
       <picture>
         <!-- Imagen para pantallas grandes -->
@@ -181,18 +181,19 @@ try {
           class="absolute inset-0 object-cover object-center w-full h-full"
           style="filter: brightness(0.75);"
           loading="eager"
+          fetchpriority="high"
         />
       </picture>
 
-      <div class="absolute inset-0 z-0 bg-black/50"></div>
+      <div class="absolute inset-0 z-0 bg-black/60"></div>
 
       <!-- Contenido -->
       <div
-        class="relative z-10 max-w-4xl px-6 mx-auto space-y-8 text-center mt-28"
+        class="relative z-10 max-w-6xl px-6 mx-auto mt-28 mb-16 space-y-6 text-left"
       >
         <!-- Badge de disponibilidad -->
         <div
-          class="inline-flex items-center px-4 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium shadow-sm animate-bounce-subtle"
+          class="inline-flex items-center px-4 py-1.5 bg-green-100 text-green-800 rounded-full text-sm font-medium shadow-sm dark:bg-green-900/40 dark:text-green-300"
         >
           <div
             class="w-2 h-2 mr-2 bg-green-500 rounded-full animate-pulse-slow"
@@ -203,47 +204,44 @@ try {
 
         <!-- Título principal -->
         <h1
-          class="text-4xl font-extrabold leading-tight text-white md:text-6xl animate-pop"
+          class="max-w-2xl text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl"
         >
-          Technical Leader
-          <span
-            class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-text"
-          >
-            & Product Engineer
-          </span>
+          Technical Leader <span class="text-blue-300">& Product Engineer</span>
         </h1>
 
         <!-- Descripción -->
-        <p class="text-lg leading-relaxed text-gray-200 md:text-xl">
-          Technical Leader y Product Engineer con 15+ años liderando arquitectura 
-          de software escalable para hospitality y travel tech. Especializado en 
-          system design, microservicios y cloud-native (AWS) con Spring Boot, 
+        <p class="max-w-2xl text-lg leading-relaxed text-gray-200">
+          Technical Leader y Product Engineer con 15+ años liderando arquitectura
+          de software escalable para hospitality y travel tech. Especializado en
+          system design, microservicios y cloud-native (AWS) con Spring Boot,
           Kotlin y Python.
         </p>
-        <p class="text-lg leading-relaxed text-gray-200 md:text-xl">
-          Track record medible: migración de 70K+ usuarios sin downtime, -40% en 
-          costos operativos. Creador de CodeConductor, framework open source de 
+        <p class="max-w-2xl text-lg leading-relaxed text-gray-200">
+          Track record medible: migración de 70K+ usuarios sin downtime, -40% en
+          costos operativos. Creador de CodeConductor, framework open source de
           ingeniería asistida por IA.
         </p>
 
         <!-- Botones -->
-        <div class="flex flex-col justify-center gap-4 mb-12 sm:flex-row">
-          <a
-            href="#contact"
-            class="px-8 py-4 text-lg font-semibold text-white transition-transform duration-300 bg-blue-600 shadow-md rounded-xl hover:bg-blue-700 hover:shadow-lg hover:-translate-y-1"
-          >
-            Notas técnicas
-          </a>
+        <div class="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
           <a
             href="#projects"
-            class="px-8 py-4 text-lg font-semibold text-white transition-colors duration-300 border rounded-xl border-white/40 hover:bg-white/10 hover:border-white"
+            class="px-6 py-3 text-base font-semibold text-white transition-colors duration-200 bg-blue-600 shadow-md rounded-xl hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-blue-600"
           >
             Ver proyectos
           </a>
           <a
+            href="https://github.com/lgzarturo/tech-notes"
+            target="_blank"
+            rel="noopener"
+            class="px-2 py-3 text-base font-semibold text-white underline decoration-white/40 underline-offset-4 transition-colors hover:decoration-white"
+          >
+            Notas técnicas →
+          </a>
+          <a
             href="/Arturo_L_Gomez_CV.pdf"
             target="_blank"
-            class="flex items-center justify-center gap-2 px-8 py-4 text-lg font-semibold text-white transition-all duration-300 border rounded-xl bg-white/10 border-white/40 hover:bg-white/20"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-semibold text-white transition-colors duration-200 border rounded-xl border-white/40 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <svg
               class="w-5 h-5"
@@ -263,11 +261,11 @@ try {
       </div>
 
       <!-- Flecha hacia abajo -->
-      <div
-        class="absolute transform -translate-x-1/2 bottom-8 left-1/2 animate-bounce"
-        aria-hidden="true"
+      <button
+        type="button"
+        class="absolute bottom-8 left-1/2 -translate-x-1/2 p-2 animate-bounce"
+        aria-label="Ir a Sobre mí"
         onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' });"
-        style="cursor: pointer;"
       >
         <svg
           class="w-6 h-6 text-white/70"
@@ -281,15 +279,15 @@ try {
             stroke-width="2"
             d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
         </svg>
-      </div>
+      </button>
     </section>
 
     <SectionColumn
       id="about"
       title="Sobre Mí"
-      accent="bg-white  outline-dashed outline-stone-100 outline-offset-0"
+      accent="bg-white dark:bg-gray-950"
     >
-      <p class="mb-6 text-lg leading-relaxed text-gray-600">
+      <p class="mb-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
         Soy Arturo L. Gómez —también conocido como <strong>Arturo LG</strong>—,
         Ingeniero en Sistemas y Líder Técnico enfocado en diseñar y escalar
         productos web con <strong>Java</strong>, <strong>Spring Boot</strong> y arquitectura
@@ -298,7 +296,7 @@ try {
           delivery predecible</em
         >.
       </p>
-      <p class="mb-6 text-lg leading-relaxed text-gray-600">
+      <p class="mb-6 text-lg leading-relaxed text-gray-600 dark:text-gray-300">
         En mi día a día en <strong>Revenatium</strong> desarrollo iniciativas de arquitectura
         y evolución de plataforma. Fuera de horario, mantengo un <em
           >"laboratorio personal"</em
@@ -337,36 +335,29 @@ try {
       </div>
       <div class="relative" slot="content">
         <div
-          class="flex items-center justify-center w-full h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl"
+          class="flex items-center justify-center w-full h-96 bg-gray-100 dark:bg-gray-800 rounded-2xl"
         >
-          <picture>
-            <!-- Imagen para pantallas grandes -->
-            <source
-              srcset={aboutMeDay.src}
-              media="(min-width: 1024px)"
-              type="image/png"
-            />
-            <!-- Imagen para pantallas móviles -->
-            <source
-              srcset={aboutMeNight.src}
-              media="(max-width: 1023px)"
-              type="image/png"
-            />
-            <Image
-              src={aboutMeDay}
-              alt="Sobre mí - Arturo L. Gómez"
-              class="absolute inset-0 object-cover object-center w-full h-full -m-5 rounded-2xl"
-              loading="eager"
-            />
-          </picture>
+          <Image
+            src={aboutMeDay}
+            alt="Sobre mí - Arturo L. Gómez"
+            class="absolute inset-0 object-cover object-[50%_25%] w-full h-full -m-5 rounded-2xl dark:hidden"
+            loading="lazy"
+          />
+          <Image
+            src={aboutMeNight}
+            alt="Sobre mí - Arturo L. Gómez"
+            class="absolute inset-0 hidden object-cover object-[50%_25%] w-full h-full -m-5 rounded-2xl dark:block"
+            loading="lazy"
+          />
         </div>
-        <div
-          class="absolute flex items-center justify-center w-24 h-24 transition-all duration-100 bg-blue-600 rounded-full cursor-pointer -bottom-4 -right-4 animate-pulse-slow animate-pop-scale-and-rotate-15"
-          onclick="window.location.href='/about-me'"
+        <a
+          href="/recursos"
+          class="absolute flex items-center justify-center w-24 h-24 transition-all duration-100 bg-blue-600 rounded-full -bottom-4 -right-4 animate-pulse-slow animate-pop-scale-and-rotate-15 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           title="Conoce más sobre mí"
+          aria-label="15+ años de experiencia. Conoce más sobre mí"
         >
-          <span class="text-lg font-bold text-white">15+</span>
-        </div>
+          <span class="text-lg font-bold text-white" aria-hidden="true">15+</span>
+        </a>
       </div>
     </SectionColumn>
 
@@ -387,10 +378,10 @@ try {
               data-suffix="K+">70K+</span
             >
           </div>
-          <div class="mb-2 text-sm font-bold text-blue-200">
+          <div class="mb-2 text-sm font-bold text-blue-300">
             Usuarios Migrados
           </div>
-          <p class="hidden text-xs leading-relaxed text-blue-50/80 md:block">
+          <p class="text-xs leading-relaxed text-gray-400">
             Sin downtime — Programa de Lealtad
           </p>
         </div>
@@ -405,10 +396,10 @@ try {
               data-suffix="%">-40%</span
             >
           </div>
-          <div class="mb-2 text-sm font-bold text-blue-200">
+          <div class="mb-2 text-sm font-bold text-blue-300">
             Tiempos Operativos
           </div>
-          <p class="hidden text-xs leading-relaxed text-blue-50/80 md:block">
+          <p class="text-xs leading-relaxed text-gray-400">
             Motor de tarifas y carga masiva
           </p>
         </div>
@@ -423,8 +414,8 @@ try {
               data-suffix="%">+60%</span
             >
           </div>
-          <div class="mb-2 text-sm font-bold text-blue-200">Clientes B2B</div>
-          <p class="hidden text-xs leading-relaxed text-blue-50/80 md:block">
+          <div class="mb-2 text-sm font-bold text-blue-300">Clientes B2B</div>
+          <p class="text-xs leading-relaxed text-gray-400">
             Crecimiento ATS SaaS
           </p>
         </div>
@@ -441,6 +432,10 @@ try {
               const target = parseInt(el.dataset.target ?? "0", 10);
               const prefix = el.dataset.prefix ?? "";
               const suffix = el.dataset.suffix ?? "";
+              if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                observer.unobserve(el);
+                return;
+              }
               let current = 0;
               const step = Math.max(1, Math.ceil(target / 50));
               const timer = setInterval(() => {
@@ -460,18 +455,18 @@ try {
     <SectionTitle
       id="filosofia"
       title="Filosofía de Liderazgo Técnico"
-      accent="bg-white outline-dashed outline-stone-100 outline-offset-0"
+      accent="bg-white dark:bg-gray-950"
     >
-      <p class="max-w-2xl mx-auto mb-8 text-xl text-center text-gray-600">
+      <p class="max-w-2xl mb-8 text-lg md:text-xl text-gray-600 dark:text-gray-300">
         Mis principios para construir software y guiar equipos de alto
         rendimiento.
       </p>
       <div class="grid gap-8 md:grid-cols-3" slot="content">
         <div
-          class="p-6 text-left border border-gray-100 bg-gray-50 rounded-2xl"
+          class="p-6 text-left border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-2xl"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 bg-blue-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/40 rounded-xl"
           >
             <svg
               class="w-6 h-6"
@@ -486,20 +481,20 @@ try {
               ></path></svg
             >
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Arquitectura Pragmática
           </h3>
-          <p class="text-sm leading-relaxed text-gray-600">
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
             Evito la sobre-ingeniería. Elijo la herramienta adecuada para el
             problema actual, priorizando la mantenibilidad, contratos claros y
             un diseño modular que pueda evolucionar de forma iterativa.
           </p>
         </div>
         <div
-          class="p-6 text-left border border-gray-100 bg-gray-50 rounded-2xl"
+          class="p-6 text-left border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-2xl"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-green-600 bg-green-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/40 rounded-xl"
           >
             <svg
               class="w-6 h-6"
@@ -513,20 +508,20 @@ try {
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg
             >
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Calidad y Entrega
           </h3>
-          <p class="text-sm leading-relaxed text-gray-600">
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
             El código no está listo hasta que es testeable, observable y
             desplegable. Promuevo la automatización, CI/CD y revisiones de
             código enfocadas en el "por qué" más que en el "qué".
           </p>
         </div>
         <div
-          class="p-6 text-left border border-gray-100 bg-gray-50 rounded-2xl"
+          class="p-6 text-left border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-2xl"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-purple-600 bg-purple-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/40 rounded-xl"
           >
             <svg
               class="w-6 h-6"
@@ -541,10 +536,10 @@ try {
               ></path></svg
             >
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Cultura y Mentoring
           </h3>
-          <p class="text-sm leading-relaxed text-gray-600">
+          <p class="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
             Fomento la seguridad psicológica en los equipos. Priorizo el
             mentoring constante para desarrolladores, creando espacios donde el
             error es parte del aprendizaje y crecimiento.
@@ -556,14 +551,14 @@ try {
     <SectionTitle
       id="projects"
       title="Laboratorio de ideas"
-      accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0"
+      accent="bg-gray-50 dark:bg-gray-900/40"
     >
-      <p class="max-w-2xl mx-auto mb-2 text-xl text-gray-600">
+      <p class="max-w-2xl mb-2 text-lg md:text-xl text-gray-600 dark:text-gray-300">
         Desde migraciones de sistemas legacy hasta plataformas SaaS nuevas,
         estos proyectos documentan decisiones de arquitectura real con Java,
         Spring Boot, Python y PHP.
       </p>
-      <p class="max-w-2xl mx-auto mb-4 text-base text-gray-500">
+      <p class="max-w-2xl mb-4 text-base text-gray-500 dark:text-gray-400">
         Algunos son casos empresariales de producción con resultados medibles;
         otros son experimentos del laboratorio personal donde pruebo nuevas
         tecnologías y patrones de diseño antes de llevarlos a entornos reales.
@@ -573,7 +568,7 @@ try {
         <!-- Tarjeta destacada: Curso Spring Boot (BC-011) -->
         <a
           href="/springboot-course/"
-          class="relative block mb-14 overflow-hidden text-left text-white transition-transform duration-300 shadow-lg group rounded-2xl bg-gradient-to-r from-blue-600 to-purple-600 hover:-translate-y-1"
+          class="relative block mb-14 overflow-hidden text-left text-white transition-transform duration-300 shadow-lg group rounded-2xl bg-blue-700 dark:bg-blue-800"
         >
           <span
             class="absolute inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full top-4 right-4 bg-white/15 backdrop-blur-sm"
@@ -584,10 +579,10 @@ try {
           </span>
           <div class="flex flex-col gap-6 p-8 md:flex-row md:items-center">
             <div
-              class="flex items-center justify-center flex-shrink-0 w-16 h-16 text-3xl bg-white/15 rounded-2xl"
+              class="flex items-center justify-center flex-shrink-0 w-16 h-16 text-white bg-white/15 rounded-2xl"
               aria-hidden="true"
             >
-              🎮
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
             </div>
             <div class="flex-1">
               <div
@@ -627,10 +622,10 @@ try {
 
         <!-- ── Bloque 1: Casos con impacto de negocio ── -->
         <div class="mb-6 text-left">
-          <h3 class="text-2xl font-bold text-gray-900">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
             Casos con impacto de negocio
           </h3>
-          <p class="text-gray-500">
+          <p class="text-gray-500 dark:text-gray-400">
             Proyectos empresariales en producción con resultados medibles y caso
             de estudio documentado.
           </p>
@@ -638,14 +633,14 @@ try {
         <div class="grid gap-8 mb-14 md:grid-cols-2 lg:grid-cols-3">
           <!-- Project Loyalty -->
           <div
-            class="relative flex flex-col p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+            class="relative flex flex-col p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
           >
             <span
-              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200"
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
               >Producción</span
             >
             <div
-              class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl group-hover:scale-110"
+              class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-blue-600 rounded-xl"
             >
               <svg
                 class="w-6 h-6 text-white"
@@ -660,16 +655,16 @@ try {
                   d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
-            <h3 class="mb-2 text-xl font-bold text-gray-900">
+            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
               Programa de Lealtad
             </h3>
-            <p class="flex-grow mb-4 text-gray-600">
+            <p class="flex-grow mb-4 text-gray-600 dark:text-gray-300">
               Migración completa a arquitectura de microservicios con Spring
               Boot, logrando +25% en suscriptores y mejoras en ventas.
             </p>
             <a
               href="/casos-de-estudio/programa-de-lealtad/"
-              class="flex items-center gap-1 mb-4 text-sm font-medium text-gray-600 hover:text-gray-900"
+              class="flex items-center gap-1 min-h-7 mb-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >
               Ver caso de estudio <span aria-hidden="true">→</span>
             </a>
@@ -691,14 +686,14 @@ try {
 
           <!-- Project ATS -->
           <div
-            class="relative flex flex-col p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+            class="relative flex flex-col p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
           >
             <span
-              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200"
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
               >Producción</span
             >
             <div
-              class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-green-500 to-green-600 rounded-xl group-hover:scale-110"
+              class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-green-500 to-green-600 rounded-xl"
             >
               <svg
                 class="w-6 h-6 text-white"
@@ -714,16 +709,16 @@ try {
                 ></path>
               </svg>
             </div>
-            <h3 class="mb-2 text-xl font-bold text-gray-900">
+            <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
               ATS StarTalent.mx
             </h3>
-            <p class="flex-grow mb-4 text-gray-600">
+            <p class="flex-grow mb-4 text-gray-600 dark:text-gray-300">
               Rediseño completo del sistema de reclutamiento con Grails y Spring,
               crecimiento del +60% en clientes corporativos.
             </p>
             <a
               href="/casos-de-estudio/ats-startalent/"
-              class="flex items-center gap-1 mb-4 text-sm font-medium text-gray-600 hover:text-gray-900"
+              class="flex items-center gap-1 min-h-7 mb-4 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >
               Ver caso de estudio <span aria-hidden="true">→</span>
             </a>
@@ -746,10 +741,10 @@ try {
 
         <!-- ── Bloque 2: Experimentos y otros proyectos ── -->
         <div class="mb-6 text-left">
-          <h3 class="text-2xl font-bold text-gray-900">
+          <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
             Experimentos y otros proyectos
           </h3>
-          <p class="text-gray-500">
+          <p class="text-gray-500 dark:text-gray-400">
             Herramientas internas, side projects y experimentos donde pruebo
             nuevas tecnologías y patrones antes de llevarlos a producción.
           </p>
@@ -757,14 +752,14 @@ try {
         <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           <!-- Project Blog -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
             >Producción</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -788,10 +783,10 @@ try {
                 d="M8 8h8M8 12h8M8 16h4"></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Blog técnico — Java, Spring Boot y arquitectura de software
           </h3>
-          <p class="mb-4 text-gray-600">
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Donde comparto artículos sobre desarrollo de software, mejores
             prácticas y tutoriales. Enfocado en contenido, markdown y
             experiencias reales.
@@ -799,7 +794,7 @@ try {
           <a
             href="https://www.arthurolg.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
@@ -823,14 +818,14 @@ try {
 
         <!-- Project Bootzen -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-800"
             >Experimento</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -850,10 +845,10 @@ try {
                 d="M12 8v6"></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Bootzen — Micro Framework PHP para aplicaciones web
           </h3>
-          <p class="mb-4 text-gray-600">
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Micro Framework con PHP para el desarrollo de aplicaciones web.
             Enfocado en estructura, herramientas útiles y simplicidad para
             desarrolladores.
@@ -861,7 +856,7 @@ try {
           <a
             href="https://github.com/lgzarturo/bootzen"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
@@ -885,14 +880,14 @@ try {
 
         <!-- Project Booking Engine -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
             >Producción</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-blue-500 to-blue-700 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -908,13 +903,13 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">Motor de Tarifas</h3>
-          <p class="mb-4 text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Motor de Tarifas</h3>
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Sistema de carga masiva por layout que redujo tiempos operativos en
             un 40% y eliminó errores manuales, permitiendo una mayor eficiencia.
           </p>
           <span
-            class="inline-flex items-center gap-1 mb-4 text-xs font-medium text-gray-500"
+            class="inline-flex items-center gap-1 mb-4 text-xs font-medium text-gray-500 dark:text-gray-400"
           >
             <svg
               class="w-3 h-3"
@@ -948,14 +943,14 @@ try {
 
         <!-- Project MailMind -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-green-100 text-green-800 rounded-full border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
             >Beta producción</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-rose-400 to-rose-600 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-rose-400 to-rose-600 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -971,15 +966,15 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">MailMind</h3>
-          <p class="mb-4 text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">MailMind</h3>
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Centro de mando (v0.12.3) que unifica bandeja IMAP, notas cifradas y
             proyectos: convierte el correo en trabajo ejecutable sin ser otro
             Gmail ni un CRM.
           </p>
           <a
             href="/casos-de-estudio/mailmind/"
-            class="flex items-center gap-1 mb-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 mb-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
             Ver caso de estudio <span aria-hidden="true">→</span>
           </a>
@@ -987,7 +982,7 @@ try {
             href="https://mailmindworks.com/"
             target="_blank"
             rel="noopener"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
@@ -1003,11 +998,11 @@ try {
               >PostgreSQL</span
             >
             <span
-              class="px-3 py-1 text-xs font-medium rounded-full bg-cyan-100 text-cyan-800"
+              class="px-3 py-1 text-xs font-medium rounded-full bg-cyan-100 text-cyan-800 dark:bg-cyan-900/40 dark:text-cyan-300"
               >HTMX</span
             >
             <span
-              class="px-3 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-800"
+              class="px-3 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300"
               >AlpineJS</span
             >
           </div>
@@ -1015,14 +1010,14 @@ try {
 
         <!-- Project CodeConductor -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-800"
             >Open source</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-slate-500 to-slate-700 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-slate-500 to-slate-700 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -1038,15 +1033,15 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">CodeConductor</h3>
-          <p class="mb-4 text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">CodeConductor</h3>
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Framework open source MIT (npm <code>cc-codeconductor</code> 1.5.0)
             que convierte prompts sueltos en un loop planificar → implementar →
             probar → revisar con agentes, contratos y task cards.
           </p>
           <a
             href="/casos-de-estudio/codeconductor/"
-            class="flex items-center gap-1 mb-2 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 mb-2 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
           >
             Ver caso de estudio <span aria-hidden="true">→</span>
           </a>
@@ -1054,7 +1049,7 @@ try {
             href="https://github.com/lgzarturo/codeconductor"
             target="_blank"
             rel="noopener"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >Ver en GitHub <span aria-hidden="true">→</span></a
           >
           <div
@@ -1078,14 +1073,14 @@ try {
 
         <!-- Project CompraEnLineaYa -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 rounded-full border border-amber-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-amber-100 text-amber-800 rounded-full border border-amber-200 dark:bg-amber-900/40 dark:text-amber-300 dark:border-amber-800"
             >En desarrollo</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-orange-400 to-orange-600 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -1101,15 +1096,15 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">CompraEnLineaYa</h3>
-          <p class="mb-4 text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">CompraEnLineaYa</h3>
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Plataforma de e-commerce con Django para la venta de productos en
             línea, con integración de pagos y gestión de inventario.
           </p>
           <a
             href="https://compraenlineaya.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
@@ -1133,14 +1128,14 @@ try {
 
         <!-- Project Pokedev -->
         <div
-          class="relative p-6 transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-2 group"
+          class="relative p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
         >
           <span
-            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200"
+            class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-semibold bg-purple-100 text-purple-800 rounded-full border border-purple-200 dark:bg-purple-900/40 dark:text-purple-300 dark:border-purple-800"
             >Experimento</span
           >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-red-400 to-red-600 rounded-xl group-hover:scale-110"
+            class="flex items-center justify-center w-12 h-12 mb-4 transition-transform duration-300 bg-gradient-to-r from-red-400 to-red-600 rounded-xl"
           >
             <svg
               class="w-6 h-6 text-white"
@@ -1169,15 +1164,15 @@ try {
                 d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">Pokedev</h3>
-          <p class="mb-4 text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Pokedev</h3>
+          <p class="mb-4 text-gray-600 dark:text-gray-300">
             Aplicación temática de Pokémon construida como reto de Spring Boot,
             explorando la PokéAPI con una interfaz moderna y responsiva.
           </p>
           <a
             href="https://springboot-challenge.lgzarturo.com/"
             target="_blank"
-            class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-gray-900"
+            class="flex items-center gap-1 min-h-7 text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
             >Ver proyecto <span aria-hidden="true">→</span></a
           >
           <div
@@ -1185,7 +1180,7 @@ try {
             aria-label="Tecnologías usadas"
           >
             <span
-              class="px-3 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-800"
+              class="px-3 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-800 dark:bg-sky-900/40 dark:text-sky-300"
               >TailwindCSS</span
             >
             <span
@@ -1200,23 +1195,23 @@ try {
 
     <SectionTitle
       id="skills"
-      title="Colaboraciones y comunidad"
-      accent="bg-white outline-dashed outline-stone-100 outline-offset-0"
+      title="Habilidades e intereses"
+      accent="bg-white dark:bg-gray-950"
     >
-      <p class="max-w-3xl mx-auto text-xl text-gray-600">
+      <p class="max-w-3xl text-lg md:text-xl text-gray-600 dark:text-gray-300">
         No estoy en búsqueda activa de empleo. Si surge una conversación
         interesante de tecnología y producto, siempre es bienvenida. Estos son
         mis intereses actuales:
       </p>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4" slot="content">
         <div
-          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 group"
+          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900 group"
         >
           <div
-            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-yellow-100 rounded-2xl group-hover:scale-110"
+            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-yellow-100 dark:bg-yellow-900/40 rounded-2xl"
           >
             <svg
-              class="w-8 h-8 text-yellow-600"
+              class="w-8 h-8 text-yellow-600 dark:text-yellow-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -1229,21 +1224,21 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-lg font-semibold text-gray-900">
+          <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             Liderazgo Técnico
           </h3>
-          <p class="text-sm text-gray-600">
+          <p class="text-sm text-gray-600 dark:text-gray-300">
             Mentoring, Arquitectura, Equipos Ágiles
           </p>
         </div>
         <div
-          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 group"
+          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900 group"
         >
           <div
-            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-blue-100 rounded-2xl group-hover:scale-110"
+            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-blue-100 dark:bg-blue-900/40 rounded-2xl"
           >
             <svg
-              class="w-8 h-8 text-blue-600"
+              class="w-8 h-8 text-blue-600 dark:text-blue-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -1255,21 +1250,21 @@ try {
                 d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-lg font-semibold text-gray-900">
+          <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             Desarrollo Backend
           </h3>
-          <p class="text-sm text-gray-600">
+          <p class="text-sm text-gray-600 dark:text-gray-300">
             Java, Spring Boot, Microservicios, APIs REST
           </p>
         </div>
         <div
-          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 group"
+          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900 group"
         >
           <div
-            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-green-100 rounded-2xl group-hover:scale-110"
+            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-green-100 dark:bg-green-900/40 rounded-2xl"
           >
             <svg
-              class="w-8 h-8 text-green-600"
+              class="w-8 h-8 text-green-600 dark:text-green-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -1282,21 +1277,21 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-lg font-semibold text-gray-900">
+          <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             Desarrollo Frontend
           </h3>
-          <p class="text-sm text-gray-600">
+          <p class="text-sm text-gray-600 dark:text-gray-300">
             Next.js, React, TypeScript, TailwindCSS
           </p>
         </div>
         <div
-          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 group"
+          class="p-6 text-center transition-colors duration-300 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-900 group"
         >
           <div
-            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-purple-100 rounded-2xl group-hover:scale-110"
+            class="flex items-center justify-center w-16 h-16 mx-auto mb-4 transition-transform duration-300 bg-purple-100 dark:bg-purple-900/40 rounded-2xl"
           >
             <svg
-              class="w-8 h-8 text-purple-600"
+              class="w-8 h-8 text-purple-600 dark:text-purple-400"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -1309,10 +1304,10 @@ try {
               ></path>
             </svg>
           </div>
-          <h3 class="mb-2 text-lg font-semibold text-gray-900">
+          <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
             DevOps & Cloud
           </h3>
-          <p class="text-sm text-gray-600">Docker, AWS, CI/CD, Kubernetes</p>
+          <p class="text-sm text-gray-600 dark:text-gray-300">Docker, AWS, CI/CD, Kubernetes</p>
         </div>
       </div>
     </SectionTitle>
@@ -1320,9 +1315,9 @@ try {
     <SectionTitle
       id="experience"
       title="Experiencia Profesional"
-      accent="bg-gray-100"
+      accent="bg-gray-50 dark:bg-gray-900/40"
     >
-      <p class="mb-12 text-xl text-center text-gray-600">
+      <p class="mb-12 text-lg md:text-xl text-gray-600 dark:text-gray-300">
         15+ años construyendo productos y plataformas
       </p>
       <!-- Timeline visual -->
@@ -1341,24 +1336,24 @@ try {
           >
             <div class="flex items-center gap-4 mb-6 ml-25 md:ml-0">
               <div
-                class="z-10 flex items-center justify-center w-8 h-8 bg-blue-600 border-4 border-blue-300 rounded-full shadow-lg animate-pulse-slow"
+                class="z-10 flex items-center justify-center w-8 h-8 bg-blue-600 border-4 border-blue-300 rounded-full shadow-lg animate-pulse-slow dark:border-blue-700"
               >
               </div>
-              <span class="hidden text-lg font-bold text-blue-700 md:inline"
+              <span class="hidden text-lg font-bold text-blue-700 dark:text-blue-300 md:inline"
                 >octubre 2019 - Actualidad</span
               >
-              <span class="text-base font-semibold text-blue-700 md:hidden"
+              <span class="text-base font-semibold text-blue-700 dark:text-blue-300 md:hidden"
                 >2019 - {new Date().getFullYear()}</span
               >
             </div>
             <div
-              class="w-full p-8 transition-all duration-300 bg-white border-2 border-blue-600 shadow-2xl rounded-2xl group-hover:scale-105"
+              class="w-full p-8 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-md rounded-2xl"
             >
-              <h3 class="mb-1 text-2xl font-extrabold text-blue-900">
+              <h3 class="mb-1 text-2xl font-extrabold text-gray-900 dark:text-white">
                 Desarrollador de Software &amp; Líder Técnico
               </h3>
-              <p class="mb-2 font-semibold text-blue-600">Revenatium</p>
-              <p class="mb-4 leading-relaxed text-gray-700">
+              <p class="mb-2 font-semibold text-blue-600 dark:text-blue-400">Revenatium</p>
+              <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
                 Responsable del diseño técnico y evolución del motor de
                 reservaciones hoteleras, uno de los sistemas core de la empresa.
                 Lideré la migración del programa de lealtad a microservicios con
@@ -1413,27 +1408,27 @@ try {
           >
             <div class="flex items-center gap-4 mb-6 ml-25 md:ml-0">
               <div
-                class="z-10 w-6 h-6 bg-blue-400 border-4 border-blue-200 rounded-full shadow-md"
+                class="z-10 w-6 h-6 bg-blue-400 border-4 border-blue-200 rounded-full shadow-md dark:border-blue-800"
               >
               </div>
               <span
-                class="hidden text-base font-semibold text-blue-600 md:inline"
+                class="hidden text-base font-semibold text-blue-600 dark:text-blue-400 md:inline"
                 >enero 2018 - octubre 2019</span
               >
-              <span class="text-base font-semibold text-blue-600 md:hidden"
+              <span class="text-base font-semibold text-blue-600 dark:text-blue-400 md:hidden"
                 >2018 - 2019</span
               >
             </div>
             <div
-              class="w-full p-8 transition-all duration-300 bg-white border border-blue-200 shadow-lg rounded-2xl group-hover:scale-105"
+              class="w-full p-8 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-md rounded-2xl"
             >
-              <h3 class="mb-1 text-xl font-bold text-gray-900">
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
                 Arquitecto de Software
               </h3>
-              <p class="mb-2 font-semibold text-blue-600">
+              <p class="mb-2 font-semibold text-blue-600 dark:text-blue-400">
                 StarChoice / StarTalent.mx
               </p>
-              <p class="mb-4 leading-relaxed text-gray-700">
+              <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
                 Rediseñé completamente el ATS (Applicant Tracking System),
                 escalando la plataforma de herramienta interna a producto SaaS
                 referente en reclutamiento para la industria hotelera. Logré un
@@ -1469,25 +1464,25 @@ try {
           >
             <div class="flex items-center gap-4 mb-6 ml-25 md:ml-0">
               <div
-                class="z-10 w-5 h-5 bg-purple-500 border-4 border-purple-200 rounded-full shadow-md"
+                class="z-10 w-5 h-5 bg-purple-500 border-4 border-purple-200 rounded-full shadow-md dark:border-purple-800"
               >
               </div>
               <span
-                class="hidden text-base font-semibold text-purple-600 md:inline"
+                class="hidden text-base font-semibold text-purple-600 dark:text-purple-400 md:inline"
                 >abril 2016 - enero 2019</span
               >
-              <span class="text-base font-semibold text-purple-600 md:hidden"
+              <span class="text-base font-semibold text-purple-600 dark:text-purple-400 md:hidden"
                 >2016 - 2019</span
               >
             </div>
             <div
-              class="w-full p-8 transition-all duration-300 bg-white border border-purple-200 shadow-lg rounded-2xl group-hover:scale-105"
+              class="w-full p-8 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-md rounded-2xl"
             >
-              <h3 class="mb-1 text-xl font-bold text-gray-900">
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
                 Jefe de Marketing
               </h3>
-              <p class="mb-2 font-semibold text-blue-600">Grupo Argos</p>
-              <p class="mb-4 leading-relaxed text-gray-700">
+              <p class="mb-2 font-semibold text-blue-600 dark:text-blue-400">Grupo Argos</p>
+              <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
                 Rol híbrido de liderazgo de estrategia digital y desarrollo de
                 software. Aumenté el tráfico orgánico en un <strong>40%</strong> mediante
                 SEO técnico e inbound marketing. Integré plataformas CRM (Salesforce,
@@ -1525,25 +1520,25 @@ try {
           >
             <div class="flex items-center gap-4 mb-6 ml-25 md:ml-0">
               <div
-                class="z-10 w-5 h-5 bg-purple-300 border-4 border-purple-100 rounded-full shadow-md"
+                class="z-10 w-5 h-5 bg-purple-300 border-4 border-purple-100 rounded-full shadow-md dark:border-purple-900"
               >
               </div>
               <span
-                class="hidden text-base font-semibold text-purple-500 md:inline"
+                class="hidden text-base font-semibold text-purple-600 md:inline dark:text-purple-400"
                 >noviembre 2012 - marzo 2016</span
               >
-              <span class="text-base font-semibold text-purple-500 md:hidden"
+              <span class="text-base font-semibold text-purple-600 md:hidden dark:text-purple-400"
                 >2012 - 2016</span
               >
             </div>
             <div
-              class="w-full p-8 transition-all duration-300 bg-white border border-purple-100 shadow-lg rounded-2xl group-hover:scale-105"
+              class="w-full p-8 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-md rounded-2xl"
             >
-              <h3 class="mb-1 text-xl font-bold text-gray-900">
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
                 Programador Grails / Java
               </h3>
-              <p class="mb-2 font-semibold text-blue-600">Grupo Argos</p>
-              <p class="mb-4 leading-relaxed text-gray-700">
+              <p class="mb-2 font-semibold text-blue-600 dark:text-blue-400">Grupo Argos</p>
+              <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
                 Desarrollo de aplicaciones web y sistemas administrativos
                 internos en Java y Grails, incluyendo un módulo de timbrado de
                 recibos de nómina. Integración de plataformas externas como
@@ -1572,27 +1567,27 @@ try {
           >
             <div class="flex items-center gap-4 mb-6 ml-25 md:ml-0">
               <div
-                class="z-10 w-5 h-5 bg-yellow-400 border-4 border-yellow-200 rounded-full shadow-md"
+                class="z-10 w-5 h-5 bg-yellow-400 border-4 border-yellow-200 rounded-full shadow-md dark:border-yellow-800"
               >
               </div>
               <span
-                class="hidden text-base font-semibold text-yellow-600 md:inline"
+                class="hidden text-base font-semibold text-yellow-700 dark:text-yellow-400 md:inline"
                 >febrero 2009 - noviembre 2012</span
               >
-              <span class="text-base font-semibold text-yellow-600 md:hidden"
+              <span class="text-base font-semibold text-yellow-700 dark:text-yellow-400 md:hidden"
                 >2009 - 2012</span
               >
             </div>
             <div
-              class="w-full p-8 transition-all duration-300 bg-white border border-yellow-200 shadow-lg rounded-2xl group-hover:scale-105"
+              class="w-full p-8 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-md rounded-2xl"
             >
-              <h3 class="mb-1 text-xl font-bold text-gray-900">
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
                 Programador Java &amp; Webmaster
               </h3>
-              <p class="mb-2 font-semibold text-blue-600">
+              <p class="mb-2 font-semibold text-blue-600 dark:text-blue-400">
                 Sunset World Hotels &amp; Resorts
               </p>
-              <p class="mb-4 leading-relaxed text-gray-700">
+              <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
                 Desarrollé <strong>TravelBook</strong>, el motor de
                 reservaciones online del hotel con Play Framework, reduciendo la
                 dependencia de OTAs y consolidando la venta directa. Creé un
@@ -1631,27 +1626,27 @@ try {
           >
             <div class="flex items-center gap-4 mb-6 ml-26 md:ml-0">
               <div
-                class="z-10 w-4 h-4 bg-gray-400 border-4 border-gray-200 rounded-full shadow-md"
+                class="z-10 w-4 h-4 bg-gray-400 border-4 border-gray-200 rounded-full shadow-md dark:border-gray-800"
               >
               </div>
               <span
-                class="hidden text-base font-semibold text-gray-600 md:inline"
+                class="hidden text-base font-semibold text-gray-600 dark:text-gray-300 md:inline"
                 >2005 - 2009</span
               >
-              <span class="text-base font-semibold text-gray-600 md:hidden"
+              <span class="text-base font-semibold text-gray-600 dark:text-gray-300 md:hidden"
                 >2005 - 2009</span
               >
             </div>
             <div
-              class="w-full p-8 transition-all duration-300 bg-white border border-gray-200 shadow-lg rounded-2xl group-hover:scale-105"
+              class="w-full p-8 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-md rounded-2xl"
             >
-              <h3 class="mb-1 text-xl font-bold text-gray-900">
+              <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
                 Soporte Técnico
               </h3>
-              <p class="mb-2 font-semibold text-blue-600">
+              <p class="mb-2 font-semibold text-blue-600 dark:text-blue-400">
                 arthurolg.com — Servicios Profesionales
               </p>
-              <p class="mb-4 leading-relaxed text-gray-700">
+              <p class="mb-4 leading-relaxed text-gray-700 dark:text-gray-300">
                 Brindé soporte técnico, gestión de redes y desarrollo web en PHP
                 a diversos clientes, mejorando la infraestructura tecnológica de
                 pequeñas empresas. Este periodo fortaleció mi adaptabilidad a
@@ -1688,9 +1683,9 @@ try {
         <SectionTitle
           id="articulos"
           title="Últimas notas del blog"
-          accent="bg-white"
+          accent="bg-white dark:bg-gray-950"
         >
-          <p class="max-w-2xl mx-auto text-xl text-gray-600">
+          <p class="max-w-2xl text-lg md:text-xl text-gray-600 dark:text-gray-300">
             Reflexiones técnicas, patrones y aprendizajes del laboratorio
             personal.
           </p>
@@ -1700,21 +1695,21 @@ try {
                 href={post.link}
                 target="_blank"
                 rel="noopener"
-                class="flex flex-col p-6 transition-all duration-300 transform bg-white border border-gray-100 shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-1 group"
+                class="flex flex-col p-6 transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md group"
               >
-                <h3 class="mb-3 text-lg font-bold leading-snug text-gray-900 transition-colors group-hover:text-blue-600">
+                <h3 class="mb-3 text-lg font-bold leading-snug text-gray-900 dark:text-white transition-colors group-hover:text-blue-600">
                   {post.title}
                 </h3>
-                <p class="flex-grow text-sm leading-relaxed text-gray-600">
+                <p class="flex-grow text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                   {post.description}
                 </p>
-                <span class="flex items-center gap-1 mt-4 text-sm font-medium text-blue-500 transition-all group-hover:gap-2">
+                <span class="flex items-center gap-1 mt-4 text-sm font-medium text-blue-600 transition-all group-hover:gap-2 dark:text-blue-400">
                   Leer artículo <span aria-hidden="true">→</span>
                 </span>
               </a>
             ))}
           </div>
-          <div class="mt-10 text-center" slot="content">
+          <div class="mt-10" slot="content">
             <a
               href="https://www.arthurolg.com"
               target="_blank"
@@ -1725,12 +1720,12 @@ try {
           </div>
         </SectionTitle>
       ) : (
-        <SectionTitle id="articulos" title="Notas del blog" accent="bg-white">
-          <p class="max-w-2xl mx-auto text-xl text-gray-600">
+        <SectionTitle id="articulos" title="Notas del blog" accent="bg-white dark:bg-gray-950">
+          <p class="max-w-2xl text-lg md:text-xl text-gray-600 dark:text-gray-300">
             Escribo sobre arquitectura, backend y decisiones técnicas en mi blog
             personal.
           </p>
-          <div class="mt-8 text-center" slot="content">
+          <div class="mt-8" slot="content">
             <a
               href="https://www.arthurolg.com"
               target="_blank"
@@ -1746,73 +1741,73 @@ try {
     <SectionTitle
       id="servicios"
       title="Colaboraciones y servicios"
-      accent="bg-gray-50 outline-dashed outline-stone-100 outline-offset-0"
+      accent="bg-gray-50 dark:bg-gray-900/40"
     >
-      <p class="max-w-2xl mx-auto text-xl text-gray-600">
+      <p class="max-w-2xl text-lg md:text-xl text-gray-600 dark:text-gray-300">
         No busco empleo: busco buenas conversaciones. Estas son las formas en
         las que suelo colaborar con equipos de ingeniería y fundadores.
       </p>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4" slot="content">
         <div
-          class="p-6 text-left transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-1"
+          class="p-6 text-left transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-2xl bg-blue-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/40 rounded-xl"
             aria-hidden="true"
           >
-            🧭
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 21a9 9 0 100-18 9 9 0 000 18zM15.5 8.5l-2.5 5-5 2.5 2.5-5z"></path></svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">Asesoría técnica</h3>
-          <p class="text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Asesoría técnica</h3>
+          <p class="text-gray-600 dark:text-gray-300">
             Acompaño decisiones de arquitectura, stack y roadmap técnico para
             productos en crecimiento.
           </p>
         </div>
         <div
-          class="p-6 text-left transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-1"
+          class="p-6 text-left transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-2xl bg-purple-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-purple-600 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/40 rounded-xl"
             aria-hidden="true"
           >
-            🚀
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2M3 7h18a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"></path></svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">Fractional CTO</h3>
-          <p class="text-gray-600">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">Fractional CTO</h3>
+          <p class="text-gray-600 dark:text-gray-300">
             Liderazgo técnico por horas: procesos de ingeniería, contratación y
             estándares de calidad.
           </p>
         </div>
         <div
-          class="p-6 text-left transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-1"
+          class="p-6 text-left transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-2xl bg-green-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-green-600 dark:text-green-400 bg-green-100 dark:bg-green-900/40 rounded-xl"
             aria-hidden="true"
           >
-            🔍
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 18a7 7 0 100-14 7 7 0 000 14zM20 20l-3.5-3.5"></path></svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Revisiones de arquitectura
           </h3>
-          <p class="text-gray-600">
+          <p class="text-gray-600 dark:text-gray-300">
             Audito sistemas y microservicios: escalabilidad, deuda técnica,
             observabilidad y riesgos.
           </p>
         </div>
         <div
-          class="p-6 text-left transition-all duration-300 transform bg-white shadow-lg rounded-2xl hover:shadow-xl hover:-translate-y-1"
+          class="p-6 text-left transition-shadow duration-300 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-sm rounded-2xl hover:shadow-md"
         >
           <div
-            class="flex items-center justify-center w-12 h-12 mb-4 text-2xl bg-yellow-100 rounded-xl"
+            class="flex items-center justify-center w-12 h-12 mb-4 text-yellow-600 dark:text-yellow-400 bg-yellow-100 dark:bg-yellow-900/40 rounded-xl"
             aria-hidden="true"
           >
-            🎤
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 15a3 3 0 003-3V6a3 3 0 10-6 0v6a3 3 0 003 3zM5 11a7 7 0 0014 0M12 18v3"></path></svg>
           </div>
-          <h3 class="mb-2 text-xl font-bold text-gray-900">
+          <h3 class="mb-2 text-xl font-bold text-gray-900 dark:text-white">
             Charlas y mentoring
           </h3>
-          <p class="text-gray-600">
+          <p class="text-gray-600 dark:text-gray-300">
             Sesiones sobre Spring Boot, Kotlin, TDD e ingeniería asistida por IA
             para equipos y comunidades.
           </p>
@@ -1827,25 +1822,25 @@ try {
         producto (incluyendo oportunidades retadoras), feliz de escuchar.
       </p>
       <div
-        class="flex flex-col items-center justify-center gap-4 mb-12 sm:flex-row"
+        class="flex flex-col items-stretch justify-center gap-4 mx-auto mb-12 max-w-xs sm:max-w-none sm:flex-row sm:items-center"
       >
         <a
           href="https://github.com/lgzarturo/tech-notes"
-          class="px-8 py-4 text-lg font-semibold text-blue-600 transition-all duration-300 transform bg-white shadow-lg rounded-xl hover:bg-gray-100 hover:shadow-xl hover:-translate-y-1"
+          class="px-8 py-4 text-center text-lg font-semibold text-blue-700 transition-shadow duration-300 bg-white shadow-md rounded-xl hover:bg-gray-100 hover:shadow-lg"
           target="_blank"
         >
           Notas Técnicas
         </a>
         <a
           href="mailto:lgzarturo@gmail.com"
-          class="px-8 py-4 text-lg font-semibold text-white transition-all duration-300 border-2 border-white rounded-xl hover:bg-white hover:text-blue-600"
+          class="px-8 py-4 text-center text-lg font-semibold text-white transition-all duration-300 border-2 border-white rounded-xl hover:bg-white hover:text-blue-600"
         >
           Enviar Email
         </a>
         <a
           href="https://www.linkedin.com/in/lgzarturo"
           target="_blank"
-          class="px-8 py-4 text-lg font-semibold text-white transition-all duration-300 border-2 border-white rounded-xl hover:bg-white hover:text-blue-600"
+          class="px-8 py-4 text-center text-lg font-semibold text-white transition-all duration-300 border-2 border-white rounded-xl hover:bg-white hover:text-blue-600"
         >
           LinkedIn
         </a>

@@ -81,16 +81,17 @@ import SectionTitle from "../components/SectionTitle.astro";
     }
   </script>
   <Header title="Arturo L. Gómez" />
-  <main>
+  <main id="main">
     <SectionColumn
       id="sobre-mi"
       title="Arturo L. Gómez (Arturo LG) — Líder Técnico y Arquitecto de Software"
       titleTag="h1"
-      accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0"
+      accent="bg-gray-50 dark:bg-gray-900/40"
     >
       <div class="space-y-4 relative">
         <span
-          class="absolute -top-30 -left-24 text-gray-400 font-extrabold text-9xl opacity-20"
+          aria-hidden="true"
+          class="hidden lg:block absolute -top-30 -left-4 text-gray-400 font-extrabold text-9xl opacity-20 pointer-events-none select-none"
           >&lt;\&gt;</span
         >
         <p>
@@ -112,7 +113,7 @@ import SectionTitle from "../components/SectionTitle.astro";
       </div>
       <div class="relative mt-16" slot="content">
         <div
-          class="w-full h-96 bg-gradient-to-br from-blue-100 to-purple-100 rounded-2xl flex items-center justify-center"
+          class="w-full h-96 bg-gray-100 dark:bg-gray-800 rounded-2xl flex items-center justify-center"
         >
           <picture>
             <!-- Imagen para pantallas grandes -->
@@ -141,14 +142,15 @@ import SectionTitle from "../components/SectionTitle.astro";
       <!-- Sección de recursos de aprendizaje -->
       <section
         id="recursos-aprendizaje"
-        class="mt-8 bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200 rounded-2xl p-6 shadow-lg"
+        slot="content"
+        class="mt-8 bg-gradient-to-br from-purple-50 to-blue-50 border-2 border-purple-200 rounded-2xl p-6 shadow-lg dark:border-purple-800 dark:from-purple-950/40 dark:to-blue-950/40"
       >
         <div class="mb-6 flex items-center gap-3">
           <span
-            class="inline-block px-3 py-1 bg-purple-200 text-purple-800 font-bold rounded-full text-sm"
+            class="inline-block px-3 py-1 bg-purple-200 text-purple-800 font-bold rounded-full text-sm dark:bg-purple-900/60 dark:text-purple-300"
             ># recursos-aprendizaje</span
           >
-          <span class="text-gray-500"
+          <span class="text-gray-600 dark:text-gray-300"
             >Accede fácilmente a mis repositorios de notas y ejemplos</span
           >
         </div>
@@ -158,11 +160,11 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://github.com/lgzarturo/learning-resources"
             target="_blank"
             rel="noopener"
-            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+            class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-purple-100 dark:border-gray-700 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
           >
             <div class="flex items-center justify-between mb-3">
               <h4
-                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800 dark:text-blue-300"
               >
                 Recursos de programación
               </h4>
@@ -175,12 +177,12 @@ import SectionTitle from "../components/SectionTitle.astro";
                 ></path></svg
               >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
               Repositorio donde comparto recursos, notas y enlaces útiles para
               aprender. Ideal para desarrolladores que buscan material de apoyo.
             </p>
             <span
-              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              class="text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all dark:text-blue-400"
               >Ver repositorio <span aria-hidden="true">&rarr;</span></span
             >
           </a>
@@ -190,11 +192,11 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://github.com/lgzarturo/practice-examples"
             target="_blank"
             rel="noopener"
-            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+            class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-purple-100 dark:border-gray-700 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
           >
             <div class="flex items-center justify-between mb-3">
               <h4
-                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800 dark:text-blue-300"
               >
                 Patrones de diseño en Java
               </h4>
@@ -207,13 +209,13 @@ import SectionTitle from "../components/SectionTitle.astro";
                 ></path></svg
               >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
               Presento los patrones de diseño y su implementación en Java, con
               ejemplos prácticos y explicaciones claras para arquitecturas
               robustas.
             </p>
             <span
-              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              class="text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all dark:text-blue-400"
               >Ver repositorio <span aria-hidden="true">&rarr;</span></span
             >
           </a>
@@ -223,11 +225,11 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://github.com/lgzarturo/productividad"
             target="_blank"
             rel="noopener"
-            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+            class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-purple-100 dark:border-gray-700 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
           >
             <div class="flex items-center justify-between mb-3">
               <h4
-                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800 dark:text-blue-300"
               >
                 Productividad Developer
               </h4>
@@ -240,12 +242,12 @@ import SectionTitle from "../components/SectionTitle.astro";
                 ></path></svg
               >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
               Repositorio que recopila herramientas, dotfiles y técnicas que
               utilizo a diario para mejorar mi productividad técnica.
             </p>
             <span
-              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              class="text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all dark:text-blue-400"
               >Ver repositorio <span aria-hidden="true">&rarr;</span></span
             >
           </a>
@@ -255,11 +257,11 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://github.com/lgzarturo/notes"
             target="_blank"
             rel="noopener"
-            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+            class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-purple-100 dark:border-gray-700 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
           >
             <div class="flex items-center justify-between mb-3">
               <h4
-                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800 dark:text-blue-300"
               >
                 Notas de Software
               </h4>
@@ -272,12 +274,12 @@ import SectionTitle from "../components/SectionTitle.astro";
                 ></path></svg
               >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
               Notas y apuntes sobre diseño de sistemas, arquitectura, DevOps y
               temas misceláneos de ingeniería de software.
             </p>
             <span
-              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              class="text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all dark:text-blue-400"
               >Ver repositorio <span aria-hidden="true">&rarr;</span></span
             >
           </a>
@@ -287,11 +289,11 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://github.com/lgzarturo/frontend-fundamentals-lab"
             target="_blank"
             rel="noopener"
-            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+            class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-purple-100 dark:border-gray-700 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
           >
             <div class="flex items-center justify-between mb-3">
               <h4
-                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800 dark:text-blue-300"
               >
                 Frontend Lab: Modern JavaScript
               </h4>
@@ -304,13 +306,13 @@ import SectionTitle from "../components/SectionTitle.astro";
                 ></path></svg
               >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
               Mi bitácora técnica de JavaScript Moderno. Un laboratorio donde
               exploro desde los fundamentos hasta patrones avanzados, con un
               fuerte enfoque en UI/UX y diseño Mobile-First.
             </p>
             <span
-              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              class="text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all dark:text-blue-400"
               >Ver repositorio <span aria-hidden="true">&rarr;</span></span
             >
           </a>
@@ -320,11 +322,11 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://github.com/lgzarturo/springboot-course"
             target="_blank"
             rel="noopener"
-            class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
+            class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-purple-100 dark:border-gray-700 hover:shadow-md hover:border-purple-300 transition-all group flex flex-col h-full"
           >
             <div class="flex items-center justify-between mb-3">
               <h4
-                class="font-bold text-blue-700 text-lg group-hover:text-blue-800"
+                class="font-bold text-blue-700 text-lg group-hover:text-blue-800 dark:text-blue-300"
               >
                 Backend Mastery: Spring Boot + Kotlin
               </h4>
@@ -337,14 +339,14 @@ import SectionTitle from "../components/SectionTitle.astro";
                 ></path></svg
               >
             </div>
-            <p class="text-gray-600 text-sm mb-4 flex-grow">
+            <p class="text-gray-600 dark:text-gray-300 text-sm mb-4 flex-grow">
               Un curso completo y altamente documentado sobre Spring Boot.
               Enfocado en Buenas Prácticas, Arquitectura Hexagonal y TDD.
               Incluye una experiencia gamificada inspirada en Pokémon para
               dominar los retos del desarrollo backend real.
             </p>
             <span
-              class="text-blue-500 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all"
+              class="text-blue-600 text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all dark:text-blue-400"
               >Ver repositorio <span aria-hidden="true">&rarr;</span></span
             >
           </a>
@@ -352,36 +354,36 @@ import SectionTitle from "../components/SectionTitle.astro";
       </section>
     </SectionTitle>
 
-    <SectionTitle title="Radar Tecnológico y Stack" accent="bg-white">
+    <SectionTitle title="Radar Tecnológico y Stack" accent="bg-white dark:bg-gray-950">
       <div class="grid md:grid-cols-3 gap-8 text-left" slot="content">
         <!-- Adopt -->
         <div
-          class="bg-gray-50 rounded-2xl p-6 border-t-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow"
+          class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border-t-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow"
         >
           <h4
-            class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2"
+            class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2"
           >
             <span class="w-3 h-3 rounded-full bg-blue-500"></span> Core (Adopción)
           </h4>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
             Tecnologías en las que confío para entornos de producción y
             escalabilidad.
           </p>
           <div class="flex flex-wrap gap-2">
             <span
-              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800"
               >Java / Spring Boot</span
             >
             <span
-              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800"
               >AWS / Docker</span
             >
             <span
-              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800"
               >PostgreSQL</span
             >
             <span
-              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200"
+              class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium border border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800"
               >Microservicios</span
             >
           </div>
@@ -389,32 +391,32 @@ import SectionTitle from "../components/SectionTitle.astro";
 
         <!-- Trial -->
         <div
-          class="bg-gray-50 rounded-2xl p-6 border-t-4 border-green-500 shadow-sm hover:shadow-md transition-shadow"
+          class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border-t-4 border-green-500 shadow-sm hover:shadow-md transition-shadow"
         >
           <h4
-            class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2"
+            class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2"
           >
             <span class="w-3 h-3 rounded-full bg-green-500"></span> Trial (Exploración)
           </h4>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
             Herramientas que estoy probando o utilizando en proyectos
             secundarios con excelentes resultados.
           </p>
           <div class="flex flex-wrap gap-2">
             <span
-              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
               >Next.js / React</span
             >
             <span
-              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
               >Python / IA</span
             >
             <span
-              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
               >Astro</span
             >
             <span
-              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200"
+              class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium border border-green-200 dark:bg-green-900/40 dark:text-green-300 dark:border-green-800"
               >Kotlin</span
             >
           </div>
@@ -422,28 +424,28 @@ import SectionTitle from "../components/SectionTitle.astro";
 
         <!-- Assess/Hold -->
         <div
-          class="bg-gray-50 rounded-2xl p-6 border-t-4 border-gray-400 shadow-sm hover:shadow-md transition-shadow"
+          class="bg-gray-50 dark:bg-gray-900 rounded-2xl p-6 border-t-4 border-gray-400 shadow-sm hover:shadow-md transition-shadow"
         >
           <h4
-            class="text-lg font-bold text-gray-900 mb-2 flex items-center gap-2"
+            class="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center gap-2"
           >
             <span class="w-3 h-3 rounded-full bg-gray-400"></span> Hold (Mantenimiento)
           </h4>
-          <p class="text-sm text-gray-600 mb-4">
+          <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">
             Tecnologías con las que tengo gran experiencia pero que ya no elijo
             para proyectos nuevos.
           </p>
           <div class="flex flex-wrap gap-2">
             <span
-              class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300"
+              class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-full text-xs font-medium border border-gray-300 dark:border-gray-600"
               >PHP Legado</span
             >
             <span
-              class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300"
+              class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-full text-xs font-medium border border-gray-300 dark:border-gray-600"
               >Grails</span
             >
             <span
-              class="px-3 py-1 bg-gray-200 text-gray-800 rounded-full text-xs font-medium border border-gray-300"
+              class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-full text-xs font-medium border border-gray-300 dark:border-gray-600"
               >Vanilla JS (Complejo)</span
             >
           </div>
@@ -453,15 +455,15 @@ import SectionTitle from "../components/SectionTitle.astro";
 
     <SectionTitle
       title="Proyectos en marcha"
-      accent="bg-gray-100 outline-dashed outline-stone-100 outline-offset-0"
+      accent="bg-gray-50 dark:bg-gray-900/40"
     >
-      <section id="proyectos-en-marcha" class="mt-8">
+      <section id="proyectos-en-marcha" slot="content">
         <div class="mb-6 flex items-center gap-3">
           <span
-            class="inline-block px-3 py-1 bg-green-200 text-green-800 font-bold rounded-full text-sm"
+            class="inline-block px-3 py-1 bg-green-200 text-green-800 font-bold rounded-full text-sm dark:bg-green-900/60 dark:text-green-300"
             ># proyectos-en-marcha</span
           >
-          <span class="text-gray-500"
+          <span class="text-gray-500 dark:text-gray-400"
             >Ideas y herramientas que se están cocinando en el laboratorio</span
           >
         </div>
@@ -471,15 +473,15 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://cotizador.lgzarturo.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex flex-col p-6 transition-transform duration-200 bg-white border-t-4 border-green-500 shadow-lg cursor-pointer rounded-2xl hover:scale-105"
+            class="flex flex-col p-6 transition-shadow duration-200 bg-white dark:bg-gray-900 border-t-4 border-green-500 shadow-lg cursor-pointer rounded-2xl"
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">📊</span>
-              <h3 class="text-lg font-bold text-green-700">
+              <h3 class="text-lg font-bold text-green-700 dark:text-green-300">
                 Cotizador de proyectos
               </h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Herramienta mobile first para generar cotizaciones de servicios
               usando PostgreSQL y Next.js (frontend y backend).
             </p>
@@ -490,13 +492,13 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://faro-vault.lgzarturo.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex flex-col p-6 transition-transform duration-200 bg-white border-t-4 border-green-500 shadow-lg cursor-pointer rounded-2xl hover:scale-105"
+            class="flex flex-col p-6 transition-shadow duration-200 bg-white dark:bg-gray-900 border-t-4 border-green-500 shadow-lg cursor-pointer rounded-2xl"
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🔐</span>
-              <h3 class="text-lg font-bold text-green-700">Faro-valt</h3>
+              <h3 class="text-lg font-bold text-green-700 dark:text-green-300">Faro-valt</h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Aplicación mobile first para generar y almacenar contraseñas
               encriptadas con IndexedDB. Sistema de calificación de seguridad,
               todo en el navegador.
@@ -508,13 +510,13 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://devtools.lgzarturo.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="flex flex-col p-6 transition-transform duration-200 bg-white border-t-4 border-green-500 shadow-lg cursor-pointer rounded-2xl hover:scale-105"
+            class="flex flex-col p-6 transition-shadow duration-200 bg-white dark:bg-gray-900 border-t-4 border-green-500 shadow-lg cursor-pointer rounded-2xl"
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🛠️</span>
-              <h3 class="text-lg font-bold text-green-700">Devtools</h3>
+              <h3 class="text-lg font-bold text-green-700 dark:text-green-300">Devtools</h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Catálogo de herramientas y aplicaciones desarrollado con Astro,
               Motion.js y Alpine.js. Portafolio de proyectos e ideas en
               desarrollo.
@@ -526,13 +528,13 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://miraeljuego.com/?utm_source=lgzarturo_cv&utm_medium=referral&utm_campaign=about_me"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-white rounded-2xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col hover:scale-105 transition-transform duration-200 cursor-pointer"
+            class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col transition-shadow duration-200 cursor-pointer"
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🎮</span>
-              <h3 class="text-lg font-bold text-green-700">miraeljuego.com</h3>
+              <h3 class="text-lg font-bold text-green-700 dark:text-green-300">miraeljuego.com</h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Blog automatizado de noticias de videojuegos, análisis y
               tendencias del mundo gamer.
             </p>
@@ -542,13 +544,13 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://devtools.lgzarturo.com/?utm_source=lgzarturo_cv&utm_medium=referral&utm_campaign=about_me"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-white rounded-2xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col hover:scale-105 transition-transform duration-200 cursor-pointer"
+            class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col transition-shadow duration-200 cursor-pointer"
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🛠️</span>
-              <h3 class="text-lg font-bold text-green-700">Herramientas SEO</h3>
+              <h3 class="text-lg font-bold text-green-700 dark:text-green-300">Herramientas SEO</h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Conjunto de herramientas especializadas en SEO pensadas para
               facilitar el trabajo técnico de los desarrolladores web.
             </p>
@@ -558,13 +560,13 @@ import SectionTitle from "../components/SectionTitle.astro";
             href="https://task-manager.lgzarturo.com/?utm_source=lgzarturo_cv&utm_medium=referral&utm_campaign=about_me"
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-white rounded-2xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col hover:scale-105 transition-transform duration-200 cursor-pointer"
+            class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg border-t-4 border-green-500 p-6 flex flex-col transition-shadow duration-200 cursor-pointer"
           >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🚀</span>
-              <h3 class="text-lg font-bold text-green-700">Personal manager</h3>
+              <h3 class="text-lg font-bold text-green-700 dark:text-green-300">Personal manager</h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Proyecto para automatizar flujos de trabajo y mejorar la
               productividad personal.
             </p>
@@ -572,55 +574,55 @@ import SectionTitle from "../components/SectionTitle.astro";
 
           <!-- Proyecto 4 -->
           <div
-            class="relative bg-white rounded-2xl shadow-lg border-t-4 border-blue-500 p-6 flex flex-col cursor-not-allowed opacity-80"
+            class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-lg border-t-4 border-blue-500 p-6 flex flex-col cursor-not-allowed"
           >
             <span
-              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800"
               >En desarrollo</span
             >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">💼</span>
-              <h3 class="text-lg font-bold text-blue-700">joobslot.com</h3>
+              <h3 class="text-lg font-bold text-blue-700 dark:text-blue-300">joobslot.com</h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Herramienta para promocionar posiciones de empleo de forma
               eficiente y atractiva para empresas y candidatos.
             </p>
           </div>
           <!-- Proyecto 5 -->
           <div
-            class="relative bg-white rounded-2xl shadow-lg border-t-4 border-blue-500 p-6 flex flex-col cursor-not-allowed opacity-80"
+            class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-lg border-t-4 border-blue-500 p-6 flex flex-col cursor-not-allowed"
           >
             <span
-              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-blue-100 text-blue-700 rounded-full border border-blue-200 dark:bg-blue-900/40 dark:text-blue-300 dark:border-blue-800"
               >En desarrollo</span
             >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🤖</span>
-              <h3 class="text-lg font-bold text-blue-700">
+              <h3 class="text-lg font-bold text-blue-700 dark:text-blue-300">
                 Automatizaciones con IA
               </h3>
             </div>
-            <p class="text-gray-700">
+            <p class="text-gray-700 dark:text-gray-300">
               Ideas y experimentos de automatización de flujos de trabajo
               utilizando inteligencia artificial y herramientas modernas.
             </p>
           </div>
           <!-- Proyecto 6 -->
           <div
-            class="relative bg-white rounded-2xl shadow-lg border-t-4 border-gray-400 p-6 flex flex-col cursor-not-allowed opacity-75"
+            class="relative bg-white dark:bg-gray-900 rounded-2xl shadow-lg border-t-4 border-gray-400 p-6 flex flex-col cursor-not-allowed"
           >
             <span
-              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-gray-100 text-gray-600 rounded-full border border-gray-300"
+              class="absolute top-3 right-3 inline-flex items-center px-2 py-0.5 text-xs font-bold bg-gray-100 text-gray-600 dark:text-gray-300 rounded-full border border-gray-300 dark:border-gray-600 dark:bg-gray-800"
               >Próximamente</span
             >
             <div class="flex items-center gap-2 mb-2">
               <span class="text-2xl">🏨</span>
-              <h3 class="text-lg font-bold text-gray-600">
+              <h3 class="text-lg font-bold text-gray-600 dark:text-gray-300">
                 visitapormexico.com
               </h3>
             </div>
-            <p class="text-gray-500">
+            <p class="text-gray-500 dark:text-gray-400">
               Portal para promocionar hoteles y destinos turísticos de México,
               enriquecido con historias de viajes y experiencias.
             </p>
