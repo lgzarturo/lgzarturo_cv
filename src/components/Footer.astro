@@ -1,17 +1,50 @@
 ---
 // src/components/Footer.astro
+import Quote from "./Quote.astro";
+
+const { showQuote = false } = Astro.props;
+const links = [
+  { href: "/#about", label: "Sobre Mí" },
+  { href: "/#projects", label: "Laboratorio" },
+  { href: "/#experience", label: "Experiencia" },
+  { href: "/recursos", label: "Recursos" },
+  { href: "/casos-de-estudio", label: "Casos" },
+  { href: "/#contact", label: "Contacto" },
+];
 ---
 <!-- Footer -->
-<footer class="bg-gray-900 dark:bg-gray-950 text-white dark:text-gray-200 py-8">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-        <p>&copy; 2026 Arturo L. Gómez. Todos los derechos reservados.</p>
-        <p class="text-gray-400 text-sm mt-2">
-            <a href="https://www.arthurolg.com" class="hover:text-white">Blog</a> ·
-            <a href="https://github.com/lgzarturo" class="hover:text-white">GitHub</a> ·
-            <a href="https://www.linkedin.com/in/lgzarturo" class="hover:text-white">LinkedIn</a>
-        </p>
-        <p class="text-gray-400 dark:text-gray-500 text-sm mt-2">
-            Construyendo el futuro, un experimento a la vez.
-        </p>
+<footer class="bg-gray-900 text-gray-300 dark:bg-black dark:text-gray-400">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        {showQuote && (
+            <div class="pb-8 mb-8 border-b border-white/10">
+                <Quote />
+            </div>
+        )}
+        <div class="flex flex-col items-center gap-5 text-center">
+            <nav aria-label="Navegación secundaria">
+                <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm">
+                    {links.map((link) => (
+                        <li>
+                            <a href={link.href} class="transition-colors hover:text-white">
+                                {link.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+            <p class="text-sm">
+                <a href="mailto:lgzarturo@gmail.com" class="transition-colors hover:text-white">lgzarturo@gmail.com</a>
+                <span class="mx-2 text-gray-600" aria-hidden="true">·</span>
+                <a href="https://www.arthurolg.com" class="transition-colors hover:text-white">Blog</a>
+                <span class="mx-2 text-gray-600" aria-hidden="true">·</span>
+                <a href="https://github.com/lgzarturo" class="transition-colors hover:text-white">GitHub</a>
+                <span class="mx-2 text-gray-600" aria-hidden="true">·</span>
+                <a href="https://www.linkedin.com/in/lgzarturo" class="transition-colors hover:text-white">LinkedIn</a>
+            </p>
+            <p class="text-sm">&copy; 2026 Arturo L. Gómez. Todos los derechos reservados.</p>
+            <p class="text-sm italic text-gray-400">
+                Construyendo el futuro, un experimento a la vez.
+            </p>
+        </div>
     </div>
 </footer>
