@@ -24,3 +24,5 @@ pnpm-debug.log*
 .idea/
 plans/
 graphify-out/
+# Playwright MCP
+.playwright-mcp/
