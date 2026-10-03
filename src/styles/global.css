@@ -1,6 +1,18 @@
 @import "tailwindcss";
 @plugin '@tailwindcss/typography';
 
+/* Dark mode por clase (.dark en <html>), requerido en Tailwind CSS v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+	body {
+		@apply bg-white text-gray-900 antialiased dark:bg-gray-950 dark:text-gray-100;
+	}
+}
+
 :root {
 	--color-java-100: #F7E1B3;
 	--color-java-800: #B07219;
@@ -49,149 +61,107 @@
 	--color-kotlin-800: #7F52FF;     /* Kotlin: púrpura, branding oficial */
 }
 
-	.bg-java-100 { background-color: var(--color-java-100) !important; }
-	.bg-java-800 { background-color: var(--color-java-800) !important; }
-	.text-java-100 { color: var(--color-java-100) !important; }
-	.text-java-800 { color: var(--color-java-800) !important; }
-	.bg-spring-100 { background-color: var(--color-spring-100) !important; }
-	.bg-spring-800 { background-color: var(--color-spring-800) !important; }
-	.text-spring-100 { color: var(--color-spring-100) !important; }
-	.text-spring-800 { color: var(--color-spring-800) !important; }
-	.text-python-100 { color: var(--color-python-100) !important; }
-	.text-python-800 { color: var(--color-python-800) !important; }
-	.bg-python-100 { background-color: var(--color-python-100) !important; }
-	.bg-python-800 { background-color: var(--color-python-800) !important; }
-	.text-php-100 { color: var(--color-php-100) !important; }
-	.text-php-800 { color: var(--color-php-800) !important; }
-	.bg-micro-100 { background-color: var(--color-micro-100) !important; }
-	.bg-micro-800 { background-color: var(--color-micro-800) !important; }
-	.text-micro-100 { color: var(--color-micro-100) !important; }
-	.text-micro-800 { color: var(--color-micro-800) !important; }
-	.bg-nextjs-100 { background-color: var(--color-nextjs-100) !important; }
-	.bg-nextjs-800 { background-color: var(--color-nextjs-800) !important; }
-	.text-nextjs-100 { color: var(--color-nextjs-100) !important; }
-	.text-nextjs-800 { color: var(--color-nextjs-800) !important; }
-	.bg-seo-100 { background-color: var(--color-seo-100) !important; }
-	.bg-seo-800 { background-color: var(--color-seo-800) !important; }
-	.text-seo-100 { color: var(--color-seo-100) !important; }
-	.text-seo-800 { color: var(--color-seo-800) !important; }
-	.bg-devops-100 { background-color: var(--color-devops-100) !important; }
-	.bg-devops-800 { background-color: var(--color-devops-800) !important; }
-	.text-devops-100 { color: var(--color-devops-100) !important; }
-	.text-devops-800 { color: var(--color-devops-800) !important; }
-	.bg-grails-100 { background-color: var(--color-grails-100) !important; }
-	.bg-grails-800 { background-color: var(--color-grails-800) !important; }
-	.text-grails-100 { color: var(--color-grails-100) !important; }
-	.text-grails-800 { color: var(--color-grails-800) !important; }
-	.bg-aws-100 { background-color: var(--color-aws-100) !important; }
-	.bg-aws-800 { background-color: var(--color-aws-800) !important; }
-	.text-aws-100 { color: var(--color-aws-100) !important; }
-	.text-aws-800 { color: var(--color-aws-800) !important; }
-	.bg-mysql-100 { background-color: var(--color-mysql-100) !important; }
-	.bg-mysql-800 { background-color: var(--color-mysql-800) !important; }
-	.text-mysql-100 { color: var(--color-mysql-100) !important; }
-	.text-mysql-800 { color: var(--color-mysql-800) !important; }
-	.bg-vps-100 { background-color: var(--color-vps-100) !important; }
-	.bg-vps-800 { background-color: var(--color-vps-800) !important; }
-	.text-vps-100 { color: var(--color-vps-100) !important; }
-	.text-vps-800 { color: var(--color-vps-800) !important; }
-	.bg-js-100 { background-color: var(--color-js-100) !important; }
-	.bg-js-800 { background-color: var(--color-js-800) !important; }
-	.text-js-100 { color: var(--color-js-100) !important; }
-	.text-js-800 { color: var(--color-js-800) !important; }
-	.bg-postgresql-100 { background-color: var(--color-postgresql-100) !important; }
-	.bg-postgresql-800 { background-color: var(--color-postgresql-800) !important; }
-	.text-postgresql-100 { color: var(--color-postgresql-100) !important; }
-	.text-postgresql-800 { color: var(--color-postgresql-800) !important; }
-	.bg-php-100 { background-color: var(--color-php-100) !important; }
-	.bg-php-800 { background-color: var(--color-php-800) !important; }
-	.text-php-100 { color: var(--color-php-100) !important; }
-	.text-php-800 { color: var(--color-php-800) !important; }
-	.bg-vb-100 { background-color: var(--color-vb-100) !important; }
-	.bg-vb-800 { background-color: var(--color-vb-800) !important; }
-	.text-vb-100 { color: var(--color-vb-100) !important; }
-	.text-vb-800 { color: var(--color-vb-800) !important; }
-	.bg-servers-100 { background-color: var(--color-servers-100) !important; }
-	.bg-servers-800 { background-color: var(--color-servers-800) !important; }
-	.text-servers-100 { color: var(--color-servers-100) !important; }
-	.text-servers-800 { color: var(--color-servers-800) !important; }
-	/* Clases para nuevas tecnologías */
-	.bg-astro-100 { background-color: var(--color-astro-100) !important; }
-	.bg-astro-800 { background-color: var(--color-astro-800) !important; }
-	.text-astro-100 { color: var(--color-astro-100) !important; }
-	.text-astro-800 { color: var(--color-astro-800) !important; }
-	.bg-markdown-100 { background-color: var(--color-markdown-100) !important; }
-	.bg-markdown-800 { background-color: var(--color-markdown-800) !important; }
-	.text-markdown-100 { color: var(--color-markdown-100) !important; }
-	.text-markdown-800 { color: var(--color-markdown-800) !important; }
-	.bg-webp-100 { background-color: var(--color-webp-100) !important; }
-	.bg-webp-800 { background-color: var(--color-webp-800) !important; }
-	.text-webp-100 { color: var(--color-webp-100) !important; }
-	.text-webp-800 { color: var(--color-webp-800) !important; }
-	.bg-html-100 { background-color: var(--color-html-100) !important; }
-	.bg-html-800 { background-color: var(--color-html-800) !important; }
-	.text-html-100 { color: var(--color-html-100) !important; }
-	.text-html-800 { color: var(--color-html-800) !important; }
-	.bg-css-100 { background-color: var(--color-css-100) !important; }
-	.bg-css-800 { background-color: var(--color-css-800) !important; }
-	.text-css-100 { color: var(--color-css-100) !important; }
-	.text-css-800 { color: var(--color-css-800) !important; }
-	.bg-kotlin-100 { background-color: var(--color-kotlin-100) !important; }
-	.bg-kotlin-800 { background-color: var(--color-kotlin-800) !important; }
-	.text-kotlin-100 { color: var(--color-kotlin-100) !important; }
-	.text-kotlin-800 { color: var(--color-kotlin-800) !important; }
-
-.dark .bg-kotlin-100 { background-color: var(--color-kotlin-800) !important; }
-.dark .text-kotlin-800 { color: var(--color-kotlin-100) !important; }
-
-.dark .bg-java-100 { background-color: var(--color-java-800) !important; }
-.dark .text-java-800 { color: var(--color-java-100) !important; }
-.dark .bg-spring-100 { background-color: var(--color-spring-800) !important; }
-.dark .text-spring-800 { color: var(--color-spring-100) !important; }
-.dark .bg-micro-100 { background-color: var(--color-micro-800) !important; }
-.dark .text-micro-800 { color: var(--color-micro-100) !important; }
-.dark .bg-nextjs-100 { background-color: var(--color-nextjs-800) !important; }
-.dark .text-nextjs-800 { color: var(--color-nextjs-100) !important; }
-.dark .bg-devops-100 { background-color: var(--color-devops-800) !important; }
-.dark .text-devops-800 { color: var(--color-devops-100) !important; }
-.dark .bg-grails-100 { background-color: var(--color-grails-800) !important; }
-.dark .text-grails-800 { color: var(--color-grails-100) !important; }
-.dark .bg-aws-100 { background-color: var(--color-aws-800) !important; }
-.dark .text-aws-800 { color: var(--color-aws-100) !important; }
-.dark .bg-mysql-100 { background-color: var(--color-mysql-800) !important; }
-.dark .text-mysql-800 { color: var(--color-mysql-100) !important; }
-.dark .bg-vps-100 { background-color: var(--color-vps-800) !important; }
-.dark .text-vps-800 { color: var(--color-vps-100) !important; }
-.dark .bg-js-100 { background-color: var(--color-js-800) !important; }
-.dark .text-js-800 { color: var(--color-js-100) !important; }
-.dark .bg-postgresql-100 { background-color: var(--color-postgresql-800) !important; }
-.dark .text-postgresql-800 { color: var(--color-postgresql-100) !important; }
-.dark .bg-php-100 { background-color: var(--color-php-800) !important; }
-.dark .text-php-800 { color: var(--color-php-100) !important; }
-.dark .bg-vb-100 { background-color: var(--color-vb-800) !important; }
-.dark .text-vb-800 { color: var(--color-vb-100) !important; }
-.dark .bg-servers-100 { background-color: var(--color-servers-800) !important; }
-.dark .text-servers-800 { color: var(--color-servers-100) !important; }
-
-@keyframes fadeIn {
-	0% { opacity: 0; transform: translateY(20px); }
-	100% { opacity: 1; transform: translateY(0); }
+/* Pares de badge por tecnología con contraste >= 4.5:1 (WCAG AA).
+   --color-*-100/800 conservan el color de marca; --tech-* es lo que se pinta. */
+:root {
+	--tech-java-bg: #F7E1B3; --tech-java-fg: #895914;
+	--tech-spring-bg: #D3F9D8; --tech-spring-fg: #48762a;
+	--tech-python-bg: #f0ffe8; --tech-python-fg: #378027;
+	--tech-micro-bg: #D0E6FF; --tech-micro-fg: #1563bc;
+	--tech-nextjs-bg: #EAEAEA; --tech-nextjs-fg: #000000;
+	--tech-devops-bg: #E0E7FF; --tech-devops-fg: #4338CA;
+	--tech-seo-bg: #F5F5F5; --tech-seo-fg: #616161;
+	--tech-grails-bg: #F3E8FF; --tech-grails-fg: #6E4C13;
+	--tech-aws-bg: #FFF7E1; --tech-aws-fg: #9e5f00;
+	--tech-mysql-bg: #E0F7FA; --tech-mysql-fg: #00758F;
+	--tech-vps-bg: #F5F5F5; --tech-vps-fg: #616161;
+	--tech-js-bg: #FFF9C4; --tech-js-fg: #7b6f0f;
+	--tech-postgresql-bg: #E3F2FD; --tech-postgresql-fg: #336791;
+	--tech-php-bg: #EDE9FE; --tech-php-fg: #626594;
+	--tech-vb-bg: #F3E8FF; --tech-vb-fg: #68217A;
+	--tech-servers-bg: #E0E7FF; --tech-servers-fg: #1E293B;
+	--tech-astro-bg: #F5F3FF; --tech-astro-fg: #6C2BD7;
+	--tech-markdown-bg: #F7F7F7; --tech-markdown-fg: #404040;
+	--tech-webp-bg: #E0F7FA; --tech-webp-fg: #007b70;
+	--tech-html-bg: #FFE5E0; --tech-html-fg: #b63e1e;
+	--tech-css-bg: #E0F0FF; --tech-css-fg: #264DE4;
+	--tech-kotlin-bg: #EDE9FE; --tech-kotlin-fg: #724ae6;
 }
-@keyframes slideUp {
-	0% { opacity: 0; transform: translateY(30px); }
-	100% { opacity: 1; transform: translateY(0); }
+.dark {
+	--tech-java-bg: #462e0a; --tech-java-fg: #F7E1B3;
+	--tech-spring-bg: #2c4819; --tech-spring-fg: #D3F9D8;
+	--tech-python-bg: #285c1c; --tech-python-fg: #f0ffe8;
+	--tech-micro-bg: #08284d; --tech-micro-fg: #D0E6FF;
+	--tech-nextjs-bg: #000000; --tech-nextjs-fg: #EAEAEA;
+	--tech-devops-bg: #1b1651; --tech-devops-fg: #E0E7FF;
+	--tech-seo-bg: #272727; --tech-seo-fg: #F5F5F5;
+	--tech-grails-bg: #2c1e08; --tech-grails-fg: #F3E8FF;
+	--tech-aws-bg: #663d00; --tech-aws-fg: #FFF7E1;
+	--tech-mysql-bg: #002f39; --tech-mysql-fg: #E0F7FA;
+	--tech-vps-bg: #272727; --tech-vps-fg: #F5F5F5;
+	--tech-js-bg: #63590c; --tech-js-fg: #FFF9C4;
+	--tech-postgresql-bg: #14293a; --tech-postgresql-fg: #E3F2FD;
+	--tech-php-bg: #303148; --tech-php-fg: #EDE9FE;
+	--tech-vb-bg: #2a0d31; --tech-vb-fg: #F3E8FF;
+	--tech-servers-bg: #0c1018; --tech-servers-fg: #E0E7FF;
+	--tech-astro-bg: #2b1156; --tech-astro-fg: #F5F3FF;
+	--tech-markdown-bg: #1a1a1a; --tech-markdown-fg: #F7F7F7;
+	--tech-webp-bg: #003c36; --tech-webp-fg: #E0F7FA;
+	--tech-html-bg: #5b1f0f; --tech-html-fg: #FFE5E0;
+	--tech-css-bg: #0f1f5b; --tech-css-fg: #E0F0FF;
+	--tech-kotlin-bg: #332166; --tech-kotlin-fg: #EDE9FE;
 }
+
+.bg-java-100 { background-color: var(--tech-java-bg); }
+.text-java-800 { color: var(--tech-java-fg); }
+.bg-spring-100 { background-color: var(--tech-spring-bg); }
+.text-spring-800 { color: var(--tech-spring-fg); }
+.bg-python-100 { background-color: var(--tech-python-bg); }
+.text-python-800 { color: var(--tech-python-fg); }
+.bg-micro-100 { background-color: var(--tech-micro-bg); }
+.text-micro-800 { color: var(--tech-micro-fg); }
+.bg-nextjs-100 { background-color: var(--tech-nextjs-bg); }
+.text-nextjs-800 { color: var(--tech-nextjs-fg); }
+.bg-devops-100 { background-color: var(--tech-devops-bg); }
+.text-devops-800 { color: var(--tech-devops-fg); }
+.bg-seo-100 { background-color: var(--tech-seo-bg); }
+.text-seo-800 { color: var(--tech-seo-fg); }
+.bg-grails-100 { background-color: var(--tech-grails-bg); }
+.text-grails-800 { color: var(--tech-grails-fg); }
+.bg-aws-100 { background-color: var(--tech-aws-bg); }
+.text-aws-800 { color: var(--tech-aws-fg); }
+.bg-mysql-100 { background-color: var(--tech-mysql-bg); }
+.text-mysql-800 { color: var(--tech-mysql-fg); }
+.bg-vps-100 { background-color: var(--tech-vps-bg); }
+.text-vps-800 { color: var(--tech-vps-fg); }
+.bg-js-100 { background-color: var(--tech-js-bg); }
+.text-js-800 { color: var(--tech-js-fg); }
+.bg-postgresql-100 { background-color: var(--tech-postgresql-bg); }
+.text-postgresql-800 { color: var(--tech-postgresql-fg); }
+.bg-php-100 { background-color: var(--tech-php-bg); }
+.text-php-800 { color: var(--tech-php-fg); }
+.bg-vb-100 { background-color: var(--tech-vb-bg); }
+.text-vb-800 { color: var(--tech-vb-fg); }
+.bg-servers-100 { background-color: var(--tech-servers-bg); }
+.text-servers-800 { color: var(--tech-servers-fg); }
+.bg-astro-100 { background-color: var(--tech-astro-bg); }
+.text-astro-800 { color: var(--tech-astro-fg); }
+.bg-markdown-100 { background-color: var(--tech-markdown-bg); }
+.text-markdown-800 { color: var(--tech-markdown-fg); }
+.bg-webp-100 { background-color: var(--tech-webp-bg); }
+.text-webp-800 { color: var(--tech-webp-fg); }
+.bg-html-100 { background-color: var(--tech-html-bg); }
+.text-html-800 { color: var(--tech-html-fg); }
+.bg-css-100 { background-color: var(--tech-css-bg); }
+.text-css-800 { color: var(--tech-css-fg); }
+.bg-kotlin-100 { background-color: var(--tech-kotlin-bg); }
+.text-kotlin-800 { color: var(--tech-kotlin-fg); }
+
 @keyframes bounceSubtle {
 	0%, 100% { transform: translateY(0); }
 	50% { transform: translateY(-5px); }
 }
 
-.animate-fade-in {
-	animation: fadeIn 0.6s ease-in-out;
-}
-.animate-slide-up {
-	animation: slideUp 0.6s ease-out;
-}
 .animate-bounce-subtle {
 	animation: bounceSubtle 2s infinite;
 }
@@ -209,6 +179,9 @@
 @keyframes fade-in-delay {
     from { opacity: 0; }
     to { opacity: 1; }
+}
+.js-reveal {
+    opacity: 0;
 }
 .animate-fade-in-delay {
     animation: fade-in-delay 1.5s 0.5s forwards;
@@ -311,4 +284,15 @@
     will-change: transform;
     /*slow reset to original state*/
     transition: transform 0.4s cubic-bezier(.17,.67,.83,.67);
+}
+
+/* Respeta a usuarios con movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*, *::before, *::after {
+		animation: none !important;
+		transition: none !important;
+	}
 }
