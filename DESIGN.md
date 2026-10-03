@@ -22,7 +22,7 @@ El diseño web del sitio combina **estética profesional de alto nivel** (Glassm
 | :--- | :--- | :--- |
 | **Astro** | `^6.1.3` | Framework estático principal, SSR/SSG, enrutamiento y componentes de maquetación |
 | **Tailwind CSS** | `^4.1.13` | Motor de estilos de utilidades importado vía `@tailwindcss/vite` |
-| **React** | `^5.0.2` (`@astrojs/react`) | Hidratación interactiva mediante islas (`client:load`) para componentes como `Quote.jsx` |
+| **React** | `^5.0.2` (`@astrojs/react`) | Integración instalada, sin islas activas: `Quote` ahora es `Quote.astro` y no se envía runtime de React |
 | **@tailwindcss/typography** | `^0.5.18` | Plugin para estilos tipográficos en contenidos extensos |
 | **@astrojs/sitemap** | `^3.7.2` | Generación automática de mapas del sitio XML |
 
@@ -75,6 +75,11 @@ Cada tecnología desplegada en los badges y tarjetas del sitio posee un par crom
 }
 ```
 
+
+### 3.3 Pares de badge y contraste
+
+Los colores de marca `--color-*-100/800` se conservan como referencia, pero **lo que se pinta** son los pares `--tech-*-bg` / `--tech-*-fg` de `global.css`, calculados para cumplir **contraste ≥ 4.5:1 (WCAG AA)** en claro (`:root`) y oscuro (`.dark`). Las clases `bg-[tech]-100` y `text-[tech]-800` se mantienen como nombres de uso, así que el marcado no cambia. Al agregar una tecnología, verificar el contraste del par antes de registrarla.
+
 ---
 
 ## 4. Tipografía y Estilos de Texto
@@ -84,22 +89,28 @@ Cada tecnología desplegada en los badges y tarjetas del sitio posee un par crom
 
 ### Jerarquía de Encabezados
 
-- **H1 Principal (Hero)**: `text-4xl md:text-6xl font-extrabold leading-tight text-white`
-- **H2 Título de Sección**: `text-4xl font-bold text-gray-900 mb-6`
+- **H1 Principal (Hero)**: `text-4xl md:text-5xl font-extrabold leading-tight tracking-tight text-white`
+- **H1 de páginas internas (casos)**: `text-4xl md:text-5xl font-extrabold leading-tight text-gray-900 dark:text-white`
+- **H2 Título de Sección** (primitivos de sección): `text-2xl md:text-3xl font-bold tracking-tight text-gray-900 dark:text-white`
 - **H3 Título de Tarjeta / Módulo**: `text-xl` a `text-2xl font-bold text-gray-900`
-- **Párrafos de Cuerpo**: `text-lg leading-relaxed text-gray-600` / `text-gray-700`
+- **Párrafos de Cuerpo**: `text-lg leading-relaxed text-gray-600 dark:text-gray-300`
+- **Tamaño mínimo de texto**: 12px (`text-xs`); no usar tamaños menores.
 
 ---
 
 ## 5. Animaciones y Micro-interacciones (`global.css`)
 
-El archivo global incluye animaciones clave para elevar el encanto del sitio:
+Animaciones en uso (definidas en `global.css` o de Tailwind):
 
-1. **`animate-fade-in` / `animate-slide-up`**: Animación de entrada suave hacia arriba para títulos y componentes primarios.
-2. **`animate-bounce-subtle` / `animate-pulse-slow`**: Indicadores de estado activo y badges de disponibilidad.
-3. **`animate-gradient-text`**: Flujo animado continuo del gradiente en las palabras clave del Hero.
-4. **`animate-rotate-grow`**: Efecto interactivo al posar el cursor sobre el logo del avatar `ALG`.
-5. **`animate-pop-scale-and-rotate-15`**: Micro-interacción distintiva con escala de `1.15` y rotación de `-15deg` al pasar el cursor sobre los distintivos de experiencia.
+1. **`animate-fade-in`**: entrada de secciones al hacer scroll. La aplica `public/script.js` solo a las secciones que están debajo del primer viewport (clase transitoria `.js-reveal` con `opacity: 0`). No actúa con `prefers-reduced-motion`; sin JS el contenido queda visible. `springboot-course` usa su propio reveal (`.reveal` / `.in`, activo solo con `@media (scripting: enabled)`).
+2. **`animate-pulse-slow`**: indicador de disponibilidad y estado activo.
+3. **`animate-pop-scale-and-rotate-15`**: escala `1.15` y rotación `-15deg` al pasar el cursor sobre los distintivos de experiencia.
+4. **`animate-pop`**: pulso breve de escala.
+5. **`animate-bounce`** (Tailwind): flecha del hero.
+
+Definidas pero **sin uso actual**: `animate-rotate-grow`, `animate-gradient-text`, `animate-bounce-subtle`, `animate-slide-up`, `animate-slide-down`, `animate-bounce-slow`, `animate-fade-in-delay`. Candidatas a eliminar.
+
+`@media (prefers-reduced-motion: reduce)` desactiva animaciones y transiciones y el scroll suave en todo el sitio.
 
 ---
 
@@ -110,24 +121,25 @@ El archivo global incluye animaciones clave para elevar el encanto del sitio:
 - **Responsabilidad**:
   - Renderiza el HTML esqueleto con etiquetas `<head>`, metaetiquetas SEO (Open Graph, Twitter Cards), favicon y esquema JSON-LD (`Person`).
   - Carga el archivo `src/styles/global.css`.
-  - Ejecuta el script inline contra parpadeos (FOUC) para sincronizar el tema claro/oscuro desde `localStorage` y `matchMedia`.
+  - Ejecuta el script inline contra parpadeos (FOUC) para sincronizar el tema claro/oscuro desde `localStorage` y `matchMedia`. Los textos de los botones de tema salen de `data-dark` / `data-light` en el marcado; `aria-pressed` se actualiza al cambiar.
+  - Incluye el enlace "Saltar al contenido" (`#main`, visible al recibir foco). Cada página expone `<main id="main">`.
   - Inyecta opcionalmente **Google Tag Manager** si la variable de entorno `VITE_GTM_ID` está configurada.
 
 ### 6.2 Encabezado Navegable: `Header.astro`
 - **Ubicación**: `src/components/Header.astro`
 - **Características**:
-  - **Fijo y Traslúcido**: `fixed top-0 z-50 w-full border-b border-gray-200 bg-white/80 backdrop-blur-md`.
-  - **Identidad**: Icono insignia de gradiente animado `ALG` con redirección a la raíz `/`.
-  - **Menú Contextual**:
-    - En la página principal (`/`): enlaces internos hacia las secciones `#about`, `#projects`, `#skills`, `#experience`, `#contact` y enlace a `/recursos`.
-    - En la página `/recursos`: navegación dedicada hacia `Inicio`, `Laboratorio`, `Experiencia` y `Contacto`.
-    - En otras páginas (e.g. Casos de Estudio): renderiza la isla interactiva de React `<Quote client:load />`.
-  - **Menú Móvil Glassmorphism**: Overlay desplegable deslizable con gradiente y desenfoque `backdrop-blur-xl`.
+  - **Fijo y traslúcido**: `fixed top-0 z-50 w-full border-b border-gray-200 bg-white/85 backdrop-blur-md dark:border-gray-800 dark:bg-gray-950/85`.
+  - **Identidad**: insignia estática `ALG` (bloque azul `bg-blue-600`) más el título, enlazados a `/`.
+  - **Navegación** (igual en todas las páginas): `Sobre Mí`, `Laboratorio`, `Experiencia` (anclas de `/`), `Recursos`, `Casos` y botón destacado `Contacto`.
+  - **Página actual**: `aria-current="page"` en `Recursos` y `Casos` (incluye subrutas), con estilo azul.
+  - **Tema**: botón con texto en escritorio y solo icono (🌙/☀️, 40×40 px) en móvil, con `aria-pressed` y nombre accesible.
+  - **Menú móvil**: lista desplegable bajo la barra; se cierra al elegir un enlace o con Escape, y devuelve el foco al botón.
+  - Objetivos táctiles de 40×40 px en los botones del header.
 
 ### 6.3 Pie de Página: `Footer.astro`
 - **Ubicación**: `src/components/Footer.astro`
-- **Estilo**: Oscuro constante (`bg-gray-900 dark:bg-gray-950 text-white`).
-- **Contenido**: Enlaces a Blog personal, perfil de GitHub, LinkedIn y derechos reservados.
+- **Estilo**: Oscuro constante (`bg-gray-900 text-gray-300 dark:bg-black dark:text-gray-400`).
+- **Contenido**: navegación secundaria, correo, Blog, GitHub, LinkedIn, derechos reservados y lema. Muestra `Quote` solo con `showQuote`.
 
 ### 6.4 Primitivos de Sección Layout
 
@@ -135,15 +147,15 @@ El archivo global incluye animaciones clave para elevar el encanto del sitio:
    - Layout de 2 columnas responsivas (`md:grid-cols-2`).
    - Acepta slots para contenido principal y slot nombrado `content`.
 2. **`SectionRow.astro`**:
-   - Sección centrada con gradiente pronunciado `bg-gradient-to-br from-blue-600 to-purple-700 text-white`.
+   - Sección centrada de fondo oscuro `bg-gray-900 text-white dark:bg-black` (`max-w-4xl`).
    - Utilizada para métricas de alto impacto (e.g. bloque de usuarios migrados y tiempos operativos).
 3. **`SectionTitle.astro`**:
-   - Estructura estándar con título centrado y slot nombrado `content` para grillas inferiores.
+   - Estructura estándar con título alineado a la izquierda (`max-w-3xl`) y slot nombrado `content` para grillas inferiores.
 
-### 6.5 Isla Interactiva: `Quote.jsx`
-- **Ubicación**: `src/components/Quote.jsx`
-- **Tipo**: Componente de React hidratado con `client:load`.
-- **Comportamiento**: Despliega una frase célebre de ingeniería de software o arquitectura seleccionada aleatoriamente al cargar la página.
+### 6.5 Frase aleatoria: `Quote.astro`
+- **Ubicación**: `src/components/Quote.astro`
+- **Tipo**: componente Astro sin hidratación. El servidor pinta una frase al compilar y un script mínimo la reemplaza por otra en cada visita.
+- **Uso**: `<Quote />` desde `Footer.astro` cuando `showQuote` es verdadero.
 
 ---
 
@@ -154,6 +166,8 @@ graph TD
     A["/ (Página Principal)"] --> B["/recursos"]
     A --> C["/casos-de-estudio/ats-startalent"]
     A --> D["/casos-de-estudio/programa-de-lealtad"]
+    A --> G["/casos-de-estudio (índice, mailmind, codeconductor)"]
+    A --> H["/springboot-course"]
     A --> E["/Arturo_L_Gomez_CV.pdf (CV PDF)"]
     F["/about-me"] -->|Redirección HTTP 301 astro.config.mjs| B
 ```
@@ -165,16 +179,23 @@ graph TD
 - **Sección Filosofía de Liderazgo**: Grilla de 3 tarjetas sobre Arquitectura Pragmática, Calidad & Entrega y Cultura/Mentoring.
 - **Laboratorio de Ideas**: Proyectos destacados con enlaces directos y badges por tecnología.
 - **Experiencia Profesional (Timeline)**: Nodos verticales interactivos ordenados cronológicamente (`#lider-tecnico`, `#arquitecto-software`, etc.).
-- **Notas del Blog**: Integración dinámica vía `fetch` del RSS XML de `arthurolg.com`.
+- **Notas del Blog**: el RSS XML de `arthurolg.com` se consulta con `fetch` en tiempo de compilación (frontmatter); si falla, la sección se omite.
+- **Imágenes**: los `<source>` de la foto de "Sobre mí" usan las versiones WebP generadas con `getImage()` (antes servían los PNG originales de más de 1 MB). La foto del hero lleva `fetchpriority="high"` y la de "Sobre mí" `loading="lazy"`.
 
 ### 7.2 Página de Recursos (`/recursos` - `src/pages/recursos.astro`)
 - **Sección de Recursos y Notas**: Tarjetas de accesos directos a repositorios de GitHub (`learning-resources`, `practice-examples`, `productividad`, `notes`, etc.).
 - **Radar Tecnológico**: Matriz dividida en **Core (Adopción)**, **Trial (Exploración)** y **Hold (Mantenimiento)**.
 - **Proyectos en Marcha**: Catálogo de side projects (`cotizador`, `faro-vault`, `devtools`, `miraeljuego`, etc.).
 
+### 7.2b Curso Spring Boot (`/springboot-course` - `src/pages/springboot-course.astro`)
+- Identidad visual propia (tipografías Pixelify Sans y JetBrains Mono, paleta retro con variables `--bg`, `--text`, etc. y modo oscuro neón) mediante `<style is:global>` acotado a esta ruta. Solo `body` y `#hero-title` son selectores genéricos.
+- Usa el Header y el Footer comunes; su contenido va en `<main id="main" class="course-page">`.
+
 ### 7.3 Casos de Estudio (`src/pages/casos-de-estudio/*.astro`)
 - **`ats-startalent.astro`**: Rediseño del ATS StarTalent (SaaS multi-tenant con Grails y MySQL).
 - **`programa-de-lealtad.astro`**: Migración del Programa de Lealtad a microservicios en AWS ECS con Spring Boot y Kotlin.
+- **`mailmind.astro`** y **`codeconductor.astro`**: casos de MailMind y del framework CodeConductor.
+- **`index.astro`**: hub que lista los casos.
 - **Diseño de los Casos**:
   - Breadcrumbs de navegación superior.
   - Bloque destacado de métricas de impacto principales.
@@ -201,4 +222,17 @@ graph TD
 
 1. **Estilos de Commit**: Seguir estrictamente la convención documentada en las reglas del repositorio (`<tipo>(<scope>): <descripción corta>`) en **español neutro**, encabezado de máximo 69 caracteres, en modo imperativo o infinitivo.
 2. **Modo Oscuro**: Al incorporar nuevas tarjetas o componentes, siempre incluir las variantes `dark:bg-*` y `dark:text-*`.
-3. **Nuevas Tecnologías**: Si se agregan nuevas tecnologías al sitio, definir sus tokens `--color-[tech]-100` y `--color-[tech]-800` en `global.css` y registrar sus clases utilitarias correspondientes.
+3. **Nuevas Tecnologías**: Si se agregan nuevas tecnologías al sitio, definir sus tokens `--color-[tech]-100` y `--color-[tech]-800` y el par `--tech-[tech]-bg` / `--tech-[tech]-fg` (claro y oscuro, contraste ≥ 4.5:1) en `global.css`, y registrar sus clases `bg-[tech]-100` y `text-[tech]-800`.
+4. **Imágenes**: usar `<Image>` / `getImage()` de `astro:assets`. No apuntar `srcset` a `imported.src` de PNG/JPG originales.
+
+---
+
+## 10. Accesibilidad y Verificación
+
+- **Contraste**: texto ≥ 4.5:1 (badges con pares `--tech-*`; en el footer, `gray-400` sobre `gray-900`).
+- **Teclado**: enlace "Saltar al contenido", anillo de foco visible en los controles del header, menú móvil con Escape.
+- **Objetivos táctiles**: mínimo 24 px (WCAG 2.5.8); enlaces de texto sueltos con `min-h-7` o `py-1`.
+- **Movimiento**: respetar `prefers-reduced-motion`; no ocultar contenido sin respaldo si falta JS.
+- **Modo oscuro**: toda clase de fondo, texto o borde claro necesita su variante `dark:` (p. ej. `bg-gray-50 dark:bg-gray-900`, `text-blue-600 dark:text-blue-400`). Dentro de cajas siempre oscuras (diagramas en `bg-gray-950`, hero, CTA) usar directamente el tono claro, sin `dark:`. Los botones blancos sobre fondos de color (CTA) no llevan `dark:bg-*`.
+- **Contraste automático**: `axe-core` (regla `color-contrast`) sobre las 8 rutas en claro y oscuro debe dar 0 fallos. Único falso positivo conocido: `#participa-titulo` en `/springboot-course` en oscuro, porque axe cuenta el `text-shadow` neón como fondo.
+- **Verificación**: sin desborde horizontal a 360, 768 y 1280 px, en claro y oscuro, en todas las rutas. Medido con Chromium (Playwright) tras el pulido de octubre de 2026.
