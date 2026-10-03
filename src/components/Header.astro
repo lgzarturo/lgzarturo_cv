@@ -1,91 +1,88 @@
 ---
-import Quote from "./Quote";
-
 // src/components/Header.astro
 const { title } = Astro.props;
-const isHome = Astro.url.pathname === "/";
-const isRecursos = Astro.url.pathname === "/recursos" || Astro.url.pathname === "/recursos/";
+const pathname = Astro.url.pathname;
+const isCurrent = (href) => !href.includes("#") && (pathname === href || pathname.startsWith(href + "/"));
+const links = [
+  { href: "/#about", label: "Sobre Mí" },
+  { href: "/#projects", label: "Laboratorio" },
+  { href: "/#experience", label: "Experiencia" },
+  { href: "/recursos", label: "Recursos" },
+  { href: "/casos-de-estudio", label: "Casos" },
+];
 ---
 <!-- Header -->
-<header class="fixed top-0 z-50 w-full p-2 transition-all duration-300 border-b border-gray-200 bg-white/80 backdrop-blur-md">
-    <nav class="max-w-6xl px-6 py-4 mx-auto">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2 animate-fade-in-delay" onclick="window.location.href='/'" style="cursor: pointer;">
-                <div class="flex items-center justify-center w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 animate-rotate-grow">
+<header class="fixed top-0 z-50 w-full border-b border-gray-200 bg-white/85 backdrop-blur-md dark:border-gray-800 dark:bg-gray-950/85">
+    <nav class="max-w-6xl px-6 py-3 mx-auto" aria-label="Navegación principal">
+        <div class="flex items-center justify-between gap-4">
+            <a href="/" class="flex items-center gap-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600">
                     <span class="text-sm font-bold text-white">ALG</span>
-                </div>&nbsp;
-                <span class="text-xl font-bold text-gray-900">{title}</span>
-            </div>
-            {isHome ? (
-                <>
-                <ul id="desktop-menu" class="items-center hidden space-x-8 md:flex">
-                    <li><a href="#about" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Sobre Mí</a></li>
-                    <li><a href="#projects" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Laboratorio</a></li>
-                    <li><a href="#skills" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Habilidades</a></li>
-                    <li><a href="#experience" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Experiencia</a></li>
-                    <li><a href="/recursos" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Recursos</a></li>
-                    <li><a href="#contact" class="px-4 py-2 font-medium text-white transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700">Contacto</a></li>
-                    <li style="display: none;"><button class="p-2 text-gray-800 transition bg-gray-200 rounded-lg shadow dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
-                        <span class="theme-toggle-text">🌙 Modo oscuro</span>
-                    </button></li>
-                </ul>
-                <button id="mobile-menu-button" class="p-2 md:hidden">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
+                </span>
+                <span class="text-lg font-bold text-gray-900 dark:text-white">{title}</span>
+            </a>
+            <ul class="items-center hidden gap-7 md:flex">
+                {links.map((link) => (
+                    <li>
+                        <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined} class="text-sm font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600 aria-[current=page]:text-blue-600 aria-[current=page]:font-semibold dark:text-gray-300 dark:hover:text-blue-400 dark:aria-[current=page]:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 rounded">
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
+                <li>
+                    <a href="/#contact" class="px-4 py-2 text-sm font-semibold text-white transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+                        Contacto
+                    </a>
+                </li>
+                <li>
+                    <button type="button" aria-pressed="false" class="px-3 py-2 text-sm font-medium text-gray-600 transition-colors bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 theme-toggle">
+                        <span class="theme-toggle-text" data-dark="☀️ Modo claro" data-light="🌙 Modo oscuro">🌙 Modo oscuro</span>
+                    </button>
+                </li>
+            </ul>
+            <div class="flex items-center gap-2 md:hidden">
+                <button type="button" aria-label="Modo oscuro" aria-pressed="false" class="flex items-center justify-center w-10 h-10 text-gray-600 transition-colors bg-gray-100 rounded-lg dark:bg-gray-800 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 theme-toggle">
+                    <span class="theme-toggle-text text-base" aria-hidden="true" data-dark="☀️" data-light="🌙">🌙</span>
+                </button>
+                <button id="mobile-menu-button" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu" class="flex items-center justify-center w-10 h-10 text-gray-700 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
-                <div id="mobile-menu" class="fixed inset-0 z-50 flex flex-col transition-transform duration-500 transform translate-x-full shadow-2xl opacity-0 pointer-events-none md:hidden bg-gradient-to-br from-blue-400 via-white to-purple-400 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 backdrop-blur-xl" style="display: none; min-height: 90vh; opacity: 0.97; backdrop-filter: blur(80px);">
-                    <button id="close-mobile-menu" class="absolute p-2 top-6 right-6">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color: rgb(59, 130, 246);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                    <ul class="flex flex-col items-center flex-1 w-full text-2xl font-bold text-center justify-evenly">
-                        <li class="w-full my-2"><a href="#about" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Sobre Mí</a></li>
-                        <li class="w-full my-2"><a href="#experience" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Experiencia</a></li>
-                        <li class="w-full my-2"><a href="#skills" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Habilidades</a></li>
-                        <li class="w-full my-2"><a href="#projects" class="block w-full py-4 mx-4 text-gray-600 transition-colors duration-200 shadow-md rounded-xl dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 bg-white/60 dark:bg-gray-800/80">Proyectos</a></li>
-                        <li class="w-full my-2"><a href="#contact" class="block w-full py-4 mx-4 text-white transition-colors duration-200 bg-blue-600 shadow-md rounded-xl dark:bg-blue-700 hover:bg-blue-700 dark:hover:bg-blue-800">Contacto</a></li>
-                        <li class="w-full my-2" style="display: none;"><button class="block w-full py-4 mx-4 text-gray-800 transition-colors duration-200 bg-gray-200 shadow-md cursor-pointer rounded-xl dark:bg-gray-700 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-400 theme-toggle">
-                            <span class="theme-toggle-text">🌙 Modo oscuro</span>
-                        </button></li>
-                    </ul>
-                </div>
-                </>
-            ) : isRecursos ? (
-                <ul class="items-center hidden space-x-6 md:flex">
-                    <li><a href="/" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Inicio</a></li>
-                    <li><a href="/#projects" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Laboratorio</a></li>
-                    <li><a href="/#experience" class="font-medium text-gray-600 transition-colors duration-200 hover:text-blue-600">Experiencia</a></li>
-                    <li><a href="/#contact" class="px-4 py-2 font-medium text-white transition-colors duration-200 bg-blue-600 rounded-lg hover:bg-blue-700">Contacto</a></li>
-                </ul>
-            ) : (
-                <Quote client:load />
-            )}
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden pt-2 pb-4 md:hidden">
+            <ul class="flex flex-col gap-1">
+                {links.map((link) => (
+                    <li>
+                        <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined} class="block px-3 py-2.5 font-medium text-gray-700 rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 aria-[current=page]:bg-blue-50 aria-[current=page]:text-blue-700 dark:aria-[current=page]:bg-gray-800 dark:aria-[current=page]:text-blue-400">
+                            {link.label}
+                        </a>
+                    </li>
+                ))}
+                <li>
+                    <a href="/#contact" class="block px-3 py-2.5 font-semibold text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700">
+                        Contacto
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 <script is:inline>
     const menuBtn = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const closeBtn = document.getElementById('close-mobile-menu');
-    menuBtn?.addEventListener('click', () => {
-        mobileMenu.style.display = 'flex';
-        setTimeout(() => {
-            mobileMenu.classList.remove('translate-x-full');
-            mobileMenu.classList.add('translate-x-0');
-            mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-            mobileMenu.classList.add('opacity-100');
-        }, 10);
-    });
-    closeBtn?.addEventListener('click', () => {
-        mobileMenu.classList.remove('opacity-100');
-        mobileMenu.classList.add('opacity-0');
-        mobileMenu.classList.remove('translate-x-0');
-        mobileMenu.classList.add('translate-x-full');
-        setTimeout(() => {
-            mobileMenu.classList.add('pointer-events-none');
-            mobileMenu.style.display = 'none';
-        }, 500);
+    function setMenu(open) {
+        mobileMenu.classList.toggle('hidden', !open);
+        menuBtn.setAttribute('aria-expanded', String(open));
+        menuBtn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    }
+    menuBtn?.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+    mobileMenu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
+            setMenu(false);
+            menuBtn.focus();
+        }
     });
 </script>
 </header>

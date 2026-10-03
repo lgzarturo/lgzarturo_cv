@@ -1,44 +1,19 @@
-console.log('Sitio cargado');
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// Add scroll effect to header
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    if (window.scrollY > 100) {
-        header.classList.add('bg-white/95');
-    } else {
-        header.classList.remove('bg-white/95');
-    }
-});
-
-// Intersection Observer for animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
+// Revela con fade-in solo las secciones que están debajo del primer viewport,
+// para que el contenido visible al cargar no parpadee. Respeta prefers-reduced-motion.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const pending = [...document.querySelectorAll('section:not(.reveal)')].filter(
+        (section) => section.getBoundingClientRect().top > window.innerHeight
+    );
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.remove('js-reveal');
             entry.target.classList.add('animate-fade-in');
-        }
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    pending.forEach((section) => {
+        section.classList.add('js-reveal');
+        observer.observe(section);
     });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
+}

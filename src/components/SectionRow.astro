@@ -3,9 +3,9 @@
 const { id, title } = Astro.props;
 ---
 <!-- SectionRow -->
-<section id={id} class="py-20 bg-gradient-to-br from-blue-600 to-purple-700 text-white">
+<section id={id} class="py-16 md:py-24 scroll-mt-20 bg-gray-900 text-white dark:bg-black">
     <div class="max-w-4xl mx-auto px-6 text-center">
-        <h3 class="text-4xl font-bold mb-6 mt-20">{title}</h3>
+        <h2 class="mb-4 text-2xl font-bold tracking-tight md:text-3xl">{title}</h2>
         <slot />
     </div>
 </section>

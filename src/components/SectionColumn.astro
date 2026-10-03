@@ -1,14 +1,14 @@
 ---
 // src/components/SectionColumn.astro
-const { id, title, accent, titleTag = 'h2' } = Astro.props;
+const { id, title, accent = "bg-white dark:bg-gray-950", titleTag = 'h2' } = Astro.props;
 const TitleTag = titleTag;
 ---
 <!-- SectionColumn -->
-<section id={id} class={`py-20 ${accent}`}>
+<section id={id} class={`py-16 md:py-24 scroll-mt-20 ${accent}`}>
     <div class="max-w-6xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div class="animate-slide-up">
-                <TitleTag class="text-4xl font-bold text-gray-900 mb-6 mt-20">{title}</TitleTag>
+        <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+            <div class="max-w-prose">
+                <TitleTag class="mb-4 text-2xl font-bold tracking-tight text-gray-900 md:text-3xl dark:text-white">{title}</TitleTag>
                 <slot />
             </div>
             <slot name="content" />

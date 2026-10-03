@@ -96,41 +96,39 @@ const ogImageUrl = new URL(ogImage, Astro.site ?? "https://lgzarturo.com").href;
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- End Google Tag Manager (noscript) -->
     )}
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-lg focus:bg-blue-600 focus:text-white focus:font-semibold focus:outline-none focus:ring-2 focus:ring-white">Saltar al contenido</a>
     <slot />
     <script src="/script.js" is:inline></script>
     <script is:inline>
         // Script para alternar el tema
         function updateThemeToggleText() {
-            const themeToggleText = document.getElementsByClassName('theme-toggle-text');
             const isDark = document.documentElement.classList.contains('dark');
-            for (let i = 0; i < themeToggleText.length; i++) {
-                themeToggleText[i].textContent = isDark ? '☀️ Modo claro' : '🌙 Modo oscuro';
-            }
+            document.querySelectorAll('.theme-toggle-text').forEach((el) => {
+                el.textContent = isDark ? el.dataset.dark : el.dataset.light;
+            });
+            document.querySelectorAll('.theme-toggle').forEach((btn) => {
+                btn.setAttribute('aria-pressed', String(isDark));
+                if (btn.hasAttribute('aria-label')) btn.setAttribute('aria-label', isDark ? 'Modo claro' : 'Modo oscuro');
+            });
         }
-        function setTheme(theme) {
-            // Cambia el tema y actualiza el almacenamiento local
-            if (theme === 'dark') {
-                document.documentElement.classList.add('dark');
-                localStorage.theme = 'dark';
-            } else {
-                document.documentElement.classList.remove('dark');
-                localStorage.theme = 'light';
-            }
+        function setTheme(theme, persist) {
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            if (persist) localStorage.theme = theme;
             updateThemeToggleText();
         }
         document.addEventListener('DOMContentLoaded', () => {
             // Inicializa el tema según preferencia
             if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                setTheme('dark');
+                setTheme('dark', false);
             } else {
-                setTheme('light');
+                setTheme('light', false);
             }
             // Añade el evento a todos los botones
             const themeToggle = document.getElementsByClassName('theme-toggle');
             for (let i = 0; i < themeToggle.length; i++) {
                 themeToggle[i].addEventListener('click', () => {
                     const isDark = document.documentElement.classList.contains('dark');
-                    setTheme(isDark ? 'light' : 'dark');
+                    setTheme(isDark ? 'light' : 'dark', true);
                 });
             }
         });
