@@ -6,6 +6,11 @@
       "has": [{ "type": "host", "value": "www.lgzarturo.com" }],
       "destination": "https://lgzarturo.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
     }
   ]
 }
