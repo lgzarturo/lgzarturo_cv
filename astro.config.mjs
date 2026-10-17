@@ -7,11 +7,12 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://lgzarturo.com',
+  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()]
   },
   integrations: [react(), sitemap()],
   redirects: {
-    '/about-me': '/recursos',
+    '/about-me': '/recursos/',
   }
 });

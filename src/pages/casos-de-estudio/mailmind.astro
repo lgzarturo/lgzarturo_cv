@@ -5,12 +5,13 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 ---
 <BaseLayout
-    title="MailMind: centro de mando para el trabajo que nace en el correo | Arturo LG"
-    description="Caso indie de Arturo LG: MailMind (v0.12.3) une IMAP, notas cifradas y proyectos; triaje y write-back a Jira/Sentry sin ser otro Gmail ni CRM."
+    title="MailMind: trabajo que nace en el correo | Arturo L. Gómez"
+    description="Caso indie de Arturo L. Gómez: MailMind (v0.12.3) une IMAP, notas cifradas y proyectos; triaje y write-back a Jira/Sentry sin ser otro Gmail ni CRM."
     canonical="https://lgzarturo.com/casos-de-estudio/mailmind/"
-    keywords="MailMind, IMAP IDLE, notas cifradas, kanban, write-back Jira Sentry, Arturo LG, producto indie"
+    keywords="MailMind, IMAP IDLE, notas cifradas, kanban, write-back Jira Sentry, Arturo L. Gómez, producto indie"
     ogType="article"
 >
+    <!-- [COMPLETAR: URL OG específica del caso 1200×630; hoy usa og-image.jpg genérica vía BaseLayout] -->
     <script slot="head" type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -20,21 +21,21 @@ import Footer from '../../components/Footer.astro';
                 "itemListElement": [
                     { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://lgzarturo.com/" },
                     { "@type": "ListItem", "position": 2, "name": "Casos de estudio", "item": "https://lgzarturo.com/casos-de-estudio/" },
-                    { "@type": "ListItem", "position": 3, "name": "MailMind" }
+                    { "@type": "ListItem", "position": 3, "name": "MailMind", "item": "https://lgzarturo.com/casos-de-estudio/mailmind/" }
                 ]
             },
             {
                 "@type": "TechArticle",
                 "headline": "MailMind: convertir la señal del correo en trabajo ejecutable",
-                "description": "Caso de producto indie: cómo Arturo LG construyó MailMind, un centro de mando que une IMAP, notas y proyectos sin ser otro inbox ni CRM.",
+                "description": "Caso de producto indie: cómo Arturo L. Gómez construyó MailMind, un centro de mando que une IMAP, notas y proyectos sin ser otro inbox ni CRM.",
                 "datePublished": "2026-09-28",
-                "dateModified": "2026-09-28",
+                "dateModified": "2026-10-17",
                 "inLanguage": "es",
                 "author": { "@id": "https://lgzarturo.com/#person" },
                 "publisher": { "@id": "https://lgzarturo.com/#person" },
                 "mainEntityOfPage": "https://lgzarturo.com/casos-de-estudio/mailmind/",
                 "about": ["MailMind", "productividad", "IMAP", "triage", "product engineering"],
-                "keywords": "MailMind, IMAP IDLE, notas cifradas, kanban, write-back Jira Sentry, Arturo LG"
+                "keywords": "MailMind, IMAP IDLE, notas cifradas, kanban, write-back Jira Sentry, Arturo L. Gómez"
             },
             {
                 "@type": "SoftwareApplication",
@@ -108,6 +109,17 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-rose-100 text-sm mt-1 block">LLM triage por defecto</span>
             </div>
         </div>
+        <aside class="mb-16 -mt-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200" aria-label="Datos pendientes de completar">
+            <p class="font-semibold mb-1">Pendiente de completar (no inventar):</p>
+            <ul class="list-disc ml-5 space-y-1">
+                <li>[COMPLETAR: usuarios activos o waitlist — solo si reales]</li>
+                <li>[COMPLETAR: métrica real de triage, si existe]</li>
+                <li>[COMPLETAR: infra/hosting si se lista en Stack]</li>
+                <li>[COMPLETAR: cita de beta o retención si Arturo autoriza]</li>
+                <li>[COMPLETAR: PostgreSQL u otros componentes de datos/infra si se listan]</li>
+                <li>[COMPLETAR: URL OG específica del caso]</li>
+            </ul>
+        </aside>
 
         <!-- 01 El Reto -->
         <section class="mb-16">
@@ -274,6 +286,7 @@ import Footer from '../../components/Footer.astro';
                 <span class="px-4 py-2 bg-devops-100 text-devops-800 rounded-full text-sm font-medium">IMAP IDLE</span>
                 <span class="px-4 py-2 bg-js-100 text-js-800 rounded-full text-sm font-medium">OAuth (solo cuenta)</span>
                 <span class="px-4 py-2 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Webhooks HMAC</span>
+                <span class="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium dark:bg-amber-900/40 dark:text-amber-300">[COMPLETAR: infra/datos]</span>
             </div>
         </section>
 
