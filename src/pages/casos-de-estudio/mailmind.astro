@@ -6,12 +6,13 @@ import Footer from '../../components/Footer.astro';
 ---
 <BaseLayout
     title="MailMind: trabajo que nace en el correo | Arturo L. Gómez"
-    description="Caso indie de Arturo L. Gómez: MailMind (v0.12.3) une IMAP, notas cifradas y proyectos; triaje y write-back a Jira/Sentry sin ser otro Gmail ni CRM."
+    description="Caso indie de Arturo L. Gómez: MailMind (v0.15.2) une IMAP, notas cifradas y proyectos; triaje y write-back a Jira/Sentry sin ser otro Gmail ni CRM. Stack: FastAPI, PostgreSQL, Redis y Docker."
     canonical="https://lgzarturo.com/casos-de-estudio/mailmind/"
     keywords="MailMind, IMAP IDLE, notas cifradas, kanban, write-back Jira Sentry, Arturo L. Gómez, producto indie"
     ogType="article"
+    ogImage="/og-mailmind.jpg"
+    ogImageAlt="MailMind: convertir la señal del correo en trabajo ejecutable (correo, nota, tarea, proyecto)"
 >
-    <!-- [COMPLETAR: URL OG específica del caso 1200×630; hoy usa og-image.jpg genérica vía BaseLayout] -->
     <script slot="head" type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -43,20 +44,22 @@ import Footer from '../../components/Footer.astro';
                 "url": "https://mailmindworks.com/",
                 "applicationCategory": "BusinessApplication",
                 "operatingSystem": "Web",
-                "softwareVersion": "0.12.3",
+                "softwareVersion": "0.15.2",
                 "isAccessibleForFree": true,
                 "author": { "@id": "https://lgzarturo.com/#person" },
                 "description": "Centro de mando que unifica bandeja IMAP, notas cifradas y proyectos: triaje, reglas e incidentes, con write-back a Jira/Sentry (no crea tickets).",
                 "email": "hello@mailmindworks.com",
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free beta" },
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Plan Free; plan Pro de pago" },
                 "featureList": [
-                    "Bandeja unificada IMAP (IDLE)",
+                    "Bandeja unificada IMAP (IDLE) con importancia y probabilidad de respuesta",
                     "Notas cifradas estilo Keep + vault",
-                    "Proyectos, kanban y Gantt",
+                    "Proyectos en vista Lista, kanban y Gantt",
                     "Reglas, VIP e incidentes",
                     "Write-back IMAP, Jira y Sentry (no crea tickets)",
                     "Webhooks Sentry/GitHub/Jira con HMAC",
                     "LLM triage opcional (apagado por defecto)",
+                    "Resúmenes y alertas por Telegram",
+                    "PWA instalable (ES/EN, tema claro u oscuro)",
                     "Mobile first"
                 ]
             }
@@ -80,7 +83,7 @@ import Footer from '../../components/Footer.astro';
             <div class="flex flex-wrap gap-2 mb-4">
                 <span class="px-3 py-1 bg-rose-100 text-rose-800 rounded-full text-sm font-medium dark:bg-rose-900/40 dark:text-rose-300">MailMind · mailmindworks.com</span>
                 <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium dark:bg-green-900/40 dark:text-green-300">Producto indie</span>
-                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium dark:bg-purple-900/40 dark:text-purple-300">Beta gratuita en producción</span>
+                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium dark:bg-purple-900/40 dark:text-purple-300">Pre-release en producción activa</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
                 MailMind: convertir la señal del correo en trabajo ejecutable
@@ -93,12 +96,12 @@ import Footer from '../../components/Footer.astro';
         <!-- Métricas de impacto -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 p-8 bg-gradient-to-br from-rose-500 to-purple-700 rounded-2xl text-white text-center">
             <div>
-                <span class="block text-3xl font-extrabold">v0.12.3</span>
+                <span class="block text-3xl font-extrabold">v0.15.2</span>
                 <span class="text-rose-100 text-sm mt-1 block">En producción</span>
             </div>
             <div>
-                <span class="block text-3xl font-extrabold">Beta</span>
-                <span class="text-rose-100 text-sm mt-1 block">Gratuita</span>
+                <span class="block text-3xl font-extrabold">Free + Pro</span>
+                <span class="text-rose-100 text-sm mt-1 block">Plan gratuito disponible</span>
             </div>
             <div>
                 <span class="block text-3xl font-extrabold">0</span>
@@ -109,17 +112,6 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-rose-100 text-sm mt-1 block">LLM triage por defecto</span>
             </div>
         </div>
-        <aside class="mb-16 -mt-8 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200" aria-label="Datos pendientes de completar">
-            <p class="font-semibold mb-1">Pendiente de completar (no inventar):</p>
-            <ul class="list-disc ml-5 space-y-1">
-                <li>[COMPLETAR: usuarios activos o waitlist — solo si reales]</li>
-                <li>[COMPLETAR: métrica real de triage, si existe]</li>
-                <li>[COMPLETAR: infra/hosting si se lista en Stack]</li>
-                <li>[COMPLETAR: cita de beta o retención si Arturo autoriza]</li>
-                <li>[COMPLETAR: PostgreSQL u otros componentes de datos/infra si se listan]</li>
-                <li>[COMPLETAR: URL OG específica del caso]</li>
-            </ul>
-        </aside>
 
         <!-- 01 El Reto -->
         <section class="mb-16">
@@ -210,7 +202,11 @@ import Footer from '../../components/Footer.astro';
                         <div class="w-px h-5 bg-gray-600"></div>
                         <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">Write-back IMAP · Jira · Sentry &nbsp;|&nbsp; Webhooks HMAC Sentry · GitHub · Jira</div>
                         <div class="w-px h-5 bg-gray-600"></div>
-                        <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">Digests Telegram · Jev (categorización masiva en 0.12.3)</div>
+                        <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">API REST (FastAPI) → PostgreSQL · Redis (caché)</div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">Docker en VPS</div>
+                        <div class="w-px h-5 bg-gray-600"></div>
+                        <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">Digests Telegram (10:00, 14:00 y 17:00) · Jev (categorías en la bandeja)</div>
                     </div>
                 </div>
             </div>
@@ -231,7 +227,11 @@ import Footer from '../../components/Footer.astro';
                 </div>
                 <div class="bg-orange-50 border-l-4 border-orange-500 rounded-r-xl p-5 dark:bg-orange-950/40">
                     <h4 class="font-bold text-gray-900 dark:text-white mb-2">LLM apagado por defecto</h4>
-                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Hay triaje opcional con LLM, pero <strong>off by default</strong>. Primero reglas, VIP e incidentes. En v0.12.3 sumé categorización masiva con Jev para ordenar la bandeja sin obligar a un modelo en el camino crítico.</p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">Hay triaje opcional con LLM, pero <strong>off by default</strong>. Primero reglas, VIP e incidentes. Con Jev sumé categorías en la bandeja (filtros por categoría, revisión y no categorizados) e importancia y probabilidad de respuesta; si Jev no está activo, se estiman con señales propias, así que ningún modelo queda en el camino crítico.</p>
+                </div>
+                <div class="bg-cyan-50 border-l-4 border-cyan-500 rounded-r-xl p-5 dark:bg-cyan-950/40">
+                    <h4 class="font-bold text-gray-900 dark:text-white mb-2">API REST sobre contenedores en un VPS</h4>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">MailMind corre como una API REST en FastAPI, con PostgreSQL como base de datos y Redis como caché, todo en contenedores Docker sobre un VPS. La misma API alimenta la interfaz web (HTMX), la PWA instalable y la entrada pública de JSON y webhooks, así que no hay un backend aparte para móvil.</p>
                 </div>
             </div>
 
@@ -250,9 +250,9 @@ import Footer from '../../components/Footer.astro';
             </div>
             <div class="grid md:grid-cols-2 gap-6 mb-8">
                 <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6 dark:bg-rose-950/40 dark:border-rose-800">
-                    <div class="text-3xl font-extrabold text-rose-700 mb-2 dark:text-rose-300">v0.6.3 → v0.12.3</div>
+                    <div class="text-3xl font-extrabold text-rose-700 mb-2 dark:text-rose-300">v0.6.3 → v0.15.2</div>
                     <div class="font-semibold text-gray-900 dark:text-white mb-2">En producción, con camino a 1.0.0</div>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">No es un mockup: beta gratuita con camino explícito a la 1.0.0. Cada release endurece bandeja, notas, proyectos, triaje, write-back y UX mobile.</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">No es un mockup: pre-release en producción activa, con plan Free y plan Pro, y roadmap público a la 1.0.0 (bot de Telegram ampliado, health checks de producción). Cada release endurece bandeja, notas, proyectos, triaje, write-back y UX mobile.</p>
                 </div>
                 <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 dark:bg-blue-950/40 dark:border-blue-800">
                     <div class="text-3xl font-extrabold text-blue-700 mb-2 dark:text-blue-300">Señal → trabajo</div>
@@ -286,14 +286,17 @@ import Footer from '../../components/Footer.astro';
                 <span class="px-4 py-2 bg-devops-100 text-devops-800 rounded-full text-sm font-medium">IMAP IDLE</span>
                 <span class="px-4 py-2 bg-js-100 text-js-800 rounded-full text-sm font-medium">OAuth (solo cuenta)</span>
                 <span class="px-4 py-2 bg-micro-100 text-micro-800 rounded-full text-sm font-medium">Webhooks HMAC</span>
-                <span class="px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-medium dark:bg-amber-900/40 dark:text-amber-300">[COMPLETAR: infra/datos]</span>
+                <span class="px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium dark:bg-blue-900/40 dark:text-blue-300">PostgreSQL</span>
+                <span class="px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm font-medium dark:bg-red-900/40 dark:text-red-300">Redis</span>
+                <span class="px-4 py-2 bg-sky-100 text-sky-800 rounded-full text-sm font-medium dark:bg-sky-900/40 dark:text-sky-300">Docker</span>
+                <span class="px-4 py-2 bg-gray-200 text-gray-800 rounded-full text-sm font-medium dark:bg-gray-700 dark:text-gray-200">API REST · VPS</span>
             </div>
         </section>
 
         <!-- CTA -->
         <div class="bg-gradient-to-r from-rose-500 to-purple-700 rounded-2xl p-8 text-center text-white">
             <h3 class="text-2xl font-bold mb-2">¿Tu trabajo también nace en el correo y muere en pestañas?</h3>
-            <p class="text-rose-100 mb-6">Prueba MailMind en beta o cuéntame cómo estás resolviendo el triaje hoy.</p>
+            <p class="text-rose-100 mb-6">Prueba MailMind con el plan Free o cuéntame cómo estás resolviendo el triaje hoy.</p>
             <div class="flex flex-wrap justify-center gap-4">
                 <a href="https://mailmindworks.com/" target="_blank" rel="noopener" class="inline-block bg-white text-rose-700 font-semibold px-8 py-3 rounded-xl hover:bg-rose-50 transition-colors">
                     Probar MailMind

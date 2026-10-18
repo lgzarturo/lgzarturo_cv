@@ -123,9 +123,7 @@
     "ask": [
       "Bash(docker run*)",
       "Bash(docker compose up*)",
-      "Bash(docker compose down*)",
-      "Bash(*)",
-      "WebFetch(*)"
+      "Bash(docker compose down*)"
     ],
     "defaultMode": "default",
     "disableBypassPermissionsMode": "disable"
