@@ -6,12 +6,13 @@ import Footer from '../../components/Footer.astro';
 ---
 <BaseLayout
     title="CodeConductor: orquestación multi-agente | Arturo L. Gómez"
-    description="Cómo convertí el prompting caótico en un sistema reproducible: CodeConductor (npm cc-codeconductor 1.5.0), framework MIT multi-agente."
+    description="Cómo convertí el prompting caótico en un sistema reproducible: CodeConductor (npm cc-codeconductor 1.7.1), framework open source MIT multi-agente con 15 agentes y 7 targets."
     canonical="https://lgzarturo.com/casos-de-estudio/codeconductor/"
     keywords="CodeConductor, cc-codeconductor, agentes IA, Claude Code, Codex, Cursor, open source, TypeScript, Arturo L. Gómez"
     ogType="article"
+    ogImage="/og-codeconductor.jpg"
+    ogImageAlt="CodeConductor: de prompts sueltos a un sistema de ingeniería orquestado (Task Card, agentes, revisión, scorecard)"
 >
-    <!-- [COMPLETAR: URL OG específica del caso 1200×630; hoy usa og-image.jpg genérica vía BaseLayout] -->
     <script slot="head" type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -43,13 +44,14 @@ import Footer from '../../components/Footer.astro';
                 "alternateName": "cc-codeconductor",
                 "applicationCategory": "DeveloperApplication",
                 "operatingSystem": "Cross-platform (CLI / IDE targets)",
-                "softwareVersion": "1.5.0",
+                "softwareVersion": "1.7.1",
                 "license": "https://opensource.org/licenses/MIT",
                 "url": "https://github.com/lgzarturo/codeconductor",
                 "downloadUrl": "https://www.npmjs.com/package/cc-codeconductor",
                 "author": { "@id": "https://lgzarturo.com/#person" },
                 "description": "Framework open source de ingeniería asistida por IA: convierte prompting caótico en un sistema de orquestación multi-agente reproducible.",
-                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "softwareRequirements": "Node.js >=20.11"
             }
         ]
     }
@@ -71,7 +73,7 @@ import Footer from '../../components/Footer.astro';
             <div class="flex flex-wrap gap-2 mb-4">
                 <span class="px-3 py-1 bg-slate-100 text-slate-800 rounded-full text-sm font-medium dark:bg-slate-900/40 dark:text-slate-300">2026 – presente</span>
                 <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium dark:bg-purple-900/40 dark:text-purple-300">Open source / Product engineering</span>
-                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium dark:bg-green-900/40 dark:text-green-300">MIT · npm 1.5.0</span>
+                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium dark:bg-green-900/40 dark:text-green-300">MIT · npm 1.7.1</span>
             </div>
             <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 leading-tight">
                 CodeConductor: de prompts sueltos a un sistema de ingeniería orquestado
@@ -84,8 +86,8 @@ import Footer from '../../components/Footer.astro';
         <!-- Métricas de impacto -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 p-8 bg-gradient-to-br from-slate-700 to-purple-800 rounded-2xl text-white text-center">
             <div>
-                <span class="block text-3xl font-extrabold">1.5.0</span>
-                <span class="text-slate-200 text-sm mt-1 block">Versión estable npm</span>
+                <span class="block text-3xl font-extrabold">1.7.1</span>
+                <span class="text-slate-200 text-sm mt-1 block">Versión actual en npm</span>
             </div>
             <div>
                 <span class="block text-3xl font-extrabold">MIT</span>
@@ -100,16 +102,7 @@ import Footer from '../../components/Footer.astro';
                 <span class="text-slate-200 text-sm mt-1 block">Slash commands</span>
             </div>
         </div>
-        <p class="text-gray-500 dark:text-gray-400 text-sm -mt-10 mb-8 text-center">Targets de instalación: opencode · claude · codex · agy · cursor · gemini</p>
-        <aside class="mb-16 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200" aria-label="Datos pendientes de completar">
-            <p class="font-semibold mb-1">Pendiente de completar (no inventar):</p>
-            <ul class="list-disc ml-5 space-y-1">
-                <li>[COMPLETAR: descargas npm]</li>
-                <li>[COMPLETAR: métrica real del ciclo plan→PR, si existe]</li>
-                <li>[COMPLETAR: adopciones o testimonios autorizados]</li>
-                <li>[COMPLETAR: URL OG específica del caso]</li>
-            </ul>
-        </aside>
+        <p class="text-gray-500 dark:text-gray-400 text-sm -mt-10 mb-16 text-center">Targets de instalación: opencode · claude · codex · agy · cursor · gemini · pi</p>
 
         <!-- 01 El Reto -->
         <section class="mb-16">
@@ -184,7 +177,7 @@ import Footer from '../../components/Footer.astro';
                     <div class="flex flex-col items-center gap-3 min-w-max mx-auto">
                         <div class="bg-gray-700 text-gray-200 px-5 py-2 rounded-lg text-center text-xs">Humano + Task Card</div>
                         <div class="w-px h-5 bg-gray-600"></div>
-                        <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">Setup (opencode | claude | codex | agy | cursor | gemini)</div>
+                        <div class="bg-gray-800 text-gray-300 px-4 py-2 rounded text-xs text-center">Setup (opencode | claude | codex | agy | cursor | gemini | pi)</div>
                         <div class="w-px h-5 bg-gray-600"></div>
                         <div class="bg-green-950 border border-green-700 rounded-xl px-8 py-4 text-center">
                             <div class="text-green-300 font-bold text-sm mb-2">Conductor Agents (15+) ↔ Council (quorum/veto)</div>
@@ -217,7 +210,7 @@ import Footer from '../../components/Footer.astro';
             </div>
 
             <p class="text-gray-700 dark:text-gray-300 leading-relaxed mt-8">
-                Lo que aún no es (a propósito): sin runtime sandbox, policy compiler ni pruning completo de assets. Preferí un <strong>1.5.x estable</strong> a un roadmap inflado: esas piezas quedan como trabajo futuro explícito.
+                Lo que aún no es (a propósito): sin runtime sandbox, policy compiler ni pruning completo de assets. Preferí una <strong>1.7.x estable</strong> a un roadmap inflado: esas piezas quedan como trabajo futuro explícito. Mientras tanto, la recomendación documentada es ejecutar los agentes con un usuario dedicado, permisos mínimos y worktrees aislados.
             </p>
         </section>
 
@@ -237,8 +230,8 @@ import Footer from '../../components/Footer.astro';
                 </div>
                 <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 dark:bg-blue-950/40 dark:border-blue-800">
                     <div class="text-3xl font-extrabold text-blue-700 mb-2 dark:text-blue-300">Multi-target</div>
-                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Un framework, seis IDEs</div>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">opencode, Claude, Codex, AGY, Cursor y Gemini. Baja el costo de cambiar de IDE sin forks mentales.</p>
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Un framework, siete targets</div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">opencode, Claude, Codex, AGY, Cursor, Gemini y Pi. Baja el costo de cambiar de IDE sin forks mentales.</p>
                 </div>
                 <div class="bg-purple-50 border border-purple-200 rounded-2xl p-6 dark:bg-purple-950/40 dark:border-purple-800">
                     <div class="text-3xl font-extrabold text-purple-700 mb-2 dark:text-purple-300">Quorum y veto</div>
@@ -247,13 +240,13 @@ import Footer from '../../components/Footer.astro';
                 </div>
                 <div class="bg-green-50 border border-green-200 rounded-2xl p-6 dark:bg-green-950/40 dark:border-green-800">
                     <div class="text-3xl font-extrabold text-green-700 mb-2 dark:text-green-300">MIT</div>
-                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Etapa temprana, repo público</div>
-                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed"><a href="https://github.com/lgzarturo/codeconductor" target="_blank" rel="noopener" class="text-blue-600 hover:underline dark:text-blue-400">github.com/lgzarturo/codeconductor</a>, paquete en npm. [COMPLETAR: adopciones o testimonios autorizados].</p>
+                    <div class="font-semibold text-gray-900 dark:text-white mb-2">Open source en npm, repo público</div>
+                    <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed"><a href="https://github.com/lgzarturo/codeconductor" target="_blank" rel="noopener" class="text-blue-600 hover:underline dark:text-blue-400">github.com/lgzarturo/codeconductor</a>, paquete <code>cc-codeconductor</code> en npm: 31 versiones publicadas desde mayo de 2026 (v0.1.0 → v1.7.1), con 249 descargas en la última semana y 1,337 en los últimos 30 días (datos del registro npm al 16 de octubre de 2026).</p>
                 </div>
             </div>
             <div class="bg-gray-50 border border-gray-200 dark:border-gray-800 rounded-2xl p-6 dark:bg-gray-900">
                 <h3 class="font-bold text-gray-900 dark:text-white mb-2">Lección clave</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">El problema no es "mejorar el prompt": es diseñar un sistema donde la IA tiene contratos, límites y un lugar en el SDLC. Tratar al modelo como oráculo invita al caos; tratarlo como worker especializado —con task cards, consenso y veto— convierte la asistencia en ingeniería. CodeConductor es esa apuesta: en evolución, usable en 1.5.x.</p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">El problema no es "mejorar el prompt": es diseñar un sistema donde la IA tiene contratos, límites y un lugar en el SDLC. Tratar al modelo como oráculo invita al caos; tratarlo como worker especializado —con task cards, consenso y veto— convierte la asistencia en ingeniería. CodeConductor es esa apuesta: en evolución, usable en 1.7.x.</p>
             </div>
         </section>
 
